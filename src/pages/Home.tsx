@@ -8,7 +8,6 @@ import GroupDiscount from '../components/GroupDiscount';
 import Testimonials from '../components/Testimonials';
 
 import { trackVisitor } from '../lib/visitorTracking';
-import AchievementCardComponent from '../components/AchievementCard';
 import CoreServices from '../components/CoreServices';
 import HowItWorks from '../components/HowItWorks';
 
@@ -21,7 +20,6 @@ export default function Home() {
     <>
       <div className="relative">
         <Hero />
-        <AchievementCardComponent />
         <CoreServices />
         <HowItWorks />
         <Subjects />
