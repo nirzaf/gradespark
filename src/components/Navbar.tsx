@@ -106,7 +106,7 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
         className={`group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300
           ${isActive 
             ? 'text-celeste' 
-            : 'text-gray-700 hover:text-celeste'
+            : 'text-white hover:text-celeste'
           } ${isMobile ? 'block w-full text-left' : 'inline-flex items-center'}
           before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-b 
           before:from-white/80 before:to-white/40 before:backdrop-blur-lg
@@ -143,10 +143,10 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
           className="absolute left-0 mt-2 w-56 rounded-xl overflow-hidden z-50"
         >
           {/* Dropdown glass background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 backdrop-blur-xl border border-white/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-night/95 to-night/90 backdrop-blur-xl border border-celeste/20"></div>
           
           {/* Dropdown top reflection */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-20%,rgba(255,255,255,0.7),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-20%,rgba(160,235,235,0.2),transparent_70%)]"></div>
           
           {/* Dropdown content */}
           <div className="relative z-10 py-1">
@@ -154,8 +154,8 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
               <Link
               key={index}
               to={dropdownItem.path}
-              className="group relative flex items-center px-4 py-3 text-sm text-gray-700
-                    transition-all duration-300"
+              className="group relative flex items-center px-4 py-3 text-sm text-white
+                transition-all duration-300"
               >
               <span className="relative z-10 flex items-center">
                 {dropdownItem.icon}
@@ -163,11 +163,11 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
               </span>
               
               {/* Dropdown item hover effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-celeste/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               {/* Dropdown item shine */}
               <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute w-[200%] h-[200%] -top-[50%] -left-[50%] bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-45 animate-shine-slow"></div>
+                <div className="absolute w-[200%] h-[200%] -top-[50%] -left-[50%] bg-gradient-to-r from-transparent via-celeste/20 to-transparent rotate-45 animate-shine-slow"></div>
               </div>
               </Link>
             ))}
@@ -188,18 +188,18 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-50">
       {/* Main glass panel background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 backdrop-blur-xl border-b border-white/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-night/95 via-night/90 to-night/95 backdrop-blur-xl border-b border-celeste/20"></div>
       
       {/* Top reflection */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-20%,rgba(255,255,255,0.7),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-20%,rgba(160,235,235,0.2),transparent_50%)]"></div>
       
       {/* Left to right shine effect */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-1/2 h-[120%] -top-[10%] -left-[25%] bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-12 animate-shine"></div>
+        <div className="absolute w-1/2 h-[120%] -top-[10%] -left-[25%] bg-gradient-to-r from-transparent via-celeste/20 to-transparent rotate-12 animate-shine"></div>
       </div>
       
       {/* Bottom edge highlight */}
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-celeste/50 to-transparent"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
@@ -243,7 +243,7 @@ const Navbar = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-celeste hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-celeste"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-celeste hover:bg-night-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-celeste"
             >
               {isOpen ? (
                 <X className="block h-6 w-6" />
@@ -258,7 +258,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <motion.div 
-          className="md:hidden bg-white border-t"
+          className="md:hidden bg-night/95 border-t border-celeste/20"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
