@@ -9,23 +9,23 @@ import * as THREE from 'three';
 // Animation text content
 const heroTexts = [
   {
-    title: "Transform Your Learning Journey",
-    subtitle: "With Expert Tutors Worldwide",
+    title: "Expert Academic Assistance",
+    subtitle: "For University Students",
     emptyLine: "‎"
   },
   {
-    title: "Personalized 1-on-1 Learning",
-    subtitle: "Tailored to Your Academic Goals",
+    title: "Reduce Academic Stress",
+    subtitle: "Meet Deadlines with Confidence",
     emptyLine: "‎"
   },
   {
-    title: "Expert IGCSE & IB Tutoring",
-    subtitle: "From Experienced Educators",
+    title: "100% Original Content",
+    subtitle: "Guaranteed Plagiarism-Free Work",
     emptyLine: "‎"
   },
   {
-    title: "Flexible Online Sessions",
-    subtitle: "Learn at Your Own Pace",
+    title: "Secure & Confidential",
+    subtitle: "Your Privacy is Our Priority",
     emptyLine: "‎"
   }
 ];
@@ -526,8 +526,8 @@ export default function Hero() {
               <div className="flex justify-center">
                 <GraduationCap className="h-12 w-12 text-[#F77F00]" />
               </div>
-              <h3 className="mt-4 text-lg font-medium text-[#003049]">Expert Tutors</h3>
-              <p className="mt-2 text-base text-gray-600">Qualified teachers from top institutions</p>
+              <h3 className="mt-4 text-lg font-medium text-[#003049]">Expert Writers</h3>
+              <p className="mt-2 text-base text-gray-600">MA/PhD qualified professionals</p>
             </motion.div>
 
             <motion.div
@@ -549,8 +549,8 @@ export default function Hero() {
               <div className="flex justify-center">
                 <Users className="h-12 w-12 text-[#F77F00]" />
               </div>
-              <h3 className="mt-4 text-lg font-medium text-[#003049]">1-on-1 Sessions</h3>
-              <p className="mt-2 text-base text-gray-600">Personalized attention and feedback</p>
+              <h3 className="mt-4 text-lg font-medium text-[#003049]">On-Time Delivery</h3>
+              <p className="mt-2 text-base text-gray-600">Meet your deadlines every time</p>
             </motion.div>
 
             <motion.div
@@ -572,8 +572,8 @@ export default function Hero() {
               <div className="flex justify-center">
                 <Globe2 className="h-12 w-12 text-[#F77F00]" />
               </div>
-              <h3 className="mt-4 text-lg font-medium text-[#003049]">Global Reach</h3>
-              <p className="mt-2 text-base text-gray-600">Connect with tutors worldwide</p>
+              <h3 className="mt-4 text-lg font-medium text-[#003049]">100% Original</h3>
+              <p className="mt-2 text-base text-gray-600">Plagiarism-free guarantee</p>
             </motion.div>
           </div>
         </div>
