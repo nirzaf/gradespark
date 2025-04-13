@@ -1,18 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
+import './styles/index.css';
+import ErrorBoundary from './components/common/ErrorBoundary';
+import { initPerformanceMonitoring } from './lib/performance';
 
-import { TempoDevtools } from "tempo-devtools";
-TempoDevtools.init();
+// Initialize performance monitoring
+initPerformanceMonitoring();
 
-const basename = import.meta.env.BASE_URL;
-
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <BrowserRouter basename={basename}>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ErrorBoundary>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+    </ErrorBoundary>
+  </StrictMode>
 );
