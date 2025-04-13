@@ -428,7 +428,7 @@ function AnimatedBox({ initialPosition }: { initialPosition: [number, number, nu
     return () => clearInterval(interval);
   }, []);
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     if (meshRef.current) {
       currentPosition.current.lerp(targetPosition, 0.1);
       meshRef.current.position.copy(currentPosition.current);
@@ -438,10 +438,10 @@ function AnimatedBox({ initialPosition }: { initialPosition: [number, number, nu
   return (
     <mesh ref={meshRef} position={initialPosition}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#F77F00" opacity={0.6} transparent />
+      <meshStandardMaterial color="#A0EBEB" opacity={0.6} transparent />
       <lineSegments>
         <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
-        <lineBasicMaterial attach="material" color="#FCBF49" linewidth={2} />
+        <lineBasicMaterial attach="material" color="#151616" linewidth={2} />
       </lineSegments>
     </mesh>
   );
@@ -468,7 +468,7 @@ function Scene() {
         cellThickness={0.5}
         sectionSize={3}
         sectionThickness={1}
-        sectionColor={[0.97, 0.5, 0]}
+        sectionColor="#A0EBEB"
         fadeDistance={50}
       />
       {initialPositions.map((position, index) => (
@@ -483,7 +483,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen">
       {/* Animated Background */}
-      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#E3F2FD] to-[#BBDEFB]">
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-white to-celeste/30">
         <Canvas shadows camera={{ position: [30, 30, 30], fov: 50 }}>
           <Scene />
         </Canvas>
@@ -524,9 +524,9 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="flex justify-center">
-                <GraduationCap className="h-12 w-12 text-[#F77F00]" />
+                <GraduationCap className="h-12 w-12 text-celeste" />
               </div>
-              <h3 className="mt-4 text-lg font-medium text-[#003049]">Expert Writers</h3>
+              <h3 className="mt-4 text-lg font-medium text-night">Expert Writers</h3>
               <p className="mt-2 text-base text-gray-600">MA/PhD qualified professionals</p>
             </motion.div>
 
@@ -547,9 +547,9 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="flex justify-center">
-                <Users className="h-12 w-12 text-[#F77F00]" />
+                <Users className="h-12 w-12 text-celeste" />
               </div>
-              <h3 className="mt-4 text-lg font-medium text-[#003049]">On-Time Delivery</h3>
+              <h3 className="mt-4 text-lg font-medium text-night">On-Time Delivery</h3>
               <p className="mt-2 text-base text-gray-600">Meet your deadlines every time</p>
             </motion.div>
 
@@ -570,9 +570,9 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="flex justify-center">
-                <Globe2 className="h-12 w-12 text-[#F77F00]" />
+                <Globe2 className="h-12 w-12 text-celeste" />
               </div>
-              <h3 className="mt-4 text-lg font-medium text-[#003049]">100% Original</h3>
+              <h3 className="mt-4 text-lg font-medium text-night">100% Original</h3>
               <p className="mt-2 text-base text-gray-600">Plagiarism-free guarantee</p>
             </motion.div>
           </div>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { supabase } from '../../lib/supabaseClient';
 import { trackFormSubmission, trackButtonClick } from '../../lib/trackingEvents';
 
 interface FormData {
@@ -17,8 +16,6 @@ const ContactForm = () => {
     subject: '',
     message: '',
   });
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showFailureModal, setShowFailureModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -39,16 +36,15 @@ const ContactForm = () => {
       // Track the submission attempt
       trackButtonClick('contact_form_submit');
 
-      const { error } = await supabase
-        .from('contacts')
-        .insert([
-          {
-            ...formData,
-            created_at: new Date()
-          }
-        ]);
-
-      if (error) throw error;
+      // Simulate form submission without Supabase
+      // In a real application, you would send this data to your backend or a form service
+      console.log('Form submitted:', {
+        ...formData,
+        created_at: new Date()
+      });
+      
+      // Simulate successful submission
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       // Track successful submission
       trackFormSubmission('contact', true);
@@ -60,14 +56,14 @@ const ContactForm = () => {
         message: '',
       });
 
-      setShowSuccessModal(true);
-      setTimeout(() => setShowSuccessModal(false), 3000);
+      setMessage('Your message has been sent successfully!');
+      setTimeout(() => setMessage(''), 3000);
     } catch (error) {
       console.error('Error:', error);
       // Track failed submission
       trackFormSubmission('contact', false);
-      setShowFailureModal(true);
-      setTimeout(() => setShowFailureModal(false), 3000);
+      setMessage('Failed to send message. Please try again.');
+      setTimeout(() => setMessage(''), 3000);
     } finally {
       setLoading(false);
     }
@@ -158,25 +154,14 @@ const ContactForm = () => {
       </form>
 
       <AnimatePresence>
-        {showSuccessModal && (
+        {message && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="mt-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded"
+            className={`mt-4 ${message.includes('successfully') ? 'bg-green-100 border-l-4 border-green-500 text-green-700' : 'bg-red-100 border-l-4 border-red-500 text-red-700'} p-4 rounded`}
           >
-            <p className="font-medium">Message sent successfully!</p>
-          </motion.div>
-        )}
-
-        {showFailureModal && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="mt-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded"
-          >
-            <p className="font-medium">Error sending message. Please try again.</p>
+            <p className="font-medium">{message}</p>
           </motion.div>
         )}
       </AnimatePresence>

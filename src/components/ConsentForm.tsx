@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient';
 
 interface ConsentPreferences {
   marketing_consent: boolean;
@@ -15,202 +14,140 @@ const ConsentForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
-  const [clientIP, setClientIP] = useState<string>('');
 
   useEffect(() => {
-    // Get client IP and load preferences on component mount
-    const initializeConsent = async () => {
-      const ip = await getClientIP();
-      setClientIP(ip);
-      await loadExistingPreferences(ip);
-    };
-
-    initializeConsent();
-  }, []);
-
-  const getClientIP = async (): Promise<string> => {
-    try {
-      const response = await fetch('https://api.ipify.org?format=json');
-      const data = await response.json();
-      return data.ip;
-    } catch (error) {
-      console.error('Error fetching IP:', error);
-      return '';
-    }
-  };
-
-  const loadExistingPreferences = async (ip: string) => {
-    if (!ip) return;
-
-    try {
-      const { data, error } = await supabase
-        .from('consent_preferences')
-        .select('*')
-        .eq('ip_address', ip)
-        .single();
-
-      if (error && error.code !== 'PGRST116') { // PGRST116 is "not found" error
-        throw error;
-      }
-
-      if (data) {
-        setPreferences({
-          marketing_consent: data.marketing_consent,
-          analytics_consent: data.analytics_consent,
-          functional_consent: data.functional_consent,
-        });
-        // Also update localStorage
-        localStorage.setItem('consentPreferences', JSON.stringify({
-          marketing_consent: data.marketing_consent,
-          analytics_consent: data.analytics_consent,
-          functional_consent: data.functional_consent,
-        }));
-      } else {
-        // Load from localStorage if no database record exists
+    // Load preferences from localStorage on component mount
+    const loadExistingPreferences = () => {
+      try {
         const localPreferences = localStorage.getItem('consentPreferences');
         if (localPreferences) {
-          setPreferences(JSON.parse(localPreferences));
+          const parsed = JSON.parse(localPreferences);
+          setPreferences({
+            marketing_consent: parsed.marketing_consent || false,
+            analytics_consent: parsed.analytics_consent || false,
+            functional_consent: parsed.functional_consent || false,
+          });
         }
+      } catch (error) {
+        console.error('Error loading preferences:', error);
       }
-    } catch (error) {
-      console.error('Error loading preferences:', error);
-    }
-  };
+    };
+
+    loadExistingPreferences();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setMessage('');
-
+    
     try {
-      if (!clientIP) {
-        throw new Error('Unable to determine client IP');
-      }
+      // Save to localStorage
+      localStorage.setItem('consentPreferences', JSON.stringify({
+        marketing_consent: preferences.marketing_consent,
+        analytics_consent: preferences.analytics_consent,
+        functional_consent: preferences.functional_consent,
+        updated_at: new Date().toISOString(),
+      }));
 
-      const { error } = await supabase
-        .from('consent_preferences')
-        .upsert({
-          ip_address: clientIP,
-          ...preferences,
-          last_updated: new Date().toISOString(),
-        });
+      // Log the saved preferences (for demonstration)
+      console.log('Consent preferences saved:', {
+        ...preferences,
+        updated_at: new Date().toISOString(),
+      });
 
-      if (error) throw error;
-
-      // Store in localStorage for immediate access
-      localStorage.setItem('consentPreferences', JSON.stringify(preferences));
-      
-      setMessage('Your consent preferences have been saved successfully.');
-      
+      setMessage('Preferences saved successfully!');
+      setTimeout(() => setMessage(''), 3000);
     } catch (error) {
       console.error('Error saving preferences:', error);
-      setMessage('An error occurred while saving your preferences.');
+      setMessage('Failed to save preferences. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6">Manage Your Privacy Preferences</h2>
+    <div className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
+      <h2 className="text-xl font-semibold mb-4">Privacy Preferences</h2>
       
-      <div className="mb-6">
-        <p className="text-gray-600">
-          We value your privacy and want to be transparent about how we collect and use your data.
-          Please review and customize your preferences below.
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-6">
+      {message && (
+        <div className="mb-4 p-2 bg-green-100 text-green-800 rounded">
+          {message}
+        </div>
+      )}
+      
+      <form onSubmit={handleSubmit}>
         <div className="space-y-4">
           <div className="flex items-start">
             <div className="flex items-center h-5">
               <input
                 id="functional"
+                name="functional_consent"
                 type="checkbox"
                 checked={preferences.functional_consent}
-                onChange={(e) => setPreferences(prev => ({
-                  ...prev,
+                onChange={(e) => setPreferences({
+                  ...preferences,
                   functional_consent: e.target.checked
-                }))}
-                className="w-4 h-4 border-gray-300 rounded"
-                required
+                })}
+                className="h-4 w-4 text-celeste border-gray-300 rounded"
               />
             </div>
-            <div className="ml-3">
-              <label htmlFor="functional" className="font-medium">
-                Essential Cookies (Required)
-              </label>
-              <p className="text-gray-500 text-sm">
-                These cookies are necessary for the website to function and cannot be switched off.
-              </p>
+            <div className="ml-3 text-sm">
+              <label htmlFor="functional" className="font-medium text-night">Functional Cookies</label>
+              <p className="text-gray-500">These cookies are necessary for the website to function and cannot be switched off.</p>
             </div>
           </div>
-
+          
           <div className="flex items-start">
             <div className="flex items-center h-5">
               <input
                 id="analytics"
+                name="analytics_consent"
                 type="checkbox"
                 checked={preferences.analytics_consent}
-                onChange={(e) => setPreferences(prev => ({
-                  ...prev,
+                onChange={(e) => setPreferences({
+                  ...preferences,
                   analytics_consent: e.target.checked
-                }))}
-                className="w-4 h-4 border-gray-300 rounded"
+                })}
+                className="h-4 w-4 text-celeste border-gray-300 rounded"
               />
             </div>
-            <div className="ml-3">
-              <label htmlFor="analytics" className="font-medium">
-                Analytics Cookies
-              </label>
-              <p className="text-gray-500 text-sm">
-                These cookies allow us to count visits and traffic sources to measure and improve site performance.
-              </p>
+            <div className="ml-3 text-sm">
+              <label htmlFor="analytics" className="font-medium text-night">Analytics Cookies</label>
+              <p className="text-gray-500">These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.</p>
             </div>
           </div>
-
+          
           <div className="flex items-start">
             <div className="flex items-center h-5">
               <input
                 id="marketing"
+                name="marketing_consent"
                 type="checkbox"
                 checked={preferences.marketing_consent}
-                onChange={(e) => setPreferences(prev => ({
-                  ...prev,
+                onChange={(e) => setPreferences({
+                  ...preferences,
                   marketing_consent: e.target.checked
-                }))}
-                className="w-4 h-4 border-gray-300 rounded"
+                })}
+                className="h-4 w-4 text-celeste border-gray-300 rounded"
               />
             </div>
-            <div className="ml-3">
-              <label htmlFor="marketing" className="font-medium">
-                Marketing Cookies
-              </label>
-              <p className="text-gray-500 text-sm">
-                These cookies may be set by our advertising partners to build a profile of your interests.
-              </p>
+            <div className="ml-3 text-sm">
+              <label htmlFor="marketing" className="font-medium text-night">Marketing Cookies</label>
+              <p className="text-gray-500">These cookies may be set by our advertising partners to build a profile of your interests and show you relevant ads.</p>
             </div>
           </div>
         </div>
-
+        
         <div className="mt-6">
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+            className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-night hover:bg-night-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-celeste ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             {loading ? 'Saving...' : 'Save Preferences'}
           </button>
         </div>
-
-        {message && (
-          <div className={`mt-4 p-4 rounded ${
-            message.includes('error') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
-          }`}>
-            {message}
-          </div>
-        )}
       </form>
 
       <div className="mt-6 text-sm text-gray-500">

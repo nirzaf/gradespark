@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Quote } from 'lucide-react';
-import { supabase } from '../lib/supabaseClient';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -45,29 +44,63 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
 );
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetchTestimonials();
-  }, []);
-
-  const fetchTestimonials = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('testimonials')
-        .select('*')
-        .eq('is_active', true)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-      setTestimonials(data || []);
-    } catch (error) {
-      console.error('Error fetching testimonials:', error);
-    } finally {
-      setIsLoading(false);
+  // Static testimonials data instead of fetching from Supabase
+  const [isLoading] = useState(false);
+  
+  const testimonials: Testimonial[] = [
+    {
+      id: 1,
+      student_id: "1",
+      name: "Sarah Johnson",
+      gender: "female",
+      country: "USA",
+      syllabus: "Graduate",
+      comments: "The assistance I received with my dissertation was exceptional. The writer understood my requirements perfectly and delivered a well-researched paper that helped me secure an A grade.",
+      image_url: "",
+      created_at: "2025-03-15",
+      subject: "Psychology",
+      is_active: true
+    },
+    {
+      id: 2,
+      student_id: "2",
+      name: "Michael Chen",
+      gender: "male",
+      country: "Canada",
+      syllabus: "Undergraduate",
+      comments: "I was struggling with my programming assignment until I found Grade Spark Academy. The expert helped me understand complex concepts and delivered a working solution before my deadline.",
+      image_url: "",
+      created_at: "2025-03-20",
+      subject: "Computer Science",
+      is_active: true
+    },
+    {
+      id: 3,
+      student_id: "3",
+      name: "Emma Williams",
+      gender: "female",
+      country: "UK",
+      syllabus: "Master's",
+      comments: "The quality of research and attention to detail in my literature review was impressive. The writer's expertise in my field was evident, and I received excellent feedback from my professor.",
+      image_url: "",
+      created_at: "2025-03-25",
+      subject: "Literature",
+      is_active: true
+    },
+    {
+      id: 4,
+      student_id: "4",
+      name: "David Patel",
+      gender: "male",
+      country: "Australia",
+      syllabus: "PhD",
+      comments: "Meeting tight deadlines seemed impossible until I worked with Grade Spark Academy. Their team helped me complete my research paper with thorough analysis and proper citations, reducing my stress significantly.",
+      image_url: "",
+      created_at: "2025-04-01",
+      subject: "Economics",
+      is_active: true
     }
-  };
+  ];
 
   const sliderSettings = {
     dots: true,

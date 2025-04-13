@@ -55,21 +55,21 @@ const navItems = [
   }
 ];
 
-const BookTrialButton = () => {
+const GetStartedButton = () => {
   return (
-    <Link to="/book-trial">
+    <Link to="/place-order">
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium
-                   bg-gradient-to-r from-orange-500 to-orange-600
-                   text-white shadow-md hover:shadow-lg
+                   bg-gradient-to-r from-celeste to-celeste-dark
+                   text-night shadow-md hover:shadow-lg
                    transition-all duration-300
                    backdrop-blur-sm backdrop-saturate-150
-                   border border-orange-400/20"
+                   border border-celeste/20"
       >
         <Sparkles className="w-4 h-4 mr-2" />
-        Book a Free Session
+        Get Started Now
       </motion.button>
     </Link>
   );
@@ -236,7 +236,7 @@ const Navbar = () => {
             {navItems.map((item, index) => (
               <NavItem key={index} item={item} />
             ))}
-            <BookTrialButton />
+            <GetStartedButton />
           </div>
 
           {/* Mobile menu button */}
@@ -268,7 +268,7 @@ const Navbar = () => {
               <NavItem key={index} item={item} isMobile={true} />
             ))}
             <div className="px-3 py-2">
-              <BookTrialButton />
+              <GetStartedButton />
             </div>
           </div>
         </motion.div>

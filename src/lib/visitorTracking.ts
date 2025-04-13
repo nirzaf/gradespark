@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+// Visitor tracking without Supabase dependency
 
 interface VisitorData {
   visitor_id: string;
@@ -97,45 +97,34 @@ export function trackVisitor() {
   // Generate visitor ID immediately
   const visitorId = generateVisitorId();
   
-  // Start with basic data that we have immediately
-  const visitorData: Partial<VisitorData> = {
-    visitor_id: visitorId,
-    user_agent: navigator.userAgent,
-    last_visit: new Date().toISOString(),
-  };
+  // Store visitor ID in localStorage if not already present
+  if (!localStorage.getItem('visitor_id')) {
+    localStorage.setItem('visitor_id', visitorId);
+  }
 
-  // Insert basic visitor data immediately
-  supabase
-    .from('visitors')
-    .insert([{
-      ...visitorData,
-      visit_count: 1,
-      total_time_spent: 0,
-    }])
-    .then(({ error }) => {
-      if (error) console.log('Initial visitor insert failed silently');
-    });
+  // Get visit count from localStorage
+  const visitCount = parseInt(localStorage.getItem(`visit_count_${visitorId}`) || '0', 10);
+
+  // Store visit count in localStorage
+  localStorage.setItem(`visit_count_${visitorId}`, (visitCount + 1).toString());
 
   // Fetch additional data in the background
   Promise.all([
     getIpAddress(),
-    // We'll get location data after we have the IP
-  ]).then(async ([ip]) => {
-    if (!ip) return;
+  ]).then(async ([ipAddress]) => {
+    if (!ipAddress) return;
 
     // Get location data only if we have an IP
-    const location = await getLocationData(ip);
+    const locationData = await getLocationData(ipAddress);
     
-    // Update the visitor record with IP and location
-    supabase
-      .from('visitors')
-      .update({
-        ip_address: ip,
-        location: location,
-      })
-      .eq('visitor_id', visitorId)
-      .then(({ error }) => {
-        if (error) console.log('Visitor update failed silently');
-      });
+    // Log visitor data to console
+    console.log('Visitor tracked:', {
+      visitor_id: visitorId,
+      ip_address: ipAddress,
+      location: locationData,
+      user_agent: navigator.userAgent,
+      visit_count: visitCount + 1,
+      last_visit: new Date().toISOString()
+    });
   });
 }

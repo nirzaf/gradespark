@@ -39,10 +39,10 @@ const WhyUsCard = ({ icon, title, shortDesc, longDesc }: CardProps) => {
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden">
           <div className="h-full bg-white rounded-xl p-6 shadow-lg flex flex-col items-center justify-center text-center">
-            <div className="text-[#F77F00] mb-4">
+            <div className="text-celeste mb-4">
               {icon}
             </div>
-            <h3 className="text-lg font-semibold text-[#003049] mb-2">{title}</h3>
+            <h3 className="text-lg font-semibold text-night mb-2">{title}</h3>
             <p className="text-gray-600">{shortDesc}</p>
             <span className="md:hidden text-xs text-gray-400 mt-4">Tap to learn more</span>
           </div>
@@ -50,7 +50,7 @@ const WhyUsCard = ({ icon, title, shortDesc, longDesc }: CardProps) => {
 
         {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180">
-          <div className="h-full bg-[#003049] rounded-xl p-6 shadow-lg flex items-center justify-center text-center">
+          <div className="h-full bg-night rounded-xl p-6 shadow-lg flex items-center justify-center text-center">
             <p className="text-white text-sm leading-relaxed">{longDesc}</p>
           </div>
         </div>
@@ -100,9 +100,9 @@ const cards: CardProps[] = [
 
 export default function WhyUs() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-4 text-[#003049]">Why Choose Us?</h2>
+        <h2 className="text-4xl font-bold text-center mb-4 text-night">Why Choose Us?</h2>
         <p className="text-xl text-center text-gray-600 mb-16">Trust Grade Spark Academy to help you achieve academic excellence</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
