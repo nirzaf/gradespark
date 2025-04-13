@@ -206,11 +206,26 @@ const Navbar = () => {
           {/* Logo and Text */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <img
-                className="h-10 w-auto sm:h-12"
-                src="/gsa-logo-trasparent-bg.png"
-                alt="GenSpark Academy"
-              />
+              <motion.div 
+                className="bg-white rounded-lg p-1.5 flex items-center justify-center"
+                style={{
+                  boxShadow: "inset 0 1px 2px rgba(255,255,255,0.9), 0 2px 4px rgba(0,0,0,0.3)",
+                  border: "1px solid rgba(255,255,255,0.2)"
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "inset 0 1px 3px rgba(255,255,255,0.9), 0 3px 6px rgba(0,0,0,0.4), 0 0 10px rgba(160,235,235,0.3)"
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <motion.img
+                  className="h-10 w-auto sm:h-12"
+                  src="/gsa-logo-trasparent-bg.png"
+                  alt="GenSpark Academy"
+                  whileHover={{ rotate: [0, -2, 2, -2, 0] }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.div>
             </Link>
             {/* Desktop Text */}
             <Link to="/" className="ml-3 hidden sm:block">
