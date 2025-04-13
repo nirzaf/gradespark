@@ -11,12 +11,12 @@ const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const ExamBoards = lazy(() => import('./pages/ExamBoards'));
 const HomeSchool = lazy(() => import('./pages/HomeSchool'));
-const Career = lazy(() => import('./pages/Career'));
+
 const Contact = lazy(() => import('./pages/Contact'));
 const BookTrial = lazy(() => import('./pages/BookTrial'));
 const ConsentForm = lazy(() => import('./components/ConsentForm'));
 const Terms = lazy(() => import('./pages/Terms'));
-const ParentsCorner = lazy(() => import('./pages/ParentsCorner'));
+
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading component
@@ -55,7 +55,7 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/exam-boards" element={<ExamBoards />} />
               <Route path="/home-school" element={<HomeSchool />} />
-              <Route path="/career" element={<Career />} />
+
               <Route path="/contact" element={<Contact />} />
               <Route path="/book-trial" element={<BookTrial />} />
               <Route path="/consent-preferences" element={<ConsentForm />} />

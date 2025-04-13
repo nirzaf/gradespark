@@ -16,7 +16,7 @@ const ContactForm = () => {
     subject: '',
     message: '',
   });
-  const [loading, setLoading] = useState(false);
+  const [_, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

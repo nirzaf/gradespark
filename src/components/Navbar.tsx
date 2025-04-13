@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, X, Sparkles, Phone, Mail, Globe, MessageCircle,
-  Users, MessageSquare, School, BookOpen
+  MessageSquare, School, BookOpen
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -35,13 +35,7 @@ const navItems = [
       { title: "Parent's Corner", path: "/home-school#parents-corner", icon: <BookOpen className="w-5 h-5" /> }
     ]
   },
-  { 
-    title: "Career", 
-    path: "/career",
-    dropdownItems: [
-      { title: "Join with us", path: "/join-studytomy", icon: <Users className="w-5 h-5" />, external: true }
-    ]
-  },
+
   { 
     title: "Contact us", 
     path: "/contact",
