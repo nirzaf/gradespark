@@ -2,54 +2,70 @@
 
 ## Primary Colors
 
-### Prussian Blue
-A very dark blue color
-`#003049`
+### Night
+A very dark, nearly black color
+`#151616`
 
-### Cinnabar
-A bright red color
-`#D62828`
+### White
+A pure white color with a slight off-white tint
+`#FEFEFE`
 
-### Orange Peel
-A vivid orange color
-`#F77F00`
+### Celeste
+A light turquoise/cyan color
+`#A0EBEB`
 
-### Maize
-A light yellow color
-`#FCBF49`
+### Night-2
+A darker black variant
+`#0F0F0F`
 
-### Bone
-A pale beige color
-`#EAE2B7`
+### White-2
+A pure white color
+`#FFFFFF`
 
-## Secondary Colors
+## Color Values
 
-### Burnt Sienna
-A warm reddish-orange
-`#e56b49`
+### HEX Values
+```css
+--night: #151616ff;
+--white: #FEFEFEff;
+--celeste: #A0EBEBff;
+--night-2: #0F0F0Fff;
+--white-2: #FFFFFFff;
+```
 
-### Dark Slate
-A deep slate blue
-`#2b2e44`
+### HSL Values
+```css
+--night: hsla(180, 2%, 8%, 1);
+--white: hsla(0, 0%, 100%, 1);
+--celeste: hsla(180, 65%, 77%, 1);
+--night-2: hsla(0, 0%, 6%, 1);
+--white-2: hsla(0, 0%, 100%, 1);
+```
 
-### Deep Red
-A rich crimson red
-`#953137`
+### RGB Values
+```css
+--night: rgba(21, 22, 22, 1);
+--white: rgba(254, 254, 254, 1);
+--celeste: rgba(160, 235, 235, 1);
+--night-2: rgba(15, 15, 15, 1);
+--white-2: rgba(255, 255, 255, 1);
+```
 
-### Gray Blue
-A muted blue-gray
-`#a1a4b0`
+## Gradient Options
 
-### Taupe Gray
-A neutral gray with brown undertones
-`#a0949c`
+```css
+/* Directional Gradients */
+--gradient-top: linear-gradient(0deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
+--gradient-right: linear-gradient(90deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
+--gradient-bottom: linear-gradient(180deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
+--gradient-left: linear-gradient(270deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
 
-## Accent Colors
+/* Diagonal Gradients */
+--gradient-top-right: linear-gradient(45deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
+--gradient-bottom-right: linear-gradient(135deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
+--gradient-top-left: linear-gradient(225deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
+--gradient-bottom-left: linear-gradient(315deg, #151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
 
-### Coral
-A light orangey-pink
-`#FC8862`
-
-### Light Coral
-A soft pinkish-red
-`#FC7174`
+/* Radial Gradient */
+--gradient-radial: radial-gradient(#151616ff, #FEFEFEff, #A0EBEBff, #0F0F0Fff, #FFFFFFff);
+```
