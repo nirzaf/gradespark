@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Users, Gift, Percent, Info } from 'lucide-react';
+import { Users, GraduationCap, Clock, Info } from 'lucide-react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface FeatureCardProps {
@@ -38,7 +38,7 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
               className="bg-gray-900 text-white px-4 py-2 rounded-md text-xs max-w-[250px] shadow-lg"
               sideOffset={5}
             >
-              Discount rates may vary by region and are subject to periodic review by Studytomy management. Final discount amounts will be confirmed during booking.
+              Discount rates apply to eligible assignments and are subject to academic requirements verification. Final discount amounts will be confirmed during order placement.
               <Tooltip.Arrow className="fill-gray-900" />
             </Tooltip.Content>
           </Tooltip.Portal>
@@ -52,23 +52,23 @@ export default function GroupDiscount() {
   const features = [
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Group Learning",
-      description: "Learn together with friends and save up to 30% on group bookings of 3 or more students."
+      title: "Group Submissions",
+      description: "Submit multiple assignments together with classmates and receive up to 25% discount on each project."
     },
     { 
-      icon: <Users className="w-8 h-8" />,
-      title: "Join Studymunity",
-      description: "Join our community and get exclusive access to premium study materials and personalized tutoring sessions!"
+      icon: <GraduationCap className="w-8 h-8" />,
+      title: "Academic Package",
+      description: "Bundle multiple assignments from the same course for comprehensive support and save up to 20% on total cost."
     },
     {
-      icon: <Percent className="w-8 h-8" />,
-      title: "Special Rates",
-      description: "Enjoy exclusive discounts on long-term bookings and premium study materials."
+      icon: <Clock className="w-8 h-8" />,
+      title: "Advance Booking",
+      description: "Plan ahead and save - receive special discounts when you book assistance for future assignments with flexible deadlines."
     }
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-16 bg-gradient-to-b from-night/5 to-white">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,11 +76,11 @@ export default function GroupDiscount() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Better Together, Better Savings!
+          <h2 className="text-4xl font-bold text-night mb-4 gradient-text">
+            Smart Solutions, Better Value
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join with friends to unlock exclusive discounts and make your learning journey more affordable.
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+            Maximize your academic success while minimizing costs with our special discount options for university students.
           </p>
         </motion.div>
 
