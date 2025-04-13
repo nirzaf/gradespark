@@ -1,9 +1,9 @@
 import { GraduationCap, Users, Globe2 } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Grid } from '@react-three/drei';
+import { OrbitControls, Grid, Points } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Animation text content
@@ -402,78 +402,250 @@ const LogoAnimation = () => {
 };
 
 
-function AnimatedBox({ initialPosition }: { initialPosition: [number, number, number] }) {
+// Academic symbols for the background animation
+// Academic symbols representing educational elements
+const academicSymbols = [
+  { type: 'book', scale: [0.8, 1.2, 0.2], color: '#A0EBEB' },
+  { type: 'paper', scale: [0.7, 1, 0.05], color: '#A0EBEB' },
+  { type: 'pencil', scale: [0.1, 1.2, 0.1], color: '#A0EBEB' },
+  { type: 'laptop', scale: [1, 0.7, 0.05], color: '#A0EBEB' },
+  { type: 'graduation-cap', scale: [1, 0.2, 1], color: '#A0EBEB' },
+  { type: 'certificate', scale: [0.8, 0.8, 0.05], color: '#A0EBEB' }
+];
+
+function AcademicObject({ initialPosition, type }: { initialPosition: [number, number, number], type: string }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
-
-  const getAdjacentIntersection = (current: THREE.Vector3) => {
-    const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
-    const randomDirection = directions[Math.floor(Math.random() * directions.length)];
-    return new THREE.Vector3(
-      current.x + randomDirection[0] * 3,
-      0.5,
-      current.z + randomDirection[1] * 3
-    );
+  const rotationSpeed = useRef(Math.random() * 0.01 + 0.005);
+  const floatSpeed = useRef(Math.random() * 0.002 + 0.001);
+  const floatHeight = useRef(Math.random() * 0.5 + 0.5);
+  const timeOffset = useRef(Math.random() * Math.PI * 2);
+  const initialY = initialPosition[1];
+  
+  // Get object properties based on type
+  const getObjectProperties = () => {
+    const symbolData = academicSymbols.find(s => s.type === type) || academicSymbols[0];
+    return {
+      scale: symbolData.scale,
+      color: symbolData.color
+    };
   };
 
+  // Smooth random movement path
   useEffect(() => {
     const interval = setInterval(() => {
-      const newPosition = getAdjacentIntersection(currentPosition.current);
-      newPosition.x = Math.max(-15, Math.min(15, newPosition.x));
-      newPosition.z = Math.max(-15, Math.min(15, newPosition.z));
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 5 + 3;
+      const newPosition = new THREE.Vector3(
+        Math.sin(angle) * distance,
+        initialY + (Math.random() * 1 - 0.5),
+        Math.cos(angle) * distance
+      );
+      newPosition.x = Math.max(-20, Math.min(20, newPosition.x));
+      newPosition.z = Math.max(-20, Math.min(20, newPosition.z));
       setTargetPosition(newPosition);
-    }, 1000);
+    }, 5000 + Math.random() * 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [initialY]);
 
-  useFrame(() => {
+  useFrame(({ clock }) => {
     if (meshRef.current) {
-      currentPosition.current.lerp(targetPosition, 0.1);
+      // Smooth position transition
+      currentPosition.current.lerp(targetPosition, 0.005);
       meshRef.current.position.copy(currentPosition.current);
+      
+      // Gentle floating effect
+      meshRef.current.position.y = initialY + Math.sin(clock.elapsedTime * floatSpeed.current + timeOffset.current) * floatHeight.current;
+      
+      // Slow rotation
+      meshRef.current.rotation.x += rotationSpeed.current * 0.3;
+      meshRef.current.rotation.y += rotationSpeed.current;
+      meshRef.current.rotation.z += rotationSpeed.current * 0.5;
     }
   });
 
+  const { scale, color } = getObjectProperties();
+  
   return (
     <mesh ref={meshRef} position={initialPosition}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#A0EBEB" opacity={0.6} transparent />
+      <boxGeometry args={[scale[0], scale[1], scale[2]]} />
+      <meshStandardMaterial 
+        color={color} 
+        opacity={0.7} 
+        transparent 
+        metalness={0.2}
+        roughness={0.3}
+      />
       <lineSegments>
-        <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
-        <lineBasicMaterial attach="material" color="#151616" linewidth={2} />
+        <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(scale[0], scale[1], scale[2])]} />
+        <lineBasicMaterial attach="material" color="#151616" linewidth={1.5} />
       </lineSegments>
     </mesh>
   );
 }
 
+// Animated particles representing knowledge particles
+function AnimatedParticles({ count = 200, radius = 30 }: { count?: number, radius?: number }) {
+  const pointsRef = useRef<THREE.Points>(null);
+  const positionsRef = useRef<Float32Array>();
+  const velocitiesRef = useRef<Float32Array>();
+  
+  // Initialize positions and velocities
+  useEffect(() => {
+    const positions = new Float32Array(count * 3);
+    const velocities = new Float32Array(count * 3);
+    
+    for (let i = 0; i < count; i++) {
+      // Distribute points in a sphere
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const r = radius * Math.cbrt(Math.random()); // Cube root for more even distribution
+      
+      const x = r * Math.sin(phi) * Math.cos(theta);
+      const y = r * Math.sin(phi) * Math.sin(theta);
+      const z = r * Math.cos(phi);
+      
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+      
+      // Random gentle velocities
+      velocities[i * 3] = (Math.random() - 0.5) * 0.01;
+      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.01;
+      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.01;
+    }
+    
+    positionsRef.current = positions;
+    velocitiesRef.current = velocities;
+  }, [count, radius]);
+  
+  // Animate particles
+  useFrame(({ clock }) => {
+    if (!pointsRef.current || !positionsRef.current || !velocitiesRef.current) return;
+    
+    const velocities = velocitiesRef.current;
+    const geometry = pointsRef.current.geometry;
+    const positionAttribute = geometry.getAttribute('position');
+    const positionArray = positionAttribute.array as Float32Array;
+    
+    // Update positions with velocities and add gentle wave effect
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      
+      // Apply velocity
+      positionArray[i3] += velocities[i3];
+      positionArray[i3 + 1] += velocities[i3 + 1];
+      positionArray[i3 + 2] += velocities[i3 + 2];
+      
+      // Add gentle wave effect based on time
+      positionArray[i3 + 1] += Math.sin(clock.elapsedTime * 0.5 + i * 0.1) * 0.01;
+      
+      // Boundary check - if particle goes too far, bring it back
+      const distance = Math.sqrt(
+        positionArray[i3] ** 2 + 
+        positionArray[i3 + 1] ** 2 + 
+        positionArray[i3 + 2] ** 2
+      );
+      
+      if (distance > radius * 1.2) {
+        // Reset to a random position within the sphere
+        const factor = radius / distance * Math.random();
+        positionArray[i3] *= factor;
+        positionArray[i3 + 1] *= factor;
+        positionArray[i3 + 2] *= factor;
+        
+        // Reverse velocity
+        velocities[i3] *= -0.8;
+        velocities[i3 + 1] *= -0.8;
+        velocities[i3 + 2] *= -0.8;
+      }
+    }
+    
+    positionAttribute.needsUpdate = true;
+  });
+  
+  return (
+    <Points ref={pointsRef}>
+      <pointsMaterial 
+        size={0.2} 
+        color="#A0EBEB" 
+        transparent 
+        opacity={0.6} 
+        sizeAttenuation 
+      />
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positionsRef.current || new Float32Array(count * 3)}
+          itemSize={3}
+        />
+      </bufferGeometry>
+    </Points>
+  );
+}
+
 function Scene() {
-  const initialPositions: [number, number, number][] = [
-    [-9, 0.5, -9], [-3, 0.5, -3], [0, 0.5, 0],
-    [3, 0.5, 3], [9, 0.5, 9], [-6, 0.5, 6],
-    [6, 0.5, -6], [-12, 0.5, 0], [12, 0.5, 0],
-    [0, 0.5, 12]
-  ];
+  // Generate more varied positions for academic objects
+  const generatePositions = () => {
+    const positions: Array<{ position: [number, number, number], type: string }> = [];
+    const symbolTypes = academicSymbols.map(s => s.type);
+    
+    // Create a grid of positions with varied heights
+    for (let i = 0; i < 20; i++) {
+      const angle = (i / 20) * Math.PI * 2;
+      const distance = Math.random() * 15 + 5;
+      const x = Math.sin(angle) * distance;
+      const z = Math.cos(angle) * distance;
+      const y = Math.random() * 3 + 0.5;
+      
+      positions.push({
+        position: [x, y, z],
+        type: symbolTypes[i % symbolTypes.length]
+      });
+    }
+    
+    return positions;
+  };
+
+  const academicObjects = generatePositions();
 
   return (
     <>
-      <OrbitControls enableZoom={false} enablePan={false} />
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
+      <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} autoRotate autoRotateSpeed={0.5} />
+      <ambientLight intensity={0.6} />
+      <pointLight position={[10, 10, 10]} intensity={0.8} />
+      <directionalLight position={[-5, 5, -5]} intensity={0.5} />
+      
+      {/* Subtle fog effect */}
+      <fog attach="fog" args={['#f0f8ff', 20, 60]} />
+      
+      {/* Grid representing academic foundation */}
       <Grid
         renderOrder={-1}
-        position={[0, 0, 0]}
+        position={[0, -2, 0]}
         infiniteGrid
         cellSize={1}
-        cellThickness={0.5}
+        cellThickness={0.3}
         sectionSize={3}
-        sectionThickness={1}
+        sectionThickness={0.8}
         sectionColor="#A0EBEB"
-        fadeDistance={50}
+        fadeDistance={40}
       />
-      {initialPositions.map((position, index) => (
-        <AnimatedBox key={index} initialPosition={position} />
+      
+      {/* Academic objects floating in space */}
+      {academicObjects.map((obj, index) => (
+        <AcademicObject 
+          key={index} 
+          initialPosition={obj.position} 
+          type={obj.type}
+        />
       ))}
+      
+      {/* Particle system for background sparkles */}
+      <AnimatedParticles count={200} radius={30} />
     </>
   );
 }
@@ -482,10 +654,12 @@ function Scene() {
 export default function Hero() {
   return (
     <section className="relative min-h-screen">
-      {/* Animated Background */}
-      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-white to-celeste/30">
-        <Canvas shadows camera={{ position: [30, 30, 30], fov: 50 }}>
-          <Scene />
+      {/* Animated Academic Background */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-night/5 via-white to-celeste/30">
+        <Canvas shadows camera={{ position: [0, 5, 30], fov: 60 }}>
+          <Suspense fallback={null}>
+            <Scene />
+          </Suspense>
         </Canvas>
       </div>
 
