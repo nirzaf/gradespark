@@ -6,7 +6,7 @@ import DoubtSection from '../components/DoubtSection';
 import ExamBoardsSection from '../components/ExamBoardsSection';
 import GroupDiscount from '../components/GroupDiscount';
 import Testimonials from '../components/Testimonials';
-import ImageGallery from '../components/ImageGallery';
+
 import { trackVisitor } from '../lib/visitorTracking';
 import AchievementCardComponent from '../components/AchievementCard';
 import CoreServices from '../components/CoreServices';
@@ -26,7 +26,6 @@ export default function Home() {
         <HowItWorks />
         <Subjects />
         <WhyUs />
-        <ImageGallery />
         <DoubtSection />
         <ExamBoardsSection />
         <GroupDiscount />

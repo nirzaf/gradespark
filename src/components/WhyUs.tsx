@@ -62,39 +62,39 @@ const WhyUsCard = ({ icon, title, shortDesc, longDesc }: CardProps) => {
 const cards: CardProps[] = [
   {
     icon: <Shield className="w-12 h-12" />,
-    title: "Highly Safe Tutors",
-    shortDesc: "Police Clearance Certificate (PCC) Verified",
-    longDesc: "Our tutors undergo rigorous background checks and must provide valid Police Clearance Certificates. We prioritize student safety with regular monitoring, strict conduct guidelines, and transparent communication channels between parents and administration."
-  },
-  {
-    icon: <Users className="w-12 h-12" />,
-    title: "1-to-1 Online Tutoring",
-    shortDesc: "Flexible schedules that work for you",
-    longDesc: "Experience personalized learning with our dedicated one-on-one sessions. Our flexible scheduling system allows you to book lessons at your convenience, reschedule when needed, and choose time slots that fit perfectly with your daily routine."
+    title: "100% Original Content",
+    shortDesc: "Plagiarism-free and AI-free work",
+    longDesc: "We guarantee 100% original, plagiarism-free content created by our expert writers. Every assignment undergoes rigorous quality checks to ensure authenticity and adherence to academic standards, giving you confidence in the work you submit."
   },
   {
     icon: <UserCircle className="w-12 h-12" />,
-    title: "Private Student Accounts",
-    shortDesc: "Unique accounts for enhanced privacy",
-    longDesc: "Each student receives a secure, password-protected account with encrypted data storage. Access personalized learning materials, track progress, store session recordings, and communicate safely with tutors through our secure platform."
+    title: "Strict Confidentiality",
+    shortDesc: "Your privacy is our priority",
+    longDesc: "We maintain industry-level encryption and strict privacy policies to ensure your personal information and academic work remain completely confidential. Your trust is important to us, and we're committed to protecting your privacy at every step."
   },
   {
     icon: <Clock className="w-12 h-12" />,
-    title: "Customized Timing",
-    shortDesc: "Schedule sessions at your convenience",
-    longDesc: "Choose from multiple time zones and scheduling options that work best for you. Our smart booking system remembers your preferences, suggests optimal slots based on your learning patterns, and sends timely reminders."
+    title: "On-Time Delivery",
+    shortDesc: "Never miss a deadline again",
+    longDesc: "We understand the importance of deadlines in academic success. Our service guarantees timely delivery of your assignments, even with tight timeframes, allowing you to review your work and request revisions before submission."
   },
   {
     icon: <GraduationCap className="w-12 h-12" />,
-    title: "Expert Graduate Tutors",
-    shortDesc: "Experienced and qualified educators",
-    longDesc: "Learn from highly qualified tutors with proven teaching experience and advanced degrees. Our tutors are subject matter experts who undergo regular training, performance evaluations, and maintain consistently high student satisfaction ratings."
+    title: "Expert Academic Writers",
+    shortDesc: "MA/PhD qualified professionals",
+    longDesc: "Our team consists of highly qualified writers with advanced degrees in their respective fields. Each expert undergoes a rigorous selection process to ensure they have the knowledge and skills to deliver exceptional academic work tailored to your requirements."
   },
   {
     icon: <FileText className="w-12 h-12" />,
-    title: "Comprehensive Materials",
-    shortDesc: "Past papers and revision resources",
-    longDesc: "Access an extensive library of past papers, practice tests, and revision materials. Our resources are regularly updated, aligned with current curricula, and include detailed solutions with step-by-step explanations."
+    title: "Free Unlimited Revisions",
+    shortDesc: "Refinements until you're satisfied",
+    longDesc: "We offer free unlimited revisions within a specified period after delivery, ensuring your assignment meets all your requirements and expectations. Our commitment is to your complete satisfaction with the final product."
+  },
+  {
+    icon: <Users className="w-12 h-12" />,
+    title: "24/7 Support",
+    shortDesc: "Always available when you need us",
+    longDesc: "Our dedicated support team is available 24/7 to address your questions and concerns. Whether you need assistance with placing an order, tracking progress, or requesting revisions, we're here to provide prompt and helpful support throughout your academic journey."
   }
 ];
 
@@ -103,7 +103,7 @@ export default function WhyUs() {
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-4 text-[#003049]">Why Choose Us?</h2>
-        <p className="text-xl text-center text-gray-600 mb-16">Discover the advantages of learning with Studytomy</p>
+        <p className="text-xl text-center text-gray-600 mb-16">Trust Grade Spark Academy to help you achieve academic excellence</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cards.map((card, index) => (
