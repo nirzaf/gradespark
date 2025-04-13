@@ -9,7 +9,6 @@ import { trackPageView } from './lib/trackingEvents';
 // Lazy load page components
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
-const ExamBoards = lazy(() => import('./pages/ExamBoards'));
 const HomeSchool = lazy(() => import('./pages/HomeSchool'));
 
 const Contact = lazy(() => import('./pages/Contact'));
@@ -53,7 +52,6 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/exam-boards" element={<ExamBoards />} />
               <Route path="/home-school" element={<HomeSchool />} />
 
               <Route path="/contact" element={<Contact />} />

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, X, Sparkles, Phone, Mail, Globe, MessageCircle,
-  MessageSquare, School, BookOpen
+  MessageSquare, BookOpen
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -14,19 +14,6 @@ const navItems = [
   { 
     title: "About us", 
     path: "/about" 
-  },
-  { 
-    title: "Exam Boards", 
-    path: "/exam-boards",
-    dropdownItems: [
-      { title: "Edexcel", path: "/exam-boards#edexcel", icon: <School className="w-5 h-5" /> },
-      { title: "Cambridge", path: "/exam-boards#cambridge", icon: <School className="w-5 h-5" /> },
-      { title: "AQA", path: "/exam-boards#aqa", icon: <School className="w-5 h-5" /> },
-      { title: "OCR A & OCR B", path: "/exam-boards#ocr-a-ocr-b", icon: <School className="w-5 h-5" /> },
-      { title: "IB", path: "/exam-boards#ib", icon: <School className="w-5 h-5" /> },
-      { title: "OSSD", path: "/exam-boards#ossd", icon: <School className="w-5 h-5" /> },
-      { title: "VCE", path: "/exam-boards#vce", icon: <School className="w-5 h-5" /> },
-    ]
   },
   { 
     title: "Home School", 
