@@ -208,8 +208,8 @@ const Navbar = () => {
             <Link to="/" className="flex-shrink-0">
               <img
                 className="h-10 w-auto sm:h-12"
-                src="https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732362156819"
-                alt="Studytomy"
+                src="/gsa-logo.png"
+                alt="Grade Spark Academy"
               />
             </Link>
             {/* Desktop Text */}

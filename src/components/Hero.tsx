@@ -381,11 +381,11 @@ const LogoAnimation = () => {
           }}
         >
           <motion.img
-            src="https://ik.imagekit.io/quadrate/Studytomy/Studytomy_Logobook-02.png?updatedAt=1731862139834"
-            alt="Studytomy Logo"
+            src="/gsa-logo.png"
+            alt="Grade Spark Academy Logo"
             className="relative mx-auto w-[200px] mb-16 drop-shadow-2xl"
             style={{
-              filter: "drop-shadow(0 0 10px rgba(255,255,255,0.2))",
+              filter: "drop-shadow(0 0 10px rgba(160,235,235,0.4))",
             }}
           />
         </motion.div>
