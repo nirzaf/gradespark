@@ -8,24 +8,27 @@ import 'swiper/css/autoplay';
 
 const subjectsOnDemand = [
   {
-    name: "Geography",
-    image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/globe-earth.gif?updatedAt=1732474210127",
-    color: "from-blue-500 to-cyan-500",
-    alt: "Geographic concepts and global studies visualization",
+    name: "Computer Science",
+    image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/computer-science.gif?updatedAt=1732474210127",
+    color: "from-celeste to-celeste-dark",
+    alt: "Computer Science and programming concepts visualization",
+    description: "Programming, algorithms, data structures, and software engineering principles",
     bookTrailLink: "/book-trial"
   },
   {
-    name: "Environmental Management",
-    image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/eco.gif?updatedAt=1732474210051",
-    color: "from-green-500 to-emerald-500",
-    alt: "Environmental management and sustainability concepts",
+    name: "ICT",
+    image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/ict.gif?updatedAt=1732474210051",
+    color: "from-celeste-dark to-night",
+    alt: "Information and Communication Technology concepts",
+    description: "Digital literacy, information systems, networking, and IT infrastructure",
     bookTrailLink: "/book-trial"
   },
   {
-    name: "History",
-    image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/history.gif?updatedAt=1732474210023",
-    color: "from-amber-500 to-yellow-500",
-    alt: "Historical concepts and timeline visualization",
+    name: "Business Studies",
+    image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/business.gif?updatedAt=1732474210023",
+    color: "from-night to-celeste",
+    alt: "Business concepts and management visualization",
+    description: "Economics, management, marketing, finance, and entrepreneurship",
     bookTrailLink: "/book-trial"
   }
 ];
@@ -45,56 +48,20 @@ const SubjectsOnDemand = () => {
         0% { --angle: 0deg; }
         100% { --angle: 360deg; }
       }
-      .animate-border-rotate {
-        animation: gradient-rotate 3s linear infinite;
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
       }
-      @keyframes borderAnimation {
-        0%, 100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-      .animated-border {
-        position: relative;
-        display: block;
-        width: 100%;
-        padding: 3px;
-        isolation: isolate;
-      }
-      .animated-border::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(45deg, 
-          #FFD700, #FFA500, 
-          #FFD700, #FFA500, 
-          #FFD700, #FF8C00
-        );
-        background-size: 200% 200%;
-        animation: borderAnimation 4s ease infinite;
-        border-radius: 16px;
-        z-index: 1;
-        filter: blur(3px);
-      }
-      .animated-border::after {
-        content: '';
-        position: absolute;
-        inset: 1px;
-        background: #963A0B;
-        border-radius: 15px;
-        z-index: 1;
-      }
-      .card-content {
-        position: relative;
-        z-index: 2;
-        background: white;
-        border-radius: 14px;
-        height: 100%;
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
       }
       .swiper-slide {
         height: auto !important;
+        display: flex;
+      }
+      .swiper-slide > div {
+        height: 100%;
+        width: 100%;
       }
     `;
     document.head.appendChild(style);
@@ -122,58 +89,62 @@ const SubjectsOnDemand = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative animated-border"
+      className="group h-full flex flex-col"
     >
-      <div className="absolute -inset-0.5 bg-gradient-to-r rounded-2xl opacity-75 group-hover:opacity-100 blur transition duration-500" style={{
-        background: `linear-gradient(var(--angle, 0deg), ${subject.color.split(' ')[0].replace('from-', '')}66, ${subject.color.split(' ')[1].replace('to-', '')}66)`
-      }}/>
-      
-      <div className="absolute -inset-0.5 rounded-2xl overflow-hidden">
-        <div className="absolute inset-0 animate-border-rotate" style={{
-          background: `linear-gradient(var(--angle, 0deg), transparent, ${subject.color.split(' ')[0].replace('from-', '')}40, ${subject.color.split(' ')[1].replace('to-', '')}40, transparent)`
-        }}/>
-      </div>
-
-      <div className="card-content p-6
-        transition-all duration-500
-        shadow-lg group-hover:shadow-2xl
-      ">
-        <div className="relative">
-          <div className="relative z-10">
-            <motion.div 
-              className="subject-icon mb-6 h-32 flex items-center justify-center bg-white rounded-xl"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="relative group-hover:animate-float p-4">
-                <img 
-                  src={subject.image} 
-                  alt={subject.alt}
-                  className="w-24 h-24 object-contain relative z-10"
-                />
-              </div>
-            </motion.div>
-
-            <h3 className="text-2xl font-bold text-center mb-4 
-                         bg-clip-text text-transparent bg-gradient-to-r 
-                         from-gray-900 to-gray-700">
-              {subject.name}
-            </h3>
-
-            <div className="mt-4 text-center">
-              <motion.a 
-                href={subject.bookTrailLink}
-                className="inline-block px-6 py-2.5 rounded-full text-sm font-medium
-                         bg-gradient-to-r from-celeste to-celeste-dark
-                         text-night shadow-lg shadow-celeste/30
-                         hover:shadow-celeste/50 transition-all duration-300
-                         transform hover:-translate-y-0.5"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Available on request
-              </motion.a>
+      <div className="relative h-full rounded-2xl overflow-hidden bg-white shadow-lg group-hover:shadow-xl transition-all duration-500">
+        {/* Animated gradient border */}
+        <div className="absolute inset-0 z-0 rounded-2xl p-[2px] bg-gradient-to-r opacity-75 group-hover:opacity-100 transition-all duration-500" 
+          style={{
+            background: `linear-gradient(var(--angle, 0deg), ${subject.color.split(' ')[0].replace('from-', '')}, ${subject.color.split(' ')[1].replace('to-', '')})`,
+            animation: 'gradient-rotate 3s linear infinite'
+          }}
+        >
+          <div className="absolute inset-0 bg-white rounded-xl" />
+        </div>
+        
+        {/* Card content */}
+        <div className="relative z-10 p-6 h-full flex flex-col">
+          {/* Subject icon */}
+          <motion.div 
+            className="subject-icon mb-6 h-36 flex items-center justify-center rounded-xl overflow-hidden bg-gradient-to-br from-night/5 to-celeste/10"
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="relative group-hover:animate-float p-4">
+              <img 
+                src={subject.image} 
+                alt={subject.alt}
+                className="w-24 h-24 object-contain relative z-10"
+              />
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 bg-celeste/20 blur-xl rounded-full transform scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
+          </motion.div>
+
+          {/* Subject name */}
+          <h3 className="text-2xl font-bold text-center mb-3 gradient-text">
+            {subject.name}
+          </h3>
+          
+          {/* Description */}
+          <p className="text-gray-600 text-center mb-5 text-sm flex-grow">
+            {subject.description}
+          </p>
+
+          {/* CTA Button */}
+          <div className="mt-auto text-center">
+            <motion.a 
+              href={subject.bookTrailLink}
+              className="inline-block px-6 py-2.5 rounded-full text-sm font-medium
+                       bg-gradient-to-r from-celeste to-celeste-dark
+                       text-night shadow-lg shadow-celeste/30
+                       hover:shadow-celeste/50 transition-all duration-300
+                       transform hover:-translate-y-0.5"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Request Assistance
+            </motion.a>
           </div>
         </div>
       </div>
@@ -181,8 +152,14 @@ const SubjectsOnDemand = () => {
   );
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-gray-50/50">
-      <div className="container mx-auto px-4 max-w-[98%]">
+    <section className="py-20 bg-gradient-to-b from-night/5 via-white to-celeste/10 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-celeste/10 blur-3xl"></div>
+        <div className="absolute -bottom-32 -left-20 w-80 h-80 rounded-full bg-celeste/5 blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -190,11 +167,11 @@ const SubjectsOnDemand = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
-            Subjects On Demand
+          <h2 className="text-4xl font-bold mb-4 gradient-text">
+            Academic Expertise On Demand
           </h2>
-          <p className="text-gray-600 text-lg">
-            Additional subjects available upon request
+          <p className="text-gray-700 text-lg max-w-2xl mx-auto">
+            Specialized assistance in these subjects and many more available upon request
           </p>
         </motion.div>
         
@@ -208,8 +185,9 @@ const SubjectsOnDemand = () => {
               pauseOnMouseEnter: true
             }}
             spaceBetween={20}
-            slidesPerView={1}
-            className="subjects-carousel !overflow-hidden pb-8"
+            slidesPerView={1.2}
+            centeredSlides={true}
+            className="subjects-carousel !overflow-visible pb-12 px-4"
           >
             {subjectsOnDemand.map((subject, index) => (
               <SwiperSlide key={index} className="!h-auto flex">
@@ -218,7 +196,7 @@ const SubjectsOnDemand = () => {
             ))}
           </Swiper>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {subjectsOnDemand.map((subject, index) => (
               <SubjectCard key={index} subject={subject} index={index} />
             ))}

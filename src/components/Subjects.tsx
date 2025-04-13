@@ -3,7 +3,6 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
-import SubjectsOnDemand from './SubjectsOnDemand';
 
 const subjects = [
   {
@@ -154,7 +153,6 @@ const Subjects = () => {
           </div>
         </div>
       </section>
-      <SubjectsOnDemand />
     </>
   );
 };
