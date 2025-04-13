@@ -1,0 +1,85 @@
+/* Enhanced Button Styles for Better Visibility */
+
+/* Base button styles */
+.enhanced-btn {
+  @apply font-medium rounded-full transition-all duration-300;
+  @apply shadow-lg hover:shadow-xl;
+  @apply transform hover:scale-[1.02] active:scale-[0.98];
+  @apply relative overflow-hidden;
+}
+
+/* Primary button - high visibility */
+.enhanced-btn-primary {
+  @apply bg-gradient-to-r from-celeste to-celeste-dark;
+  @apply text-night font-bold;
+  @apply border-2 border-celeste-dark;
+  @apply px-6 py-3;
+}
+
+/* Secondary button - clear with border */
+.enhanced-btn-secondary {
+  @apply bg-white text-celeste;
+  @apply border-2 border-celeste;
+  @apply px-6 py-3;
+}
+
+/* CTA button with glow effect */
+.enhanced-btn-cta {
+  @apply bg-night text-white font-bold;
+  @apply px-6 py-3;
+  @apply border-2 border-celeste/30;
+}
+
+.enhanced-btn-cta::before {
+  content: "";
+  @apply absolute inset-0 w-full h-full rounded-full;
+  @apply bg-gradient-to-r from-celeste to-celeste-dark;
+  @apply opacity-30 blur-md -z-10;
+  @apply scale-[1.15] transition-transform duration-300;
+}
+
+.enhanced-btn-cta:hover::before {
+  @apply scale-[1.2] opacity-50;
+}
+
+/* Hover effects for all buttons */
+.enhanced-btn:hover {
+  @apply transform scale-[1.02];
+}
+
+/* Active effects for all buttons */
+.enhanced-btn:active {
+  @apply transform scale-[0.98];
+}
+
+/* WhatsApp button enhancement */
+.whatsapp-btn {
+  @apply fixed left-5 bottom-5 z-50;
+  @apply w-[60px] h-[60px] rounded-full;
+  @apply shadow-lg hover:shadow-xl;
+  @apply transition-all duration-300;
+  @apply bg-white p-2;
+  @apply hover:scale-110;
+}
+
+/* Shine effect animation for CTA buttons */
+.btn-shine {
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-shine::after {
+  content: "";
+  @apply absolute top-0 left-0 w-full h-full;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+}
+
+.btn-shine:hover::after {
+  animation: btn-shine 1.5s ease-in-out;
+}
+
+@keyframes btn-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

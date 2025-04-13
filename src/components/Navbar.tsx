@@ -208,24 +208,24 @@ const Navbar = () => {
             <Link to="/" className="flex-shrink-0">
               <img
                 className="h-10 w-auto sm:h-12"
-                src="/gsa-logo.png"
-                alt="Grade Spark Academy"
+                src="/gsa-logo-trasparent-bg.png"
+                alt="GenSpark Academy"
               />
             </Link>
             {/* Desktop Text */}
             <Link to="/" className="ml-3 hidden sm:block">
               <span className="relative z-20 text-xl font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent whitespace-nowrap">
-                Epitome of E-Tutoring
+                GenSpark Academy
               </span>
             </Link>
             {/* Mobile Text - Two Lines */}
             <Link to="/" className="ml-2 sm:hidden">
               <div className="flex flex-col">
                 <span className="relative z-20 text-base font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent leading-tight">
-                  Epitome of
+                  GenSpark
                 </span>
                 <span className="relative z-20 text-base font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent leading-tight">
-                  E-Tutoring
+                  Academy
                 </span>
               </div>
             </Link>
