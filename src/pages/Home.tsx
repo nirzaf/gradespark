@@ -6,10 +6,11 @@ import DoubtSection from '../components/DoubtSection';
 import ExamBoardsSection from '../components/ExamBoardsSection';
 import GroupDiscount from '../components/GroupDiscount';
 import Testimonials from '../components/Testimonials';
-import WhatsAppButton from '../components/WhatsAppButton';
 import ImageGallery from '../components/ImageGallery';
 import { trackVisitor } from '../lib/visitorTracking';
 import AchievementCardComponent from '../components/AchievementCard';
+import CoreServices from '../components/CoreServices';
+import HowItWorks from '../components/HowItWorks';
 
 export default function Home() {
   useEffect(() => {
@@ -21,6 +22,8 @@ export default function Home() {
       <div className="relative">
         <Hero />
         <AchievementCardComponent />
+        <CoreServices />
+        <HowItWorks />
         <Subjects />
         <WhyUs />
         <ImageGallery />
