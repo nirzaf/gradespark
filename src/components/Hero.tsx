@@ -57,16 +57,16 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
       rotateX: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         ease: [0.43, 0.13, 0.23, 0.96],
-        staggerChildren: 0.08
+        staggerChildren: 0.1
       }
     },
     exit: {
       opacity: 0,
       rotateX: 20,
       scale: 0.95,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.4 }
     }
   };
 
@@ -84,20 +84,20 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
       scale: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 10
+        stiffness: 120,
+        damping: 12
       }
     }
   };
 
   return (
-    <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden">
+    <div className="h-auto min-h-[200px] md:min-h-[180px] flex flex-col items-center justify-center overflow-hidden mt-20 md:mt-24">
       <motion.div
         key={currentIndex}
         variants={containerVariants}
         initial="hidden"
         animate={isAnimating ? "exit" : "visible"}
-        className="text-center perspective-[1000px] transform-gpu"
+        className="text-center perspective-[1000px] transform-gpu mx-auto max-w-4xl px-4 z-30 relative"
       >
         {/* Empty Line */}
         <motion.div
@@ -109,7 +109,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
 
         {/* Main Title */}
         <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative">
-          <div className="overflow-hidden">
+          <div className="overflow-hidden p-4 rounded-xl backdrop-blur-sm bg-white/70 shadow-lg border border-celeste/20">
             <motion.div className="flex flex-wrap justify-center gap-x-3">
               {texts[currentIndex].title.split(' ').map((word, i) => (
                 <motion.div
@@ -118,9 +118,9 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
                   variants={wordVariants}
                 >
                   <motion.span
-                    className="inline-block relative text-[#003049] drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]
-                             [text-shadow:_2px_2px_0_#fff,_4px_4px_0_rgba(0,48,73,0.1)]
-                             hover:text-[#F77F00] transition-colors duration-300"
+                    className="inline-block relative text-night drop-shadow-[0_2px_2px_rgba(21,22,22,0.1)]
+                             [text-shadow:_2px_2px_0_#fefefe,_4px_4px_0_rgba(21,22,22,0.1)]
+                             hover:text-celeste transition-colors duration-300"
                     whileHover={{
                       scale: 1.05,
                       y: -5,
@@ -141,8 +141,16 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
           <motion.div
             className="absolute -inset-4 rounded-2xl opacity-75 -z-10"
             style={{
-              background: 'radial-gradient(circle at center, rgba(252,191,73,0.2) 0%, rgba(247,127,0,0.1) 50%, transparent 100%)',
+              background: 'radial-gradient(circle at center, rgba(160,235,235,0.2) 0%, rgba(160,235,235,0.1) 50%, transparent 100%)',
               filter: 'blur(20px)'
+            }}
+            animate={{
+              opacity: [0.5, 0.75, 0.5],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
           />
         </h1>
@@ -150,16 +158,16 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         {/* Subtitle */}
         <motion.h2
           variants={wordVariants}
-          className="text-2xl md:text-3xl font-bold mb-8 relative"
+          className="text-2xl md:text-3xl font-bold mb-8 relative px-6 py-3 rounded-xl backdrop-blur-sm bg-white/70 inline-block shadow-md border border-celeste/20 mt-2"
         >
           <span className="relative inline-block
-                         text-[#003049]
-                         drop-shadow-[0_2px_2px_rgba(0,0,0,0.05)]">
+                         text-night
+                         drop-shadow-[0_2px_2px_rgba(21,22,22,0.05)]">
             {texts[currentIndex].subtitle}
 
             {/* Animated underline */}
             <motion.div
-              className="absolute -bottom-2 left-0 w-full h-1 rounded-full bg-[#F77F00]"
+              className="absolute -bottom-2 left-0 w-full h-1 rounded-full bg-celeste"
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{
                 scaleX: 1,
@@ -176,14 +184,14 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
             <motion.div
               className="absolute -inset-2 rounded-lg opacity-25"
               style={{
-                background: 'radial-gradient(circle at center, rgba(247,127,0,0.2) 0%, transparent 70%)',
+                background: 'radial-gradient(circle at center, rgba(160,235,235,0.3) 0%, transparent 70%)',
                 filter: 'blur(8px)'
               }}
               animate={{
-                opacity: [0.25, 0.4, 0.25],
+                opacity: [0.25, 0.5, 0.25],
               }}
               transition={{
-                duration: 2,
+                duration: 2.5,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -403,14 +411,14 @@ const LogoAnimation = () => {
 
 
 // Academic symbols for the background animation
-// Academic symbols representing educational elements
+// Academic symbols representing educational elements with theme colors
 const academicSymbols = [
-  { type: 'book', scale: [0.8, 1.2, 0.2], color: '#A0EBEB' },
-  { type: 'paper', scale: [0.7, 1, 0.05], color: '#A0EBEB' },
-  { type: 'pencil', scale: [0.1, 1.2, 0.1], color: '#A0EBEB' },
-  { type: 'laptop', scale: [1, 0.7, 0.05], color: '#A0EBEB' },
-  { type: 'graduation-cap', scale: [1, 0.2, 1], color: '#A0EBEB' },
-  { type: 'certificate', scale: [0.8, 0.8, 0.05], color: '#A0EBEB' }
+  { type: 'book', scale: [0.8, 1.2, 0.2], color: '#A0EBEB' }, // Celeste
+  { type: 'paper', scale: [0.7, 1, 0.05], color: '#A0EBEB' }, // Celeste
+  { type: 'pencil', scale: [0.1, 1.2, 0.1], color: '#A0EBEB' }, // Celeste
+  { type: 'laptop', scale: [1, 0.7, 0.05], color: '#A0EBEB' }, // Celeste
+  { type: 'graduation-cap', scale: [1, 0.2, 1], color: '#A0EBEB' }, // Celeste
+  { type: 'certificate', scale: [0.8, 0.8, 0.05], color: '#A0EBEB' } // Celeste
 ];
 
 function AcademicObject({ initialPosition, type }: { initialPosition: [number, number, number], type: string }) {
@@ -480,7 +488,7 @@ function AcademicObject({ initialPosition, type }: { initialPosition: [number, n
       />
       <lineSegments>
         <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(scale[0], scale[1], scale[2])]} />
-        <lineBasicMaterial attach="material" color="#151616" linewidth={1.5} />
+        <lineBasicMaterial attach="material" color="#151616" linewidth={1.5} /> {/* Night */}
       </lineSegments>
     </mesh>
   );
@@ -570,7 +578,7 @@ function AnimatedParticles({ count = 200, radius = 30 }: { count?: number, radiu
     <Points ref={pointsRef}>
       <pointsMaterial 
         size={0.2} 
-        color="#A0EBEB" 
+        color="#A0EBEB" /* Celeste */
         transparent 
         opacity={0.6} 
         sizeAttenuation 
@@ -620,7 +628,7 @@ function Scene() {
       <directionalLight position={[-5, 5, -5]} intensity={0.5} />
       
       {/* Subtle fog effect */}
-      <fog attach="fog" args={['#f0f8ff', 20, 60]} />
+      <fog attach="fog" args={['#FEFEFE', 20, 60]} /> {/* White */}
       
       {/* Grid representing academic foundation */}
       <Grid
@@ -631,7 +639,7 @@ function Scene() {
         cellThickness={0.3}
         sectionSize={3}
         sectionThickness={0.8}
-        sectionColor="#A0EBEB"
+        sectionColor="#A0EBEB" /* Celeste */
         fadeDistance={40}
       />
       
@@ -656,6 +664,7 @@ export default function Hero() {
     <section className="relative min-h-screen">
       {/* Animated Academic Background */}
       <div className="absolute inset-0 -z-20 bg-gradient-to-b from-night/5 via-white to-celeste/30">
+        {/* Using theme colors: night (#151616), white (#FEFEFE), celeste (#A0EBEB) */}
         <Canvas shadows camera={{ position: [0, 5, 30], fov: 60 }}>
           <Suspense fallback={null}>
             <Scene />
@@ -664,15 +673,15 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 pt-16 pb-20">
-        <div className="container mx-auto px-4 text-center mb-12">
+      <div className="relative z-10 pt-8 pb-20">
+        <div className="container mx-auto px-4 text-center mb-12 pt-4">
           {/* Logo Section with negative margin */}
-          <div className="relative -mb-16">
+          <div className="relative mb-4 md:mb-0">
             <LogoAnimation />
           </div>
 
           {/* Hero Text Section with higher z-index */}
-          <div className="relative z-20">
+          <div className="relative z-20 mt-4 md:mt-0">
             <AnimatedText texts={heroTexts} />
             <HeroButton />
           </div>
@@ -698,10 +707,10 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="flex justify-center">
-                <GraduationCap className="h-12 w-12 text-celeste" />
+                <GraduationCap className="h-12 w-12 text-celeste" /> {/* Celeste color */}
               </div>
-              <h3 className="mt-4 text-lg font-medium text-night">Expert Writers</h3>
-              <p className="mt-2 text-base text-gray-600">MA/PhD qualified professionals</p>
+              <h3 className="mt-4 text-lg font-medium text-night">Expert Writers</h3> {/* Night color */}
+              <p className="mt-2 text-base text-gray-700">MA/PhD qualified professionals</p>
             </motion.div>
 
             <motion.div
@@ -721,10 +730,10 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="flex justify-center">
-                <Users className="h-12 w-12 text-celeste" />
+                <Users className="h-12 w-12 text-celeste" /> {/* Celeste color */}
               </div>
-              <h3 className="mt-4 text-lg font-medium text-night">On-Time Delivery</h3>
-              <p className="mt-2 text-base text-gray-600">Meet your deadlines every time</p>
+              <h3 className="mt-4 text-lg font-medium text-night">On-Time Delivery</h3> {/* Night color */}
+              <p className="mt-2 text-base text-gray-700">Meet your deadlines every time</p>
             </motion.div>
 
             <motion.div
@@ -744,10 +753,10 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="flex justify-center">
-                <Globe2 className="h-12 w-12 text-celeste" />
+                <Globe2 className="h-12 w-12 text-celeste" /> {/* Celeste color */}
               </div>
-              <h3 className="mt-4 text-lg font-medium text-night">100% Original</h3>
-              <p className="mt-2 text-base text-gray-600">Plagiarism-free guarantee</p>
+              <h3 className="mt-4 text-lg font-medium text-night">100% Original</h3> {/* Night color */}
+              <p className="mt-2 text-base text-gray-700">Plagiarism-free guarantee</p>
             </motion.div>
           </div>
         </div>
