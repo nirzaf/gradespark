@@ -20,7 +20,7 @@ const HomeSchoolJoin = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl"
+            className="inline-block bg-celeste text-night px-8 py-4 rounded-lg text-lg font-semibold hover:bg-celeste-dark transition-colors shadow-lg hover:shadow-xl"
           >
             Get Started Now
           </Link>

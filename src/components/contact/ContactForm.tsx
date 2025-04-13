@@ -89,7 +89,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 transition-colors"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-celeste focus:ring-celeste transition-colors"
               placeholder="Your name"
             />
           </div>
@@ -105,7 +105,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 transition-colors"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-celeste focus:ring-celeste transition-colors"
               placeholder="your@email.com"
             />
           </div>
@@ -122,7 +122,7 @@ const ContactForm = () => {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 transition-colors"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-celeste focus:ring-celeste transition-colors"
             placeholder="What is this about?"
           />
         </div>
@@ -138,7 +138,7 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 transition-colors"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-celeste focus:ring-celeste transition-colors"
             placeholder="Your message..."
           />
         </div>
@@ -147,7 +147,7 @@ const ContactForm = () => {
           type="submit"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors"
+          className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-night hover:bg-night-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-celeste transition-colors"
         >
           Send Message
         </motion.button>

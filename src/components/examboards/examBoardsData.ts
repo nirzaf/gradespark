@@ -37,7 +37,7 @@ export const examBoards = [
     logo: "https://ik.imagekit.io/studytomy/AQA_logo?updatedAt=1717839109349",
     description: "AQA's high-quality qualifications are valued and respected by employers and universities around the world. At Studytomy, they offer tutoring for both foundation tier and Higher tier students in most of the subjects for GCSE, AS, and AL.",
     subjects: ["Foundation Tier", "Higher Tier", "GCSE", "AS Level", "A Level"],
-    color: "from-orange-500/10 to-orange-500/5"
+    color: "from-celeste/10 to-celeste/5"
   },
   {
     id: "ocr-a-ocr-b",

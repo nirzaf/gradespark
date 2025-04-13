@@ -105,8 +105,8 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
         onClick={handleMobileClick}
         className={`group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300
           ${isActive 
-            ? 'text-orange-600' 
-            : 'text-gray-700 hover:text-orange-600'
+            ? 'text-celeste' 
+            : 'text-gray-700 hover:text-celeste'
           } ${isMobile ? 'block w-full text-left' : 'inline-flex items-center'}
           before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-b 
           before:from-white/80 before:to-white/40 before:backdrop-blur-lg
@@ -129,7 +129,7 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
 
         {/* Active state glow */}
         {isActive && (
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-orange-100/50 via-orange-50/30 to-orange-100/50"></div>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-celeste/10 via-celeste/5 to-celeste/10"></div>
         )}
       </Link>
 
@@ -214,17 +214,17 @@ const Navbar = () => {
             </Link>
             {/* Desktop Text */}
             <Link to="/" className="ml-3 hidden sm:block">
-              <span className="relative z-20 text-xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
+              <span className="relative z-20 text-xl font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent whitespace-nowrap">
                 Epitome of E-Tutoring
               </span>
             </Link>
             {/* Mobile Text - Two Lines */}
             <Link to="/" className="ml-2 sm:hidden">
               <div className="flex flex-col">
-                <span className="relative z-20 text-base font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent leading-tight">
+                <span className="relative z-20 text-base font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent leading-tight">
                   Epitome of
                 </span>
-                <span className="relative z-20 text-base font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent leading-tight">
+                <span className="relative z-20 text-base font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent leading-tight">
                   E-Tutoring
                 </span>
               </div>
@@ -243,7 +243,7 @@ const Navbar = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-orange-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-celeste hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-celeste"
             >
               {isOpen ? (
                 <X className="block h-6 w-6" />

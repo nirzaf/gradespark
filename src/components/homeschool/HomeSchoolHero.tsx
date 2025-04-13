@@ -20,14 +20,14 @@ const HomeSchoolHero = () => {
         >
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Transform Your Home Into A 
-            <span className="text-orange-500"> Learning Paradise</span>
+            <span className="text-celeste">Learning Paradise</span>
           </h1>
           <p className="text-xl text-gray-700 mb-8">
             Discover the freedom of personalized education with our comprehensive homeschooling solutions.
           </p>
           <Link 
             to="/book-trial"
-            className="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl"
+            className="inline-block bg-celeste text-night px-8 py-4 rounded-lg text-lg font-semibold hover:bg-celeste-dark transition-colors shadow-lg hover:shadow-xl"
           >
             Start Your Journey
           </Link>

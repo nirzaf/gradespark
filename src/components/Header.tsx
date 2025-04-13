@@ -21,7 +21,7 @@ const Header = () => {
     >
       {/* Animated background gradient */}
       <div className="absolute inset-0 w-full h-full transition-all duration-500">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 animate-gradient"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-celeste via-celeste-dark to-celeste animate-gradient"></div>
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_50%)]"></div>
       </div>
 
@@ -71,7 +71,7 @@ const Header = () => {
                 <li key={item.path}>
                   <Link 
                     to={item.path} 
-                    className="hover:text-orange-500 transition-colors"
+                    className="hover:text-celeste transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -95,7 +95,7 @@ const Header = () => {
                   <li key={item.path} className="py-2">
                     <Link 
                       to={item.path} 
-                      className="block hover:text-orange-500"
+                      className="block hover:text-celeste"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}

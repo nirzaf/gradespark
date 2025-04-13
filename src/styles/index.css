@@ -15,7 +15,7 @@
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-600;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-celeste to-celeste-dark;
 }
 
 @keyframes border-slide {

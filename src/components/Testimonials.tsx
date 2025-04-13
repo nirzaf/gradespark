@@ -29,14 +29,14 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
           className="w-16 h-16 rounded-full object-cover"
         />
         <div className="ml-auto">
-          <Quote className="w-8 h-8 text-orange-400" />
+          <Quote className="w-8 h-8 text-celeste" />
         </div>
       </div>
       <div className="text-white flex-grow flex flex-col">
         <p className="mb-4 text-sm leading-relaxed flex-grow">{testimonial.comments}</p>
         <div className="mt-auto">
           <h6 className="font-semibold">{testimonial.name} ({testimonial.country})</h6>
-          <span className="text-sm text-orange-400">{testimonial.syllabus} - {testimonial.subject}</span>
+          <span className="text-sm text-celeste">{testimonial.syllabus} - {testimonial.subject}</span>
         </div>
       </div>
     </div>
@@ -144,7 +144,7 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-black/80" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h5 className="text-orange-400 font-medium mb-2">Testimonial</h5>
+          <h5 className="text-celeste font-medium mb-2">Testimonial</h5>
           <h2 className="text-3xl font-bold text-white">What they say</h2>
         </div>
         

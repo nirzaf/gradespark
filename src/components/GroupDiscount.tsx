@@ -19,7 +19,7 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
       transition={{ duration: 0.5 }}
     >
       <div>
-        <div className="text-orange-500 mb-4">
+        <div className="text-celeste mb-4">
           {icon}
         </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>

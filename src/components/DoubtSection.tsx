@@ -34,7 +34,7 @@ export default function DoubtSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 py-8 sm:py-10 relative overflow-hidden"
+      className="bg-gradient-to-r from-night via-night-dark to-night py-8 sm:py-10 relative overflow-hidden"
     >
       {/* Animated background circles */}
       <motion.div 
@@ -148,8 +148,8 @@ export default function DoubtSection() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-white text-orange-600 px-6 py-3 rounded-full font-medium 
-                         shadow-lg shadow-orange-600/20 hover:shadow-orange-600/30
+                className="bg-white text-celeste px-6 py-3 rounded-full font-medium 
+                         shadow-lg shadow-celeste/20 hover:shadow-celeste/30
                          flex items-center gap-2 group-hover:gap-3 transition-all duration-300
                          relative overflow-hidden"
               >
@@ -168,7 +168,7 @@ export default function DoubtSection() {
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </motion.div>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-orange-100 to-orange-50 opacity-0"
+                  className="absolute inset-0 bg-gradient-to-r from-celeste/10 to-celeste/5 opacity-0"
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 />
