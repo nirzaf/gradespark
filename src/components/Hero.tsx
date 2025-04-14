@@ -189,7 +189,7 @@ const LogoAnimation = () => {
 // --- Physics Scene Components ---
 
 function PhysicsPlane(props: { position: Triplet, rotation: Triplet }) {
-    const [ref] = usePlane(() => ({ type: 'Static', ...props }));
+    const [] = usePlane(() => ({ type: 'Static', ...props }));
     return null;
 }
 
