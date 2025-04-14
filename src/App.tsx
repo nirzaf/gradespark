@@ -10,6 +10,7 @@ import { trackPageView } from './lib/trackingEvents';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const HomeSchool = lazy(() => import('./pages/HomeSchool'));
+const Services = lazy(() => import('./pages/Services'));
 
 const Contact = lazy(() => import('./pages/Contact'));
 const BookTrial = lazy(() => import('./pages/BookTrial'));
@@ -53,7 +54,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/home-school" element={<HomeSchool />} />
-
+              <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/book-trial" element={<BookTrial />} />
               <Route path="/consent-preferences" element={<ConsentForm />} />

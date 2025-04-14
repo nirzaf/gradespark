@@ -16,10 +16,10 @@ const navItems = [
     path: "/about" 
   },
   { 
-    title: "Home School", 
-    path: "/home-school",
+    title: "Services", 
+    path: "/services",
     dropdownItems: [
-      { title: "Parent's Corner", path: "/home-school#parents-corner", icon: <BookOpen className="w-5 h-5" /> }
+      { title: "Parent's Corner", path: "/services#parents-corner", icon: <BookOpen className="w-5 h-5" /> }
     ]
   },
 
