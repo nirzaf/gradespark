@@ -106,7 +106,7 @@ const FAQSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 max-w-2xl mx-auto"
+            className="text-gray-700 max-w-2xl mx-auto"
           >
             Get answers to common questions about our services and commitment to your academic success
           </motion.p>
