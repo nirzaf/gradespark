@@ -8,7 +8,7 @@
   html {
     font-family: 'Inter', system-ui, sans-serif;
   }
-  
+
   body {
     @apply antialiased text-gray-900 bg-white;
   }
@@ -16,6 +16,17 @@
 
 .gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-celeste to-celeste-dark;
+}
+
+/* Add subtle shadow to celeste text */
+.text-celeste {
+  text-shadow: 0 0 8px rgba(160, 235, 235, 0.3);
+}
+
+/* Add subtle shadow to celeste gradient text */
+.celeste-gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-celeste to-celeste-dark;
+  text-shadow: 0 0 8px rgba(160, 235, 235, 0.3), 0 0 12px rgba(125, 222, 222, 0.2);
 }
 
 @keyframes border-slide {
