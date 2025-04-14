@@ -390,7 +390,7 @@ const LogoAnimation = () => {
         >
           <motion.img
             src="/gsa-logo-trasparent-bg.png"
-            alt="GenSpark Academy Logo"
+            alt="Grade Spark Academy Logo"
             className="relative mx-auto w-[200px] mb-16 drop-shadow-2xl"
             style={{
               filter: "drop-shadow(0 0 10px rgba(160,235,235,0.4))",

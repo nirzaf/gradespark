@@ -213,7 +213,7 @@ const Navbar = () => {
                 <motion.img
                   className="h-10 w-auto sm:h-12"
                   src="/gsa-logo-trasparent-bg.png"
-                  alt="GenSpark Academy"
+                  alt="Grade Spark Academy"
                   whileHover={{ rotate: [0, -2, 2, -2, 0] }}
                   transition={{ duration: 0.5 }}
                 />
@@ -222,14 +222,14 @@ const Navbar = () => {
             {/* Desktop Text */}
             <Link to="/" className="ml-3 hidden sm:block">
               <span className="relative z-20 text-xl font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent whitespace-nowrap">
-                GenSpark Academy
+                Grade Spark Academy
               </span>
             </Link>
             {/* Mobile Text - Two Lines */}
             <Link to="/" className="ml-2 sm:hidden">
               <div className="flex flex-col">
                 <span className="relative z-20 text-base font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent leading-tight">
-                  GenSpark
+                  Grade Spark
                 </span>
                 <span className="relative z-20 text-base font-bold bg-gradient-to-r from-celeste to-celeste-dark bg-clip-text text-transparent leading-tight">
                   Academy

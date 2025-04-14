@@ -49,7 +49,7 @@ const Footer = () => {
         >
           {/* Company Info */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-xl font-bold mb-4 gradient-text">GenSpark Academy</h3>
+            <h3 className="text-xl font-bold mb-4 gradient-text">Grade Spark Academy</h3>
             <p className="text-gray-300 mb-4">
               Helping university students achieve academic excellence through expert assistance and support.
             </p>
@@ -163,8 +163,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="text-celeste mr-3 flex-shrink-0" />
-                <a href="mailto:info@gensparkacademy.com" className="text-gray-300 hover:text-celeste transition-colors">
-                  info@gensparkacademy.com
+                <a href="mailto:info@gradespark.org" className="text-gray-300 hover:text-celeste transition-colors">
+                  info@gradespark.org
                 </a>
               </li>
               <li className="flex items-center">
@@ -188,7 +188,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            <p>© {currentYear} GenSpark Academy. All rights reserved.</p>
+            <p>© {currentYear} Grade Spark Academy. All rights reserved.</p>
           </motion.div>
           
           <motion.div 

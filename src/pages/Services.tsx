@@ -1,7 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import ServicesHero from '../components/services/ServicesHero';
-import ServicesBenefits from '../components/services/ServicesBenefits';
-import ServicesContent from '../components/services/ServicesContent';
+
+// Lazy load components for better performance
+const ServicesBenefits = lazy(() => import('../components/services/ServicesBenefits'));
+const ServicesContent = lazy(() => import('../components/services/ServicesContent'));
+const TopTutors = lazy(() => import('../components/services/TopTutors'));
+const QualityAssurance = lazy(() => import('../components/services/QualityAssurance'));
 
 const Services = () => {
   useEffect(() => {
@@ -11,8 +15,12 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <ServicesHero />
-      <ServicesBenefits />
-      <ServicesContent />
+      <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading...</div>}>
+        <TopTutors />
+        <ServicesBenefits />
+        <QualityAssurance />
+        <ServicesContent />
+      </Suspense>
     </div>
   );
 };
