@@ -12,7 +12,7 @@ const navItems = [
     path: "/" 
   },
   { 
-    title: "About us", 
+    title: "About", 
     path: "/about" 
   },
   { 
@@ -20,7 +20,7 @@ const navItems = [
     path: "/services"
   },
   { 
-    title: "Contact us", 
+    title: "Contact", 
     path: "/contact",
     dropdownItems: [
       { title: "WhatsApp", path: "https://wa.me/61461367702?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20tutorial.", icon: <MessageSquare className="w-5 h-5" />, external: true },
