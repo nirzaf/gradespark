@@ -17,16 +17,38 @@ const LOGO_PATH = '/gsa-logo-trasparent-bg.png'; // Verify path
 
 // --- Constants ---
 const themeColors = {
-    celeste: '#A0EBEB',
-    night: '#151616',
-    white: '#FEFEFE',
-    accent: '#FB923C', // Example accent (Orange)
+  celeste: '#A0EBEB',
+  night: '#151616',
+  white: '#FEFEFE',
+  accent: '#A0EBEB',
 };
 
+// --- UPDATED heroTexts array for better visual balance ---
+const heroTexts = [
+    {
+        title: "Expert Guidance Provided",   // Similar length
+        subtitle: "Achieve Your Study Goals",    // Similar length
+        emptyLine: "‎"
+    },
+    {
+        title: "Stress-Free Assignment Help", // Similar length
+        subtitle: "Confidently Meet Deadlines",  // Similar length
+        emptyLine: "‎"
+    },
+    {
+        title: "Original Writing Guaranteed", // Similar length
+        subtitle: "100% Plagiarism-Free Work", // Similar length
+        emptyLine: "‎"
+    },
+    {
+        title: "Secure & Confidential Service", // Similar length
+        subtitle: "Your Privacy Is Protected",   // Similar length
+        emptyLine: "‎"
+    }
+];
+
+
 // --- Framer Motion Components (AnimatedText, LogoAnimation) ---
-// These remain largely the same as the previous version, focusing on text and logo.
-// (Code for AnimatedText and LogoAnimation is included below for completeness,
-// no major changes needed in them for this physics concept)
 
 const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,21 +76,45 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         visible: { opacity: 1, y: 0, rotateY: 0, scale: 1, transition: { type: "spring", stiffness: 100, damping: 15 } }
     };
 
+    // Added check for texts array existence and content
+    if (!texts || texts.length === 0) {
+        return <div className="h-auto min-h-[180px] md:min-h-[160px]">Loading text...</div>; // Or some placeholder
+    }
+    const currentText = texts[currentIndex];
+     if (!currentText) {
+         // Handle case where currentIndex might be out of bounds temporarily
+         // Though the modulo operator should prevent this.
+         return <div className="h-auto min-h-[180px] md:min-h-[160px]">Error loading text...</div>;
+     }
+
+
     return (
         <div className="h-auto min-h-[180px] md:min-h-[160px] flex flex-col items-center justify-center overflow-hidden mt-16 md:mt-20">
             <motion.div
-                key={currentIndex}
+                key={currentIndex} // Key change triggers animation
                 variants={containerVariants}
                 initial="hidden"
                 animate={isAnimating ? "exit" : "visible"}
                 className="text-center perspective-[1000px] transform-gpu mx-auto max-w-4xl px-4 z-30 relative"
             >
-                <div className="h-6 md:h-8">{texts[currentIndex].emptyLine}</div>
+                {/* Empty Line */}
+                <div className="h-6 md:h-8">{currentText.emptyLine}</div>
+
+                {/* Main Title */}
                 <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative">
                     <div className="p-4 rounded-xl backdrop-blur-sm bg-white/75 shadow-lg border border-celeste/25">
-                        <motion.div className="flex flex-wrap justify-center gap-x-3">
-                            {texts[currentIndex].title.split(' ').map((word, i) => (
-                                <motion.div key={i} className="relative inline-block perspective-[1000px] transform-gpu" variants={wordVariants}>
+                        {/* Stagger children within the title words container */}
+                        <motion.div
+                            className="flex flex-wrap justify-center gap-x-3"
+                            variants={{ // Add container variants for staggerChildren if needed at this level
+                                visible: { transition: { staggerChildren: 0.05 } },
+                                hidden: {}
+                            }}
+                            initial="hidden"
+                            animate="visible"
+                        >
+                            {currentText.title.split(' ').map((word, i) => (
+                                <motion.div key={`${currentIndex}-title-${i}`} className="relative inline-block perspective-[1000px] transform-gpu" variants={wordVariants}>
                                     <motion.span
                                         className="inline-block relative text-night drop-shadow-[0_2px_2px_rgba(21,22,22,0.1)] [text-shadow:_1px_1px_0_#fefefe,_3px_3px_0_rgba(21,22,22,0.08)] hover:text-celeste transition-colors duration-300 cursor-pointer"
                                         whileHover={{ scale: 1.05, y: -4, transition: { type: "spring", stiffness: 300, damping: 10 } }}
@@ -79,6 +125,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
                             ))}
                         </motion.div>
                     </div>
+                    {/* Background Glow */}
                     <motion.div
                         className="absolute -inset-4 rounded-2xl opacity-75 -z-10"
                         style={{ background: `radial-gradient(circle at center, ${themeColors.celeste}25 0%, ${themeColors.celeste}10 40%, transparent 80%)`, filter: 'blur(25px)' }}
@@ -86,13 +133,20 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     />
                 </h1>
-                <motion.h2 variants={wordVariants} className="text-2xl md:text-3xl font-semibold mb-8 relative px-6 py-3 rounded-xl backdrop-blur-sm bg-white/75 inline-block shadow-md border border-celeste/25 mt-2">
+
+                {/* Subtitle */}
+                {/* Apply wordVariants directly to h2 for a simpler entrance */}
+                <motion.h2
+                    variants={wordVariants} // Apply entrance animation to the whole subtitle block
+                    className="text-2xl md:text-3xl font-semibold mb-8 relative px-6 py-3 rounded-xl backdrop-blur-sm bg-white/75 inline-block shadow-md border border-celeste/25 mt-2"
+                >
                     <span className="relative inline-block text-night drop-shadow-[0_1px_1px_rgba(21,22,22,0.05)]">
-                        {texts[currentIndex].subtitle}
+                        {currentText.subtitle}
+                         {/* Animated Underline */}
                         <motion.div
                             className="absolute -bottom-2 left-0 w-full h-1 rounded-full bg-celeste"
                             initial={{ scaleX: 0 }}
-                            animate={{ scaleX: 1, transition: { duration: 0.6, delay: 0.3, ease: "easeOut" } }}
+                            animate={{ scaleX: 1, transition: { duration: 0.6, delay: 0.3, ease: "easeOut" } }} // Delay slightly after text appears
                             exit={{ scaleX: 0, transition: { duration: 0.3 } }}
                         />
                     </span>
@@ -101,6 +155,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         </div>
     );
 };
+
 
 const LogoAnimation = () => {
     const [mouseX, setMouseX] = useState(0);
@@ -143,13 +198,6 @@ const LogoAnimation = () => {
     );
 };
 
-const heroTexts = [
-    { title: "Expert Academic Assistance", subtitle: "For University Students", emptyLine: "‎" },
-    { title: "Reduce Academic Stress", subtitle: "Meet Deadlines with Confidence", emptyLine: "‎" },
-    { title: "100% Original Content", subtitle: "Guaranteed Plagiarism-Free Work", emptyLine: "‎" },
-    { title: "Secure & Confidential", subtitle: "Your Privacy is Our Priority", emptyLine: "‎" }
-];
-
 
 // --- Physics Scene Components ---
 
@@ -167,47 +215,37 @@ function BuildingBlock({ position, size = 0.6, color = themeColors.celeste }: { 
         args: [size, size, size],
         angularDamping: 0.3, // Slow down rotation over time
         linearDamping: 0.1,  // Slow down movement over time
-        // Give it a slight initial upward push and spin
         velocity: [(Math.random() - 0.5) * 2, Math.random() * 3 + 1, (Math.random() - 0.5) * 2],
         angularVelocity: [(Math.random() - 0.5) * 3, (Math.random() - 0.5) * 3, (Math.random() - 0.5) * 3],
     }));
 
     const [isHovered, setIsHovered] = useState(false);
 
-    // Make blocks slightly interactive on hover
-    const handleHover = (hovering: boolean) => {
-        setIsHovered(hovering);
-        // Optional: Apply slight force on hover out to 'push' it
-        if (!hovering) {
-           // api.applyImpulse([(Math.random() - 0.5) * 0.1, 0.1, (Math.random() - 0.5) * 0.1], [0, 0, 0]);
-        }
-    };
-
     return (
-        <Box // Use Drei's Box for easier material/geometry handling
-            ref={ref as React.Ref<THREE.Mesh>} // Cast ref type
+        <Box
+            ref={ref as React.Ref<THREE.Mesh>}
             args={[size, size, size]}
             castShadow
             receiveShadow
-            onPointerOver={() => handleHover(true)}
-            onPointerOut={() => handleHover(false)}
-            onClick={() => { // Add a little pop on click
+            onPointerOver={() => setIsHovered(true)}
+            onPointerOut={() => setIsHovered(false)}
+            onClick={() => {
                  api.applyImpulse([(Math.random() - 0.5) * 0.5, 0.5, (Math.random() - 0.5) * 0.5], [0, size/2, 0]);
             }}
         >
             <meshStandardMaterial
-                color={isHovered ? themeColors.accent : color} // Change color on hover
+                color={isHovered ? themeColors.accent : color}
                 roughness={0.4}
                 metalness={0.1}
                 transparent
-                opacity={0.9} // Slightly transparent
-                emissive={isHovered ? themeColors.accent : color} // Glow effect
-                emissiveIntensity={isHovered ? 0.6 : 0.15} // Stronger glow on hover
+                opacity={0.9}
+                emissive={isHovered ? themeColors.accent : color}
+                emissiveIntensity={isHovered ? 0.6 : 0.15}
             />
         </Box>
     );
 }
-// Dynamic building block component (Sphere) - Alternative shape
+// Dynamic building block component (Sphere)
 function BuildingSphere({ position, radius = 0.4, color = themeColors.celeste }: { position: Triplet, radius?: number, color?: string }) {
     const [ref, api] = useSphere(() => ({
         mass: (4/3) * Math.PI * (radius**3) * 0.5,
@@ -222,14 +260,14 @@ function BuildingSphere({ position, radius = 0.4, color = themeColors.celeste }:
      const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <Sphere // Use Drei's Sphere
+        <Sphere
             ref={ref as React.Ref<THREE.Mesh>}
-            args={[radius, 32, 32]} // Add segments for smoothness
+            args={[radius, 32, 32]}
             castShadow
             receiveShadow
             onPointerOver={() => setIsHovered(true)}
             onPointerOut={() => setIsHovered(false)}
-             onClick={() => { // Add a little pop on click
+             onClick={() => {
                  api.applyImpulse([(Math.random() - 0.5) * 0.5, 0.5, (Math.random() - 0.5) * 0.5], [0, 0, 0]);
             }}
         >
@@ -247,7 +285,7 @@ function BuildingSphere({ position, radius = 0.4, color = themeColors.celeste }:
 }
 
 
-// Particle system (remains similar, adjust count/radius if needed)
+// Particle system
 function AnimatedParticles({ count = 120, radius = 22 }: { count?: number, radius?: number }) {
     const pointsRef = useRef<THREE.Points>(null);
     const [initialData] = useState(() => {
@@ -311,19 +349,14 @@ function AnimatedParticles({ count = 120, radius = 22 }: { count?: number, radiu
 function Scene() {
     const numBlocks = 25; // Number of dynamic blocks
 
-    // Generate initial positions for blocks near the center bottom
     const blockData = useMemo(() => {
         const data = [];
         for (let i = 0; i < numBlocks; i++) {
             data.push({
-                position: [
-                    (Math.random() - 0.5) * 4, // Spread out horizontally
-                    i * 0.2 + 1,              // Stack slightly vertically initially
-                    (Math.random() - 0.5) * 4
-                ] as Triplet,
-                shape: Math.random() > 0.5 ? 'box' : 'sphere', // Randomly choose shape
-                size: Math.random() * 0.4 + 0.3, // Random size
-                color: Math.random() > 0.8 ? themeColors.accent : themeColors.celeste // Occasionally use accent color
+                position: [(Math.random() - 0.5) * 4, i * 0.2 + 1, (Math.random() - 0.5) * 4] as Triplet,
+                shape: Math.random() > 0.5 ? 'box' : 'sphere',
+                size: Math.random() * 0.4 + 0.3,
+                color: Math.random() > 0.8 ? themeColors.accent : themeColors.celeste
             });
         }
         return data;
@@ -336,59 +369,48 @@ function Scene() {
             <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} autoRotate autoRotateSpeed={0.2} minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI * 3 / 4} maxDistance={40} minDistance={5} />
             <ambientLight intensity={0.6} color={themeColors.white} />
             <directionalLight
-                position={[-10, 15, 10]} // Angled light source
+                position={[-10, 15, 10]}
                 intensity={1.2}
                 castShadow
-                shadow-mapSize-width={2048} // Higher resolution shadows
+                shadow-mapSize-width={2048}
                 shadow-mapSize-height={2048}
                 shadow-camera-far={50}
                 shadow-camera-left={-20}
                 shadow-camera-right={20}
                 shadow-camera-top={20}
                 shadow-camera-bottom={-20}
-                shadow-bias={-0.0005} // Adjust shadow bias to prevent artifacts
+                shadow-bias={-0.0005}
             />
-            {/* Add subtle fill lights */}
             <pointLight position={[10, -5, -10]} intensity={0.4} color={themeColors.celeste} />
             <pointLight position={[-10, -5, 10]} intensity={0.4} color={themeColors.accent} />
-
-            {/* Subtle fog */}
             <fog attach="fog" args={[themeColors.white, 20, 60]} />
 
             {/* Physics World */}
             <Physics gravity={[0, -9.81, 0]} defaultContactMaterial={{ friction: 0.2, restitution: 0.4 }}>
-                {/* Ground plane */}
                 <PhysicsPlane position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]} />
-                {/* Optional: Side walls to contain blocks (invisible) */}
-                {/* <PhysicsPlane position={[0, 5, -10]} rotation={[0, 0, 0]} /> */}
-                {/* <PhysicsPlane position={[0, 5, 10]} rotation={[0, Math.PI, 0]} /> */}
-                {/* <PhysicsPlane position={[-10, 5, 0]} rotation={[0, Math.PI / 2, 0]} /> */}
-                {/* <PhysicsPlane position={[10, 5, 0]} rotation={[0, -Math.PI / 2, 0]} /> */}
-
-
                 {/* Render dynamic blocks */}
                 {blockData.map((data, index) =>
                     data.shape === 'box' ? (
                         <BuildingBlock key={`block-${index}`} position={data.position} size={data.size} color={data.color} />
                     ) : (
-                        <BuildingSphere key={`sphere-${index}`} position={data.position} radius={data.size * 0.7} color={data.color} /> // Adjust radius based on size
+                        <BuildingSphere key={`sphere-${index}`} position={data.position} radius={data.size * 0.7} color={data.color} />
                     )
                 )}
             </Physics>
 
-            {/* Background Grid (Non-physics) */}
+            {/* Background Grid */}
             <Grid
                 renderOrder={-1}
-                position={[0, -1.49, 0]} // Slightly above the physics plane
+                position={[0, -1.49, 0]}
                 infiniteGrid
                 cellSize={1.5} cellThickness={0.4} sectionSize={4.5} sectionThickness={1}
                 sectionColor={themeColors.celeste}
-                cellColor={themeColors.night} // Use night color for grid lines
+                cellColor={themeColors.night}
                 fadeDistance={60} fadeStrength={1.2}
-                receiveShadow // Grid can receive shadows from blocks
+                receiveShadow
             />
 
-            {/* Background Particles (Non-physics) */}
+            {/* Background Particles */}
             <AnimatedParticles count={120} radius={22} />
         </>
     );
@@ -402,9 +424,9 @@ export default function Hero() {
             <div className="absolute inset-0 -z-20 bg-gradient-to-b from-night/5 via-white to-celeste/15">
                 <Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-gray-500 bg-white">Loading Physics Scene...</div>}>
                     <Canvas
-                        shadows // Enable shadows
-                        camera={{ position: [0, 5, 20], fov: 60 }} // Adjust camera position/fov
-                        dpr={[1, 2]} // Optimize device pixel ratio for performance/quality balance
+                        shadows
+                        camera={{ position: [0, 5, 20], fov: 60 }}
+                        dpr={[1, 2]}
                     >
                         <Scene />
                     </Canvas>
@@ -412,37 +434,33 @@ export default function Hero() {
             </div>
 
             {/* Foreground Content */}
-            <div className="relative z-10 pt-6 pb-16 md:pt-8 md:pb-20 flex flex-col items-center"> {/* Center content */}
-                 {/* Logo Section - Positioned above text */}
-                 <div className="relative mb-[-2rem] md:mb-[-3rem] z-20"> {/* Negative margin to overlap slightly */}
+            <div className="relative z-10 pt-6 pb-16 md:pt-8 md:pb-20 flex flex-col items-center">
+                 <div className="relative mb-[-2rem] md:mb-[-3rem] z-20">
                     <LogoAnimation />
                  </div>
-
-                 {/* Animated Text & Button Container */}
                  <div className="container mx-auto px-4 text-center relative z-10">
                      <AnimatedText texts={heroTexts} />
                      <HeroButton />
                  </div>
-
-
-                {/* Features Grid - Positioned below */}
+                {/* Features Grid */}
                 <div className="container mx-auto px-4 mt-16 md:mt-20 w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                         {[
-                            { icon: GraduationCap, title: "Expert Writers", desc: "MA/PhD qualified professionals", delay: 0.5 }, // Adjusted delay
+                            { icon: GraduationCap, title: "Expert Writers", desc: "MA/PhD qualified professionals", delay: 0.5 },
                             { icon: Users, title: "On-Time Delivery", desc: "Meet your deadlines every time", delay: 0.7 },
                             { icon: Globe2, title: "100% Original", desc: "Plagiarism-free guarantee", delay: 0.9 }
                         ].map((feature, index) => (
                             <motion.div
                                 key={index}
-                                className="text-center bg-white/85 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-celeste/20" // Added subtle border
+                                className="text-center bg-white/85 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-celeste/20"
                                 initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0, transition: { delay: feature.delay, type: "spring", stiffness: 90, damping: 12 } }} // Slightly softer spring
-                                whileHover={{ scale: 1.04, y: -5, boxShadow: '0 10px 25px -5px rgba(160, 235, 235, 0.3), 0 8px 10px -6px rgba(160, 235, 235, 0.2)' }} // Enhanced hover shadow
+                                animate={{ opacity: 1, y: 0, transition: { delay: feature.delay, type: "spring", stiffness: 90, damping: 12 } }}
+                                whileHover={{ scale: 1.04, y: -5, boxShadow: '0 10px 25px -5px rgba(160, 235, 235, 0.3), 0 8px 10px -6px rgba(160, 235, 235, 0.2)' }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <div className="flex justify-center mb-4">
-                                    <feature.icon className={`h-12 w-12 text-${themeColors.celeste}`} />
+                                     {/* Ensure themeColors.celeste is accessible or replace with hex */}
+                                     <feature.icon className={`h-12 w-12 text-[#A0EBEB]`} />
                                 </div>
                                 <h3 className="text-lg font-semibold text-night">{feature.title}</h3>
                                 <p className="mt-2 text-base text-gray-700">{feature.desc}</p>
@@ -454,4 +472,3 @@ export default function Hero() {
         </section>
     );
 }
-
