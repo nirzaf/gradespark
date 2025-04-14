@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 import ServicesHero from '../components/services/ServicesHero';
 import ServicesBenefits from '../components/services/ServicesBenefits';
 import ServicesContent from '../components/services/ServicesContent';
-import ParentsCorner from '../components/homeschool/ParentsCorner';
-import HomeSchoolJoin from '../components/homeschool/HomeSchoolJoin';
 
 const Services = () => {
   useEffect(() => {
@@ -15,8 +13,6 @@ const Services = () => {
       <ServicesHero />
       <ServicesBenefits />
       <ServicesContent />
-      <ParentsCorner />
-      <HomeSchoolJoin />
     </div>
   );
 };

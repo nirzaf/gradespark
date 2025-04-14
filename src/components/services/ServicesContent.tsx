@@ -2,26 +2,26 @@ import { motion } from 'framer-motion';
 
 const contentSections = [
   {
-    title: "Homework & Coursework Help",
-    description: "Get expert assistance with your daily assignments and coursework. Our experienced tutors provide clear explanations and guidance to help you understand concepts better and stay on track with your studies.",
+    title: "Custom Essay Writing",
+    description: "Our expert writers deliver high-quality, original essays tailored to your specific requirements. Every essay is thoroughly researched, well-structured, and guaranteed plagiarism-free, helping you achieve academic excellence.",
     image: "https://ik.imagekit.io/quadrate/Studytomy/photo-1610484826917-0f101a7bf7f4_q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA_3D_3D?updatedAt=1731864216199",
-    imageAlt: "Homework Assistance",
+    imageAlt: "Essay Writing Service",
     reverse: false,
     bgWhite: true
   },
   {
-    title: "Technical Assignment Support",
-    description: "Struggling with complex technical assignments? Our specialists provide comprehensive support for programming, mathematics, engineering, and other technical subjects, ensuring you master the concepts while meeting deadlines.",
+    title: "Dissertation & Technical Support",
+    description: "Comprehensive assistance for dissertations, technical assignments, and complex projects. Our specialists provide expert guidance in programming, engineering, mathematics, and research methodology, ensuring top-quality results.",
     image: "https://ik.imagekit.io/quadrate/Studytomy/photo-1585314540237-13cb52fe9998_q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA_3D_3D?updatedAt=1731864285260",
-    imageAlt: "Technical Support",
+    imageAlt: "Dissertation Support",
     reverse: true,
     bgWhite: false
   },
   {
-    title: "Research & Writing Assistance",
-    description: "From research papers to dissertations, our academic experts help you develop well-structured, thoroughly researched documents that meet the highest academic standards.",
+    title: "Research & Editing Services",
+    description: "Professional research assistance and meticulous editing services to enhance your academic work. We help with research design, data analysis, formatting, and ensuring your work meets the highest academic standards.",
     image: "https://ik.imagekit.io/quadrate/Studytomy/photo-1610484826625-ac2be7f1c8c1_q=80&w=2136&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA_3D_3D?updatedAt=1731864243622",
-    imageAlt: "Research Assistance",
+    imageAlt: "Research Services",
     reverse: false,
     bgWhite: false
   }
