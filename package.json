@@ -15,6 +15,7 @@
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
     "@radix-ui/react-tooltip": "^1.1.4",
+    "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^9.121.5",
     "@react-three/fiber": "^8.17.14",
     "@supabase/supabase-js": "^2.39.7",
