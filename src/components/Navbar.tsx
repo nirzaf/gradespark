@@ -19,6 +19,11 @@ const navItems = [
     title: "Services", 
     path: "/services"
   },
+  {
+    title: "Blog",
+    path: "/blog",
+    icon: <BookOpen className="w-5 h-5" />
+  },
   { 
     title: "Contact", 
     path: "/contact",
