@@ -5,6 +5,7 @@ import WhyUs from '../components/WhyUs';
 import DoubtSection from '../components/DoubtSection';
 import GroupDiscount from '../components/GroupDiscount';
 import Testimonials from '../components/Testimonials';
+import FAQSection from '../components/FAQSection';
 
 import { trackVisitor } from '../lib/visitorTracking';
 import CoreServices from '../components/CoreServices';
@@ -28,6 +29,7 @@ export default function Home() {
         <DoubtSection />
         <GroupDiscount />
         <Testimonials />
+        <FAQSection />
       </div>
     </>
   );
