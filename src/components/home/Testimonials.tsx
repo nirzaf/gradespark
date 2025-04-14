@@ -3,7 +3,7 @@ import { Quote } from 'lucide-react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import '../styles/testimonials.css';
+import '../../styles/testimonials.css';
 
 interface Testimonial {
   id: number;
