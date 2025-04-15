@@ -1,115 +1,26 @@
 import { motion } from 'framer-motion';
 import '../../styles/subject-icons.css';
 
+// Subject data (ensure iconClass matches CSS and React conditional rendering)
 const subjects = [
-  {
-    name: "Geography",
-    iconClass: "icon-geography",
-    color: "color-1",
-    alt: "Geographic concepts and global studies visualization"
-  },
-  {
-    name: "History",
-    iconClass: "icon-history",
-    color: "color-2",
-    alt: "Historical concepts and timeline visualization"
-  },
-  {
-    name: "Biology",
-    iconClass: "icon-biology",
-    color: "color-3",
-    alt: "Depicting a double helix structure commonly associated with DNA, the animation breaks down its elements: The double helix structure represents the double-stranded DNA molecule, with each strand consisting of nucleotide sequences held together by hydrogen bonds between complementary nucleotide pairs."
-  },
-  {
-    name: "Human Biology",
-    iconClass: "icon-human-bio",
-    color: "color-2",
-    alt: "The animation depicts a double helix structure commonly associated with DNA, deoxyribonucleic acid."
-  },
-  {
-    name: "Physics",
-    iconClass: "icon-physics",
-    color: "color-3",
-    alt: "Illustrates the process of cell division, which is a fundamental aspect of all living organisms."
-  },
-  {
-    name: "Chemistry",
-    iconClass: "icon-chemistry",
-    color: "color-1",
-    alt: "The GIF depicts the molecular structure and vibrations of a methane molecule (CH4)."
-  },
-  {
-    name: "Language",
-    iconClass: "icon-language",
-    color: "color-2",
-    alt: "Simplified representation of the concept of English language learning."
-  },
-  {
-    name: "Literature",
-    iconClass: "icon-literature",
-    color: "color-3",
-    alt: "Depicting a stack of books is a common symbol associated with learning, knowledge, and education."
-  },
-  {
-    name: "Psychology",
-    iconClass: "icon-psychology",
-    color: "color-2",
-    alt: "Represents the field of psychology, which is the scientific study of the mind and behavior."
-  },
-  {
-    name: "Mathematics",
-    iconClass: "icon-math",
-    color: "color-3",
-    alt: "Mathematical concepts and formulas visualization"
-  },
-  {
-    name: "Business Studies",
-    iconClass: "icon-business",
-    color: "color-1",
-    alt: "Depicting a seminar setting for business studies"
-  },
-  {
-    name: "Accounting",
-    iconClass: "icon-accounting",
-    color: "color-2",
-    alt: "Financial and accounting concepts visualization"
-  },
-  {
-    name: "Economics",
-    iconClass: "icon-economics",
-    color: "color-3",
-    alt: "Economic concepts and market visualization"
-  },
-  {
-    name: "Additional Maths",
-    iconClass: "icon-add-maths",
-    color: "color-1",
-    alt: "Advanced mathematical concepts visualization"
-  },
-  {
-    name: "Com. Science",
-    iconClass: "icon-cs",
-    color: "color-2",
-    alt: "Computer science and programming concepts"
-  },
-  {
-    name: "Statistics",
-    iconClass: "icon-stats",
-    color: "color-3",
-    alt: "Statistical analysis and data visualization"
-  },
-  {
-    name: "ICT",
-    iconClass: "icon-ict",
-    color: "color-1",
-    alt: "Information and Communication Technology concepts"
-  },
-  {
-    name: "Sociology",
-    iconClass: "icon-sociology",
-    color: "color-2",
-    alt: "Sociological concepts and human interaction visualization"
-  }
+  { name: "Geography", iconClass: "icon-geography", color: "color-1", alt: "Geographic concepts and global studies visualization" },
+  { name: "History", iconClass: "icon-history", color: "color-2", alt: "Historical concepts and timeline visualization" },
+  { name: "Biology", iconClass: "icon-biology", color: "color-3", alt: "Animated DNA double helix structure" },
+  { name: "Human Biology", iconClass: "icon-human-bio", color: "color-2", alt: "Animated pulsing heart with ECG line" },
+  { name: "Physics", iconClass: "icon-physics", color: "color-3", alt: "Animated atom with nucleus and orbiting electrons" },
+  { name: "Chemistry", iconClass: "icon-chemistry", color: "color-1", alt: "Animated beaker with bubbling liquid" },
+  { name: "Language", iconClass: "icon-language", color: "color-2", alt: "Animated speech bubbles representing language" },
+  { name: "Literature", iconClass: "icon-literature", color: "color-3", alt: "Animated book with turning pages" },
+  { name: "Psychology", iconClass: "icon-psychology", color: "color-2", alt: "Animated brain halves with firing synapses" },
+  { name: "Mathematics", iconClass: "icon-math", color: "color-3", alt: "Animated Pi symbol with orbiting numbers" },
+  { name: "Business Studies", iconClass: "icon-business", color: "color-1", alt: "Animated growing bar chart" },
+  { name: "Accounting", iconClass: "icon-accounting", color: "color-2", alt: "Animated calculator with changing numbers" },
+  { name: "Economics", iconClass: "icon-economics", color: "color-3", alt: "Animated pulsing dollar sign with floating coins" },
+  { name: "Additional Maths", iconClass: "icon-add-maths", color: "color-1", alt: "Animated graph with drawing curve" },
+  { name: "Computer Science", iconClass: "icon-cs", color: "color-2", alt: "Animated terminal window with typing code" },
+  { name: "Statistics", iconClass: "icon-stats", color: "color-3", alt: "Animated bell curve with plotting data points" },
+  { name: "ICT", iconClass: "icon-ict", color: "color-1", alt: "Animated network grid with nodes and data packets" },
+  { name: "Sociology", iconClass: "icon-sociology", color: "color-2", alt: "Animated interacting figures" }
 ];
 
 const Subjects = () => {
@@ -137,6 +48,12 @@ const Subjects = () => {
       }
     }
   };
+
+  // Helper function to generate span elements for CS icon
+  const renderSpans = (text) => {
+    return text.split('').map((char, index) => <span key={index}>{char}</span>);
+  };
+
 
   return (
     <>
@@ -168,78 +85,77 @@ const Subjects = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
           >
+            {/* Sort subjects alphabetically before mapping */}
             {[...subjects].sort((a, b) => a.name.localeCompare(b.name)).map((subject, index) => (
               <motion.div
-                key={index}
+                key={subject.name} // Use subject name or a unique ID if available
                 className="flex flex-col items-center"
                 variants={itemVariants}
               >
                 <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-4 w-full h-full flex flex-col items-center justify-center group">
                   <div className="relative mb-3 p-2 rounded-full bg-gradient-to-br from-night/5 to-celeste/10 group-hover:from-celeste/20 group-hover:to-celeste/30 transition-all duration-300">
+                    {/* Icon Wrapper - applies the specific icon class */}
                     <div
                       className={`icon-wrapper ${subject.iconClass} w-16 h-16 relative z-10 group-hover:scale-110 transition-transform duration-300`}
                       aria-label={subject.alt}
                     >
+                      {/* Conditional Rendering based on iconClass - MUST MATCH CSS STRUCTURE */}
+
+                      {/* --- Accounting --- */}
                       {subject.iconClass === 'icon-accounting' && (
                         <div className="calculator-body">
                           <div className="screen"></div>
                           <div className="buttons">
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
-                            <div className="button"></div>
+                            {/* Render 12 calculator buttons */}
+                            {Array.from({ length: 12 }).map((_, i) => <div key={i} className="button"></div>)}
                           </div>
                         </div>
                       )}
+
+                      {/* --- Additional Maths --- */}
                       {subject.iconClass === 'icon-add-maths' && (
                         <div className="graph-area">
-                          <svg className="curve">
-                            <path d="M0,60 C20,40 40,10 60,30" />
+                          <svg className="curve" viewBox="0 0 60 60" preserveAspectRatio="none">
+                            {/* Adjusted path data to fit viewBox better */}
+                            <path d="M0,58 C20,40 40,10 60,30" />
                           </svg>
                         </div>
                       )}
+
+                      {/* --- Biology --- */}
                       {subject.iconClass === 'icon-biology' && (
                         <div className="dna-container">
                           <div className="strand-group">
                             <div className="strand s1"></div>
                             <div className="strand s2"></div>
-                            <div className="pair"></div>
-                            <div className="pair"></div>
-                            <div className="pair"></div>
-                            <div className="pair"></div>
-                            <div className="pair"></div>
+                            {/* Render 5 base pairs */}
+                            {Array.from({ length: 5 }).map((_, i) => <div key={i} className="pair"></div>)}
                           </div>
                         </div>
                       )}
+
+                      {/* --- Business Studies --- */}
                       {subject.iconClass === 'icon-business' && (
                         <div className="chart-container">
-                          <div className="bar"></div>
-                          <div className="bar"></div>
-                          <div className="bar"></div>
-                          <div className="bar"></div>
+                          {/* Render 4 bars */}
+                          {Array.from({ length: 4 }).map((_, i) => <div key={i} className="bar"></div>)}
                         </div>
                       )}
+
+                      {/* --- Chemistry --- */}
                       {subject.iconClass === 'icon-chemistry' && (
                         <div className="beaker-container">
                           <div className="beaker-glass">
                             <div className="liquid-surface">
-                              <div className="bubble"></div>
-                              <div className="bubble"></div>
-                              <div className="bubble"></div>
-                              <div className="bubble"></div>
+                              {/* Render 4 bubbles */}
+                              {Array.from({ length: 4 }).map((_, i) => <div key={i} className="bubble"></div>)}
                             </div>
                           </div>
                           <div className="beaker-top"></div>
                         </div>
                       )}
+
+                      {/* --- Computer Science --- */}
                       {subject.iconClass === 'icon-cs' && (
                         <div className="terminal-window">
                           <div className="window-buttons">
@@ -248,56 +164,67 @@ const Subjects = () => {
                             <div className="window-button btn-green"></div>
                           </div>
                           <div className="code-area">
-                            <div className="code-line"><span>$</span><span> </span><span>n</span><span>p</span><span>m</span><span> </span><span>i</span><span>n</span><span>s</span><span>t</span><span>a</span><span>l</span><span>l</span></div>
-                            <div className="code-line"><span>$</span><span> </span><span>c</span><span>d</span><span> </span><span>s</span><span>r</span><span>c</span></div>
-                            <div className="code-line"><span>$</span><span> </span><span>n</span><span>o</span><span>d</span><span>e</span><span> </span><span>i</span><span>n</span><span>d</span><span>e</span><span>x</span><span>.</span><span>j</span><span>s</span></div>
+                            {/* Lines need spans for the typing animation */}
+                            <div className="code-line">{renderSpans('$ npm install')}</div>
+                            <div className="code-line">{renderSpans('$ cd src')}</div>
+                            <div className="code-line">{renderSpans('$ node index.js')}</div>
+                            {/* Add more lines if needed in CSS */}
                             <div className="cursor"></div>
                           </div>
                         </div>
                       )}
+
+                      {/* --- Economics --- */}
                       {subject.iconClass === 'icon-economics' && (
-                        <div className="graph-container">
-                          <div className="chart-bg"></div>
-                          <div className="arrow-container">
-                            <div className="arrow-shaft"></div>
-                            <div className="arrow-head"></div>
-                          </div>
-                          <div className="coin coin1"></div>
-                          <div className="coin coin2"></div>
-                          <div className="coin coin3"></div>
+                        // Note: CSS uses chart-container, ensure consistency if needed
+                        <div className="chart-container">
+                          <div className="dollar-symbol"></div>
+                          <div className="glow-circle"></div>
+                          {/* Render 7 coins */}
+                          {Array.from({ length: 7 }).map((_, i) => <div key={i} className={`coin coin${i + 1}`}></div>)}
                         </div>
                       )}
+
+                      {/* --- Geography --- */}
                       {subject.iconClass === 'icon-geography' && (
                         <div className="globe-container">
+                          <div className="globe-stand"></div> {/* Added stand */}
                           <div className="globe-sphere">
-                            <div className="continent c1"></div>
-                            <div className="continent c2"></div>
-                            <div className="continent c3"></div>
-                            <div className="grid-line"></div>
-                            <div className="grid-line"></div>
-                            <div className="grid-line"></div>
+                            {/* Render 4 continents */}
+                            {Array.from({ length: 4 }).map((_, i) => <div key={i} className={`continent c${i + 1}`}></div>)}
+                            {/* Render specific grid lines */}
+                            <div className="grid-line grid-line-lat grid-line-lat1"></div>
+                            <div className="grid-line grid-line-lat grid-line-lat2"></div>
+                            <div className="grid-line grid-line-lat grid-line-lat3"></div>
+                            <div className="grid-line grid-line-lon grid-line-lon1"></div>
+                            <div className="grid-line grid-line-lon grid-line-lon2"></div>
+                            <div className="grid-line grid-line-lon grid-line-lon3"></div>
                           </div>
                         </div>
                       )}
+
+                      {/* --- History --- */}
                       {subject.iconClass === 'icon-history' && (
                         <div className="hourglass-container">
                           <div className="hourglass-body">
-                            <div className="hg-frame">
-                              <div className="hg-top"></div>
-                              <div className="hg-bottom"></div>
-                              <div className="hg-post hg-post-left"></div>
-                              <div className="hg-post hg-post-right"></div>
-                            </div>
+                            {/* Frame elements */}
+                            <div className="hg-frame hg-top"></div>
+                            <div className="hg-frame hg-bottom"></div>
+                            <div className="hg-post hg-post-left"></div>
+                            <div className="hg-post hg-post-right"></div>
+                            {/* Glass and Sand elements */}
                             <div className="glass-container">
                               <div className="glass-bulb glass-top"></div>
                               <div className="glass-bulb glass-bottom"></div>
-                              <div className="sand-pile-top"></div>
-                              <div className="sand-pile-bottom"></div>
-                              <div className="sand-stream"></div>
+                              <div className="sand sand-pile-top"></div>
+                              <div className="sand sand-pile-bottom"></div>
+                              <div className="sand sand-stream"></div>
                             </div>
                           </div>
                         </div>
                       )}
+
+                      {/* --- Human Biology --- */}
                       {subject.iconClass === 'icon-human-bio' && (
                         <div className="heart-container">
                           <div className="heart-shape"></div>
@@ -306,104 +233,112 @@ const Subjects = () => {
                           </div>
                         </div>
                       )}
+
+                      {/* --- ICT --- */}
                       {subject.iconClass === 'icon-ict' && (
-                        <div className="network-container">
-                          <div className="node n1"></div>
-                          <div className="node n2"></div>
-                          <div className="node n3"></div>
-                          <div className="node n4"></div>
-                          <div className="connection c12"></div>
-                          <div className="connection c13"></div>
-                          <div className="connection c24"></div>
-                          <div className="connection c34"></div>
+                        // CSS uses network-grid, ensure consistency
+                        <div className="network-grid">
+                          <div className="node node-center"></div>
+                          <div className="node node-tl"></div>
+                          <div className="node node-tr"></div>
+                          <div className="node node-bl"></div>
+                          <div className="node node-br"></div>
+                          <div className="connection conn-c-tl"></div>
+                          <div className="connection conn-c-tr"></div>
+                          <div className="connection conn-c-bl"></div>
+                          <div className="connection conn-c-br"></div>
+                          {/* Add more connections if defined in CSS */}
                           <div className="packet packet1"></div>
                           <div className="packet packet2"></div>
+                          {/* Add more packets if defined in CSS */}
                         </div>
                       )}
+
+                      {/* --- Language --- */}
                       {subject.iconClass === 'icon-language' && (
                         <div className="bubble-container">
                           <div className="bubble-shape bubble1"></div>
                           <div className="bubble-shape bubble2"></div>
                         </div>
                       )}
+
+                      {/* --- Literature --- */}
                       {subject.iconClass === 'icon-literature' && (
-                        <div className="book-container">
-                          <div className="book-cover">
-                            <div className="page page1"></div>
-                            <div className="page page2"></div>
-                            <div className="page page3"></div>
-                            <div className="page page4"></div>
-                          </div>
+                        // CSS uses book-cover directly inside icon-literature
+                        <div className="book-cover">
+                          {/* Render 4 pages */}
+                          {Array.from({ length: 4 }).map((_, i) => <div key={i} className={`page page${i + 1}`}></div>)}
                         </div>
                       )}
+
+                      {/* --- Mathematics --- */}
                       {subject.iconClass === 'icon-math' && (
                         <div className="pi-container">
                           <div className="pi-symbol">π</div>
-                          <div className="orbiting-num num1">3</div>
-                          <div className="orbiting-num num2">1</div>
-                          <div className="orbiting-num num3">4</div>
-                          <div className="orbiting-num num4">1</div>
-                          <div className="orbiting-num num5">5</div>
+                          {/* Render 5 orbiting numbers */}
+                          {Array.from({ length: 5 }).map((_, i) => {
+                            const numbers = ['3', '1', '4', '1', '5'];
+                            return <div key={i} className={`orbiting-num num${i + 1}`}>{numbers[i]}</div>;
+                          })}
                         </div>
                       )}
+
+                      {/* --- Physics --- */}
                       {subject.iconClass === 'icon-physics' && (
-                        <div className="atom-container">
+                        // CSS uses atom-core, ensure consistency
+                        <div className="atom-core">
                           <div className="nucleus"></div>
-                          <div className="electron-shell s1">
-                            <div className="electron e1"></div>
-                          </div>
-                          <div className="electron-shell s2">
-                            <div className="electron e2"></div>
-                          </div>
-                          <div className="electron-shell s3">
-                            <div className="electron e3"></div>
-                          </div>
+                          {/* Render 3 orbits */}
+                          {Array.from({ length: 3 }).map((_, i) => <div key={i} className={`orbit orbit${i + 1}`}></div>)}
+                          {/* Render 3 electrons */}
+                          {Array.from({ length: 3 }).map((_, i) => <div key={i} className={`electron electron${i + 1}`}></div>)}
                         </div>
                       )}
+
+                      {/* --- Psychology --- */}
                       {subject.iconClass === 'icon-psychology' && (
                         <div className="brain-container">
                           <div className="brain-half left"></div>
                           <div className="brain-half right"></div>
-                          <div className="synapse synapse1"></div>
-                          <div className="synapse synapse2"></div>
-                          <div className="synapse synapse3"></div>
-                          <div className="synapse synapse4"></div>
+                          {/* Render 4 synapses */}
+                          {Array.from({ length: 4 }).map((_, i) => <div key={i} className={`synapse synapse${i + 1}`}></div>)}
                         </div>
                       )}
+
+                      {/* --- Sociology --- */}
                       {subject.iconClass === 'icon-sociology' && (
                         <div className="figure-group">
-                          <div className="figure figure1">
-                            <div className="figure-head"></div>
-                            <div className="figure-body"></div>
-                          </div>
-                          <div className="figure figure2">
-                            <div className="figure-head"></div>
-                            <div className="figure-body"></div>
-                          </div>
-                          <div className="figure figure3">
-                            <div className="figure-head"></div>
-                            <div className="figure-body"></div>
-                          </div>
-                          <div className="figure figure4">
-                            <div className="figure-head"></div>
-                            <div className="figure-body"></div>
-                          </div>
+                          {/* Render 4 figures */}
+                          {Array.from({ length: 4 }).map((_, i) => (
+                            <div key={i} className={`figure figure${i + 1}`}>
+                              <div className="figure-head"></div>
+                              <div className="figure-body"></div>
+                            </div>
+                          ))}
                         </div>
                       )}
+
+                      {/* --- Statistics --- */}
                       {subject.iconClass === 'icon-stats' && (
                         <div className="stats-container">
                           <div className="axis-x"></div>
                           <div className="axis-y"></div>
                           <div className="bell-curve">
-                            <svg>
-                              <path d="M0,34 C10,34 15,5 32.5,5 S55,34 65,34" />
+                            <svg viewBox="0 0 65 34" preserveAspectRatio="none">
+                              {/* Path adjusted slightly for viewBox */}
+                              <path d="M0,33 C10,33 15,5 32.5,5 S55,33 65,33" />
                             </svg>
                           </div>
-                          <div className="data-point point1"></div>
-                          <div className="data-point point2"></div>
-                          <div className="data-point point3"></div>
+                          {/* Render data points with inline style for --x-pos */}
+                          {/* Example positions - adjust as needed */}
+                          <div className="data-point point1" style={{ '--x-pos': 0.2, animationDelay: '0.1s' }}></div>
+                          <div className="data-point point2" style={{ '--x-pos': 0.5, animationDelay: '0.5s' }}></div>
+                          <div className="data-point point3" style={{ '--x-pos': 0.8, animationDelay: '0.9s' }}></div>
+                          <div className="data-point point4" style={{ '--x-pos': 0.35, animationDelay: '1.3s' }}></div>
+                          <div className="data-point point5" style={{ '--x-pos': 0.65, animationDelay: '1.7s' }}></div>
                         </div>
                       )}
+
                     </div>
                     {/* Subtle glow effect on hover */}
                     <div className="absolute inset-0 bg-celeste/10 blur-xl rounded-full transform scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

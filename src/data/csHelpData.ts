@@ -1,7 +1,7 @@
 import React from 'react';
 // Import icons from react-icons (you can choose different icons or sets)
 import {
-  FaCalculator, FaMicrochip, FaNetworkWired, FaDatabase, 
+  FaCalculator, FaMicrochip, FaNetworkWired, FaDatabase,
   FaBrain, FaDraftingCompass, FaCode, FaPaintBrush
 } from 'react-icons/fa'; // Using Font Awesome 5 icons
 import { FaGears } from 'react-icons/fa6'; // Import FaGears from Font Awesome 6
