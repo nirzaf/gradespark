@@ -3,7 +3,7 @@ name: Create Backup Branch
 on:
   # Trigger after successful build/deployment
   workflow_run:
-    workflows: ["Build and Deploy"] # Replace with your actual build workflow name
+    workflows: ["Production – gradespark"] # Replace with your actual build workflow name
     types:
       - completed
     branches:
