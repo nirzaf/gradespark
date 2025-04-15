@@ -1,0 +1,2263 @@
+:root {
+
+    --celeste: #A0EBEB;
+
+    --night: #151616;
+
+    --white: #FEFEFE;
+
+    --techBlue: #A0EBEB;
+
+    --techPurple: #A0EBEB;
+
+    --scienceGreen: #059669;
+
+    --scienceOrange: #06B6D4;
+
+    --accent: #A0EBEB;
+
+}
+
+
+
+/* Common icon styles */
+
+.icon-wrapper {
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+}
+
+
+
+/* Accounting - Calculator */
+
+.icon-accounting .calculator {
+
+    width: 40px;
+
+    height: 50px;
+
+    background-color: var(--night);
+
+    border-radius: 4px;
+
+    position: relative;
+
+    border: 2px solid var(--night);
+
+    box-shadow: inset 0 2px 4px rgba(254, 254, 254, 0.1);
+
+}
+
+
+
+.icon-accounting .screen {
+
+    width: 30px;
+
+    height: 10px;
+
+    background-color: var(--celeste);
+
+    margin: 4px auto;
+
+    border-radius: 2px;
+
+}
+
+
+
+.icon-accounting .buttons {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 3px;
+
+    padding: 0 5px;
+
+    margin-top: 4px;
+
+}
+
+
+
+.icon-accounting .button {
+
+    width: 8px;
+
+    height: 6px;
+
+    background-color: var(--white);
+
+    border-radius: 2px;
+
+    animation: pressButton 2s infinite ease-in-out;
+
+}
+
+
+
+.icon-accounting .button:nth-child(2) {
+
+    animation-delay: 0.2s;
+
+}
+
+
+
+.icon-accounting .button:nth-child(5) {
+
+    animation-delay: 0.4s;
+
+}
+
+
+
+.icon-accounting .button:nth-child(8) {
+
+    animation-delay: 0.6s;
+
+}
+
+
+
+@keyframes pressButton {
+
+
+
+    0%,
+
+    100% {
+
+        transform: scale(1);
+
+        background-color: var(--white);
+
+    }
+
+
+
+    10%,
+
+    30% {
+
+        transform: scale(0.9);
+
+        background-color: var(--accent);
+
+    }
+
+
+
+    20% {
+
+        transform: scale(1);
+
+        background-color: var(--white);
+
+    }
+
+}
+
+
+
+/* Additional Maths - Graph */
+
+.icon-add-maths .graph-bg {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-left: 2px solid var(--night);
+
+    border-bottom: 2px solid var(--night);
+
+    position: relative;
+
+}
+
+
+
+.icon-add-maths .line {
+
+    width: 45px;
+
+    height: 2px;
+
+    background-color: var(--techPurple);
+
+    position: absolute;
+
+    bottom: 10px;
+
+    left: 2px;
+
+    transform-origin: left bottom;
+
+    animation: graphLine 2.5s infinite ease-in-out;
+
+}
+
+
+
+@keyframes graphLine {
+
+    0% {
+
+        transform: scaleX(0.1) rotate(10deg);
+
+    }
+
+
+
+    50% {
+
+        transform: scaleX(1) rotate(-5deg);
+
+    }
+
+
+
+    100% {
+
+        transform: scaleX(0.1) rotate(10deg);
+
+    }
+
+}
+
+
+
+/* Biology - DNA Helix */
+
+.icon-biology .helix {
+
+    width: 20px;
+
+    height: 50px;
+
+    position: relative;
+
+    animation: rotateHelix 4s infinite linear;
+
+}
+
+
+
+.icon-biology .strand {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 2px solid var(--scienceGreen);
+
+    border-radius: 50%;
+
+    border-left-color: transparent;
+
+    border-right-color: transparent;
+
+}
+
+
+
+.icon-biology .strand:nth-child(2) {
+
+    border-color: var(--scienceOrange);
+
+    transform: rotate(60deg);
+
+}
+
+
+
+.icon-biology .strand:nth-child(3) {
+
+    border-color: var(--techBlue);
+
+    transform: rotate(120deg);
+
+}
+
+
+
+@keyframes rotateHelix {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+
+/* Business Studies - Bar Chart */
+
+.icon-business .chart {
+
+    width: 50px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-around;
+
+    border-bottom: 2px solid var(--night);
+
+}
+
+
+
+.icon-business .bar {
+
+    width: 10px;
+
+    background-color: var(--scienceGreen);
+
+    border-radius: 2px 2px 0 0;
+
+    animation: growBar 2s infinite ease-in-out;
+
+}
+
+
+
+.icon-business .bar:nth-child(1) {
+
+    height: 20px;
+
+    animation-delay: 0s;
+
+}
+
+
+
+.icon-business .bar:nth-child(2) {
+
+    height: 35px;
+
+    animation-delay: 0.3s;
+
+    background-color: var(--techBlue);
+
+}
+
+
+
+.icon-business .bar:nth-child(3) {
+
+    height: 25px;
+
+    animation-delay: 0.6s;
+
+    background-color: var(--scienceOrange);
+
+}
+
+
+
+@keyframes growBar {
+
+
+
+    0%,
+
+    100% {
+
+        transform: scaleY(0.5);
+
+    }
+
+
+
+    50% {
+
+        transform: scaleY(1);
+
+    }
+
+}
+
+
+
+/* Chemistry - Beaker */
+
+.icon-chemistry .beaker {
+
+    width: 40px;
+
+    height: 50px;
+
+    border: 3px solid var(--night);
+
+    border-top: none;
+
+    border-radius: 0 0 15px 15px;
+
+    position: relative;
+
+    background: linear-gradient(to top, var(--celeste), #d1fafa 70%);
+
+    overflow: hidden;
+
+}
+
+
+
+.icon-chemistry .beaker::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: -3px;
+
+    left: -3px;
+
+    right: -3px;
+
+    height: 6px;
+
+    border: 3px solid var(--night);
+
+    border-radius: 5px 5px 0 0;
+
+    border-bottom: none;
+
+}
+
+
+
+.icon-chemistry .bubble {
+
+    position: absolute;
+
+    bottom: 5px;
+
+    width: 5px;
+
+    height: 5px;
+
+    background-color: var(--white);
+
+    border-radius: 50%;
+
+    opacity: 0.8;
+
+    animation: bubbleUp 1.5s infinite ease-in;
+
+}
+
+
+
+.icon-chemistry .bubble:nth-child(1) {
+
+    left: 10px;
+
+    animation-delay: 0s;
+
+}
+
+
+
+.icon-chemistry .bubble:nth-child(2) {
+
+    left: 25px;
+
+    animation-delay: 0.5s;
+
+    width: 4px;
+
+    height: 4px;
+
+}
+
+
+
+.icon-chemistry .bubble:nth-child(3) {
+
+    left: 18px;
+
+    animation-delay: 1s;
+
+    width: 6px;
+
+    height: 6px;
+
+}
+
+
+
+@keyframes bubbleUp {
+
+    0% {
+
+        bottom: 5px;
+
+        opacity: 0.8;
+
+        transform: scale(0.5);
+
+    }
+
+
+
+    100% {
+
+        bottom: 40px;
+
+        opacity: 0;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+
+/* Computer Science - Terminal */
+
+.icon-cs .terminal {
+
+    width: 50px;
+
+    height: 40px;
+
+    background-color: var(--night);
+
+    border-radius: 4px;
+
+    padding: 5px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow: inset 0 1px 3px rgba(254, 254, 254, 0.1);
+
+}
+
+
+
+.icon-cs .prompt {
+
+    color: var(--celeste);
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    position: absolute;
+
+    top: 5px;
+
+    left: 5px;
+
+}
+
+
+
+.icon-cs .cursor {
+
+    width: 6px;
+
+    height: 10px;
+
+    background-color: var(--accent);
+
+    position: absolute;
+
+    top: 15px;
+
+    left: 5px;
+
+    animation: blinkCursor 1s infinite step-end;
+
+}
+
+
+
+.icon-cs .line {
+
+    position: absolute;
+
+    height: 1px;
+
+    background-color: rgba(254, 254, 254, 0.5);
+
+    left: 5px;
+
+    right: 5px;
+
+    animation: scrollLines 3s infinite linear;
+
+}
+
+
+
+.icon-cs .line1 {
+
+    top: 18px;
+
+    animation-delay: 0s;
+
+}
+
+
+
+.icon-cs .line2 {
+
+    top: 22px;
+
+    animation-delay: 0.5s;
+
+}
+
+
+
+.icon-cs .line3 {
+
+    top: 26px;
+
+    animation-delay: 1s;
+
+}
+
+
+
+@keyframes blinkCursor {
+
+
+
+    0%,
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+
+
+    51%,
+
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+
+@keyframes scrollLines {
+
+    0% {
+
+        transform: translateY(0);
+
+        opacity: 0.5;
+
+    }
+
+
+
+    90% {
+
+        opacity: 0.5;
+
+    }
+
+
+
+    100% {
+
+        transform: translateY(-20px);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+
+/* Economics - Trend Arrow */
+
+.icon-economics .arrow {
+
+    width: 30px;
+
+    height: 30px;
+
+    position: relative;
+
+    animation: trendArrow 3s infinite ease-in-out;
+
+    transform-origin: center;
+
+}
+
+
+
+.icon-economics .arrow::before {
+
+    content: '';
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 13px;
+
+    width: 4px;
+
+    height: 30px;
+
+    background-color: var(--scienceGreen);
+
+    border-radius: 2px;
+
+    animation: pulseArrow 3s infinite ease-in-out;
+
+    transform-origin: bottom center;
+
+    box-shadow: 0 0 5px rgba(5, 150, 105, 0);
+
+}
+
+
+
+.icon-economics .arrow::after {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+
+    left: 9px;
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 6px solid transparent;
+
+    border-right: 6px solid transparent;
+
+    border-bottom: 10px solid var(--scienceGreen);
+
+    animation: pulseArrowhead 3s infinite ease-in-out;
+
+    transform-origin: bottom center;
+
+}
+
+
+
+@keyframes trendArrow {
+
+    0% {
+
+        transform: translateY(5px) scale(1);
+
+    }
+
+
+
+    25% {
+
+        transform: translateY(-5px) scale(1.05);
+
+    }
+
+
+
+    50% {
+
+        transform: translateY(0) scale(1);
+
+    }
+
+
+
+    75% {
+
+        transform: translateY(3px) scale(0.98);
+
+    }
+
+
+
+    100% {
+
+        transform: translateY(5px) scale(1);
+
+    }
+
+}
+
+
+
+@keyframes pulseArrow {
+
+
+
+    0%,
+
+    100% {
+
+        box-shadow: 0 0 5px rgba(5, 150, 105, 0);
+
+    }
+
+
+
+    50% {
+
+        box-shadow: 0 0 8px rgba(5, 150, 105, 0.5);
+
+    }
+
+}
+
+
+
+@keyframes pulseArrowhead {
+
+
+
+    0%,
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+
+
+    50% {
+
+        transform: scale(1.2);
+
+    }
+
+}
+
+
+
+/* Geography - Globe */
+
+.icon-geography .globe {
+
+    width: 45px;
+
+    height: 45px;
+
+    background: radial-gradient(circle at 30% 30%, var(--scienceOrange), var(--techBlue));
+
+    border-radius: 50%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    animation: spinGlobe 8s infinite linear;
+
+    box-shadow: inset -5px -5px 10px rgba(21, 22, 22, 0.3);
+
+}
+
+
+
+.icon-geography .land {
+
+    position: absolute;
+
+    background-color: var(--scienceGreen);
+
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+
+}
+
+
+
+.icon-geography .land1 {
+
+    top: 5px;
+
+    left: 5px;
+
+    width: 20px;
+
+    height: 15px;
+
+    transform: rotate(-20deg);
+
+}
+
+
+
+.icon-geography .land2 {
+
+    bottom: 8px;
+
+    right: 3px;
+
+    width: 15px;
+
+    height: 10px;
+
+    transform: rotate(30deg);
+
+}
+
+
+
+.icon-geography .land3 {
+
+    top: 20px;
+
+    left: 25px;
+
+    width: 10px;
+
+    height: 8px;
+
+}
+
+
+
+@keyframes spinGlobe {
+
+    from {
+
+        background-position: 0% 50%;
+
+    }
+
+
+
+    to {
+
+        background-position: 100% 50%;
+
+    }
+
+}
+
+
+
+/* History - Hourglass */
+
+.icon-history .hourglass {
+
+    width: 30px;
+
+    height: 45px;
+
+    position: relative;
+
+    border-top: 3px solid var(--night);
+
+    border-bottom: 3px solid var(--night);
+
+}
+
+
+
+.icon-history .glass {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    border-left: 3px solid var(--night);
+
+    border-right: 3px solid var(--night);
+
+}
+
+
+
+.icon-history .glass::before,
+
+.icon-history .glass::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 3px;
+
+    right: 3px;
+
+    height: 45%;
+
+    border: 3px solid var(--night);
+
+    border-radius: 50%;
+
+}
+
+
+
+.icon-history .glass::before {
+
+    top: 0;
+
+    border-bottom: none;
+
+    border-radius: 0 0 15px 15px;
+
+}
+
+
+
+.icon-history .glass::after {
+
+    bottom: 0;
+
+    border-top: none;
+
+    border-radius: 15px 15px 0 0;
+
+}
+
+
+
+.icon-history .sand-top {
+
+    position: absolute;
+
+    top: 6px;
+
+    left: 6px;
+
+    right: 6px;
+
+    height: 15px;
+
+    background-color: var(--accent);
+
+    border-radius: 0 0 8px 8px;
+
+    animation: sandFallTop 4s infinite linear;
+
+    transform-origin: bottom center;
+
+}
+
+
+
+.icon-history .sand-bottom {
+
+    position: absolute;
+
+    bottom: 6px;
+
+    left: 6px;
+
+    right: 6px;
+
+    height: 0px;
+
+    background-color: var(--accent);
+
+    border-radius: 8px 8px 0 0;
+
+    animation: sandFallBottom 4s infinite linear;
+
+    transform-origin: bottom center;
+
+}
+
+
+
+.icon-history .stream {
+
+    position: absolute;
+
+    top: 21px;
+
+    left: 13px;
+
+    width: 1px;
+
+    height: 0px;
+
+    background-color: var(--accent);
+
+    animation: sandStream 4s infinite linear;
+
+}
+
+
+
+@keyframes sandFallTop {
+
+    0% {
+
+        height: 15px;
+
+    }
+
+
+
+    90%,
+
+    100% {
+
+        height: 0px;
+
+    }
+
+}
+
+
+
+@keyframes sandFallBottom {
+
+
+
+    0%,
+
+    10% {
+
+        height: 0px;
+
+    }
+
+
+
+    100% {
+
+        height: 15px;
+
+    }
+
+}
+
+
+
+@keyframes sandStream {
+
+    0% {
+
+        height: 0;
+
+        top: 21px;
+
+    }
+
+
+
+    10% {
+
+        height: 6px;
+
+        top: 21px;
+
+    }
+
+
+
+    90% {
+
+        height: 6px;
+
+        top: 21px;
+
+    }
+
+
+
+    100% {
+
+        height: 0;
+
+        top: 27px;
+
+    }
+
+}
+
+
+
+/* Human Biology - Heart */
+
+.icon-human-bio .heart {
+
+    width: 40px;
+
+    height: 40px;
+
+    position: relative;
+
+    animation: beat 1.2s infinite ease-in-out;
+
+}
+
+
+
+.icon-human-bio .heart::before,
+
+.icon-human-bio .heart::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 20px;
+
+    height: 32px;
+
+    background-color: var(--scienceOrange);
+
+    border-radius: 20px 20px 0 0;
+
+    transform: rotate(-45deg);
+
+    transform-origin: 0 100%;
+
+}
+
+
+
+.icon-human-bio .heart::after {
+
+    left: 0;
+
+    transform: rotate(45deg);
+
+    transform-origin: 100% 100%;
+
+}
+
+
+
+@keyframes beat {
+
+
+
+    0%,
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+
+
+    25% {
+
+        transform: scale(1.1);
+
+    }
+
+
+
+    50% {
+
+        transform: scale(1);
+
+    }
+
+
+
+    75% {
+
+        transform: scale(0.95);
+
+    }
+
+}
+
+
+
+/* ICT - Network Nodes */
+
+.icon-ict .network {
+
+    width: 50px;
+
+    height: 50px;
+
+    position: relative;
+
+}
+
+
+
+.icon-ict .node {
+
+    width: 10px;
+
+    height: 10px;
+
+    background-color: var(--techBlue);
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    animation: pulseNode 2s infinite ease-in-out;
+
+}
+
+
+
+.icon-ict .node1 {
+
+    top: 5px;
+
+    left: 20px;
+
+    animation-delay: 0s;
+
+}
+
+
+
+.icon-ict .node2 {
+
+    top: 25px;
+
+    left: 5px;
+
+    animation-delay: 0.5s;
+
+}
+
+
+
+.icon-ict .node3 {
+
+    top: 25px;
+
+    right: 5px;
+
+    animation-delay: 1s;
+
+}
+
+
+
+.icon-ict .node4 {
+
+    bottom: 5px;
+
+    left: 20px;
+
+    animation-delay: 1.5s;
+
+}
+
+
+
+.icon-ict .line {
+
+    position: absolute;
+
+    background-color: var(--night);
+
+    height: 2px;
+
+    transform-origin: center;
+
+    animation: pulseLine 2s infinite ease-in-out;
+
+}
+
+
+
+.icon-ict .line12 {
+
+    width: 25px;
+
+    top: 15px;
+
+    left: 10px;
+
+    transform: rotate(45deg);
+
+    animation-delay: 0.25s;
+
+}
+
+
+
+.icon-ict .line13 {
+
+    width: 25px;
+
+    top: 15px;
+
+    right: 10px;
+
+    transform: rotate(-45deg);
+
+    animation-delay: 0.5s;
+
+}
+
+
+
+.icon-ict .line24 {
+
+    height: 25px;
+
+    width: 2px;
+
+    left: 9px;
+
+    top: 20px;
+
+    animation-delay: 0.75s;
+
+}
+
+
+
+.icon-ict .line34 {
+
+    height: 25px;
+
+    width: 2px;
+
+    right: 9px;
+
+    top: 20px;
+
+    animation-delay: 1s;
+
+}
+
+
+
+@keyframes pulseNode {
+
+
+
+    0%,
+
+    100% {
+
+        transform: scale(1);
+
+        box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.4);
+
+    }
+
+
+
+    50% {
+
+        transform: scale(1.2);
+
+        box-shadow: 0 0 0 5px rgba(29, 78, 216, 0);
+
+    }
+
+}
+
+
+
+@keyframes pulseLine {
+
+
+
+    0%,
+
+    100% {
+
+        opacity: 0.3;
+
+    }
+
+
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+
+/* Language - Speech Bubbles */
+
+.icon-language .bubble {
+
+    position: absolute;
+
+    background-color: var(--techBlue);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation: floatBubble 3s infinite ease-in-out;
+
+}
+
+
+
+.icon-language .bubble1 {
+
+    width: 30px;
+
+    height: 30px;
+
+    top: 5px;
+
+    left: 5px;
+
+    animation-delay: 0s;
+
+}
+
+
+
+.icon-language .bubble2 {
+
+    width: 20px;
+
+    height: 20px;
+
+    bottom: 10px;
+
+    right: 10px;
+
+    animation-delay: 1.5s;
+
+}
+
+
+
+@keyframes floatBubble {
+
+
+
+    0%,
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+
+
+    50% {
+
+        transform: translateY(-5px);
+
+    }
+
+}
+
+
+
+/* Literature - Book */
+
+.icon-literature .book {
+
+    width: 40px;
+
+    height: 30px;
+
+    position: relative;
+
+    perspective: 100px;
+
+    transform-style: preserve-3d;
+
+    animation: openBook 4s infinite ease-in-out;
+
+}
+
+
+
+.icon-literature .page {
+
+    position: absolute;
+
+    width: 20px;
+
+    height: 30px;
+
+    background-color: var(--white);
+
+    border: 1px solid var(--night);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 3px;
+
+}
+
+
+
+.icon-literature .left-page {
+
+    left: 0;
+
+    transform-origin: right center;
+
+    z-index: 1;
+
+}
+
+
+
+.icon-literature .right-page {
+
+    right: 0;
+
+    transform-origin: left center;
+
+}
+
+
+
+.icon-literature .text-line {
+
+    width: 15px;
+
+    height: 1px;
+
+    background-color: var(--night);
+
+    opacity: 0.5;
+
+}
+
+
+
+.icon-literature .text-line.short {
+
+    width: 10px;
+
+}
+
+
+
+@keyframes openBook {
+
+
+
+    0%,
+
+    100% {
+
+        transform: rotateY(0deg);
+
+    }
+
+
+
+    50% {
+
+        transform: rotateY(10deg);
+
+    }
+
+}
+
+
+
+/* Mathematics - Pi Symbol */
+
+.icon-math .pi {
+
+    width: 40px;
+
+    height: 40px;
+
+    position: relative;
+
+    animation: rotatePi 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+
+
+.icon-math .pi::before {
+
+    content: 'π';
+
+    position: absolute;
+
+    font-size: 40px;
+
+    font-weight: bold;
+
+    color: var(--techPurple);
+
+    top: 0;
+
+    left: 0;
+
+    animation: glowPi 6s infinite ease-in-out;
+
+    text-shadow: 0 0 5px rgba(160, 235, 235, 0);
+
+}
+
+
+
+@keyframes rotatePi {
+
+    0% {
+
+        transform: rotateY(0deg) scale(1);
+
+    }
+
+
+
+    25% {
+
+        transform: rotateY(90deg) scale(1.1);
+
+    }
+
+
+
+    50% {
+
+        transform: rotateY(180deg) scale(1);
+
+    }
+
+
+
+    75% {
+
+        transform: rotateY(270deg) scale(1.1);
+
+    }
+
+
+
+    100% {
+
+        transform: rotateY(360deg) scale(1);
+
+    }
+
+}
+
+
+
+@keyframes glowPi {
+
+
+
+    0%,
+
+    100% {
+
+        text-shadow: 0 0 5px rgba(160, 235, 235, 0);
+
+    }
+
+
+
+    50% {
+
+        text-shadow: 0 0 15px rgba(160, 235, 235, 0.7);
+
+    }
+
+}
+
+
+
+/* Physics - Atom */
+
+.icon-physics .atom {
+
+    width: 50px;
+
+    height: 50px;
+
+    position: relative;
+
+}
+
+
+
+.icon-physics .nucleus {
+
+    width: 10px;
+
+    height: 10px;
+
+    background-color: var(--scienceOrange);
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+
+}
+
+
+
+.icon-physics .orbit {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(21, 22, 22, 0.3);
+
+    border-radius: 50%;
+
+}
+
+
+
+.icon-physics .orbit1 {
+
+    width: 30px;
+
+    height: 20px;
+
+    animation: rotateOrbit1 2s infinite linear;
+
+}
+
+
+
+.icon-physics .orbit2 {
+
+    width: 20px;
+
+    height: 30px;
+
+    animation: rotateOrbit2 2s infinite linear;
+
+}
+
+
+
+.icon-physics .orbit3 {
+
+    width: 40px;
+
+    height: 25px;
+
+    animation: rotateOrbit3 3s infinite linear;
+
+}
+
+
+
+.icon-physics .electron {
+
+    width: 5px;
+
+    height: 5px;
+
+    background-color: var(--techBlue);
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: -2.5px;
+
+    left: calc(50% - 2.5px);
+
+}
+
+
+
+@keyframes rotateOrbit1 {
+
+    from {
+
+        transform: translate(-50%, -50%) rotate(0deg);
+
+    }
+
+
+
+    to {
+
+        transform: translate(-50%, -50%) rotate(360deg);
+
+    }
+
+}
+
+
+
+@keyframes rotateOrbit2 {
+
+    from {
+
+        transform: translate(-50%, -50%) rotate(90deg);
+
+    }
+
+
+
+    to {
+
+        transform: translate(-50%, -50%) rotate(450deg);
+
+    }
+
+}
+
+
+
+@keyframes rotateOrbit3 {
+
+    from {
+
+        transform: translate(-50%, -50%) rotate(180deg);
+
+    }
+
+
+
+    to {
+
+        transform: translate(-50%, -50%) rotate(540deg);
+
+    }
+
+}
+
+
+
+/* Psychology - Brain */
+
+.icon-psychology .brain {
+
+    width: 40px;
+
+    height: 35px;
+
+    position: relative;
+
+}
+
+
+
+.icon-psychology .lobe {
+
+    position: absolute;
+
+    background-color: var(--techPurple);
+
+    border-radius: 50%;
+
+    animation: pulseBrain 2s infinite alternate ease-in-out;
+
+}
+
+
+
+.icon-psychology .lobe1 {
+
+    width: 25px;
+
+    height: 30px;
+
+    left: 0;
+
+    top: 0;
+
+    animation-delay: 0s;
+
+}
+
+
+
+.icon-psychology .lobe2 {
+
+    width: 25px;
+
+    height: 30px;
+
+    right: 0;
+
+    top: 0;
+
+    animation-delay: 1s;
+
+}
+
+
+
+@keyframes pulseBrain {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+
+
+    100% {
+
+        transform: scale(1.05);
+
+    }
+
+}
+
+
+
+/* Sociology - People Figures */
+
+.icon-sociology .figures {
+
+    width: 50px;
+
+    height: 40px;
+
+    position: relative;
+
+}
+
+
+
+.icon-sociology .figure {
+
+    position: absolute;
+
+    width: 10px;
+
+    height: 20px;
+
+    border-radius: 5px 5px 0 0;
+
+    animation: moveFigure 3s infinite ease-in-out;
+
+}
+
+
+
+.icon-sociology .figure1 {
+
+    background-color: var(--techBlue);
+
+    left: 5px;
+
+    bottom: 0;
+
+    animation-delay: 0s;
+
+}
+
+
+
+.icon-sociology .figure2 {
+
+    background-color: var(--scienceGreen);
+
+    left: 20px;
+
+    bottom: 0;
+
+    height: 25px;
+
+    animation-delay: 0.5s;
+
+}
+
+
+
+.icon-sociology .figure3 {
+
+    background-color: var(--scienceOrange);
+
+    right: 5px;
+
+    bottom: 0;
+
+    animation-delay: 1s;
+
+}
+
+
+
+@keyframes moveFigure {
+
+
+
+    0%,
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+
+
+    50% {
+
+        transform: translateY(-5px);
+
+    }
+
+}
+
+
+
+/* Statistics - Bell Curve */
+
+.icon-stats .curve {
+
+    width: 40px;
+
+    height: 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+
+.icon-stats .curve::before {
+
+    content: '';
+
+    position: absolute;
+
+    width: 40px;
+
+    height: 40px;
+
+    background-color: transparent;
+
+    border: 2px solid var(--techPurple);
+
+    border-radius: 50%;
+
+    top: 15px;
+
+    left: 0;
+
+    animation: drawCurve 3s infinite ease-in-out;
+
+}
+
+
+
+.icon-stats .axis {
+
+    position: absolute;
+
+    width: 40px;
+
+    height: 2px;
+
+    background-color: var(--night);
+
+    bottom: 0;
+
+    left: 0;
+
+}
+
+
+
+@keyframes drawCurve {
+
+    0% {
+
+        transform: translateY(30px);
+
+    }
+
+
+
+    50% {
+
+        transform: translateY(0);
+
+    }
+
+
+
+    100% {
+
+        transform: translateY(30px);
+
+    }
+
+}

@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated School Subject Icons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Color Palette Variables */
+        :root {
+            --celeste: #A0EBEB;
+            --night: #151616;
+            --white: #FEFEFE;
+            --techBlue: #1D4ED8;
+            --techPurple: #6D28D9;
+            --scienceGreen: #059669;
+            --scienceOrange: #06B6D4;
+            /* Using Cyan as Science Orange */
+            --accent: #FACC15;
+        }
+
+        /* Custom CSS for Icons and Animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            /* Use white background */
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .icon-card {
+            background-color: var(--white);
+            /* White card background */
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Use night for shadow, with low opacity */
+            box-shadow: 0 4px 12px rgba(21, 22, 22, 0.08);
+            min-height: 160px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            overflow: hidden;
+            border: 1px solid rgba(21, 22, 22, 0.1);
+            /* Subtle border using night */
+        }
+
+        .icon-card:hover {
+            transform: translateY(-4px);
+            /* Enhanced shadow using night */
+            box-shadow: 0 6px 16px rgba(21, 22, 22, 0.12);
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .icon-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--night);
+            /* Use night for label text */
+            text-align: center;
+        }
+
+        /* --- Icon Specific Styles & Animations --- */
+
+        /* 1. Accounting - Calculator */
+        .icon-accounting .calculator {
+            width: 40px;
+            height: 50px;
+            background-color: var(--night);
+            /* Dark background */
+            border-radius: 4px;
+            position: relative;
+            border: 2px solid var(--night);
+            box-shadow: inset 0 2px 4px rgba(254, 254, 254, 0.1);
+            /* Subtle inset shadow */
+        }
+
+        .icon-accounting .screen {
+            width: 30px;
+            height: 10px;
+            background-color: var(--celeste);
+            /* Celeste screen */
+            margin: 4px auto;
+            border-radius: 2px;
+        }
+
+        .icon-accounting .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            padding: 0 5px;
+            margin-top: 4px;
+        }
+
+        .icon-accounting .button {
+            width: 8px;
+            height: 6px;
+            background-color: var(--white);
+            /* White buttons */
+            border-radius: 2px;
+            animation: pressButton 2s infinite ease-in-out;
+        }
+
+        .icon-accounting .button:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .icon-accounting .button:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .icon-accounting .button:nth-child(8) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes pressButton {
+
+            0%,
+            100% {
+                transform: scale(1);
+                background-color: var(--white);
+            }
+
+            10%,
+            30% {
+                transform: scale(0.9);
+                background-color: var(--accent);
+            }
+
+            /* Accent when pressed */
+            20% {
+                transform: scale(1);
+                background-color: var(--white);
+            }
+        }
+
+        /* 2. Additional Maths - Graph */
+        .icon-add-maths .graph-bg {
+            width: 50px;
+            height: 50px;
+            border-left: 2px solid var(--night);
+            /* Night axis */
+            border-bottom: 2px solid var(--night);
+            position: relative;
+        }
+
+        .icon-add-maths .line {
+            width: 45px;
+            height: 2px;
+            background-color: var(--techPurple);
+            /* Tech Purple line */
+            position: absolute;
+            bottom: 10px;
+            left: 2px;
+            transform-origin: left bottom;
+            animation: graphLine 2.5s infinite ease-in-out;
+        }
+
+        @keyframes graphLine {
+            0% {
+                transform: scaleX(0.1) rotate(10deg);
+            }
+
+            50% {
+                transform: scaleX(1) rotate(-5deg);
+            }
+
+            100% {
+                transform: scaleX(0.1) rotate(10deg);
+            }
+        }
+
+        /* 3. Biology - DNA Helix */
+        .icon-biology .helix {
+            width: 20px;
+            height: 50px;
+            position: relative;
+            animation: rotateHelix 4s infinite linear;
+        }
+
+        .icon-biology .strand {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--scienceGreen);
+            /* Science Green */
+            border-radius: 50%;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .icon-biology .strand:nth-child(2) {
+            border-color: var(--scienceOrange);
+            /* Science Orange (Cyan) */
+            transform: rotate(60deg);
+        }
+
+        .icon-biology .strand:nth-child(3) {
+            border-color: var(--techBlue);
+            /* Tech Blue */
+            transform: rotate(120deg);
+        }
+
+        @keyframes rotateHelix {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 4. Business Studies - Bar Chart */
+        .icon-business .chart {
+            width: 50px;
+            height: 40px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            border-bottom: 2px solid var(--night);
+            /* Night base */
+        }
+
+        .icon-business .bar {
+            width: 10px;
+            background-color: var(--scienceGreen);
+            /* Science Green */
+            border-radius: 2px 2px 0 0;
+            animation: growBar 2s infinite ease-in-out;
+        }
+
+        .icon-business .bar:nth-child(1) {
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .icon-business .bar:nth-child(2) {
+            height: 35px;
+            animation-delay: 0.3s;
+            background-color: var(--techBlue);
+        }
+
+        /* Tech Blue */
+        .icon-business .bar:nth-child(3) {
+            height: 25px;
+            animation-delay: 0.6s;
+            background-color: var(--scienceOrange);
+        }
+
+        /* Science Orange (Cyan) */
+        @keyframes growBar {
+
+            0%,
+            100% {
+                transform: scaleY(0.5);
+            }
+
+            50% {
+                transform: scaleY(1);
+            }
+        }
+
+        /* 5. Chemistry - Beaker */
+        .icon-chemistry .beaker {
+            width: 40px;
+            height: 50px;
+            border: 3px solid var(--night);
+            /* Night outline */
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            position: relative;
+            /* Celeste liquid, fading slightly */
+            background: linear-gradient(to top, var(--celeste), #d1fafa 70%);
+            overflow: hidden;
+        }
+
+        .icon-chemistry .beaker::before {
+            /* Top rim */
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            height: 6px;
+            border: 3px solid var(--night);
+            border-radius: 5px 5px 0 0;
+            border-bottom: none;
+        }
+
+        .icon-chemistry .bubble {
+            position: absolute;
+            bottom: 5px;
+            width: 5px;
+            height: 5px;
+            background-color: var(--white);
+            /* White bubbles */
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: bubbleUp 1.5s infinite ease-in;
+        }
+
+        .icon-chemistry .bubble:nth-child(1) {
+            left: 10px;
+            animation-delay: 0s;
+        }
+
+        .icon-chemistry .bubble:nth-child(2) {
+            left: 25px;
+            animation-delay: 0.5s;
+            width: 4px;
+            height: 4px;
+        }
+
+        .icon-chemistry .bubble:nth-child(3) {
+            left: 18px;
+            animation-delay: 1s;
+            width: 6px;
+            height: 6px;
+        }
+
+        @keyframes bubbleUp {
+            0% {
+                bottom: 5px;
+                opacity: 0.8;
+                transform: scale(0.5);
+            }
+
+            100% {
+                bottom: 40px;
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+
+        /* 6. Computer Science - Terminal */
+        .icon-cs .terminal {
+            width: 50px;
+            height: 40px;
+            background-color: var(--night);
+            /* Night background */
+            border-radius: 4px;
+            padding: 5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(254, 254, 254, 0.1);
+            /* Subtle inset shadow */
+        }
+
+        .icon-cs .prompt {
+            color: var(--celeste);
+            /* Celeste prompt */
+            font-family: monospace;
+            font-size: 8px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .icon-cs .cursor {
+            width: 6px;
+            height: 10px;
+            background-color: var(--accent);
+            /* Accent cursor */
+            position: absolute;
+            top: 15px;
+            left: 5px;
+            animation: blinkCursor 1s infinite step-end;
+        }
+
+        @keyframes blinkCursor {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Add some fake code lines */
+        .icon-cs .line {
+            position: absolute;
+            height: 1px;
+            background-color: rgba(254, 254, 254, 0.5);
+            /* Semi-transparent white lines */
+            left: 5px;
+            right: 5px;
+            animation: scrollLines 3s infinite linear;
+        }
+
+        .icon-cs .line1 {
+            top: 18px;
+            animation-delay: 0s;
+        }
+
+        .icon-cs .line2 {
+            top: 22px;
+            animation-delay: 0.5s;
+        }
+
+        .icon-cs .line3 {
+            top: 26px;
+            animation-delay: 1s;
+        }
+
+        @keyframes scrollLines {
+            0% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+
+        /* 7. English - Pen Writing */
+        .icon-english .pen {
+            width: 8px;
+            height: 45px;
+            background: var(--techBlue);
+            /* Tech Blue pen */
+            border-radius: 4px 4px 2px 2px;
+            position: relative;
+            transform: rotate(-30deg);
+            transform-origin: bottom center;
+            animation: writeLine 2.5s infinite ease-in-out;
+        }
+
+        .icon-english .pen::after {
+            /* Nib */
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 2px;
+            width: 0;
+            height: 0;
+            border-left: 2px solid transparent;
+            border-right: 2px solid transparent;
+            border-top: 4px solid var(--night);
+            /* Night nib */
+        }
+
+        .icon-english .line {
+            width: 40px;
+            height: 2px;
+            background-color: var(--night);
+            /* Night line */
+            position: absolute;
+            bottom: 0px;
+            left: -15px;
+            transform-origin: left center;
+            animation: drawLine 2.5s infinite ease-in-out;
+        }
+
+        @keyframes writeLine {
+
+            0%,
+            100% {
+                transform: rotate(-30deg) translateX(0px);
+            }
+
+            25% {
+                transform: rotate(-35deg) translateX(-2px);
+            }
+
+            50% {
+                transform: rotate(-30deg) translateX(5px);
+            }
+
+            75% {
+                transform: rotate(-25deg) translateX(2px);
+            }
+        }
+
+        @keyframes drawLine {
+
+            0%,
+            100% {
+                transform: scaleX(0);
+            }
+
+            50% {
+                transform: scaleX(1);
+            }
+
+            51% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+
+            99% {
+                opacity: 0;
+            }
+        }
+
+        /* 8. Economics - Trend Arrow */
+        .icon-economics .arrow {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            animation: trendArrow 2s infinite ease-in-out;
+        }
+
+        .icon-economics .arrow::before {
+            /* Arrow shaft */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 13px;
+            width: 4px;
+            height: 30px;
+            background-color: var(--scienceGreen);
+            /* Science Green */
+            border-radius: 2px;
+        }
+
+        .icon-economics .arrow::after {
+            /* Arrow head */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 9px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 10px solid var(--scienceGreen);
+            /* Science Green */
+        }
+
+        @keyframes trendArrow {
+
+            0%,
+            100% {
+                transform: translateY(5px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* 9. Geography - Globe */
+        .icon-geography .globe {
+            width: 45px;
+            height: 45px;
+            /* Tech Blue gradient */
+            background: radial-gradient(circle at 30% 30%, var(--scienceOrange), var(--techBlue));
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            animation: spinGlobe 8s infinite linear;
+            /* Inset shadow using night */
+            box-shadow: inset -5px -5px 10px rgba(21, 22, 22, 0.3);
+        }
+
+        .icon-geography .land {
+            /* Simplified land mass */
+            position: absolute;
+            background-color: var(--scienceGreen);
+            /* Science Green land */
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            /* Blob shape */
+        }
+
+        .icon-geography .land1 {
+            top: 5px;
+            left: 5px;
+            width: 20px;
+            height: 15px;
+            transform: rotate(-20deg);
+        }
+
+        .icon-geography .land2 {
+            bottom: 8px;
+            right: 3px;
+            width: 15px;
+            height: 10px;
+            transform: rotate(30deg);
+        }
+
+        .icon-geography .land3 {
+            top: 20px;
+            left: 25px;
+            width: 10px;
+            height: 8px;
+        }
+
+        @keyframes spinGlobe {
+            from {
+                background-position: 0% 50%;
+            }
+
+            to {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* 10. History - Hourglass */
+        .icon-history .hourglass {
+            width: 30px;
+            height: 45px;
+            position: relative;
+            border-top: 3px solid var(--night);
+            /* Night frame */
+            border-bottom: 3px solid var(--night);
+        }
+
+        .icon-history .glass {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-left: 3px solid var(--night);
+            border-right: 3px solid var(--night);
+        }
+
+        .icon-history .glass::before,
+        .icon-history .glass::after {
+            /* Top and bottom bulbs */
+            content: '';
+            position: absolute;
+            left: 3px;
+            right: 3px;
+            height: 45%;
+            border: 3px solid var(--night);
+            border-radius: 50%;
+        }
+
+        .icon-history .glass::before {
+            top: 0;
+            border-bottom: none;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .icon-history .glass::after {
+            bottom: 0;
+            border-top: none;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .icon-history .sand-top {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            height: 15px;
+            background-color: var(--accent);
+            /* Accent sand */
+            border-radius: 0 0 8px 8px;
+            animation: sandFallTop 4s infinite linear;
+            transform-origin: bottom center;
+        }
+
+        .icon-history .sand-bottom {
+            position: absolute;
+            bottom: 6px;
+            left: 6px;
+            right: 6px;
+            height: 0px;
+            background-color: var(--accent);
+            /* Accent sand */
+            border-radius: 8px 8px 0 0;
+            animation: sandFallBottom 4s infinite linear;
+            transform-origin: bottom center;
+        }
+
+        .icon-history .stream {
+            position: absolute;
+            top: 21px;
+            left: 13px;
+            width: 1px;
+            height: 0px;
+            background-color: var(--accent);
+            /* Accent sand stream */
+            animation: sandStream 4s infinite linear;
+        }
+
+        @keyframes sandFallTop {
+            0% {
+                height: 15px;
+            }
+
+            90%,
+            100% {
+                height: 0px;
+            }
+        }
+
+        @keyframes sandFallBottom {
+
+            0%,
+            10% {
+                height: 0px;
+            }
+
+            100% {
+                height: 15px;
+            }
+        }
+
+        @keyframes sandStream {
+            0% {
+                height: 0;
+                top: 21px;
+            }
+
+            10% {
+                height: 6px;
+                top: 21px;
+            }
+
+            90% {
+                height: 6px;
+                top: 21px;
+            }
+
+            100% {
+                height: 0;
+                top: 27px;
+            }
+        }
+
+
+        /* 11. Human Biology - Heart */
+        .icon-human-bio .heart {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            animation: beat 1.2s infinite ease-in-out;
+        }
+
+        .icon-human-bio .heart::before,
+        .icon-human-bio .heart::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 32px;
+            background-color: var(--scienceOrange);
+            /* Science Orange (Cyan) heart */
+            border-radius: 20px 20px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .icon-human-bio .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.1);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(0.95);
+            }
+        }
+
+        /* 12. ICT - Network Nodes */
+        .icon-ict .network {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .icon-ict .node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--techBlue);
+            /* Tech Blue node */
+            border-radius: 50%;
+            animation: pulseNode 2s infinite ease-in-out;
+        }
+
+        .icon-ict .node1 {
+            top: 0;
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .icon-ict .node2 {
+            top: 15px;
+            left: 0;
+            animation-delay: 0.3s;
+            background-color: var(--techPurple);
+        }
+
+        /* Tech Purple */
+        .icon-ict .node3 {
+            top: 15px;
+            right: 0;
+            animation-delay: 0.6s;
+            background-color: var(--scienceOrange);
+        }
+
+        /* Science Orange (Cyan) */
+        .icon-ict .node4 {
+            bottom: 0;
+            left: 20px;
+            animation-delay: 0.9s;
+        }
+
+        .icon-ict .line {
+            position: absolute;
+            background-color: rgba(21, 22, 22, 0.5);
+            /* Semi-transparent night lines */
+            height: 2px;
+            transform-origin: left center;
+        }
+
+        .icon-ict .line12 {
+            top: 5px;
+            left: 25px;
+            width: 20px;
+            transform: rotate(135deg);
+        }
+
+        .icon-ict .line13 {
+            top: 5px;
+            left: 25px;
+            width: 20px;
+            transform: rotate(45deg);
+        }
+
+        .icon-ict .line24 {
+            top: 20px;
+            left: 5px;
+            width: 28px;
+            transform: rotate(90deg);
+        }
+
+        .icon-ict .line34 {
+            top: 20px;
+            right: 5px;
+            width: 28px;
+            transform: rotate(90deg);
+        }
+
+        @keyframes pulseNode {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        /* 13. Language - Speech Bubbles */
+        .icon-language .bubble {
+            position: absolute;
+            background-color: var(--techPurple);
+            /* Tech Purple */
+            border-radius: 10px;
+            animation: popBubble 3s infinite ease-in-out;
+        }
+
+        .icon-language .bubble1 {
+            width: 30px;
+            height: 20px;
+            top: 5px;
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .icon-language .bubble1::after {
+            /* Tail */
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 8px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--techPurple);
+            /* Match bubble color */
+        }
+
+        .icon-language .bubble2 {
+            width: 25px;
+            height: 18px;
+            bottom: 5px;
+            right: 0;
+            background-color: var(--scienceOrange);
+            /* Science Orange (Cyan) */
+            animation-delay: 1s;
+            border-radius: 10px;
+        }
+
+        .icon-language .bubble2::after {
+            /* Tail */
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: 8px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid var(--scienceOrange);
+            /* Match bubble color */
+        }
+
+        @keyframes popBubble {
+
+            0%,
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            10%,
+            90% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* 14. Literature - Open Book */
+        .icon-literature .book {
+            width: 50px;
+            height: 40px;
+            background-color: var(--night);
+            /* Night cover */
+            border-radius: 4px;
+            position: relative;
+            perspective: 200px;
+        }
+
+        .icon-literature .page {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            width: 48%;
+            background-color: var(--white);
+            /* White paper */
+            border: 1px solid rgba(21, 22, 22, 0.2);
+            /* Light night border */
+        }
+
+        .icon-literature .left-page {
+            left: 4px;
+            border-radius: 2px 0 0 2px;
+            transform-origin: right center;
+            animation: turnPageLeft 3s infinite ease-in-out;
+        }
+
+        .icon-literature .right-page {
+            right: 4px;
+            border-radius: 0 2px 2px 0;
+            transform-origin: left center;
+            animation: turnPageRight 3s infinite ease-in-out;
+        }
+
+        .icon-literature .text-line {
+            height: 2px;
+            background-color: rgba(21, 22, 22, 0.5);
+            /* Semi-transparent night text */
+            margin: 4px 3px;
+            border-radius: 1px;
+        }
+
+        .icon-literature .text-line.short {
+            width: 60%;
+        }
+
+        @keyframes turnPageLeft {
+
+            0%,
+            100% {
+                transform: rotateY(0deg);
+            }
+
+            50% {
+                transform: rotateY(30deg);
+            }
+        }
+
+        @keyframes turnPageRight {
+
+            0%,
+            100% {
+                transform: rotateY(0deg);
+            }
+
+            50% {
+                transform: rotateY(-30deg);
+            }
+        }
+
+        /* 15. Mathematics - Pi Symbol */
+        .icon-math .pi {
+            width: 40px;
+            height: 35px;
+            position: relative;
+            animation: rotatePi 5s infinite linear;
+        }
+
+        .icon-math .pi::before {
+            /* Top bar */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background-color: var(--techPurple);
+            /* Tech Purple */
+            border-radius: 3px;
+        }
+
+        .icon-math .pi::after {
+            /* Legs */
+            content: '';
+            position: absolute;
+            top: 6px;
+            bottom: 0;
+            width: 6px;
+            background-color: var(--techPurple);
+            /* Tech Purple */
+            border-radius: 3px;
+            left: 5px;
+            box-shadow: 24px 0 0 var(--techPurple);
+            /* Right leg */
+        }
+
+        @keyframes rotatePi {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 16. Physics - Atom */
+        .icon-physics .atom {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .icon-physics .nucleus {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            /* Accent nucleus */
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .icon-physics .orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(21, 22, 22, 0.4);
+            /* Semi-transparent night orbit */
+            border-radius: 50%;
+            animation: spinOrbit 3s infinite linear;
+        }
+
+        .icon-physics .orbit1 {
+            transform: rotate(0deg);
+            animation-duration: 3s;
+        }
+
+        .icon-physics .orbit2 {
+            transform: rotate(60deg);
+            animation-duration: 4s;
+        }
+
+        .icon-physics .orbit3 {
+            transform: rotate(120deg);
+            animation-duration: 5s;
+        }
+
+        .icon-physics .electron {
+            width: 6px;
+            height: 6px;
+            background-color: var(--techBlue);
+            /* Tech Blue electron */
+            border-radius: 50%;
+            position: absolute;
+            top: -3px;
+            left: 22px;
+        }
+
+        @keyframes spinOrbit {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 17. Psychology - Brain */
+        .icon-psychology .brain {
+            width: 45px;
+            height: 40px;
+            background-color: var(--techPurple);
+            /* Tech Purple brain */
+            border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+            position: relative;
+            overflow: hidden;
+            animation: pulseBrain 2s infinite ease-in-out;
+        }
+
+        .icon-psychology .brain::before {
+            /* Midline */
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: rgba(254, 254, 254, 0.3);
+            /* Faint white line */
+            transform: translateX(-50%) rotate(5deg);
+        }
+
+        .icon-psychology .lobe {
+            /* Simplified lobe lines */
+            position: absolute;
+            /* Slightly lighter purple */
+            border: 1px solid rgba(129, 54, 245, 0.8);
+            border-radius: 50%;
+        }
+
+        .icon-psychology .lobe1 {
+            top: 5px;
+            left: 5px;
+            width: 15px;
+            height: 20px;
+            border-color: transparent transparent rgba(129, 54, 245, 0.8) transparent;
+            transform: rotate(30deg);
+        }
+
+        .icon-psychology .lobe2 {
+            top: 10px;
+            right: 5px;
+            width: 18px;
+            height: 15px;
+            border-color: transparent transparent rgba(129, 54, 245, 0.8) transparent;
+            transform: rotate(-40deg);
+        }
+
+        @keyframes pulseBrain {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* 18. Sociology - Figures */
+        .icon-sociology .figures {
+            width: 50px;
+            height: 40px;
+            position: relative;
+        }
+
+        .icon-sociology .figure {
+            position: absolute;
+            bottom: 0;
+            width: 12px;
+            height: 25px;
+            background-color: var(--celeste);
+            /* Celeste */
+            border-radius: 6px 6px 0 0;
+            animation: swayFigure 3s infinite ease-in-out;
+        }
+
+        .icon-sociology .figure1 {
+            left: 0;
+            height: 28px;
+            animation-delay: 0s;
+        }
+
+        .icon-sociology .figure2 {
+            left: 18px;
+            height: 25px;
+            background-color: var(--scienceOrange);
+            animation-delay: 0.5s;
+        }
+
+        /* Science Orange (Cyan) */
+        .icon-sociology .figure3 {
+            right: 0;
+            height: 22px;
+            background-color: var(--techPurple);
+            animation-delay: 1s;
+        }
+
+        /* Tech Purple */
+
+        @keyframes swayFigure {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-5deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* 19. Statistics - Bell Curve */
+        .icon-stats .curve {
+            width: 50px;
+            height: 30px;
+            border: 3px solid var(--scienceOrange);
+            /* Science Orange (Cyan) */
+            border-color: transparent transparent var(--scienceOrange) transparent;
+            border-radius: 50% / 100%;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            position: relative;
+            top: 10px;
+            animation: flexCurve 2.5s infinite ease-in-out;
+        }
+
+        .icon-stats .axis {
+            width: 56px;
+            height: 3px;
+            background-color: var(--night);
+            /* Night axis */
+            position: absolute;
+            bottom: -13px;
+            left: -3px;
+            border-radius: 1.5px;
+        }
+
+        @keyframes flexCurve {
+
+            0%,
+            100% {
+                transform: scaleY(1) scaleX(1);
+            }
+
+            50% {
+                transform: scaleY(0.8) scaleX(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-10" style="color: var(--night);">Animated School
+            Subject Icons</h1>
+        <div class="icon-grid">
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-accounting">
+                    <div class="calculator">
+                        <div class="screen"></div>
+                        <div class="buttons">
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
+                        </div>
+                    </div>
+                </div>
+                <span class="icon-label">Accounting</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-add-maths">
+                    <div class="graph-bg">
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Add. Maths</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-biology">
+                    <div class="helix">
+                        <div class="strand"></div>
+                        <div class="strand"></div>
+                        <div class="strand"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Biology</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-business">
+                    <div class="chart">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Business Studies</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-chemistry">
+                    <div class="beaker">
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                        <div class="bubble"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Chemistry</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-cs">
+                    <div class="terminal">
+                        <span class="prompt">&gt;</span>
+                        <div class="cursor"></div>
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Computer Science</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-english">
+                    <div class="pen"></div>
+                    <div class="line"></div>
+                </div>
+                <span class="icon-label">English</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-economics">
+                    <div class="arrow"></div>
+                </div>
+                <span class="icon-label">Economics</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-geography">
+                    <div class="globe">
+                        <div class="land land1"></div>
+                        <div class="land land2"></div>
+                        <div class="land land3"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Geography</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-history">
+                    <div class="hourglass">
+                        <div class="glass"></div>
+                        <div class="sand-top"></div>
+                        <div class="sand-bottom"></div>
+                        <div class="stream"></div>
+                    </div>
+                </div>
+                <span class="icon-label">History</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-human-bio">
+                    <div class="heart"></div>
+                </div>
+                <span class="icon-label">Human Biology</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-ict">
+                    <div class="network">
+                        <div class="node node1"></div>
+                        <div class="node node2"></div>
+                        <div class="node node3"></div>
+                        <div class="node node4"></div>
+                        <div class="line line12"></div>
+                        <div class="line line13"></div>
+                        <div class="line line24"></div>
+                        <div class="line line34"></div>
+                    </div>
+                </div>
+                <span class="icon-label">ICT</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-language">
+                    <div class="bubble bubble1"></div>
+                    <div class="bubble bubble2"></div>
+                </div>
+                <span class="icon-label">Language</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-literature">
+                    <div class="book">
+                        <div class="page left-page">
+                            <div class="text-line"></div>
+                            <div class="text-line short"></div>
+                            <div class="text-line"></div>
+                        </div>
+                        <div class="page right-page">
+                            <div class="text-line"></div>
+                            <div class="text-line short"></div>
+                            <div class="text-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <span class="icon-label">Literature</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-math">
+                    <div class="pi"></div>
+                </div>
+                <span class="icon-label">Mathematics</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-physics">
+                    <div class="atom">
+                        <div class="nucleus"></div>
+                        <div class="orbit orbit1">
+                            <div class="electron"></div>
+                        </div>
+                        <div class="orbit orbit2">
+                            <div class="electron"></div>
+                        </div>
+                        <div class="orbit orbit3">
+                            <div class="electron"></div>
+                        </div>
+                    </div>
+                </div>
+                <span class="icon-label">Physics</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-psychology">
+                    <div class="brain">
+                        <div class="lobe lobe1"></div>
+                        <div class="lobe lobe2"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Psychology</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-sociology">
+                    <div class="figures">
+                        <div class="figure figure1"></div>
+                        <div class="figure figure2"></div>
+                        <div class="figure figure3"></div>
+                    </div>
+                </div>
+                <span class="icon-label">Sociology</span>
+            </div>
+
+            <div class="icon-card">
+                <div class="icon-wrapper icon-stats">
+                    <div class="curve"></div>
+                    <div class="axis"></div>
+                </div>
+                <span class="icon-label">Statistics</span>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
