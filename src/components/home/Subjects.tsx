@@ -181,9 +181,12 @@ const Subjects = () => {
                       aria-label={subject.alt}
                     >
                       {subject.iconClass === 'icon-accounting' && (
-                        <div className="calculator">
+                        <div className="calculator-body">
                           <div className="screen"></div>
                           <div className="buttons">
+                            <div className="button"></div>
+                            <div className="button"></div>
+                            <div className="button"></div>
                             <div className="button"></div>
                             <div className="button"></div>
                             <div className="button"></div>
@@ -197,126 +200,208 @@ const Subjects = () => {
                         </div>
                       )}
                       {subject.iconClass === 'icon-add-maths' && (
-                        <div className="graph-bg">
-                          <div className="line"></div>
+                        <div className="graph-area">
+                          <svg className="curve">
+                            <path d="M0,60 C20,40 40,10 60,30" />
+                          </svg>
                         </div>
                       )}
                       {subject.iconClass === 'icon-biology' && (
-                        <div className="helix">
-                          <div className="strand"></div>
-                          <div className="strand"></div>
-                          <div className="strand"></div>
+                        <div className="dna-container">
+                          <div className="strand-group">
+                            <div className="strand s1"></div>
+                            <div className="strand s2"></div>
+                            <div className="pair"></div>
+                            <div className="pair"></div>
+                            <div className="pair"></div>
+                            <div className="pair"></div>
+                            <div className="pair"></div>
+                          </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-business' && (
-                        <div className="chart">
+                        <div className="chart-container">
+                          <div className="bar"></div>
                           <div className="bar"></div>
                           <div className="bar"></div>
                           <div className="bar"></div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-chemistry' && (
-                        <div className="beaker">
-                          <div className="bubble"></div>
-                          <div className="bubble"></div>
-                          <div className="bubble"></div>
+                        <div className="beaker-container">
+                          <div className="beaker-glass">
+                            <div className="liquid-surface">
+                              <div className="bubble"></div>
+                              <div className="bubble"></div>
+                              <div className="bubble"></div>
+                              <div className="bubble"></div>
+                            </div>
+                          </div>
+                          <div className="beaker-top"></div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-cs' && (
-                        <div className="terminal">
-                          <div className="prompt">&gt;</div>
-                          <div className="cursor"></div>
-                          <div className="line line1"></div>
-                          <div className="line line2"></div>
-                          <div className="line line3"></div>
+                        <div className="terminal-window">
+                          <div className="window-buttons">
+                            <div className="window-button btn-red"></div>
+                            <div className="window-button btn-yellow"></div>
+                            <div className="window-button btn-green"></div>
+                          </div>
+                          <div className="code-area">
+                            <div className="code-line"><span>$</span><span> </span><span>n</span><span>p</span><span>m</span><span> </span><span>i</span><span>n</span><span>s</span><span>t</span><span>a</span><span>l</span><span>l</span></div>
+                            <div className="code-line"><span>$</span><span> </span><span>c</span><span>d</span><span> </span><span>s</span><span>r</span><span>c</span></div>
+                            <div className="code-line"><span>$</span><span> </span><span>n</span><span>o</span><span>d</span><span>e</span><span> </span><span>i</span><span>n</span><span>d</span><span>e</span><span>x</span><span>.</span><span>j</span><span>s</span></div>
+                            <div className="cursor"></div>
+                          </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-economics' && (
-                        <div className="arrow"></div>
+                        <div className="graph-container">
+                          <div className="chart-bg"></div>
+                          <div className="arrow-container">
+                            <div className="arrow-shaft"></div>
+                            <div className="arrow-head"></div>
+                          </div>
+                          <div className="coin coin1"></div>
+                          <div className="coin coin2"></div>
+                          <div className="coin coin3"></div>
+                        </div>
                       )}
                       {subject.iconClass === 'icon-geography' && (
-                        <div className="globe">
-                          <div className="land land1"></div>
-                          <div className="land land2"></div>
-                          <div className="land land3"></div>
+                        <div className="globe-container">
+                          <div className="globe-sphere">
+                            <div className="continent c1"></div>
+                            <div className="continent c2"></div>
+                            <div className="continent c3"></div>
+                            <div className="grid-line"></div>
+                            <div className="grid-line"></div>
+                            <div className="grid-line"></div>
+                          </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-history' && (
-                        <div className="hourglass">
-                          <div className="glass"></div>
-                          <div className="sand-top"></div>
-                          <div className="sand-bottom"></div>
-                          <div className="stream"></div>
+                        <div className="hourglass-container">
+                          <div className="hourglass-body">
+                            <div className="hg-frame">
+                              <div className="hg-top"></div>
+                              <div className="hg-bottom"></div>
+                              <div className="hg-post hg-post-left"></div>
+                              <div className="hg-post hg-post-right"></div>
+                            </div>
+                            <div className="glass-container">
+                              <div className="glass-bulb glass-top"></div>
+                              <div className="glass-bulb glass-bottom"></div>
+                              <div className="sand-pile-top"></div>
+                              <div className="sand-pile-bottom"></div>
+                              <div className="sand-stream"></div>
+                            </div>
+                          </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-human-bio' && (
-                        <div className="heart"></div>
+                        <div className="body-system">
+                          <div className="organ heart"></div>
+                          <div className="vessel v1"></div>
+                          <div className="vessel v2"></div>
+                          <div className="vessel v3"></div>
+                        </div>
                       )}
                       {subject.iconClass === 'icon-ict' && (
-                        <div className="network">
-                          <div className="node node1"></div>
-                          <div className="node node2"></div>
-                          <div className="node node3"></div>
-                          <div className="node node4"></div>
-                          <div className="line line12"></div>
-                          <div className="line line13"></div>
-                          <div className="line line24"></div>
-                          <div className="line line34"></div>
+                        <div className="network-container">
+                          <div className="node n1"></div>
+                          <div className="node n2"></div>
+                          <div className="node n3"></div>
+                          <div className="node n4"></div>
+                          <div className="connection c12"></div>
+                          <div className="connection c13"></div>
+                          <div className="connection c24"></div>
+                          <div className="connection c34"></div>
+                          <div className="packet packet1"></div>
+                          <div className="packet packet2"></div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-language' && (
-                        <div>
-                          <div className="bubble bubble1"></div>
-                          <div className="bubble bubble2"></div>
+                        <div className="bubble-container">
+                          <div className="bubble-shape bubble1"></div>
+                          <div className="bubble-shape bubble2"></div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-literature' && (
-                        <div className="book">
-                          <div className="page left-page">
-                            <div className="text-line"></div>
-                            <div className="text-line short"></div>
-                            <div className="text-line"></div>
-                          </div>
-                          <div className="page right-page">
-                            <div className="text-line"></div>
-                            <div className="text-line short"></div>
-                            <div className="text-line"></div>
+                        <div className="book-container">
+                          <div className="book-cover">
+                            <div className="page page1"></div>
+                            <div className="page page2"></div>
+                            <div className="page page3"></div>
+                            <div className="page page4"></div>
                           </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-math' && (
-                        <div className="pi"></div>
+                        <div className="equation-container">
+                          <div className="pi-symbol">
+                            <div className="pi-leg left-leg"></div>
+                            <div className="pi-leg right-leg"></div>
+                            <div className="pi-top"></div>
+                          </div>
+                        </div>
                       )}
                       {subject.iconClass === 'icon-physics' && (
-                        <div className="atom">
+                        <div className="atom-container">
                           <div className="nucleus"></div>
-                          <div className="orbit orbit1">
-                            <div className="electron"></div>
+                          <div className="electron-shell s1">
+                            <div className="electron e1"></div>
                           </div>
-                          <div className="orbit orbit2">
-                            <div className="electron"></div>
+                          <div className="electron-shell s2">
+                            <div className="electron e2"></div>
                           </div>
-                          <div className="orbit orbit3">
-                            <div className="electron"></div>
+                          <div className="electron-shell s3">
+                            <div className="electron e3"></div>
                           </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-psychology' && (
-                        <div className="brain">
-                          <div className="lobe lobe1"></div>
-                          <div className="lobe lobe2"></div>
+                        <div className="brain-container">
+                          <div className="brain-half left"></div>
+                          <div className="brain-half right"></div>
+                          <div className="synapse s1"></div>
+                          <div className="synapse s2"></div>
+                          <div className="synapse s3"></div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-sociology' && (
-                        <div className="figures">
-                          <div className="figure figure1"></div>
-                          <div className="figure figure2"></div>
-                          <div className="figure figure3"></div>
+                        <div className="figure-group">
+                          <div className="figure figure1">
+                            <div className="figure-head"></div>
+                            <div className="figure-body"></div>
+                          </div>
+                          <div className="figure figure2">
+                            <div className="figure-head"></div>
+                            <div className="figure-body"></div>
+                          </div>
+                          <div className="figure figure3">
+                            <div className="figure-head"></div>
+                            <div className="figure-body"></div>
+                          </div>
+                          <div className="figure figure4">
+                            <div className="figure-head"></div>
+                            <div className="figure-body"></div>
+                          </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-stats' && (
-                        <div className="curve">
-                          <div className="axis"></div>
+                        <div className="chart-container">
+                          <div className="bar-group">
+                            <div className="stat-bar bar1"></div>
+                            <div className="stat-bar bar2"></div>
+                            <div className="stat-bar bar3"></div>
+                            <div className="stat-bar bar4"></div>
+                          </div>
+                          <div className="axis x-axis"></div>
+                          <div className="axis y-axis"></div>
+                          <div className="data-point point1"></div>
+                          <div className="data-point point2"></div>
+                          <div className="data-point point3"></div>
+                          <div className="trend-line"></div>
                         </div>
                       )}
                     </div>
