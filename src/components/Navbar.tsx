@@ -1,8 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import {
   Menu, X, Sparkles, Phone, Mail, Globe, MessageCircle,
-  MessageSquare, BookOpen
-} from 'lucide-react';
+  MessageSquare} from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
