@@ -2,6 +2,7 @@ import React from 'react';
 // Ensure the path to your data file is correct
 import { csDisciplines, CsDiscipline } from '../../data/csHelpData';
 import { motion } from 'framer-motion';
+import '../../styles/cs-icons.css';
 
 const ComputerScienceHelp: React.FC = () => {
   const containerVariants = {
@@ -63,13 +64,148 @@ const ComputerScienceHelp: React.FC = () => {
               className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:border-celeste/30 transition-all duration-300 flex flex-col items-center text-center" // items-center for vertical centering if needed, text-center for horizontal
               variants={itemVariants}
             >
-              {/* Render the icon if it exists */}
-              {discipline.icon && (
-                <div className="mb-4"> {/* Spacing below icon */}
-                  {/* Use the icon component from data. Style it here. */}
-                  <discipline.icon className="text-4xl text-celeste" /> {/* Icon size and color */}
+              {/* Custom animated CS icons */}
+              <div className="mb-4"> {/* Spacing below icon */}
+                <div className="cs-icon-wrapper">
+                  {discipline.title.includes("Scientific computing") && (
+                    <div className="icon-scientific">
+                      <div className="calculator">
+                        <div className="display"></div>
+                        <div className="keypad">
+                          {Array.from({ length: 12 }).map((_, i) => (
+                            <div key={i} className="key"></div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Computer architecture") && (
+                    <div className="icon-architecture">
+                      <div className="chip">
+                        {Array.from({ length: 9 }).map((_, i) => (
+                          <div key={i} className="circuit"></div>
+                        ))}
+                        <div className="pin pin-top" style={{ left: '25%' }}></div>
+                        <div className="pin pin-top" style={{ left: '50%' }}></div>
+                        <div className="pin pin-top" style={{ left: '75%' }}></div>
+                        <div className="pin pin-right" style={{ top: '25%' }}></div>
+                        <div className="pin pin-right" style={{ top: '50%' }}></div>
+                        <div className="pin pin-right" style={{ top: '75%' }}></div>
+                        <div className="pin pin-bottom" style={{ left: '25%' }}></div>
+                        <div className="pin pin-bottom" style={{ left: '50%' }}></div>
+                        <div className="pin pin-bottom" style={{ left: '75%' }}></div>
+                        <div className="pin pin-left" style={{ top: '25%' }}></div>
+                        <div className="pin pin-left" style={{ top: '50%' }}></div>
+                        <div className="pin pin-left" style={{ top: '75%' }}></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Operating systems") && (
+                    <div className="icon-os">
+                      <div className="network">
+                        <div className="node node-1"></div>
+                        <div className="node node-2"></div>
+                        <div className="node node-3"></div>
+                        <div className="node node-4"></div>
+                        <div className="connection connection-vertical"></div>
+                        <div className="connection connection-horizontal"></div>
+                        <div className="packet packet-1"></div>
+                        <div className="packet packet-2"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Database") && (
+                    <div className="icon-database">
+                      <div className="db-connector"></div>
+                      <div className="db db-top"></div>
+                      <div className="db db-middle"></div>
+                      <div className="db db-bottom"></div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Data mining") && (
+                    <div className="icon-ml">
+                      <div className="brain">
+                        <div className="hemisphere left-brain"></div>
+                        <div className="hemisphere right-brain"></div>
+                        <div className="neuron neuron-1"></div>
+                        <div className="neuron neuron-2"></div>
+                        <div className="neuron neuron-3"></div>
+                        <div className="neuron neuron-4"></div>
+                        <div className="neuron neuron-5"></div>
+                        <div className="neuron neuron-6"></div>
+                        <div className="connection connection-1"></div>
+                        <div className="connection connection-2"></div>
+                        <div className="connection connection-3"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Model driven") && (
+                    <div className="icon-model">
+                      <div className="blueprint">
+                        <div className="grid-line grid-horizontal grid-h-1"></div>
+                        <div className="grid-line grid-horizontal grid-h-2"></div>
+                        <div className="grid-line grid-horizontal grid-h-3"></div>
+                        <div className="grid-line grid-vertical grid-v-1"></div>
+                        <div className="grid-line grid-vertical grid-v-2"></div>
+                        <div className="grid-line grid-vertical grid-v-3"></div>
+                        <div className="drawing-line drawing-line-1"></div>
+                        <div className="drawing-line drawing-line-2"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Computer programming") && (
+                    <div className="icon-programming">
+                      <div className="editor">
+                        <div className="window-controls">
+                          <div className="control control-red"></div>
+                          <div className="control control-yellow"></div>
+                          <div className="control control-green"></div>
+                        </div>
+                        <div className="code-line">
+                          <div className="code-segment keyword"></div>
+                        </div>
+                        <div className="code-line">
+                          <div className="indent"></div>
+                          <div className="code-segment variable"></div>
+                        </div>
+                        <div className="code-line">
+                          <div className="indent"></div>
+                          <div className="code-segment string"></div>
+                        </div>
+                        <div className="code-line">
+                          <div className="code-segment keyword"></div>
+                        </div>
+                        <div className="cursor"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Graphics") && (
+                    <div className="icon-graphics">
+                      <div className="canvas">
+                        <div className="shape circle"></div>
+                        <div className="shape square"></div>
+                        <div className="shape triangle"></div>
+                        <div className="brush-stroke"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {discipline.title.includes("Software methodology") && (
+                    <div className="icon-software">
+                      <div className="gear gear-large"></div>
+                      <div className="gear gear-small"></div>
+                      <div className="process-arrow"></div>
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
 
               <h3 className="text-xl font-semibold mb-3 text-night"> {/* Title remains dark for contrast */}
                 {discipline.title}

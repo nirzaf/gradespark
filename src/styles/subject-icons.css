@@ -716,18 +716,30 @@ body {
 /* --- Computer Science - Realistic Terminal --- */
 .icon-cs .terminal-window {
     width: 65px;
-    /* Wider */
     height: 50px;
-    background-color: #2d3748;
-    /* Darker background */
+    background-color: #1a202c;
     border-radius: 8px;
     padding: 10px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    /* Stronger shadow */
-    border: 1px solid #4a5568;
-    /* Darker border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #2d3748;
+    transform-origin: center;
+    animation: terminalPulse 4s infinite ease-in-out;
+}
+
+@keyframes terminalPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
 }
 
 .icon-cs .window-buttons {
@@ -758,51 +770,86 @@ body {
 }
 
 .icon-cs .code-area {
-    /* Container for lines and cursor */
     position: absolute;
     top: 22px;
-    /* Position below buttons */
     left: 10px;
     right: 10px;
     bottom: 10px;
     font-family: 'Menlo', 'Courier New', Courier, monospace;
     font-size: 8px;
-    /* Slightly larger */
-    color: #E2E8F0;
-    /* Lighter text */
+    color: #A0AEC0;
+    line-height: 1.4;
+    overflow: hidden;
 }
 
 .icon-cs .code-line {
     white-space: pre;
-    /* Preserve spaces */
     position: relative;
-    /* Needed for cursor positioning */
-    height: 1.5em;
-    /* Line height */
+    height: 1.4em;
+    color: #E2E8F0;
 }
 
 .icon-cs .code-line span {
-    /* Use spans for typed text */
     opacity: 0;
-    animation: typeLineRealistic 10s infinite ease-in-out;
+    animation: typeChar 0.1s forwards;
+    color: inherit;
 }
 
-/* Define content directly in HTML spans */
+.icon-cs .code-line:nth-child(1) {
+    animation-delay: 0.5s;
+    color: #68D391;
+}
+
+.icon-cs .code-line:nth-child(2) {
+    animation-delay: 2s;
+    color: #4299E1;
+}
+
+.icon-cs .code-line:nth-child(3) {
+    animation-delay: 3.5s;
+    color: #F687B3;
+}
+
+.icon-cs .code-line:nth-child(1) span {
+    animation-delay: calc(0.5s + (var(--char-index) * 0.05s));
+}
+
+.icon-cs .code-line:nth-child(2) span {
+    animation-delay: calc(2s + (var(--char-index) * 0.05s));
+}
+
+.icon-cs .code-line:nth-child(3) span {
+    animation-delay: calc(3.5s + (var(--char-index) * 0.05s));
+}
+
+@keyframes typeChar {
+    from {
+        opacity: 0;
+        transform: translateY(1px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 .icon-cs .cursor {
-    width: 7px;
-    height: 11px;
-    /* Standard cursor size */
-    background-color: #4ade80;
-    /* Brighter green cursor */
+    width: 5px;
+    height: 12px;
+    background-color: #48BB78;
     position: absolute;
-    top: 0;
-    /* Position relative to code-area */
-    left: 0;
-    animation: blinkAndMoveCursorRealistic 10s infinite step-end;
-    box-shadow: 0 0 5px #4ade80;
-    /* Add glow */
+    top: 1px;
+    animation: blink 1s infinite steps(2, start);
 }
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+
 
 /* Keyframes need careful coordination with HTML content */
 @keyframes typeLineRealistic {

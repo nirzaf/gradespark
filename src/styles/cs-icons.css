@@ -1,0 +1,881 @@
+/* Computer Science Icons CSS - Animated Icons for CS Disciplines */
+:root {
+    /* Colors */
+    --cs-blue: #2563EB;
+    --cs-blue-light: #BFDBFE;
+    --cs-green: #059669;
+    --cs-green-light: #A7F3D0;
+    --cs-purple: #7C3AED;
+    --cs-purple-light: #DDD6FE;
+    --cs-orange: #F59E0B;
+    --cs-orange-light: #FEF3C7;
+    --cs-pink: #EC4899;
+    --cs-red: #EF4444;
+
+    /* Animation Durations */
+    --fast-duration: 2s;
+    --medium-duration: 4s;
+    --slow-duration: 6s;
+}
+
+/* Base Icon Wrapper */
+.cs-icon-wrapper {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cs-icon-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Scientific Computing - Calculator with Animated Display */
+.icon-scientific {
+    position: relative;
+    width: 40px;
+    height: 50px;
+}
+
+.icon-scientific .calculator {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #2c3e50, #34495e);
+    border-radius: 6px;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.icon-scientific .display {
+    height: 12px;
+    background: #ecf0f1;
+    border-radius: 2px;
+    margin-bottom: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-scientific .display::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background: var(--cs-green);
+    animation: calculatorCursor 2s infinite;
+}
+
+.icon-scientific .keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+}
+
+.icon-scientific .key {
+    height: 6px;
+    background: #7f8c8d;
+    border-radius: 1px;
+}
+
+.icon-scientific .key:nth-child(4n) {
+    background: var(--cs-orange);
+}
+
+@keyframes calculatorCursor {
+
+    0%,
+    100% {
+        left: 0;
+    }
+
+    50% {
+        left: 80%;
+    }
+}
+
+/* Computer Architecture - Microchip with Pulsing Circuits */
+.icon-architecture {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.icon-architecture .chip {
+    width: 100%;
+    height: 100%;
+    background: #2c3e50;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    padding: 4px;
+    position: relative;
+}
+
+.icon-architecture .pin {
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    background: #95a5a6;
+}
+
+.icon-architecture .pin-top {
+    top: -6px;
+}
+
+.icon-architecture .pin-right {
+    right: -6px;
+    transform: rotate(90deg);
+}
+
+.icon-architecture .pin-bottom {
+    bottom: -6px;
+}
+
+.icon-architecture .pin-left {
+    left: -6px;
+    transform: rotate(90deg);
+}
+
+.icon-architecture .circuit {
+    background: var(--cs-blue);
+    border-radius: 1px;
+}
+
+.icon-architecture .circuit:nth-child(odd) {
+    animation: pulsing 2s infinite alternate;
+}
+
+@keyframes pulsing {
+    0% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Operating Systems - Network with Moving Data Packets */
+.icon-os {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.icon-os .network {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.icon-os .node {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #3498db;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.icon-os .node-1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.icon-os .node-2 {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.icon-os .node-3 {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-os .node-4 {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-os .connection {
+    position: absolute;
+    background: #bdc3c7;
+    z-index: 1;
+}
+
+.icon-os .connection-vertical {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.icon-os .connection-horizontal {
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-os .packet {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--cs-green);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.icon-os .packet-1 {
+    animation: movePacket1 3s infinite;
+}
+
+.icon-os .packet-2 {
+    animation: movePacket2 4s infinite;
+    animation-delay: 1s;
+}
+
+@keyframes movePacket1 {
+    0% {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    25% {
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+    }
+
+    50% {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+    }
+
+    75% {
+        top: 50%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+    }
+
+    100% {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes movePacket2 {
+    0% {
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+    }
+
+    25% {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+    }
+
+    50% {
+        top: 50%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+    }
+
+    75% {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    100% {
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+    }
+}
+
+/* Database - Animated Database Cylinders */
+.icon-database {
+    position: relative;
+    width: 40px;
+    height: 50px;
+}
+
+.icon-database .db {
+    position: absolute;
+    width: 30px;
+    height: 12px;
+    border-radius: 15px / 6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.icon-database .db-top {
+    top: 0;
+    background: var(--cs-blue);
+    z-index: 3;
+}
+
+.icon-database .db-middle {
+    top: 10px;
+    background: var(--cs-blue-light);
+    z-index: 2;
+    animation: pulseDb 2s infinite alternate;
+}
+
+.icon-database .db-bottom {
+    top: 20px;
+    background: var(--cs-blue);
+    z-index: 1;
+}
+
+.icon-database .db-connector {
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    background: #95a5a6;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+@keyframes pulseDb {
+    0% {
+        transform: translateX(-50%) scaleX(0.9);
+    }
+
+    100% {
+        transform: translateX(-50%) scaleX(1.1);
+    }
+}
+
+/* Machine Learning - Brain with Pulsing Neurons */
+.icon-ml {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.icon-ml .brain {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.icon-ml .hemisphere {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--cs-purple-light);
+    border-radius: 20px 0 0 20px;
+}
+
+.icon-ml .left-brain {
+    left: 2px;
+    border-radius: 20px 0 0 20px;
+}
+
+.icon-ml .right-brain {
+    right: 2px;
+    transform: translateY(-50%) scaleX(-1);
+}
+
+.icon-ml .neuron {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--cs-purple);
+    border-radius: 50%;
+}
+
+.icon-ml .neuron-1 {
+    top: 20%;
+    left: 30%;
+    animation: pulse 2s infinite;
+}
+
+.icon-ml .neuron-2 {
+    top: 40%;
+    left: 20%;
+    animation: pulse 2s infinite 0.4s;
+}
+
+.icon-ml .neuron-3 {
+    top: 60%;
+    left: 25%;
+    animation: pulse 2s infinite 0.8s;
+}
+
+.icon-ml .neuron-4 {
+    top: 30%;
+    right: 30%;
+    animation: pulse 2s infinite 0.2s;
+}
+
+.icon-ml .neuron-5 {
+    top: 50%;
+    right: 20%;
+    animation: pulse 2s infinite 0.6s;
+}
+
+.icon-ml .neuron-6 {
+    top: 70%;
+    right: 25%;
+    animation: pulse 2s infinite 1s;
+}
+
+.icon-ml .connection {
+    position: absolute;
+    background: var(--cs-purple);
+    height: 1px;
+    transform-origin: left center;
+    opacity: 0;
+}
+
+.icon-ml .connection-1 {
+    width: 15px;
+    top: 22%;
+    left: 32%;
+    transform: rotate(30deg);
+    animation: showConnection 2s infinite;
+}
+
+.icon-ml .connection-2 {
+    width: 12px;
+    top: 42%;
+    left: 22%;
+    transform: rotate(-20deg);
+    animation: showConnection 2s infinite 0.4s;
+}
+
+.icon-ml .connection-3 {
+    width: 15px;
+    top: 62%;
+    left: 27%;
+    transform: rotate(-45deg);
+    animation: showConnection 2s infinite 0.8s;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+@keyframes showConnection {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Model Driven Engineering - Blueprint with Drawing Lines */
+.icon-model {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.icon-model .blueprint {
+    width: 100%;
+    height: 100%;
+    background: #f1f8ff;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-model .grid-line {
+    position: absolute;
+    background: rgba(52, 152, 219, 0.2);
+}
+
+.icon-model .grid-horizontal {
+    height: 1px;
+    width: 100%;
+}
+
+.icon-model .grid-vertical {
+    width: 1px;
+    height: 100%;
+}
+
+.icon-model .grid-h-1 {
+    top: 25%;
+}
+
+.icon-model .grid-h-2 {
+    top: 50%;
+}
+
+.icon-model .grid-h-3 {
+    top: 75%;
+}
+
+.icon-model .grid-v-1 {
+    left: 25%;
+}
+
+.icon-model .grid-v-2 {
+    left: 50%;
+}
+
+.icon-model .grid-v-3 {
+    left: 75%;
+}
+
+.icon-model .drawing-line {
+    position: absolute;
+    background: var(--cs-blue);
+    height: 2px;
+    transform-origin: left center;
+    animation: drawLine 3s infinite;
+}
+
+.icon-model .drawing-line-1 {
+    width: 30px;
+    top: 15px;
+    left: 10px;
+    transform: rotate(30deg);
+}
+
+.icon-model .drawing-line-2 {
+    width: 25px;
+    top: 30px;
+    left: 15px;
+    transform: rotate(-45deg);
+    animation-delay: 1s;
+}
+
+@keyframes drawLine {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+/* Programming Languages - Code Editor with Typing Animation */
+.icon-programming {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.icon-programming .editor {
+    width: 100%;
+    height: 100%;
+    background: #282c34;
+    border-radius: 6px;
+    padding: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-programming .window-controls {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.icon-programming .control {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+}
+
+.icon-programming .control-red {
+    background: var(--cs-red);
+}
+
+.icon-programming .control-yellow {
+    background: var(--cs-orange);
+}
+
+.icon-programming .control-green {
+    background: var(--cs-green);
+}
+
+.icon-programming .code-line {
+    height: 5px;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-programming .indent {
+    width: 8px;
+    height: 100%;
+}
+
+.icon-programming .code-segment {
+    height: 3px;
+    border-radius: 1px;
+}
+
+.icon-programming .keyword {
+    background: var(--cs-purple);
+    width: 10px;
+}
+
+.icon-programming .string {
+    background: var(--cs-green);
+    width: 15px;
+}
+
+.icon-programming .variable {
+    background: var(--cs-blue);
+    width: 8px;
+}
+
+.icon-programming .cursor {
+    position: absolute;
+    width: 2px;
+    height: 5px;
+    background: #fff;
+    bottom: 8px;
+    right: 10px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Graphics and Visualization - Canvas with Drawing Elements */
+.icon-graphics {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.icon-graphics .canvas {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-graphics .shape {
+    position: absolute;
+    animation: fadeInOut 4s infinite alternate;
+}
+
+.icon-graphics .circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cs-blue);
+    top: 10px;
+    left: 10px;
+    animation-delay: 0.5s;
+}
+
+.icon-graphics .square {
+    width: 12px;
+    height: 12px;
+    background: var(--cs-green);
+    bottom: 10px;
+    right: 10px;
+    animation-delay: 1s;
+}
+
+.icon-graphics .triangle {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid var(--cs-orange);
+    bottom: 10px;
+    left: 10px;
+    animation-delay: 1.5s;
+}
+
+.icon-graphics .brush-stroke {
+    position: absolute;
+    height: 3px;
+    background: var(--cs-pink);
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    transform: translateY(-50%);
+    border-radius: 3px;
+    animation: drawStroke 3s infinite;
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawStroke {
+    0% {
+        width: 0;
+        left: 50%;
+    }
+
+    50% {
+        width: 80%;
+        left: 10%;
+    }
+
+    100% {
+        width: 0;
+        left: 50%;
+    }
+}
+
+/* Software Engineering - Gears and Process Flow */
+.icon-software {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.icon-software .gear {
+    position: absolute;
+    border-radius: 50%;
+    background: #95a5a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-software .gear::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.icon-software .gear::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background: var(--cs-blue);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.icon-software .gear-large {
+    width: 24px;
+    height: 24px;
+    top: 8px;
+    left: 8px;
+    animation: rotateGear 8s linear infinite;
+}
+
+.icon-software .gear-small {
+    width: 16px;
+    height: 16px;
+    bottom: 10px;
+    right: 10px;
+    animation: rotateGearReverse 8s linear infinite;
+}
+
+.icon-software .process-arrow {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: var(--cs-green);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.icon-software .process-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid var(--cs-green);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
+@keyframes rotateGear {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateGearReverse {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
