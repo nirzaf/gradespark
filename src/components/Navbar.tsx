@@ -45,7 +45,7 @@ const GetStartedButton = () => {
                    border border-celeste/20"
       >
         <Sparkles className="w-4 h-4 mr-2" />
-        Get Started Now
+        Connect Now
       </motion.button>
     </Link>
   );
