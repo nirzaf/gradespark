@@ -1,12 +1,10 @@
 /* --- Base Variables and Styles --- */
 :root {
-    /* Define a slightly richer and more distinct color palette - Optimized for Light Theme */
-    --bg-light: #FFFFFF;
-    /* Pure white background */
-    --text-dark: #1F2937;
-    /* Dark Gray for text/elements */
-    --border-light: #E5E7EB;
-    /* Light Gray for borders */
+  --night: #151616ff;
+  --white: #FEFEFEff;
+  --celeste: #A0EBEBff;
+  --night-2: #0F0F0Fff;
+  --white-2: #FFFFFFff;
     --white: #FFFFFF;
 
     /* Subject Group Palettes - Adjusted for Professional Look */

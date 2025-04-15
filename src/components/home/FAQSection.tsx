@@ -15,27 +15,27 @@ const faqItemsData: FAQItemProps[] = [
     question: 'Is GradeSpark Academy legit?',
     answer: 'GradeSpark Academy is absolutely legitimate. Founded with a mission to provide high-quality academic support, we are a trusted educational service provider helping students worldwide achieve academic excellence. Our platform connects students with verified expert tutors who provide professional academic guidance and support.',
     // Assuming 'celeste' is a defined color, otherwise replace with a valid color/class
-    icon: <Shield className="w-6 h-6 text-blue-400" /> // Example: using text-blue-400 if celeste is undefined
+    icon: <Shield className="w-6 h-6" style={{ color: 'var(--celeste)' }} />
   },
   {
     question: 'How does GradeSpark Academy protect my personal data?',
     answer: 'We take data security seriously at GradeSpark Academy. All personal information is encrypted and stored securely following industry best practices. We never share your personal data with third parties without your explicit consent. Our platform employs advanced security measures to ensure your privacy and confidentiality are maintained at all times.',
-    icon: <Lock className="w-6 h-6 text-blue-400" /> // Example: using text-blue-400
+    icon: <Lock className="w-6 h-6" style={{ color: 'var(--celeste)' }} />
   },
   {
     question: 'Is GradeSpark Academy reliable?',
     answer: 'GradeSpark Academy is highly reliable and trusted by students from top universities worldwide. We maintain complete transparency in our pricing with no hidden fees. Every session is backed by our satisfaction guarantee, ensuring you receive the highest quality academic support. Our expert tutors undergo rigorous verification, and we maintain strict quality standards in all our services.',
-    icon: <CheckCircle className="w-6 h-6 text-blue-400" /> // Example: using text-blue-400
+    icon: <CheckCircle className="w-6 h-6" style={{ color: 'var(--celeste)' }} />
   },
   {
     question: 'How does GradeSpark Academy maintain academic integrity?',
     answer: 'At GradeSpark Academy, we strictly adhere to academic integrity principles. Our services focus on providing guidance, tutoring, and academic support while ensuring students maintain ownership of their learning journey. We help students understand complex topics, develop critical thinking skills, and improve their academic performance through ethical educational practices.',
-    icon: <Award className="w-6 h-6 text-blue-400" /> // Example: using text-blue-400
+    icon: <Award className="w-6 h-6" style={{ color: 'var(--celeste)' }} />
   },
   {
     question: 'Why choose GradeSpark Academy over other tutoring services?',
     answer: 'GradeSpark Academy stands out through our commitment to personalized learning, verified expert tutors, and comprehensive academic support. We offer flexible scheduling, competitive pricing, and a satisfaction guarantee on all our services. Our platform provides an engaging learning environment with modern tools and resources to ensure effective learning outcomes.',
-    icon: <BookOpen className="w-6 h-6 text-blue-400" /> // Example: using text-blue-400
+    icon: <BookOpen className="w-6 h-6" style={{ color: 'var(--celeste)' }} />
   }
 ];
 
@@ -49,14 +49,14 @@ const FAQItem = ({ item }: { item: FAQItemProps }) => {
       initial={{ opacity: 0, y: 20 }} // Initial animation state
       animate={{ opacity: 1, y: 0 }} // Animation when component mounts
       // Styling for the FAQ item container
-      className="border border-blue-400/20 rounded-xl overflow-hidden backdrop-blur-lg" // Assuming 'celeste' is blue-400
+      className="border rounded-xl overflow-hidden backdrop-blur-lg" style={{ borderColor: 'var(--celeste)', borderWidth: '1px', borderStyle: 'solid', borderOpacity: 0.2 }}
     >
       {/* Button to toggle the FAQ item open/closed */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-6 py-4 flex items-center justify-between text-left
-                   bg-gradient-to-r from-gray-900/95 to-gray-900/90 hover:from-gray-900/90 hover:to-gray-900/85 // Assuming 'night' is gray-900
                    transition-all duration-300"
+        style={{ background: 'linear-gradient(90deg, var(--night) 95%, var(--night) 90%)' }}
       >
         {/* Icon and Question */}
         <div className="flex items-center space-x-4">
@@ -68,7 +68,7 @@ const FAQItem = ({ item }: { item: FAQItemProps }) => {
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <ChevronDown className="w-5 h-5 text-blue-400" /> {/* Assuming 'celeste' is blue-400 */}
+          <ChevronDown className="w-5 h-5" style={{ color: 'var(--celeste)' }} />
         </motion.div>
       </button>
 
@@ -83,7 +83,7 @@ const FAQItem = ({ item }: { item: FAQItemProps }) => {
             className="overflow-hidden" // Hide content when height is 0
           >
             {/* Answer text container */}
-            <div className="px-6 py-4 bg-gray-900/50 text-white"> {/* Changed text-gray-300 to text-white */}
+            <div className="px-6 py-4" style={{ background: 'rgba(21,22,22,0.5)', color: 'var(--white)' }}>
               {item.answer}
             </div>
           </motion.div>
@@ -96,12 +96,12 @@ const FAQItem = ({ item }: { item: FAQItemProps }) => {
 // Main FAQ Section Component
 const FAQSection = () => {
   return (
-    <section className="py-16 relative overflow-hidden bg-white"> {/* Added bg-white for context */}
+    <section className="py-16 relative overflow-hidden" style={{ background: 'var(--white)' }}>
       {/* Background decorative effects */}
       <div className="absolute inset-0 -z-10">
         {/* Animated background blobs */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-400/20 rounded-full filter blur-3xl opacity-20 animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/20 rounded-full filter blur-3xl opacity-20 animate-pulse-slow"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 rounded-full filter blur-3xl opacity-20 animate-pulse-slow" style={{ background: 'rgba(160,235,235,0.2)' }}></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full filter blur-3xl opacity-20 animate-pulse-slow" style={{ background: 'rgba(160,235,235,0.2)' }}></div>
       </div>
 
       {/* Container for content */}
