@@ -1,0 +1,44 @@
+name: Create Backup Branch
+
+on:
+  # Trigger after successful build/deployment
+  workflow_run:
+    workflows: ["Build and Deploy"] # Replace with your actual build workflow name
+    types:
+      - completed
+    branches:
+      - main # You can adjust this to match your primary branch
+
+jobs:
+  create-backup-branch:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+
+      - name: Set up Git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Extract version from package.json
+        id: package-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Generate timestamp
+        id: timestamp
+        run: |
+          TIMESTAMP=$(date +'%Y%m%d-%H%M%S')
+          echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+
+      - name: Create backup branch
+        run: |
+          BACKUP_BRANCH="backup/v${VERSION}-${TIMESTAMP}"
+          git checkout -b "$BACKUP_BRANCH"
+          git push origin "$BACKUP_BRANCH"
+          echo "Created backup branch: $BACKUP_BRANCH"
