@@ -1210,102 +1210,156 @@ body {
     /* Fade out higher up */
 }
 
-/* --- Geography - Vivid Globe --- */
+/* --- Geography - 3D Globe --- */
 .icon-geography .globe-container {
     width: 60px;
     height: 60px;
     position: relative;
-    perspective: 800px;
+    perspective: 1000px;
+    /* Enhanced perspective for more 3D effect */
 }
 
 .icon-geography .globe-stand {
-    width: 20px;
-    height: 14px;
-    /* Larger stand */
-    background: linear-gradient(var(--grey-medium), var(--grey-dark));
-    /* Gradient */
+    width: 22px;
+    height: 16px;
+    /* Larger stand for better proportion */
+    background: linear-gradient(135deg, var(--grey-medium), var(--grey-dark));
+    /* Enhanced gradient */
     border-radius: 4px 4px 2px 2px;
-    /* Shaped */
     position: absolute;
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    /* Enhanced shadow and highlight */
     z-index: 1;
 }
 
 .icon-geography .globe-sphere {
     width: 60px;
     height: 60px;
-    /* Larger sphere */
-    /* More vibrant blue gradient */
-    background: radial-gradient(circle at 30% 30%, #A5F3FC, var(--math-sci-blue));
+    /* Enhanced 3D globe with more realistic ocean gradient */
+    background: radial-gradient(circle at 30% 30%,
+            #BAE6FD,
+            /* Lighter blue highlight */
+            #38BDF8,
+            /* Mid blue */
+            var(--math-sci-blue) 80%);
+    /* Deeper blue at edges */
     border-radius: 50%;
     position: absolute;
     bottom: 18px;
     left: 50%;
-    /* Adjusted position */
+    transform-origin: center center;
     transform: translateX(-50%) rotateY(20deg) rotateX(10deg);
     overflow: hidden;
-    /* Enhanced shadow/glow for 3D effect */
-    box-shadow: inset -8px -5px 15px rgba(0, 0, 0, 0.25), 0 0 15px rgba(37, 99, 235, 0.3), 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* 3D rotation animation */
-    animation: rotateGlobe var(--medium-duration) infinite linear;
+    /* Enhanced 3D shadow effects */
+    box-shadow:
+        inset -10px -8px 20px rgba(0, 0, 0, 0.3),
+        /* Stronger inner shadow */
+        inset 5px 5px 15px rgba(255, 255, 255, 0.2),
+        /* Inner highlight */
+        0 0 20px rgba(37, 99, 235, 0.4),
+        /* Outer glow */
+        0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Drop shadow */
+    /* Smoother 3D rotation animation */
+    animation: rotateGlobe3D var(--medium-duration) infinite linear;
     transform-style: preserve-3d;
-    /* Needed for land perspective */
+    backface-visibility: hidden;
+    /* Prevent flickering during rotation */
     z-index: 2;
 }
 
+/* Enhanced grid lines for latitude/longitude */
 .icon-geography .grid-line {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.25);
+    /* More visible */
     z-index: 2;
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+    /* Subtle glow */
 }
 
+/* Horizontal grid lines (latitude) */
 .icon-geography .grid-line:nth-child(1) {
     width: 100%;
     height: 1px;
-    top: 30%;
+    top: 20%;
     left: 0;
+    transform: rotateX(70deg);
+    /* Perspective curve */
 }
 
 .icon-geography .grid-line:nth-child(2) {
     width: 100%;
     height: 1px;
-    top: 70%;
+    top: 50%;
     left: 0;
+    transform: rotateX(0deg);
+    /* Equator */
 }
 
 .icon-geography .grid-line:nth-child(3) {
+    width: 100%;
+    height: 1px;
+    top: 80%;
+    left: 0;
+    transform: rotateX(-70deg);
+    /* Perspective curve */
+}
+
+/* Vertical grid lines (longitude) */
+.icon-geography .grid-line:nth-child(4) {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 25%;
+    transform: rotateY(70deg);
+    /* Perspective curve */
+}
+
+.icon-geography .grid-line:nth-child(5) {
     width: 1px;
     height: 100%;
     top: 0;
     left: 50%;
+    transform: rotateY(0deg);
+    /* Prime meridian */
 }
 
+.icon-geography .grid-line:nth-child(6) {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 75%;
+    transform: rotateY(-70deg);
+    /* Perspective curve */
+}
+
+/* Enhanced 3D continents */
 .icon-geography .continent {
     position: absolute;
-    /* More vibrant green */
-    background-color: var(--bio-chem-green);
+    /* More realistic land colors with gradient */
+    background: linear-gradient(135deg, #10B981, var(--bio-chem-green));
     border-radius: 40% 60% 55% 45% / 50% 55% 45% 50%;
     /* More organic shapes */
-    opacity: 0.85;
-    /* More opaque */
+    opacity: 0.9;
+    /* More visible */
     filter: blur(0.5px);
-    /* Less blur */
-    /* Add subtle perspective/curve */
-    transform: translateZ(1px);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow on land */
+    /* Add 3D elevation effect */
+    transform-style: preserve-3d;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Adjusted continent positions and sizes */
+/* Adjusted continent positions and 3D transforms */
 .icon-geography .c1 {
     top: 15%;
     left: 10%;
     width: 35%;
     height: 25%;
-    transform: rotate(-15deg) translateZ(1px);
+    transform: rotate(-15deg) translateZ(2px);
+    /* More elevation */
 }
 
 .icon-geography .c2 {
@@ -1313,8 +1367,10 @@ body {
     right: 15%;
     width: 30%;
     height: 20%;
-    transform: rotate(25deg) translateZ(1px);
-    background-color: #10B981;
+    transform: rotate(25deg) translateZ(2.5px);
+    /* More elevation */
+    background: linear-gradient(135deg, #34D399, #10B981);
+    /* Different green */
 }
 
 .icon-geography .c3 {
@@ -1322,26 +1378,50 @@ body {
     left: 65%;
     width: 22%;
     height: 15%;
-    transform: rotate(5deg) translateZ(1px);
+    transform: rotate(5deg) translateZ(3px);
+    /* More elevation */
 }
 
-@keyframes rotateGlobe {
+/* Add a fourth small continent/island */
+.icon-geography .c4 {
+    top: 25%;
+    right: 20%;
+    width: 12%;
+    height: 10%;
+    transform: rotate(-10deg) translateZ(2.2px);
+    background: linear-gradient(135deg, #059669, #047857);
+    /* Darker green */
+}
+
+/* Enhanced 3D rotation animation */
+@keyframes rotateGlobe3D {
     0% {
-        transform: translateX(-50%) rotateY(0deg) rotateX(10deg);
+        transform: translateX(-50%) rotateY(0deg) rotateX(15deg) rotateZ(0deg);
+    }
+
+    25% {
+        transform: translateX(-50%) rotateY(90deg) rotateX(12deg) rotateZ(2deg);
+    }
+
+    50% {
+        transform: translateX(-50%) rotateY(180deg) rotateX(15deg) rotateZ(0deg);
+    }
+
+    75% {
+        transform: translateX(-50%) rotateY(270deg) rotateX(18deg) rotateZ(-2deg);
     }
 
     100% {
-        transform: translateX(-50%) rotateY(360deg) rotateX(10deg);
+        transform: translateX(-50%) rotateY(360deg) rotateX(15deg) rotateZ(0deg);
     }
 }
 
-/* Geography globe color */
+/* Geography globe color - kept for compatibility */
 .icon-geography .globe {
     background-color: #34D399;
 }
 
-/* Lighter green */
-
+/* Legacy animation - kept for compatibility */
 @keyframes spinGlobeVivid {
     0% {
         transform: translateX(-50%) rotateY(0deg) rotateX(5deg);
@@ -1352,8 +1432,6 @@ body {
         transform: translateX(-50%) rotateY(360deg) rotateX(5deg);
         background-position: 200% 50%;
     }
-
-    /* Adjust background position for texture movement */
 }
 
 /* No separate land animation needed, it spins with the globe */
