@@ -185,21 +185,43 @@ const Subjects = () => {
                         </div>
                       )}
 
-                      {/* --- Geography --- */}
+                      {/* --- Geography - Premium 3D Globe --- */}
                       {subject.iconClass === 'icon-geography' && (
                         <div className="globe-container">
-                          <div className="globe-stand"></div> {/* Added stand */}
+                          {/* Atmospheric Glow */}
+                          <div className="atmosphere"></div>
+                          
+                          {/* 3D Globe with Continents */}
                           <div className="globe-sphere">
-                            {/* Render 4 continents */}
-                            {Array.from({ length: 4 }).map((_, i) => <div key={i} className={`continent c${i + 1}`}></div>)}
-                            {/* Render specific grid lines */}
-                            <div className="grid-line grid-line-lat grid-line-lat1"></div>
-                            <div className="grid-line grid-line-lat grid-line-lat2"></div>
-                            <div className="grid-line grid-line-lat grid-line-lat3"></div>
-                            <div className="grid-line grid-line-lon grid-line-lon1"></div>
-                            <div className="grid-line grid-line-lon grid-line-lon2"></div>
-                            <div className="grid-line grid-line-lon grid-line-lon3"></div>
+                            {/* Continents with 3D Relief Effect */}
+                            <div className="continent c1"></div>
+                            <div className="continent c2"></div>
+                            <div className="continent c3"></div>
+                            
+                            {/* 3D Grid System */}
+                            <div className="grid-line grid-line-lat1"></div>
+                            <div className="grid-line grid-line-lat2"></div>
+                            <div className="grid-line grid-line-lat3"></div>
+                            <div className="grid-line grid-line-lon1"></div>
+                            <div className="grid-line grid-line-lon2"></div>
+                            <div className="grid-line grid-line-lon3"></div>
                           </div>
+                          
+                          {/* Orbiting Satellites */}
+                          <div className="orbit orbit1">
+                            <div className="satellite"></div>
+                          </div>
+                          <div className="orbit orbit2">
+                            <div className="satellite"></div>
+                          </div>
+                          
+                          {/* Cloud Effects */}
+                          <div className="cloud cloud1"></div>
+                          <div className="cloud cloud2"></div>
+                          <div className="cloud cloud3"></div>
+                          
+                          {/* Metallic Stand */}
+                          <div className="globe-stand"></div>
                         </div>
                       )}
 

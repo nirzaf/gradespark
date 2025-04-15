@@ -1,13 +1,18 @@
 name: Create Backup Branch
 
 on:
-  # Trigger after successful build/deployment
+  # Trigger directly on push to main
+  push:
+    branches:
+      - main
+  
+  # Also trigger after successful build/deployment (existing trigger)
   workflow_run:
-    workflows: ["Production – gradespark"] # Replace with your actual build workflow name
+    workflows: ["Production – gradespark"] # Your actual build workflow name
     types:
       - completed
     branches:
-      - main # You can adjust this to match your primary branch
+      - main
 
 jobs:
   create-backup-branch:
