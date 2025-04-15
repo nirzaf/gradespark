@@ -199,7 +199,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <motion.div
-                className="bg-white rounded-lg p-1.5 flex items-center justify-center"
+                className="bg-white rounded-lg p-0.5 flex items-center justify-center h-[42px] w-[42px] sm:h-[48px] sm:w-[48px] overflow-hidden"
                 style={{
                   boxShadow: "inset 0 1px 2px rgba(255,255,255,0.9), 0 2px 4px rgba(0,0,0,0.3)",
                   border: "1px solid rgba(255,255,255,0.2)"
@@ -211,7 +211,7 @@ const Navbar = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <motion.img
-                  className="h-10 w-auto sm:h-12"
+                  className="h-[38px] w-auto sm:h-[44px] object-contain"
                   src="/gsa-logo-trasparent-bg.png"
                   alt="Grade Spark Academy"
                   whileHover={{ rotate: [0, -2, 2, -2, 0] }}
