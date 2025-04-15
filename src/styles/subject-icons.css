@@ -1211,6 +1211,13 @@ body {
 }
 
 /* --- Geography - Vivid Globe --- */
+.icon-geography .globe-container {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    perspective: 800px;
+}
+
 .icon-geography .globe-stand {
     width: 20px;
     height: 14px;
@@ -1238,18 +1245,45 @@ body {
     bottom: 18px;
     left: 50%;
     /* Adjusted position */
-    transform: translateX(-50%);
+    transform: translateX(-50%) rotateY(20deg) rotateX(10deg);
     overflow: hidden;
     /* Enhanced shadow/glow for 3D effect */
     box-shadow: inset -8px -5px 15px rgba(0, 0, 0, 0.25), 0 0 15px rgba(37, 99, 235, 0.3), 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* Smoother, slightly slower spin with perspective */
-    animation: spinGlobeVivid var(--very-slow-duration) infinite linear;
+    /* 3D rotation animation */
+    animation: rotateGlobe var(--medium-duration) infinite linear;
     transform-style: preserve-3d;
     /* Needed for land perspective */
     z-index: 2;
 }
 
-.icon-geography .land {
+.icon-geography .grid-line {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 2;
+}
+
+.icon-geography .grid-line:nth-child(1) {
+    width: 100%;
+    height: 1px;
+    top: 30%;
+    left: 0;
+}
+
+.icon-geography .grid-line:nth-child(2) {
+    width: 100%;
+    height: 1px;
+    top: 70%;
+    left: 0;
+}
+
+.icon-geography .grid-line:nth-child(3) {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+}
+
+.icon-geography .continent {
     position: absolute;
     /* More vibrant green */
     background-color: var(--bio-chem-green);
@@ -1265,8 +1299,8 @@ body {
     /* Subtle shadow on land */
 }
 
-/* Adjusted land positions and sizes */
-.icon-geography .land1 {
+/* Adjusted continent positions and sizes */
+.icon-geography .c1 {
     top: 15%;
     left: 10%;
     width: 35%;
@@ -1274,7 +1308,7 @@ body {
     transform: rotate(-15deg) translateZ(1px);
 }
 
-.icon-geography .land2 {
+.icon-geography .c2 {
     bottom: 20%;
     right: 15%;
     width: 30%;
@@ -1283,8 +1317,7 @@ body {
     background-color: #10B981;
 }
 
-/* Slightly different green */
-.icon-geography .land3 {
+.icon-geography .c3 {
     top: 40%;
     left: 65%;
     width: 22%;
@@ -1292,12 +1325,18 @@ body {
     transform: rotate(5deg) translateZ(1px);
 }
 
-.icon-geography .land4 {
-    top: 68%;
-    left: 12%;
-    width: 15%;
-    height: 15%;
-    transform: rotate(10deg) translateZ(1px);
+@keyframes rotateGlobe {
+    0% {
+        transform: translateX(-50%) rotateY(0deg) rotateX(10deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotateY(360deg) rotateX(10deg);
+    }
+}
+
+/* Geography globe color */
+.icon-geography .globe {
     background-color: #34D399;
 }
 
@@ -2539,27 +2578,42 @@ body {
 
 
 /* --- Psychology - Dynamic Brain --- */
-.icon-psychology .brain-outline {
+.icon-psychology .brain-container {
     width: 55px;
     height: 50px;
-    /* Adjusted size */
     position: relative;
-    border: 2.5px solid var(--humanities-purple);
-    /* Thicker border */
+    perspective: 600px;
+}
+
+.icon-psychology .brain-half {
+    width: 28px;
+    height: 45px;
+    position: absolute;
+    top: 2px;
+    border: 2px solid var(--humanities-purple);
     border-radius: 50% 50% 45% 45% / 65% 65% 40% 40%;
-    /* More defined shape */
-    transform: rotate(-6deg);
-    /* Slightly more rotation */
     background: linear-gradient(135deg, var(--humanities-purple-light), #E9D5FF);
-    /* Light purple gradient */
-    /* More noticeable pulse */
     animation: pulseBrainPsyDynamic var(--medium-duration) infinite alternate ease-in-out;
     overflow: hidden;
     box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
-    /* Enhanced shadows */
+    transform-style: preserve-3d;
 }
 
-.icon-psychology .brain-folds {
+.icon-psychology .left {
+    left: 2px;
+    transform: rotate(-10deg);
+    animation-delay: 0.3s;
+    z-index: 1;
+}
+
+.icon-psychology .right {
+    right: 2px;
+    transform: rotate(10deg);
+    z-index: 2;
+}
+
+.icon-psychology .brain-half::before {
+    content: '';
     position: absolute;
     width: 160%;
     height: 160%;
@@ -2599,7 +2653,7 @@ body {
     /* Rotate, scale, and translate */
 }
 
-/* Synapse firing effect */
+/* Neural connections between brain halves */
 .icon-psychology .synapse {
     position: absolute;
     width: 4px;
@@ -2617,34 +2671,66 @@ body {
     /* Ensure synapses are on top */
 }
 
+/* Neural connections between brain halves */
+.icon-psychology .synapse::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: var(--accent-pink);
+    top: 50%;
+    left: 50%;
+    transform-origin: left center;
+    opacity: 0;
+    animation: pulseConnection var(--fast-duration) infinite ease-out;
+    animation-delay: inherit;
+    box-shadow: 0 0 3px var(--accent-pink);
+}
+
 /* More synapse points */
 .icon-psychology .synapse1 {
-    top: 30%;
-    left: 40%;
+    top: 20%;
+    left: 50%;
     animation-delay: 0.2s;
 }
 
+.icon-psychology .synapse1::before {
+    transform: translateX(-50%) rotate(30deg);
+}
+
 .icon-psychology .synapse2 {
-    top: 70%;
-    left: 70%;
+    top: 60%;
+    left: 50%;
     animation-delay: 0.8s;
 }
 
+.icon-psychology .synapse2::before {
+    transform: translateX(-50%) rotate(-20deg);
+}
+
 .icon-psychology .synapse3 {
-    top: 50%;
-    left: 20%;
+    top: 40%;
+    left: 50%;
     animation-delay: 1.4s;
 }
 
+.icon-psychology .synapse3::before {
+    transform: translateX(-50%) rotate(10deg);
+}
+
 .icon-psychology .synapse4 {
-    top: 45%;
-    left: 60%;
+    top: 80%;
+    left: 50%;
     animation-delay: 2.0s;
+}
+
+.icon-psychology .synapse4::before {
+    transform: translateX(-50%) rotate(-40deg);
 }
 
 @keyframes pulseBrainPsyDynamic {
     from {
-        transform: rotate(-6deg) scale(1);
+        transform: scale(1);
         box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08), 0 0 10px rgba(124, 58, 237, 0.3);
     }
 
@@ -2654,6 +2740,24 @@ body {
     }
 
     /* Stronger pulse and glow */
+}
+
+@keyframes pulseConnection {
+    0% {
+        opacity: 0;
+        transform-origin: left center;
+        transform: scaleX(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleX(0.8);
+    }
 }
 
 @keyframes fireSynapseImpact {

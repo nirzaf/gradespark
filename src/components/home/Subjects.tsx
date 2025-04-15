@@ -364,9 +364,10 @@ const Subjects = () => {
                         <div className="brain-container">
                           <div className="brain-half left"></div>
                           <div className="brain-half right"></div>
-                          <div className="synapse s1"></div>
-                          <div className="synapse s2"></div>
-                          <div className="synapse s3"></div>
+                          <div className="synapse synapse1"></div>
+                          <div className="synapse synapse2"></div>
+                          <div className="synapse synapse3"></div>
+                          <div className="synapse synapse4"></div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-sociology' && (
@@ -390,19 +391,17 @@ const Subjects = () => {
                         </div>
                       )}
                       {subject.iconClass === 'icon-stats' && (
-                        <div className="chart-container">
-                          <div className="bar-group">
-                            <div className="stat-bar bar1"></div>
-                            <div className="stat-bar bar2"></div>
-                            <div className="stat-bar bar3"></div>
-                            <div className="stat-bar bar4"></div>
+                        <div className="stats-container">
+                          <div className="axis-x"></div>
+                          <div className="axis-y"></div>
+                          <div className="bell-curve">
+                            <svg>
+                              <path d="M0,34 C10,34 15,5 32.5,5 S55,34 65,34" />
+                            </svg>
                           </div>
-                          <div className="axis x-axis"></div>
-                          <div className="axis y-axis"></div>
                           <div className="data-point point1"></div>
                           <div className="data-point point2"></div>
                           <div className="data-point point3"></div>
-                          <div className="trend-line"></div>
                         </div>
                       )}
                     </div>
