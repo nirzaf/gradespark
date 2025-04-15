@@ -51,17 +51,29 @@
 .shield-icon {
   position: relative;
   animation: shieldPulse 3s infinite;
-  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6));
+  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6))
+         drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
 }
 
 @keyframes shieldPulse {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 5px rgba(160, 235, 235, 0.4));
+    filter: drop-shadow(0 0 5px rgba(160, 235, 235, 0.4))
+           drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+           drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+           drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+           drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
   }
   50% {
     transform: scale(1.15);
-    filter: drop-shadow(0 0 15px rgba(160, 235, 235, 0.8));
+    filter: drop-shadow(0 0 15px rgba(160, 235, 235, 0.8))
+           drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+           drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+           drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+           drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
   }
 }
 
@@ -89,7 +101,11 @@
 /* User Circle Animation */
 .user-circle-icon {
   animation: userSpin 6s infinite ease-in-out;
-  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6));
+  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6))
+         drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
 }
 
 @keyframes userSpin {
@@ -127,7 +143,11 @@
 /* Clock Animation */
 .clock-icon {
   animation: clockTick 8s infinite linear;
-  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6));
+  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6))
+         drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
   position: relative;
 }
 
@@ -180,7 +200,11 @@
 /* Graduation Cap Animation */
 .graduation-cap-icon {
   animation: capFloat 4s infinite ease-in-out;
-  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6));
+  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6))
+         drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
   position: relative;
 }
 
@@ -224,7 +248,11 @@
 /* File Text Animation */
 .file-text-icon {
   animation: fileWave 3s infinite ease-in-out;
-  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6));
+  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6))
+         drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
   position: relative;
 }
 
@@ -283,7 +311,11 @@
 /* Users Animation */
 .users-icon {
   animation: usersScale 4s infinite ease-in-out;
-  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6));
+  filter: drop-shadow(0 0 8px rgba(160, 235, 235, 0.6))
+         drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
   position: relative;
 }
 
@@ -328,4 +360,29 @@
 /* Card flip animation enhancement */
 .preserve-3d {
   transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Enhanced visibility for celeste icons with subtle shadow */
+.icon-container svg {
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
+}
+
+/* Subtle shadow utility class for better visibility */
+.subtle-shadow {
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2));
+}
+
+/* Combine subtle shadow with glow effect */
+.subtle-shadow-glow {
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(1px -1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(-1px 1px 0 rgba(0, 0, 0, 0.2))
+         drop-shadow(0 0 8px rgba(160, 235, 235, 0.6));
 }

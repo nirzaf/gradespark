@@ -18,15 +18,29 @@
   @apply bg-clip-text text-transparent bg-gradient-to-r from-celeste to-celeste-dark;
 }
 
-/* Add subtle shadow to celeste text */
+/* Add subtle shadow to celeste text for better visibility */
 .text-celeste {
-  text-shadow: 0 0 8px rgba(160, 235, 235, 0.3);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2),
+              -1px -1px 0 rgba(0, 0, 0, 0.2),
+              1px -1px 0 rgba(0, 0, 0, 0.2),
+              -1px 1px 0 rgba(0, 0, 0, 0.2),
+              0 0 8px rgba(160, 235, 235, 0.4);
 }
 
-/* Add subtle shadow to celeste gradient text */
+/* Add subtle shadow to celeste gradient text for better visibility */
 .celeste-gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-celeste to-celeste-dark;
-  text-shadow: 0 0 8px rgba(160, 235, 235, 0.3), 0 0 12px rgba(125, 222, 222, 0.2);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15),
+              -1px -1px 0 rgba(0, 0, 0, 0.15),
+              1px -1px 0 rgba(0, 0, 0, 0.15),
+              -1px 1px 0 rgba(0, 0, 0, 0.15),
+              0 0 8px rgba(160, 235, 235, 0.5),
+              0 0 12px rgba(125, 222, 222, 0.4);
+}
+
+/* Celeste gradient text without shadow - for navbar */
+.celeste-gradient-text-no-shadow {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-celeste to-celeste-dark;
 }
 
 @keyframes border-slide {

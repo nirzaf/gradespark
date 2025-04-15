@@ -221,17 +221,17 @@ const Navbar = () => {
             </Link>
             {/* Desktop Text */}
             <Link to="/" className="ml-3 hidden sm:block">
-              <span className="relative z-20 text-xl font-bold celeste-gradient-text whitespace-nowrap">
+              <span className="relative z-20 text-xl font-bold celeste-gradient-text-no-shadow whitespace-nowrap">
                 Grade Spark Academy
               </span>
             </Link>
             {/* Mobile Text - Two Lines */}
             <Link to="/" className="ml-2 sm:hidden">
               <div className="flex flex-col">
-                <span className="relative z-20 text-base font-bold celeste-gradient-text leading-tight">
+                <span className="relative z-20 text-base font-bold celeste-gradient-text-no-shadow leading-tight">
                   Grade Spark
                 </span>
-                <span className="relative z-20 text-base font-bold celeste-gradient-text leading-tight">
+                <span className="relative z-20 text-base font-bold celeste-gradient-text-no-shadow leading-tight">
                   Academy
                 </span>
               </div>
