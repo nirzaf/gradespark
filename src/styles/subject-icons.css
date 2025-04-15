@@ -43,17 +43,8 @@
     --very-slow-duration: 10s;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--grey-light);
-    /* Light grey background for contrast */
-    padding: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    /* Add gap between icons */
-}
+/* Remove global body styles that were breaking layout */
+/* Subject icons should be styled within their containers only */
 
 /* --- Common Icon Wrapper --- */
 .icon-wrapper {
@@ -1353,7 +1344,7 @@ body {
 
 
 /* --- Geography - Premium 3D Globe --- */
-.icon-geography {
+.icon-wrapper .icon-geography {
     perspective: 1000px;
     transform-style: preserve-3d;
 }
