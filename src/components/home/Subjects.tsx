@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import '../../styles/subject-icons.css';
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from 'react';
 
 // Subject data (ensure iconClass matches CSS and React conditional rendering)
 const subjects = [
@@ -50,8 +51,8 @@ const Subjects = () => {
   };
 
   // Helper function to generate span elements for CS icon
-  const renderSpans = (text) => {
-    return text.split('').map((char, index) => <span key={index}>{char}</span>);
+  const renderSpans = (text: string) => {
+    return text.split('').map((char: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined, index: Key | null | undefined) => <span key={index}>{char}</span>);
   };
 
 
@@ -86,7 +87,7 @@ const Subjects = () => {
             viewport={{ once: true, amount: 0.1 }}
           >
             {/* Sort subjects alphabetically before mapping */}
-            {[...subjects].sort((a, b) => a.name.localeCompare(b.name)).map((subject, index) => (
+            {[...subjects].sort((a, b) => a.name.localeCompare(b.name)).map((subject) => (
               <motion.div
                 key={subject.name} // Use subject name or a unique ID if available
                 className="flex flex-col items-center"
