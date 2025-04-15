@@ -38,20 +38,29 @@ const WhyUsCard = ({ icon, title, shortDesc, longDesc }: CardProps) => {
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden">
-          <div className="h-full bg-white rounded-xl p-6 shadow-lg flex flex-col items-center justify-center text-center">
-            <div className="text-celeste mb-4">
-              {icon}
+          <div className="h-full bg-white rounded-xl p-6 shadow-lg flex flex-col items-center justify-center text-center border border-celeste/10 hover:border-celeste/30 transition-colors">
+            <div className="text-celeste mb-6 icon-container">
+              <div className={`${title.toLowerCase().replace(/\s+/g, '-')}-icon`}>
+                {icon}
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-night mb-2">{title}</h3>
+            <h3 className="text-xl font-semibold text-night mb-3 celeste-gradient-text">{title}</h3>
             <p className="text-gray-600">{shortDesc}</p>
-            <span className="md:hidden text-xs text-gray-400 mt-4">Tap to learn more</span>
+            <span className="md:hidden text-xs text-gray-400 mt-4 italic">Tap to learn more</span>
           </div>
         </div>
 
         {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180">
-          <div className="h-full bg-night rounded-xl p-6 shadow-lg flex items-center justify-center text-center">
-            <p className="text-white text-sm leading-relaxed">{longDesc}</p>
+          <div className="h-full bg-night rounded-xl p-6 shadow-lg flex items-center justify-center text-center border border-celeste/20 relative overflow-hidden">
+            {/* Animated background effect */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-celeste to-transparent animate-[shine_4s_ease-in-out_infinite]"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-celeste to-transparent animate-[shine_4s_ease-in-out_infinite_reverse]"></div>
+              <div className="absolute top-0 left-0 h-full w-1 bg-gradient-to-b from-transparent via-celeste to-transparent animate-[shine_4s_ease-in-out_infinite_1s]"></div>
+              <div className="absolute top-0 right-0 h-full w-1 bg-gradient-to-b from-transparent via-celeste to-transparent animate-[shine_4s_ease-in-out_infinite_reverse_1s]"></div>
+            </div>
+            <p className="text-white text-sm leading-relaxed relative z-10">{longDesc}</p>
           </div>
         </div>
       </motion.div>
@@ -100,22 +109,64 @@ const cards: CardProps[] = [
 
 export default function WhyUs() {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-4 text-night">Why Choose Us?</h2>
-        <p className="text-xl text-center text-gray-600 mb-16">Trust Grade Spark Academy to help you achieve academic excellence</p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-celeste/5 rounded-full filter blur-3xl animate-float1"></div>
+        <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-celeste/5 rounded-full filter blur-3xl animate-float2"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-center mb-4 celeste-gradient-text">Why Choose Us?</h2>
+          <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto">Trust Grade Spark Academy to help you achieve academic excellence</p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.2 }
+            }
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {cards.map((card, index) => (
-            <WhyUsCard
+            <motion.div
               key={index}
-              icon={card.icon}
-              title={card.title}
-              shortDesc={card.shortDesc}
-              longDesc={card.longDesc}
-            />
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 12,
+                    delay: index * 0.1
+                  }
+                }
+              }}
+            >
+              <WhyUsCard
+                icon={card.icon}
+                title={card.title}
+                shortDesc={card.shortDesc}
+                longDesc={card.longDesc}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
