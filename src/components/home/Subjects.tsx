@@ -299,11 +299,11 @@ const Subjects = () => {
                         </div>
                       )}
                       {subject.iconClass === 'icon-human-bio' && (
-                        <div className="body-system">
-                          <div className="organ heart"></div>
-                          <div className="vessel v1"></div>
-                          <div className="vessel v2"></div>
-                          <div className="vessel v3"></div>
+                        <div className="heart-container">
+                          <div className="heart-shape"></div>
+                          <div className="ecg-line">
+                            <div className="ecg-path"></div>
+                          </div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-ict' && (
@@ -337,12 +337,13 @@ const Subjects = () => {
                         </div>
                       )}
                       {subject.iconClass === 'icon-math' && (
-                        <div className="equation-container">
-                          <div className="pi-symbol">
-                            <div className="pi-leg left-leg"></div>
-                            <div className="pi-leg right-leg"></div>
-                            <div className="pi-top"></div>
-                          </div>
+                        <div className="pi-container">
+                          <div className="pi-symbol">π</div>
+                          <div className="orbiting-num num1">3</div>
+                          <div className="orbiting-num num2">1</div>
+                          <div className="orbiting-num num3">4</div>
+                          <div className="orbiting-num num4">1</div>
+                          <div className="orbiting-num num5">5</div>
                         </div>
                       )}
                       {subject.iconClass === 'icon-physics' && (
