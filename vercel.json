@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "installCommand": "npm install --no-save three-mesh-bvh@0.7.8 && npm install",
+        "buildCommand": "npm run build"
+      }
+    }
+  ]
+}
