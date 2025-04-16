@@ -140,3 +140,9 @@
   animation: float3 3s ease-in-out infinite;
   animation-delay: 0.4s;
 }
+
+/* Import AssuredQuality animations */
+@import './AssuredQuality.css';
+
+/* Import Academic Icons animations */
+@import './academic-icons.css';

@@ -1,0 +1,223 @@
+/* AssuredQuality animations */
+.quality-icon-container {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(160, 235, 235, 0.2), rgba(160, 235, 235, 0.05));
+  box-shadow: 0 4px 15px rgba(160, 235, 235, 0.2);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.quality-icon-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  animation: iconShine 4s infinite ease-in-out;
+}
+
+@keyframes iconShine {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.8; transform: scale(1); }
+}
+
+/* Quality Check Icon Animation */
+.quality-check-icon {
+  animation: qualityPulse 3s infinite ease-in-out;
+}
+
+@keyframes qualityPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.quality-check-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed rgba(160, 235, 235, 0.4);
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Clock Icon Animation */
+.time-clock-icon {
+  animation: clockTick 8s infinite linear;
+}
+
+.time-clock-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(160, 235, 235, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: clockPulse 2s infinite;
+}
+
+@keyframes clockTick {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes clockPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+}
+
+/* Fingerprint Icon Animation */
+.unique-fingerprint-icon {
+  animation: fingerprintScan 3s infinite ease-in-out;
+}
+
+@keyframes fingerprintScan {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.unique-fingerprint-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(160, 235, 235, 0.8), transparent);
+  animation: scanLine 3s infinite ease-in-out;
+}
+
+@keyframes scanLine {
+  0%, 100% { top: 10%; opacity: 0; }
+  25%, 75% { opacity: 1; }
+  50% { top: 90%; }
+}
+
+/* Brain Icon Animation */
+.learning-brain-icon {
+  animation: brainPulse 4s infinite ease-in-out;
+}
+
+@keyframes brainPulse {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.05) rotate(-5deg); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.05) rotate(5deg); }
+}
+
+.learning-brain-icon::before, .learning-brain-icon::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(160, 235, 235, 0.6) 0%, transparent 70%);
+  animation: brainSynapse 4s infinite alternate;
+}
+
+.learning-brain-icon::before {
+  width: 15px;
+  height: 15px;
+  top: 15%;
+  left: 25%;
+}
+
+.learning-brain-icon::after {
+  width: 12px;
+  height: 12px;
+  bottom: 20%;
+  right: 25%;
+  animation-delay: 1s;
+}
+
+@keyframes brainSynapse {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Card animations */
+.benefit-card {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(160, 235, 235, 0.1), transparent);
+  transition: all 0.5s ease;
+}
+
+.benefit-card:hover::before {
+  left: 100%;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(160, 235, 235, 0.2);
+}
+
+/* Point animations */
+.point-item {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.point-item:hover {
+  transform: translateX(5px);
+}
+
+.point-marker {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #A0EBEB;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+.point-marker::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #A0EBEB;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.point-item:hover .point-marker {
+  transform: scale(1.2);
+}
+
+.point-item:hover .point-marker::before {
+  opacity: 1;
+  animation: markerPulse 1.5s infinite;
+}
+
+@keyframes markerPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}

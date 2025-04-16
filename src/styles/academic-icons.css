@@ -1,0 +1,111 @@
+/* Academic Icons CSS */
+
+.academic-excellence-section .icon-container {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+/* Quality Check Icon Animation */
+.academic-excellence-section .quality-check-icon {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+.academic-excellence-section .quality-check-icon svg {
+  filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.7));
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(0, 255, 204, 0.5));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px rgba(0, 255, 204, 0.8));
+  }
+}
+
+/* Time Clock Icon Animation */
+.academic-excellence-section .time-clock-icon {
+  animation: rotate-slow 10s linear infinite;
+}
+
+.academic-excellence-section .time-clock-icon svg {
+  filter: drop-shadow(0 0 8px rgba(255, 204, 51, 0.7));
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fingerprint Icon Animation */
+.academic-excellence-section .unique-fingerprint-icon svg {
+  filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.7));
+  animation: scan-effect 3s infinite ease-in-out;
+}
+
+@keyframes scan-effect {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 255, 0.5));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.8));
+  }
+}
+
+/* Brain Icon Animation */
+.academic-excellence-section .learning-brain-icon svg {
+  filter: drop-shadow(0 0 8px rgba(187, 51, 255, 0.7));
+  animation: pulse-brain 4s infinite ease-in-out;
+}
+
+@keyframes pulse-brain {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(187, 51, 255, 0.5));
+  }
+  25% {
+    transform: scale(1.05) rotate(-5deg);
+    filter: drop-shadow(0 0 10px rgba(187, 51, 255, 0.6));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(187, 51, 255, 0.8));
+  }
+  75% {
+    transform: scale(1.05) rotate(5deg);
+    filter: drop-shadow(0 0 10px rgba(187, 51, 255, 0.6));
+  }
+}
+
+/* Card hover effects */
+.academic-excellence-section .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.academic-excellence-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 255, 255, 0.3);
+}
+
+/* Point marker styling */
+.academic-excellence-section .point-marker {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00fff7;
+  margin-right: 12px;
+}

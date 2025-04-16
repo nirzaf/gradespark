@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+/* Scope all styles to the academic-excellence-section */
+.academic-excellence-section {
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+}
+
+.academic-excellence-section .container {
+    gap: 2.5rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.academic-excellence-section .card {
+    background: #1e1e1e;
+    border-radius: 16px;
+    padding: 2rem 1.5rem 2.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.academic-excellence-section .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 255, 255, 0.6);
+}
+
+.academic-excellence-section h2 {
+    margin-top: 1.25rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #00fff7;
+}
+
+.academic-excellence-section h3 {
+    margin-top: 1.25rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #00fff7;
+}
+
+.academic-excellence-section ul {
+    margin-top: 1rem;
+    padding-left: 1.2rem;
+    text-align: left;
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.academic-excellence-section ul li {
+    margin-bottom: 0.6rem;
+}
+
+/* --- Icon Styles --- */
+
+/* 1. Assured Quality - CheckCircle Icon */
+.academic-excellence-section .quality-check-icon {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    color: #00ffcc;
+    filter: drop-shadow(0 0 6px #00ffcc);
+    animation: pulseGlow 2.5s infinite ease-in-out;
+    cursor: pointer;
+}
+
+.academic-excellence-section .quality-check-icon:hover {
+    animation: bounceCheck 0.6s ease forwards;
+    filter: drop-shadow(0 0 12px #00ffcc);
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 6px #00ffcc);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 18px #00ffcc);
+    }
+}
+
+@keyframes bounceCheck {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* SVG Checkmark */
+.academic-excellence-section .quality-check-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* 2. Time Efficiency - Clock Icon */
+.academic-excellence-section .time-clock-icon {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    cursor: pointer;
+    animation: rotateClock 10s linear infinite;
+    background: radial-gradient(circle at center, #ffb347, #ffcc33, #ff6f61);
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ffcc33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.academic-excellence-section .time-clock-icon:hover {
+    animation: rotateClockFast 1.5s linear infinite;
+    box-shadow: 0 0 24px #ffcc33;
+    transform: scale(1.15);
+}
+
+@keyframes rotateClock {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateClockFast {
+    0% {
+        transform: rotate(0deg) scale(1.15);
+    }
+
+    100% {
+        transform: rotate(720deg) scale(1.15);
+    }
+}
+
+/* Clock hands */
+.academic-excellence-section .time-clock-icon svg {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.clock-hand {
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    transform-origin: 50% 50%;
+    animation-timing-function: linear;
+}
+
+.hour-hand {
+    animation: rotateHour 43200s linear infinite;
+    /* 12 hours */
+}
+
+.minute-hand {
+    animation: rotateMinute 3600s linear infinite;
+    /* 60 minutes */
+}
+
+@keyframes rotateHour {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateMinute {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 3. Uniqueness Guaranteed - Fingerprint Icon */
+.academic-excellence-section .unique-fingerprint-icon {
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+    position: relative;
+}
+
+.academic-excellence-section .unique-fingerprint-icon svg path {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke: url(#rainbowGradient);
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawFingerprint 4s ease forwards;
+}
+
+.academic-excellence-section .unique-fingerprint-icon:hover svg path {
+    animation: shimmerFingerprint 2s infinite alternate ease-in-out;
+}
+
+@keyframes drawFingerprint {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes shimmerFingerprint {
+    0% {
+        stroke: url(#rainbowGradient);
+        filter: drop-shadow(0 0 6px #ff00ff);
+    }
+
+    100% {
+        stroke: url(#rainbowGradient);
+        filter: drop-shadow(0 0 18px #ff00ff);
+    }
+}
+
+/* 4. Enhanced Learning - Brain Icon */
+.academic-excellence-section .learning-brain-icon {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px #bb33ff);
+    animation: pulseBrain 3s ease-in-out infinite;
+}
+
+.academic-excellence-section .learning-brain-icon:hover {
+    animation: pulseBrainFast 1.2s ease-in-out infinite;
+}
+
+@keyframes pulseBrain {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px #bb33ff);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px #bb33ff);
+    }
+}
+
+@keyframes pulseBrainFast {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 20px #bb33ff);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 40px #bb33ff);
+    }
+}
+
+/* Neural connections animation */
+.academic-excellence-section .learning-brain-icon svg path.connection {
+    stroke: #bb33ff;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-dasharray: 20;
+    stroke-dashoffset: 20;
+    animation: flowConnection 4s linear infinite;
+}
+
+.academic-excellence-section .learning-brain-icon svg circle.node {
+    fill: #bb33ff;
+    filter: drop-shadow(0 0 6px #bb33ff);
+    animation: glowNode 4s ease-in-out infinite;
+}
+
+@keyframes flowConnection {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes glowNode {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 6px #bb33ff);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 18px #bb33ff);
+    }
+}
