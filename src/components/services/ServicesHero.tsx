@@ -36,32 +36,32 @@ const ServicesHero = () => {
   // Array containing data for each service item
   const serviceItems = [
     {
-      icon: <BookOpen className="w-8 h-8" />, // Icon component
+      icon: <BookOpen className="w-8 h-8" style={{ filter: 'drop-shadow(0 0 5px #A0EBEB)' }} />, // Icon component with glow
       title: "Custom Assignment Support",
       description: "Whether you're in college or working on a postgraduate degree, we provide tailored assistance for all types of assignments across academic levels."
     },
     {
-      icon: <PenTool className="w-8 h-8" />,
+      icon: <PenTool className="w-8 h-8" style={{ filter: 'drop-shadow(0 0 5px #A0EBEB)' }} />,
       title: "Engaging Essay Crafting",
       description: "Need an impactful essay? We specialize in writing well-researched and compelling essays on any topic, helping your ideas stand out."
     },
     {
-      icon: <GraduationCap className="w-8 h-8" />,
+      icon: <GraduationCap className="w-8 h-8" style={{ filter: 'drop-shadow(0 0 5px #A0EBEB)' }} />,
       title: "Thesis & Dissertation Expertise",
       description: "Tackle complex research projects with ease—our professionals can help with everything from writing detailed theses to crafting sharp dissertation proposals."
     },
     {
-      icon: <FileText className="w-8 h-8" />,
+      icon: <FileText className="w-8 h-8" style={{ filter: 'drop-shadow(0 0 5px #A0EBEB)' }} />,
       title: "Personal Statement Writing",
       description: "Applying to a university or scholarship in Qatar? We'll help you create a powerful personal statement that highlights your strengths and aspirations."
     },
     {
-      icon: <BookMarked className="w-8 h-8" />,
+      icon: <BookMarked className="w-8 h-8" style={{ filter: 'drop-shadow(0 0 5px #A0EBEB)' }} />,
       title: "Collaborative Book Writing",
       description: "Have a story to tell? We'll bring your vision to life with professionally written content, turning your ideas into a publish-ready book."
     },
     {
-      icon: <Ghost className="w-8 h-8" />,
+      icon: <Ghost className="w-8 h-8" style={{ filter: 'drop-shadow(0 0 5px #A0EBEB)' }} />,
       title: "Discreet Ghostwriting Solutions",
       description: "Need academic or professional content written on your behalf? We'll draft high-quality material for you while keeping your identity completely confidential."
     }
@@ -69,14 +69,14 @@ const ServicesHero = () => {
 
   return (
     // Main section container with relative positioning and background gradient
-    <section className="relative py-20 md:py-24 overflow-hidden bg-gradient-to-b from-white to-gray-50 font-sans"> {/* Added font-sans */}
+    <section className="relative py-20 md:py-24 overflow-hidden bg-gradient-to-b from-[#FEFEFE] to-[#A0EBEB]/10 font-sans"> {/* Updated with color palette */}
       {/* Background decorative elements with animations */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {/* These divs create blurred, floating shapes for background texture */}
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-100/30 rounded-full filter blur-3xl animate-float1 opacity-50"></div> {/* Adjusted color and opacity */}
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-blue-100/30 rounded-full filter blur-3xl animate-float2 opacity-50"></div> {/* Adjusted color and opacity */}
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-blue-100/50 rounded-full filter blur-xl animate-pulse opacity-60"></div> {/* Adjusted color and opacity */}
-        <div className="absolute bottom-1/4 right-1/3 w-24 h-24 bg-blue-100/50 rounded-full filter blur-xl animate-float3 opacity-60"></div> {/* Adjusted color and opacity */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#A0EBEB]/30 rounded-full filter blur-3xl animate-float1 opacity-50"></div> {/* Updated with color palette */}
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-[#A0EBEB]/30 rounded-full filter blur-3xl animate-float2 opacity-50"></div> {/* Updated with color palette */}
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-[#A0EBEB]/50 rounded-full filter blur-xl animate-pulse opacity-60"></div> {/* Updated with color palette */}
+        <div className="absolute bottom-1/4 right-1/3 w-24 h-24 bg-[#A0EBEB]/50 rounded-full filter blur-xl animate-float3 opacity-60"></div> {/* Updated with color palette */}
       </div>
 
       {/* Main content container */}
@@ -88,13 +88,13 @@ const ServicesHero = () => {
           transition={{ duration: 0.8 }}    // Animation duration
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"> {/* Adjusted text size */}
+          <h1 className="text-4xl md:text-6xl font-bold text-[#151616] mb-6 leading-tight"> {/* Updated with color palette */}
             Expert Academic
             {/* Applying a gradient text effect */}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-500"> Support Services</span> {/* Example gradient */}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#151616] to-[#A0EBEB]"> Support Services</span> {/* Updated with color palette */}
           </h1>
-          <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto"> {/* Adjusted text size */}
-            <strong>Grade Spark Academy</strong> delivers comprehensive academic assistance tailored to your unique needs and goals.
+          <p className="text-lg md:text-xl text-[#151616]/80 max-w-3xl mx-auto"> {/* Updated with color palette */}
+            <strong className="text-[#151616]">Grade Spark Academy</strong> delivers comprehensive academic assistance tailored to your unique needs and goals.
           </p>
         </motion.div>
 
@@ -111,11 +111,11 @@ const ServicesHero = () => {
               key={index}               // Unique key for each item
               variants={itemVariants}   // Apply item animation variants
               // ** UPDATED CLASSNAME FOR CENTERING **
-              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200/50 flex flex-col items-center text-center h-full" // Added items-center and text-center
+              className="bg-[#FEFEFE] rounded-xl p-6 shadow-lg hover:shadow-[0_8px_30px_rgba(160,235,235,0.3)] transition-all duration-300 border border-[#A0EBEB]/30 flex flex-col items-center text-center h-full hover:transform hover:translate-y-[-5px]" // Updated with color palette
             >
               {/* Container for the icon with hover and tap animations */}
               <motion.div
-                className="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full flex items-center justify-center mb-4 text-white shadow-md" // Added shadow
+                className="w-16 h-16 bg-[#151616] rounded-full flex items-center justify-center mb-4 text-[#A0EBEB] shadow-md border-2 border-[#A0EBEB]/50" // Updated with color palette
                 whileHover={{ scale: 1.1, rotate: 5 }} // Scale up and rotate slightly on hover
                 whileTap={{ scale: 0.95 }}             // Scale down slightly on tap/click
               >
@@ -138,9 +138,9 @@ const ServicesHero = () => {
                 </motion.div>
               </motion.div>
               {/* Service title */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">{item.title}</h3> {/* Adjusted font weight and color */}
+              <h3 className="text-xl font-semibold text-[#151616] mb-3">{item.title}</h3> {/* Updated with color palette */}
               {/* Service description (flex-grow ensures it takes available space) */}
-              <p className="text-gray-600 flex-grow">{item.description}</p>
+              <p className="text-[#151616]/80 flex-grow">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -155,7 +155,7 @@ const ServicesHero = () => {
           {/* Link component acting as a button */}
           <Link
             to="/contact" // Destination path (ensure react-router-dom setup)
-            className="inline-block bg-gradient-to-r from-blue-500 to-teal-500 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-teal-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" // Added gradient, hover effects, transition, shadow, and slight lift on hover
+            className="inline-block bg-[#151616] text-[#A0EBEB] border-2 border-[#A0EBEB] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#A0EBEB] hover:text-[#151616] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" // Updated with color palette
           >
             Connect Now
           </Link>
