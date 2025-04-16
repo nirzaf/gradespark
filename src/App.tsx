@@ -17,6 +17,7 @@ const ConsentForm = lazy(() => import('./components/ConsentForm'));
 const Terms = lazy(() => import('./pages/Terms'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Sitemap = lazy(() => import('./pages/Sitemap'));
+const BlogList = lazy(() => import('./pages/BlogList'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -62,6 +63,7 @@ const App = () => {
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/blogs" element={<BlogList />} />
 
               {/* Catch all undefined routes and show 404 page */}
               <Route path="*" element={<NotFound />} />

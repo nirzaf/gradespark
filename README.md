@@ -125,10 +125,10 @@ This detailed content strategy, informed by analyzing similar services like [Tut
 
 #### Academic Writing & Research
 - [x] "How to Write a Dissertation: A Step-by-Step Guide for University Students"
-- [ ] "10 Common Research Paper Mistakes and How to Avoid Them"
-- [ ] "The Ultimate Guide to Writing a Literature Review"
-- [ ] "Understanding Different Citation Styles: APA, MLA, Chicago, and Harvard"
-- [ ] "Tips for Writing a Compelling Thesis Statement"
+- [x] "10 Common Research Paper Mistakes and How to Avoid Them"
+- [x] "The Ultimate Guide to Writing a Literature Review"
+- [x] "Understanding Different Citation Styles: APA, MLA, Chicago, and Harvard"
+- [x] "Tips for Writing a Compelling Thesis Statement"
 
 #### Subject-Specific Guides
 - [ ] "Mastering Complex Mathematical Proofs: A Student's Guide"
