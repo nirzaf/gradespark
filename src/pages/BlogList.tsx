@@ -29,7 +29,7 @@ const BlogList = () => {
                         id: 'how-to-write-a-dissertation',
                         title: 'How to Write a Dissertation: A Step-by-Step Guide for University Students',
                         description: 'Your complete guide to writing a university dissertation. Follow Grade Spark Academy\'s step-by-step process from topic selection to final submission.',
-                        date: '2023-09-15',
+                        date: '2024-06-15',
                         url: '/how-to-write-a-dissertation.html',
                         imageUrl: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80'
                     },
@@ -37,7 +37,7 @@ const BlogList = () => {
                         id: 'common-research-paper-mistakes',
                         title: '10 Common Research Paper Mistakes and How to Avoid Them',
                         description: 'Learn how to avoid the 10 most common research paper mistakes with expert tips from Grade Spark Academy. Improve your writing and boost your grades.',
-                        date: '2023-10-02',
+                        date: '2024-06-02',
                         url: '/common-research-paper-mistakes.html',
                         imageUrl: 'https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80'
                     },
@@ -45,7 +45,7 @@ const BlogList = () => {
                         id: 'understanding-citation-styles',
                         title: 'Understanding Citation Styles: APA, MLA, Chicago, Harvard',
                         description: 'Learn the key differences between APA, MLA, Chicago, and Harvard citation styles and when to use each. A comprehensive guide from Grade Spark Academy.',
-                        date: '2023-10-20',
+                        date: '2024-07-20',
                         url: '/understanding-citation-styles-apa-mla-chicago-harvard.html',
                         imageUrl: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80'
                     },
@@ -53,7 +53,7 @@ const BlogList = () => {
                         id: 'writing-literature-review',
                         title: 'The Ultimate Guide to Writing a Literature Review',
                         description: 'Learn how to write a comprehensive literature review with Grade Spark Academy\'s ultimate guide. Understand its purpose, structure, and step-by-step process.',
-                        date: '2023-11-05',
+                        date: '2024-11-05',
                         url: '/writing-literature-review-guide.html',
                         imageUrl: 'https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80'
                     },
@@ -61,9 +61,17 @@ const BlogList = () => {
                         id: 'academic-success-guide',
                         title: 'The Ultimate Guide to Academic Success',
                         description: 'Discover proven strategies, expert tips, and practical advice to excel in your academic journey with Grade Spark Academy\'s comprehensive guide to academic success.',
-                        date: '2023-11-18',
+                        date: '2024-07-18',
                         url: '/ultimate-academic-success-guide.html',
                         imageUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80'
+                    },
+                    {
+                        "id": "mastering-mathematical-proofs",
+                        "title": "Mastering Complex Mathematical Proofs: A Student's Guide",
+                        "description": "Learn effective strategies and techniques to understand, structure, and write complex mathematical proofs with Grade Spark Academy's student guide.",
+                        "date": "2025-04-16",
+                        "url": "/mastering-mathematical-proofs-guide.html",
+                        "imageUrl": "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
                     }
                 ];
 

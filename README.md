@@ -131,7 +131,7 @@ This detailed content strategy, informed by analyzing similar services like [Tut
 - [x] "Tips for Writing a Compelling Thesis Statement"
 
 #### Subject-Specific Guides
-- [ ] "Mastering Complex Mathematical Proofs: A Student's Guide"
+- [x] "Mastering Complex Mathematical Proofs: A Student's Guide"
 - [ ] "Programming Assignment Tips: From Pseudocode to Final Implementation"
 - [ ] "How to Approach Engineering Design Projects: Best Practices"
 - [ ] "Statistical Analysis Made Simple: A Guide for Research Students"
