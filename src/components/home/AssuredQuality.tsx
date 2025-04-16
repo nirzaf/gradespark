@@ -7,10 +7,10 @@ const AssuredQuality: FC = () => {
     {
       title: 'Assured Quality',
       icon: (
-        <div className="quality-check-icon" title="Assured Quality" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px rgba(0, 255, 204, 0.7))', display: 'block' }}>
-            <circle cx="12" cy="12" r="10" stroke="#00ffcc" strokeWidth="2" fill="none" />
-            <path d="M8 12l3 3 6-6" stroke="#00ffcc" strokeWidth="2" fill="none" />
+        <div className="quality-check-icon" title="Assured Quality" style={{ width: '64px', height: '64px', margin: '0 auto 1.5rem' }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00ffcc" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px #00ffcc)' }}>
+            <circle cx="12" cy="12" r="10" />
+            <path d="M8 12l3 3 6-6" />
           </svg>
         </div>
       ),
@@ -19,11 +19,11 @@ const AssuredQuality: FC = () => {
     {
       title: 'Time Efficiency',
       icon: (
-        <div className="time-clock-icon" title="Time Efficiency" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px rgba(255, 204, 51, 0.7))', display: 'block' }}>
-            <circle cx="12" cy="12" r="10" stroke="#ffcc33" strokeWidth="2" fill="none" />
-            <line x1="12" y1="12" x2="12" y2="8" stroke="#ffcc33" strokeWidth="2" strokeLinecap="round" />
-            <line x1="12" y1="12" x2="16" y2="12" stroke="#ffcc33" strokeWidth="2" strokeLinecap="round" />
+        <div className="time-clock-icon" title="Time Efficiency" style={{ width: '64px', height: '64px', margin: '0 auto 1.5rem' }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffcc33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px #ffcc33)' }}>
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="12" x2="12" y2="8" />
+            <line x1="12" y1="12" x2="16" y2="12" />
           </svg>
         </div>
       ),
@@ -32,22 +32,11 @@ const AssuredQuality: FC = () => {
     {
       title: 'Uniqueness Guaranteed',
       icon: (
-        <div className="unique-fingerprint-icon" title="Uniqueness Guaranteed" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
-          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 8px #ff00ff)' }}>
-            <defs>
-              <linearGradient id="rainbowGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#ff0055" />
-                <stop offset="25%" stopColor="#ff9900" />
-                <stop offset="50%" stopColor="#ffee00" />
-                <stop offset="75%" stopColor="#00ff99" />
-                <stop offset="100%" stopColor="#0066ff" />
-              </linearGradient>
-            </defs>
-            <path d="M32 2c-6 0-11 5-11 11v6c0 6 5 11 11 11s11-5 11-11v-6c0-6-5-11-11-11z" stroke="#ff00ff" />
-            <path d="M32 20v10" stroke="#ff00ff" />
-            <path d="M21 32c0 6 5 11 11 11s11-5 11-11v-6c0-6-5-11-11-11" stroke="#ff00ff" />
-            <path d="M32 43v7" stroke="#ff00ff" />
-            <path d="M25 50c0 3 5 5 7 5s7-2 7-5" stroke="#ff00ff" />
+        <div className="unique-fingerprint-icon" title="Uniqueness Guaranteed" style={{ width: '64px', height: '64px', margin: '0 auto 1.5rem' }}>
+          <svg viewBox="0 0 24 24" fill="none" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px #00ffff)' }}>
+            <path d="M12 2C9 2 7 4 7 7v3c0 3 2 5 5 5s5-2 5-5V7c0-3-2-5-5-5z" stroke="#00ffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M12 15v3" stroke="#00ffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M10 18c0 1 1 2 2 2s2-1 2-2" stroke="#00ffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
       ),
@@ -56,20 +45,12 @@ const AssuredQuality: FC = () => {
     {
       title: 'Enhanced Learning',
       icon: (
-        <div className="learning-brain-icon" title="Enhanced Learning" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
-          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#bb33ff" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 8px #bb33ff)' }}>
-            {/* Brain outline */}
-            <path d="M20 32c0-6 4-12 12-12s12 6 12 12-4 12-12 12-12-6-12-12z" />
-            {/* Neural connections */}
-            <path className="connection" d="M32 20l-6 6" />
-            <path className="connection" d="M32 20l6 6" />
-            <path className="connection" d="M26 38l-6 6" />
-            <path className="connection" d="M38 38l6 6" />
-            {/* Nodes */}
-            <circle className="node" cx="26" cy="26" r="3" fill="#bb33ff" />
-            <circle className="node" cx="38" cy="26" r="3" fill="#bb33ff" />
-            <circle className="node" cx="20" cy="44" r="3" fill="#bb33ff" />
-            <circle className="node" cx="44" cy="44" r="3" fill="#bb33ff" />
+        <div className="learning-brain-icon" title="Enhanced Learning" style={{ width: '64px', height: '64px', margin: '0 auto 1.5rem' }}>
+          <svg viewBox="0 0 24 24" fill="none" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px #bb33ff)' }}>
+            <circle cx="12" cy="9" r="5" stroke="#bb33ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="8" cy="9" r="1" fill="#bb33ff" />
+            <circle cx="16" cy="9" r="1" fill="#bb33ff" />
+            <path d="M8 14c0 2 2 4 4 4s4-2 4-4" stroke="#bb33ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
       ),
@@ -130,7 +111,7 @@ const AssuredQuality: FC = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="card benefit-card bg-[#1e1e1e] rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-celeste/20 flex flex-col items-center text-center"
+              className="card benefit-card bg-[#1e1e1e] rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-celeste/20 flex flex-col items-center text-center hover:transform hover:translate-y-[-10px] hover:shadow-[0_12px_30px_rgba(0,255,255,0.6)]"
             >
               {benefit.icon}
 

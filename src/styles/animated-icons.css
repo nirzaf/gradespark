@@ -1,138 +1,58 @@
 /* Animated Icons CSS */
 
-/* 1. Assured Quality - CheckCircle Icon */
-.academic-excellence-section .quality-check-icon {
-  width: 64px;
-  height: 64px;
-  position: relative;
-  color: #00ffcc;
-  filter: drop-shadow(0 0 6px #00ffcc);
-  animation: pulseGlow 2.5s infinite ease-in-out;
-  cursor: pointer;
-  margin: 0 auto 1.5rem;
-}
-
-.academic-excellence-section .quality-check-icon:hover {
-  animation: bounceCheck 0.6s ease forwards;
-  filter: drop-shadow(0 0 12px #00ffcc);
-}
-
-@keyframes pulseGlow {
-  0%, 100% { filter: drop-shadow(0 0 6px #00ffcc); }
-  50% { filter: drop-shadow(0 0 18px #00ffcc); }
-}
-
-@keyframes bounceCheck {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-}
-
-/* 2. Time Efficiency - Clock Icon */
-.academic-excellence-section .time-clock-icon {
-  width: 64px;
-  height: 64px;
-  position: relative;
-  cursor: pointer;
-  animation: rotateClock 10s linear infinite;
-  filter: drop-shadow(0 0 12px #ffcc33);
-  margin: 0 auto 1.5rem;
-}
-
-.academic-excellence-section .time-clock-icon:hover {
-  animation: rotateClockFast 1.5s linear infinite;
-  filter: drop-shadow(0 0 24px #ffcc33);
-  transform: scale(1.15);
-}
-
-@keyframes rotateClock {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes rotateClockFast {
-  0% { transform: rotate(0deg) scale(1.15); }
-  100% { transform: rotate(720deg) scale(1.15); }
-}
-
-/* 3. Uniqueness Guaranteed - Fingerprint Icon */
-.academic-excellence-section .unique-fingerprint-icon {
-  width: 64px;
-  height: 64px;
-  cursor: pointer;
-  position: relative;
-  margin: 0 auto 1.5rem;
-}
-
-.academic-excellence-section .unique-fingerprint-icon svg path {
-  fill: none;
-  stroke-width: 2.5;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: drawFingerprint 4s ease forwards;
-}
-
-.academic-excellence-section .unique-fingerprint-icon:hover svg path {
-  animation: shimmerFingerprint 2s infinite alternate ease-in-out;
-}
-
-@keyframes drawFingerprint {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes shimmerFingerprint {
-  0% { filter: drop-shadow(0 0 6px #ff00ff); }
-  100% { filter: drop-shadow(0 0 18px #ff00ff); }
-}
-
-/* 4. Enhanced Learning - Brain Icon */
+/* Common icon styles */
+.academic-excellence-section .quality-check-icon,
+.academic-excellence-section .time-clock-icon,
+.academic-excellence-section .unique-fingerprint-icon,
 .academic-excellence-section .learning-brain-icon {
   width: 64px;
   height: 64px;
   position: relative;
   cursor: pointer;
-  filter: drop-shadow(0 0 8px #bb33ff);
-  animation: pulseBrain 3s ease-in-out infinite;
   margin: 0 auto 1.5rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+/* Hover effects for all icons */
+.academic-excellence-section .quality-check-icon:hover,
+.academic-excellence-section .time-clock-icon:hover,
+.academic-excellence-section .unique-fingerprint-icon:hover,
 .academic-excellence-section .learning-brain-icon:hover {
-  animation: pulseBrainFast 1.2s ease-in-out infinite;
+  transform: scale(1.1);
 }
 
-@keyframes pulseBrain {
-  0%, 100% { filter: drop-shadow(0 0 8px #bb33ff); }
-  50% { filter: drop-shadow(0 0 20px #bb33ff); }
+/* 1. Assured Quality - CheckCircle Icon */
+.academic-excellence-section .quality-check-icon svg {
+  filter: drop-shadow(0 0 8px #00ffcc);
 }
 
-@keyframes pulseBrainFast {
-  0%, 100% { filter: drop-shadow(0 0 20px #bb33ff); }
-  50% { filter: drop-shadow(0 0 40px #bb33ff); }
+.academic-excellence-section .quality-check-icon:hover svg {
+  filter: drop-shadow(0 0 12px #00ffcc);
 }
 
-/* Neural connections animation */
-.academic-excellence-section .learning-brain-icon svg path.connection {
-  stroke: #bb33ff;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-dasharray: 20;
-  stroke-dashoffset: 20;
-  animation: flowConnection 4s linear infinite;
+/* 2. Time Efficiency - Clock Icon */
+.academic-excellence-section .time-clock-icon svg {
+  filter: drop-shadow(0 0 8px #ffcc33);
 }
 
-.academic-excellence-section .learning-brain-icon svg circle.node {
-  fill: #bb33ff;
-  filter: drop-shadow(0 0 6px #bb33ff);
-  animation: glowNode 4s ease-in-out infinite;
+.academic-excellence-section .time-clock-icon:hover svg {
+  filter: drop-shadow(0 0 12px #ffcc33);
 }
 
-@keyframes flowConnection {
-  to { stroke-dashoffset: 0; }
+/* 3. Uniqueness Guaranteed - Fingerprint Icon */
+.academic-excellence-section .unique-fingerprint-icon svg {
+  filter: drop-shadow(0 0 8px #00ffff);
 }
 
-@keyframes glowNode {
-  0%, 100% { filter: drop-shadow(0 0 6px #bb33ff); }
-  50% { filter: drop-shadow(0 0 18px #bb33ff); }
+.academic-excellence-section .unique-fingerprint-icon:hover svg {
+  filter: drop-shadow(0 0 12px #00ffff);
+}
+
+/* 4. Enhanced Learning - Brain Icon */
+.academic-excellence-section .learning-brain-icon svg {
+  filter: drop-shadow(0 0 8px #bb33ff);
+}
+
+.academic-excellence-section .learning-brain-icon:hover svg {
+  filter: drop-shadow(0 0 12px #bb33ff);
 }
