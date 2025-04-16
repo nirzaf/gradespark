@@ -133,9 +133,9 @@ This detailed content strategy, informed by analyzing similar services like [Tut
 #### Subject-Specific Guides
 - [x] "Mastering Complex Mathematical Proofs: A Student's Guide"
 - [ ] "Programming Assignment Tips: From Pseudocode to Final Implementation"
-- [ ] "How to Approach Engineering Design Projects: Best Practices"
+- [x] "How to Approach Engineering Design Projects: Best Practices"
 - [ ] "Statistical Analysis Made Simple: A Guide for Research Students"
-- [ ] "Writing Psychology Papers: From Research to Analysis"
+- [x] "Writing Psychology Papers: From Research to Analysis"
 
 #### Academic Success Strategies
 - [ ] "Time Management Tips for University Students: Balancing Assignments and Life"
