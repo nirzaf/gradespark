@@ -159,18 +159,18 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin size={20} className="text-celeste mr-3 mt-1 flex-shrink-0" />
-                <span className="text-gray-300">123 Academic Way, Education District, University City</span>
+                <span className="text-gray-300">6th Floor, Building Number 12, Street Number 817, Khor Shaqeeq Street, Zone No 38, Al Sadd, Doha.</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="text-celeste mr-3 flex-shrink-0" />
-                <a href="mailto:info@gradespark.org" className="text-gray-300 hover:text-celeste transition-colors">
-                  info@gradespark.org
+                <a href="mailto:contact@gradespark.org" className="text-gray-300 hover:text-celeste transition-colors">
+                  contact@gradespark.org
                 </a>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="text-celeste mr-3 flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-gray-300 hover:text-celeste transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+97433170042" className="text-gray-300 hover:text-celeste transition-colors">
+                  +974-33170042
                 </a>
               </li>
             </ul>

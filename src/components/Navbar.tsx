@@ -22,10 +22,10 @@ const navItems = [
     title: "Contact",
     path: "/contact",
     dropdownItems: [
-      { title: "WhatsApp", path: "https://wa.me/61461367702?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20tutorial.", icon: <MessageSquare className="w-5 h-5" />, external: true },
+      { title: "WhatsApp", path: "https://wa.me/97433170042?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20services.", icon: <MessageSquare className="w-5 h-5" />, external: true },
       { title: "Chat", path: "#", icon: <MessageCircle className="w-5 h-5" />, onClick: "openHubSpotChat" },
-      { title: "Mobile", path: "tel:+61461367702", icon: <Phone className="w-5 h-5" /> },
-      { title: "Email", path: "mailto:info@studytomy.com", icon: <Mail className="w-5 h-5" /> },
+      { title: "Mobile", path: "tel:+97433170042", icon: <Phone className="w-5 h-5" /> },
+      { title: "Email", path: "mailto:contact@gradespark.org", icon: <Mail className="w-5 h-5" /> },
       { title: "Contact Form", path: "/contact", icon: <Globe className="w-5 h-5" /> }
     ]
   }
