@@ -15,6 +15,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const BookTrial = lazy(() => import('./pages/BookTrial'));
 const ConsentForm = lazy(() => import('./components/ConsentForm'));
 const Terms = lazy(() => import('./pages/Terms'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -58,6 +59,7 @@ const App = () => {
               <Route path="/book-trial" element={<BookTrial />} />
               <Route path="/consent-preferences" element={<ConsentForm />} />
               <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               
               {/* Catch all undefined routes and show 404 page */}
               <Route path="*" element={<NotFound />} />
