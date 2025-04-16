@@ -3,8 +3,8 @@ export default function ProhibitedActivities() {
     <section id="prohibited-activities" className="mb-8">
       <h2 className="text-2xl font-semibold mb-4">4. PROHIBITED ACTIVITIES</h2>
       <p className="text-gray-700 mb-4">
-        You may not access or use the Services for any purpose other than that for which we make the Services available. 
-        The Services may not be used in connection with any commercial endeavors except those that are specifically endorsed or 
+        You may not access or use the Services for any purpose other than that for which we make the Services available.
+        The Services may not be used in connection with any commercial endeavors except those that are specifically endorsed or
         approved by us.
       </p>
       <ul className="list-disc pl-6 space-y-2 text-gray-700">
@@ -27,6 +27,12 @@ export default function ProhibitedActivities() {
         <li>Decipher, decompile, disassemble, or reverse engineer any of the software</li>
         <li>Make any unauthorized use of the Services</li>
         <li>Use the Services as part of any effort to compete with us</li>
+        <li>Submit our work as your own without proper citation or acknowledgment</li>
+        <li>Use our Services to engage in academic dishonesty or plagiarism</li>
+        <li>Share your account credentials with others or allow others to use your account</li>
+        <li>Use our Services to complete exams, tests, or quizzes that require independent work</li>
+        <li>Distribute, share, or resell materials obtained through our Services</li>
+        <li>Use our Services in violation of your educational institution's academic integrity policies</li>
       </ul>
     </section>
   );
