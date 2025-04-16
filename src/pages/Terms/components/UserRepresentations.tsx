@@ -9,6 +9,11 @@ export default function UserRepresentations() {
         <li>You will not access the Services through automated or non-human means</li>
         <li>You will not use the Services for any illegal or unauthorized purpose</li>
         <li>Your use of the Services will not violate any applicable law or regulation</li>
+        <li>You understand that our Services are intended to be used as reference materials to aid in learning</li>
+        <li>You will use our Services in accordance with your institution's academic integrity policies</li>
+        <li>You will not submit our work as your own without proper citation or permission from your institution</li>
+        <li>You take full responsibility for how you use the materials provided by our Services</li>
+        <li>You understand that misuse of our Services may result in academic penalties from your institution</li>
       </ul>
     </section>
   );
