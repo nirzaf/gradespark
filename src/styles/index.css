@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 /* Import AssuredQuality animations */
 @import './AssuredQuality.css';
 /* Import Academic Icons animations */
 @import './academic-icons.css';
 /* Import Animated Icons */
 @import './animated-icons.css';
+/* Import GSA Logo Animation */
+@import './gsa-logo-animation.css';
+/* Import Animated Background */
+@import './animated-background.css';
 
 @tailwind base;
 @tailwind components;

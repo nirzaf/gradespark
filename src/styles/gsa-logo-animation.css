@@ -1,0 +1,85 @@
+/* GSA Shield Logo Animation */
+
+/* Logo container with a subtle breathing effect */
+.gsa-logo {
+  width: 260px;
+  margin: 0 auto 2rem;
+  animation: scaleBreath 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(0, 247, 255, 0.4));
+}
+
+.gsa-logo svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Shield Base – classic shape with a solid black fill and crisp white outline */
+.gsa-logo .base {
+  fill: #000;
+  stroke: #fff;
+  stroke-width: 2;
+  animation: baseFadeIn 1.5s ease forwards;
+}
+
+/* Shield Outline Animation – drawn with a cyan stroke */
+.gsa-logo .shield-outline {
+  stroke: #00f7ff;
+  fill: none;
+  stroke-width: 2;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawOutline 2s ease-out forwards;
+}
+
+/* Apply subtle 3D shadow filter to all text elements */
+.gsa-logo .letter {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  fill: white;
+  opacity: 0;
+  animation: textFade 1.5s ease-out forwards;
+  filter: url(#f3d);
+}
+
+/* Individual letter tweaks */
+.gsa-logo .letter.g { animation-delay: 0.5s; }
+.gsa-logo .letter.s { animation-delay: 0.7s; }
+.gsa-logo .letter.a { 
+  animation-delay: 0.9s; 
+  fill: #00f7ff; 
+  filter: url(#f3d); 
+  animation: textFade 1.5s ease-out forwards, glowPulse 2s infinite; 
+}
+
+/* Cyan accent for the bottom tip of the shield */
+.gsa-logo .accent {
+  fill: #00f7ff;
+  animation: glowPulse 2s infinite;
+  filter: drop-shadow(0 0 6px rgba(0, 247, 255, 0.8));
+}
+
+/* Animations */
+@keyframes drawOutline {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(0, 247, 255, 0.8)); }
+  50% { filter: drop-shadow(0 0 14px rgba(0, 247, 255, 1)); }
+}
+
+@keyframes scaleBreath {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes baseFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes textFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

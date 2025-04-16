@@ -93,13 +93,47 @@ const AssuredQuality: FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <h2 className="text-4xl font-bold mb-4 text-celeste">Academic Excellence Guaranteed</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             At <strong className="text-celeste">Grade Spark Academy</strong>, we're committed to delivering exceptional quality in every aspect of our academic services.
           </p>
         </motion.div>
+
+        {/* GSA Shield Logo Animation */}
+        <div className="gsa-logo mb-12">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            {/* SVG Definitions */}
+            <defs>
+              {/* Subtle 3D drop-shadow filter for text elements */}
+              <filter id="f3d" x="-50%" y="-50%" width="200%" height="200%">
+                <feOffset in="SourceAlpha" dx="1" dy="1" result="offset" />
+                <feGaussianBlur in="offset" stdDeviation="1" result="blur" />
+                <feBlend in="SourceGraphic" in2="blur" mode="normal" />
+              </filter>
+            </defs>
+
+            {/* Shield Base: classic shape */}
+            <path className="base" d="M40,30 L160,30 L160,140 L100,170 L40,140 Z" />
+
+            {/* Animated Shield Outline */}
+            <path className="shield-outline" d="M40,30 L160,30 L160,140 L100,170 L40,140 Z" />
+
+            {/* Centered group for letters with interlocking offsets */}
+            <g transform="translate(100,102)">
+              {/* "G" positioned to the left */}
+              <text x="-40" y="0" className="letter g" textAnchor="middle" dominantBaseline="middle">G</text>
+              {/* "S" centered */}
+              <text x="0" y="0" className="letter s" textAnchor="middle" dominantBaseline="middle">S</text>
+              {/* "A" positioned to the right */}
+              <text x="40" y="0" className="letter a" textAnchor="middle" dominantBaseline="middle">A</text>
+            </g>
+
+            {/* Cyan bottom tip accent */}
+            <polygon className="accent" points="90,155 100,165 110,155" />
+          </svg>
+        </div>
 
         <motion.div
           variants={containerVariants}
