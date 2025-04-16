@@ -51,9 +51,9 @@ const QualityAssurance = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow"
+              className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow text-center"
             >
-              <div className={`w-12 h-12 ${feature.color} rounded-full flex items-center justify-center mb-4`}>
+              <div className={`w-12 h-12 ${feature.color} rounded-full flex items-center justify-center mb-4 mx-auto`}>
                 <feature.icon className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>

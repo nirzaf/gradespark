@@ -3,7 +3,6 @@ import ServicesHero from '../components/services/ServicesHero';
 
 // Lazy load components for better performance
 const ServicesBenefits = lazy(() => import('../components/services/ServicesBenefits'));
-const ServicesContent = lazy(() => import('../components/services/ServicesContent'));
 const TopTutors = lazy(() => import('../components/services/TopTutors'));
 const QualityAssurance = lazy(() => import('../components/services/QualityAssurance'));
 const QatarServices = lazy(() => import('../components/services/QatarServices'));
@@ -20,7 +19,6 @@ const Services = () => {
         <TopTutors />
         <ServicesBenefits />
         <QualityAssurance />
-        <ServicesContent />
         <QatarServices />
       </Suspense>
     </div>
