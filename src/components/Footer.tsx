@@ -111,12 +111,7 @@ const Footer = () => {
                   Exam Boards
                 </Link>
               </li>
-              <li>
-                <Link to="/home-school" className="text-gray-300 hover:text-celeste transition-colors flex items-center">
-                  <ChevronRight size={16} className="mr-2" />
-                  Home School
-                </Link>
-              </li>
+
               <li>
                 <Link to="/contact" className="text-gray-300 hover:text-celeste transition-colors flex items-center">
                   <ChevronRight size={16} className="mr-2" />

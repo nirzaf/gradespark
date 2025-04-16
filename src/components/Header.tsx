@@ -9,13 +9,12 @@ const Header = () => {
     { path: "/", label: "Home" },
     { path: "/about", label: "About us" },
     { path: "/exam-boards", label: "Exam Boards" },
-    { path: "/home-school", label: "Home School" },
     { path: "/career", label: "Career" },
     { path: "/contact", label: "Contact" }
   ];
 
   const BookTrialButton = () => (
-    <Link 
+    <Link
       to="/book-trial"
       className="group relative inline-flex items-center justify-center px-6 py-3 font-bold text-white rounded-xl shadow-2xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
     >
@@ -69,8 +68,8 @@ const Header = () => {
             <ul className="flex items-center space-x-8">
               {menuItems.map((item) => (
                 <li key={item.path}>
-                  <Link 
-                    to={item.path} 
+                  <Link
+                    to={item.path}
                     className="hover:text-celeste transition-colors"
                   >
                     {item.label}
@@ -93,8 +92,8 @@ const Header = () => {
               <ul className="px-4 py-2">
                 {menuItems.map((item) => (
                   <li key={item.path} className="py-2">
-                    <Link 
-                      to={item.path} 
+                    <Link
+                      to={item.path}
                       className="block hover:text-celeste"
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -114,4 +113,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;
