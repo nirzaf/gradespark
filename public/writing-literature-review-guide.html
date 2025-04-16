@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Guide to Writing a Literature Review - Grade Spark Academy Blog</title>
+    <meta name="description"
+        content="Learn how to write a comprehensive literature review with Grade Spark Academy's ultimate guide. Understand its purpose, structure, and step-by-step process.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        night: '#121212',
+                        'night-dark': '#0a0a0a',
+                        celeste: '#A0EBEB',
+                        'celeste-dark': '#7CDBDB'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine-slow': 'shine 8s infinite',
+                        'shine-fast': 'shine 4s infinite',
+                        'shimmer': 'shimmer 2s infinite'
+                    },
+                    keyframes: {
+                        shine: {
+                            '0%, 100%': { transform: 'translateX(-100%)' },
+                            '50%': { transform: 'translateX(100%)' }
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #A0EBEB, #7CDBDB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .celeste-gradient-text-no-shadow {
+            background: linear-gradient(to right, #A0EBEB, #7CDBDB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Blog specific styles */
+        .blog-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #121212;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #121212;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .blog-content ul,
+        .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-content ul {
+            list-style-type: disc;
+        }
+
+        .blog-content ol {
+            list-style-type: decimal;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid #A0EBEB;
+            padding-left: 1rem;
+            font-style: italic;
+            margin: 1.5rem 0;
+            color: #6b7280;
+        }
+
+        .blog-content a {
+            color: #0ea5e9;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .blog-content a:hover {
+            color: #0284c7;
+            text-decoration: underline;
+        }
+
+        .blog-content img {
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .blog-content .code-block {
+            background-color: #f1f5f9;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="fixed w-full z-50">
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-night/95 via-night/90 to-night/95 backdrop-blur-xl border-b border-celeste/20 shadow-lg shadow-celeste/5">
+        </div>
+
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(160,235,235,0.3),transparent_70%)] opacity-70 animate-pulse-slow">
+        </div>
+
+        <div
+            class="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-celeste/70 to-transparent animate-pulse-slow">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/#/" class="flex-shrink-0">
+                        <div class="bg-white rounded-lg p-0.5 flex items-center justify-center h-[42px] w-[42px] sm:h-[48px] sm:w-[48px] overflow-hidden"
+                            style="box-shadow: inset 0 1px 2px rgba(255,255,255,0.9), 0 2px 4px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2)">
+                            <img class="h-[38px] w-auto sm:h-[44px] object-contain"
+                                src="https://ik.imagekit.io/fazrinphcc/gradespark/gsa-logo-trasparent-bg.png?updatedAt=1744794868511"
+                                alt="Grade Spark Academy" />
+                        </div>
+                    </a>
+                    <a href="/#/" class="ml-3 hidden sm:block">
+                        <span class="relative z-20 text-xl font-bold celeste-gradient-text-no-shadow whitespace-nowrap">
+                            Grade Spark Academy
+                        </span>
+                    </a>
+                    <a href="/#/" class="ml-2 sm:hidden">
+                        <div class="flex flex-col">
+                            <span
+                                class="relative z-20 text-base font-bold celeste-gradient-text-no-shadow leading-tight">
+                                Grade Spark
+                            </span>
+                            <span
+                                class="relative z-20 text-base font-bold celeste-gradient-text-no-shadow leading-tight">
+                                Academy
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="/#/"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Home</span>
+                    </a>
+                    <a href="/#/about"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">About</span>
+                    </a>
+                    <a href="/#/services"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Services</span>
+                    </a>
+                    <a href="/#/blog"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Blog</span>
+                    </a>
+                    <a href="/#/contact"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Contact</span>
+                    </a>
+
+                    <a href="/#/place-order">
+                        <button class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium
+                                    bg-gradient-to-r from-celeste to-celeste-dark
+                                    text-night shadow-md hover:shadow-lg
+                                    transition-all duration-300
+                                    backdrop-blur-sm backdrop-saturate-150
+                                    border border-celeste/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-4 h-4 mr-2">
+                                <path d="M12 3v3m0 4.5v3m0 4.5v3M3 12h3m4.5 0h3m4.5 0h3"></path>
+                            </svg>
+                            Connect Now
+                        </button>
+                    </a>
+                </div>
+
+                <div class="flex items-center md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-celeste hover:bg-night-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-celeste">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="block h-6 w-6">
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <line x1="4" x2="20" y1="6" y2="6"></line>
+                            <line x1="4" x2="20" y1="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <header class="mb-8">
+                <h1 class="text-4xl font-bold mb-4 text-night">The Ultimate Guide to Writing a Literature Review</h1>
+
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 rounded-full bg-celeste/30 flex items-center justify-center mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="text-night">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-medium text-night">Dr. Emily Carter</p>
+                        <p class="text-sm text-gray-500">Published on April 16, 2025 • 10 min read</p>
+                    </div>
+                </div>
+            </header>
+
+            <article class="blog-content prose prose-lg max-w-none">
+                <p>
+                    Writing a literature review is a fundamental skill in academic research, crucial for theses, dissertations, and research papers. It’s more than just summarizing sources; it's a critical synthesis of existing scholarship that demonstrates your understanding of the field and identifies gaps your research aims to fill. This guide will walk you through the purpose, structure, and step-by-step process of crafting an effective literature review.
+                </p>
+
+                <div class="rounded-xl overflow-hidden shadow-lg mb-8">
+                    <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                        alt="Person writing and researching with books and laptop" class="w-full h-auto object-cover">
+                </div>
+
+                <h2>What is a Literature Review and Why is it Important?</h2>
+                <p>
+                    A literature review is a comprehensive overview of scholarly articles, books, dissertations, conference proceedings, and other sources relevant to a specific topic or research question. Its primary purposes are to:
+                </p>
+                <ul>
+                    <li>Provide background information and context for your research.</li>
+                    <li>Demonstrate your familiarity with the key concepts, theories, and studies in your field.</li>
+                    <li>Identify major debates, trends, and controversies.</li>
+                    <li>Critically evaluate the strengths and weaknesses of existing research.</li>
+                    <li>Highlight gaps in the current knowledge base that your research will address.</li>
+                    <li>Justify the significance and originality of your proposed study.</li>
+                    <li>Position your work within the broader scholarly conversation.</li>
+                </ul>
+                <p>
+                    A well-executed literature review establishes your credibility as a researcher and provides a solid foundation for your own work.
+                </p>
+
+                <h2>The Process: Step-by-Step Guide</h2>
+
+                <h3>Step 1: Define Your Scope and Topic</h3>
+                <p>
+                    Before you start searching, clarify your research question or topic. What specific area are you investigating? A narrow, well-defined topic is easier to manage than a broad one. Consider the scope: How many years of research will you cover? What types of studies (e.g., qualitative, quantitative) are most relevant?
+                </p>
+
+                <h3>Step 2: Search for Relevant Literature</h3>
+                <p>
+                    Use academic databases (like JSTOR, PubMed, Scopus, Google Scholar), library catalogs, and reference lists of key articles to find relevant sources. Focus on keywords related to your topic. Keep track of your searches to avoid duplication and ensure comprehensive coverage.
+                </p>
+                <div class="my-8 p-6 bg-celeste/10 border border-celeste/30 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-night">Tip: Effective Keyword Strategies</h3>
+                    <ul class="space-y-2 list-disc pl-5">
+                        <li>Use synonyms and related terms (e.g., "student engagement," "academic involvement," "learner participation").</li>
+                        <li>Combine keywords using Boolean operators (AND, OR, NOT) to refine searches.</li>
+                        <li>Look for seminal papers and authors frequently cited in the field.</li>
+                        <li>Check the reference lists of relevant articles you find.</li>
+                    </ul>
+                </div>
+
+                <h3>Step 3: Evaluate and Select Sources</h3>
+                <p>
+                    Not all sources are created equal. Critically evaluate each potential source for its relevance, credibility, and contribution to the field. Ask questions like:
+                </p>
+                <ul>
+                    <li>Does this source directly address my research question?</li>
+                    <li>Is the author an expert in the field? Is the publication reputable (peer-reviewed)?</li>
+                    <li>What are the key findings, arguments, and methodologies?</li>
+                    <li>What are the strengths and limitations of the study?</li>
+                    <li>How does this source relate to other literature in the field?</li>
+                </ul>
+                <p>
+                    Prioritize recent, high-quality, peer-reviewed sources, but don't overlook foundational or older seminal works.
+                </p>
+
+                <h3>Step 4: Identify Themes, Debates, and Gaps</h3>
+                <p>
+                    As you read, don't just summarize each source individually. Look for connections, patterns, and discrepancies across the literature. Group sources by common themes, theoretical approaches, methodologies, or chronological developments. Identify:
+                </p>
+                <ul>
+                    <li><strong>Key Themes:</strong> Recurring topics or concepts discussed across multiple sources.</li>
+                    <li><strong>Major Debates/Controversies:</strong> Areas where researchers disagree or present conflicting findings.</li>
+                    <li><strong>Methodological Trends:</strong> Common research designs or approaches used.</li>
+                    <li><strong>Gaps in Research:</strong> Unanswered questions, under-explored areas, or limitations in existing studies that your research can address.</li>
+                </ul>
+                <p>
+                    Taking detailed notes and using tools like concept maps or matrices can help organize your thoughts during this stage.
+                </p>
+
+                <blockquote class="border-l-4 border-celeste pl-4 italic my-6">
+                    "A literature review is not a shopping list of previous studies, but a coherent argument that sets the stage for your research." – Anonymous Academic Proverb
+                </blockquote>
+
+                <h3>Step 5: Structure Your Literature Review</h3>
+                <p>
+                    A typical literature review structure includes an introduction, body paragraphs organized thematically or methodologically, and a conclusion.
+                </p>
+                <ul>
+                    <li><strong>Introduction:</strong> Define the topic and scope, explain the review's objective, and briefly outline the structure.</li>
+                    <li><strong>Body:</strong> Synthesize and critique the literature. Organize paragraphs around specific themes, trends, or debates, not just individual authors. Compare and contrast different studies, highlight key findings, and discuss methodological strengths and weaknesses. Use transition words and phrases to ensure smooth flow between ideas.</li>
+                    <li><strong>Conclusion:</strong> Summarize the main findings and contributions of the literature reviewed. Emphasize the key themes, debates, and, most importantly, the identified gaps. Clearly state how your proposed research will address these gaps and contribute to the field.</li>
+                </ul>
+
+                <h3>Step 6: Write and Revise</h3>
+                <p>
+                    Begin writing, focusing on synthesis and critical analysis rather than simple description. Maintain a clear, academic tone and ensure proper citation throughout using the required style guide (APA, MLA, Chicago, etc.).
+                </p>
+                <div class="bg-celeste/20 p-6 rounded-xl my-8">
+                    <h3 class="text-xl font-semibold mb-4 text-night">Revision Checklist:</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Is the scope clearly defined?</li>
+                        <li>Is the review logically organized (e.g., thematically)?</li>
+                        <li>Does it synthesize sources rather than just summarizing them?</li>
+                        <li>Is there critical evaluation of the literature?</li>
+                        <li>Are the gaps in research clearly identified?</li>
+                        <li>Does it effectively set the stage for your own research?</li>
+                        <li>Is the writing clear, concise, and academic?</li>
+                        <li>Are all sources properly cited?</li>
+                    </ul>
+                </div>
+                <p>
+                    Seek feedback from peers, mentors, or writing centers. Revision is crucial for refining your arguments and ensuring clarity.
+                </p>
+
+                <h2>Conclusion</h2>
+                <p>
+                    Writing a literature review is a challenging but rewarding process. It demonstrates your expertise, situates your research within the existing scholarly landscape, and justifies the need for your study. By following a systematic approach—defining your scope, searching strategically, evaluating critically, identifying themes and gaps, structuring logically, and revising thoroughly—you can craft a compelling and effective literature review that serves as a strong foundation for your academic work. Remember, it's not just about what others have said, but about weaving those voices together to tell a coherent story that leads directly to your own research contribution.
+                </p>
+                </article>
+            </div>
+    </main>
+
+    <footer class="bg-night text-white pt-16 pb-8 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 opacity-10">
+            <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-celeste blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-celeste blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Grade Spark Academy</h3>
+                    <p class="text-gray-300 mb-4">
+                        Helping university students achieve academic excellence through expert assistance and support.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="/#/" class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/about"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/exam-boards"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Exam Boards
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/services"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/contact"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Essay Writing
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Research Papers
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Dissertation Support
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Technical Assignments
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Editing & Proofreading
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="text-celeste mr-3 mt-1 flex-shrink-0">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span class="text-gray-300">6th Floor, Building Number 12, Street Number 817, Khor Shaqeeq
+                                Street, Zone No 38, Al Sadd, Doha.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="text-celeste mr-3 flex-shrink-0">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            <a href="mailto:contact@gradespark.org"
+                                class="text-gray-300 hover:text-celeste transition-colors">
+                                contact@gradespark.org
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="text-celeste mr-3 flex-shrink-0">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            <a href="tel:+97433170042" class="text-gray-300 hover:text-celeste transition-colors">
+                                +974-33170042
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-celeste/50 to-transparent my-8"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+                <div>
+                    <p>© 2025 Grade Spark Academy. All rights reserved.</p>
+                </div>
+
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="/#/privacy-policy" class="hover:text-celeste transition-colors">
+                        Privacy Policy
+                    </a>
+                    <a href="/#/terms" class="hover:text-celeste transition-colors">
+                        Terms of Service
+                    </a>
+                    <a href="/#/consent-preferences" class="hover:text-celeste transition-colors">
+                        Cookie Preferences
+                    </a>
+                    <a href="/#/sitemap" class="hover:text-celeste transition-colors">
+                        Sitemap
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center text-xs text-gray-500 mt-8 flex items-center justify-center">
+                <span>Powered by</span>
+                <a href="https://quadrate.lk" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center ml-1 hover:text-celeste transition-colors group">
+                    Quadrate TechSolutions
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" x2="21" y1="14" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="fixed bottom-6 right-6 z-50">
+            <a href="https://wa.me/97433170042?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20services."
+                class="flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
