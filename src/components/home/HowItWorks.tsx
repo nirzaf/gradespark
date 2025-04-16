@@ -9,32 +9,32 @@ const HowItWorks = () => {
             number: 1,
             title: 'Place Your Order',
             description: 'Fill out the form with your assignment details and requirements',
-            icon: <ClipboardList className="w-8 h-8" />,
-            color: 'from-celeste to-celeste-dark',
+            icon: <ClipboardList className="w-10 h-10" style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.7))' }} />,
+            color: 'from-[#4AEEFF] to-[#00B8D4]',
             shadowColor: 'shadow-celeste/20'
         },
         {
             number: 2,
             title: 'Choose Your Expert',
             description: 'Select from qualified profiles based on your subject needs',
-            icon: <UserCheck className="w-8 h-8" />,
-            color: 'from-celeste-dark to-night/80',
+            icon: <UserCheck className="w-10 h-10" style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.7))' }} />,
+            color: 'from-[#00B8D4] to-[#0097A7]',
             shadowColor: 'shadow-celeste-dark/20'
         },
         {
             number: 3,
             title: 'Track Progress',
             description: 'Communicate directly with your expert and monitor progress',
-            icon: <MessageSquare className="w-8 h-8" />,
-            color: 'from-night/80 to-night',
+            icon: <MessageSquare className="w-10 h-10" style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.7))' }} />,
+            color: 'from-[#0097A7] to-[#006064]',
             shadowColor: 'shadow-night/30'
         },
         {
             number: 4,
             title: 'Receive & Review',
             description: 'Get your completed work and request free revisions if needed',
-            icon: <CheckCircle className="w-8 h-8" />,
-            color: 'from-night to-celeste',
+            icon: <CheckCircle className="w-10 h-10" style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.7))' }} />,
+            color: 'from-[#006064] to-[#4AEEFF]',
             shadowColor: 'shadow-celeste/30'
         }
     ];
@@ -86,8 +86,8 @@ const HowItWorks = () => {
                             >
                                 <div className="bg-[#1e1e1e] rounded-xl p-6 shadow-lg hover:shadow-[0_12px_30px_rgba(0,255,255,0.6)] transition-all duration-300 h-full flex flex-col items-center text-center border border-celeste/20 hover:transform hover:translate-y-[-5px]">
                                     {/* Step Number with Icon */}
-                                    <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center mb-6 ${step.shadowColor} shadow-lg`}>
-                                        <div className="text-white">
+                                    <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(0,225,255,0.6)] border-2 border-celeste/50 icon-container`}>
+                                        <div className="text-white icon-pulse">
                                             {step.icon}
                                         </div>
                                     </div>

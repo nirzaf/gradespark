@@ -10,6 +10,8 @@
 @import './gsa-logo-animation.css';
 /* Import Animated Background */
 @import './animated-background.css';
+/* Import How It Works Icons Animation */
+@import './how-it-works-icons.css';
 
 @tailwind base;
 @tailwind components;
