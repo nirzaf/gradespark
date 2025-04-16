@@ -18,7 +18,6 @@
     "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^9.121.5",
     "@react-three/fiber": "^8.17.14",
-    "@rollup/rollup-linux-x64-gnu": "^4.40.0",
     "@supabase/supabase-js": "^2.39.7",
     "@types/react-slick": "^0.23.13",
     "@types/three": "^0.173.0",

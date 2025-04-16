@@ -5,7 +5,7 @@ import { Mail, MapPin, Phone, Instagram, Twitter, Facebook, Linkedin, ChevronRig
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -17,7 +17,7 @@ const Footer = () => {
       }
     }
   };
-  
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -38,9 +38,9 @@ const Footer = () => {
         <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-celeste blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-celeste blur-3xl"></div>
       </div>
-      
+
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
           variants={containerVariants}
           initial="hidden"
@@ -54,32 +54,32 @@ const Footer = () => {
               Helping university students achieve academic excellence through expert assistance and support.
             </p>
             <div className="flex space-x-4 mt-6">
-              <motion.a 
-                href="#" 
+              <motion.a
+                href="#"
                 className="text-white hover:text-celeste transition-colors"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <Facebook size={20} />
               </motion.a>
-              <motion.a 
-                href="#" 
+              <motion.a
+                href="#"
                 className="text-white hover:text-celeste transition-colors"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <Twitter size={20} />
               </motion.a>
-              <motion.a 
-                href="#" 
+              <motion.a
+                href="#"
                 className="text-white hover:text-celeste transition-colors"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <Instagram size={20} />
               </motion.a>
-              <motion.a 
-                href="#" 
+              <motion.a
+                href="#"
                 className="text-white hover:text-celeste transition-colors"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
@@ -88,7 +88,7 @@ const Footer = () => {
               </motion.a>
             </div>
           </motion.div>
-          
+
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
             <h3 className="text-xl font-bold mb-4 gradient-text">Quick Links</h3>
@@ -125,7 +125,7 @@ const Footer = () => {
               </li>
             </ul>
           </motion.div>
-          
+
           {/* Services */}
           <motion.div variants={itemVariants}>
             <h3 className="text-xl font-bold mb-4 gradient-text">Our Services</h3>
@@ -152,7 +152,7 @@ const Footer = () => {
               </li>
             </ul>
           </motion.div>
-          
+
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
             <h3 className="text-xl font-bold mb-4 gradient-text">Contact Us</h3>
@@ -176,13 +176,13 @@ const Footer = () => {
             </ul>
           </motion.div>
         </motion.div>
-        
+
         {/* Divider with gradient */}
         <div className="h-px w-full bg-gradient-to-r from-transparent via-celeste/50 to-transparent my-8"></div>
-        
+
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -190,8 +190,8 @@ const Footer = () => {
           >
             <p>© {currentYear} Grade Spark Academy. All rights reserved.</p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="flex space-x-6 mt-4 md:mt-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -207,11 +207,14 @@ const Footer = () => {
             <Link to="/consent-preferences" className="hover:text-celeste transition-colors">
               Cookie Preferences
             </Link>
+            <Link to="/sitemap" className="hover:text-celeste transition-colors">
+              Sitemap
+            </Link>
           </motion.div>
         </div>
-        
+
         {/* Credits */}
-        <motion.div 
+        <motion.div
           className="text-center text-xs text-gray-500 mt-8 flex items-center justify-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -219,9 +222,9 @@ const Footer = () => {
           transition={{ delay: 0.9 }}
         >
           <span>Powered by</span>
-          <a 
-            href="https://quadrate.lk" 
-            target="_blank" 
+          <a
+            href="https://quadrate.lk"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center ml-1 hover:text-celeste transition-colors group"
           >
@@ -230,7 +233,7 @@ const Footer = () => {
           </a>
         </motion.div>
       </div>
-      
+
       <WhatsAppButton />
     </footer>
   );

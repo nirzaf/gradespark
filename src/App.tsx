@@ -16,6 +16,7 @@ const BookTrial = lazy(() => import('./pages/BookTrial'));
 const ConsentForm = lazy(() => import('./components/ConsentForm'));
 const Terms = lazy(() => import('./pages/Terms'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const Sitemap = lazy(() => import('./pages/Sitemap'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -46,7 +47,7 @@ const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <PageTracker /> 
+        <PageTracker />
         <Navbar />
         <main className="flex-grow mt-16">
           <Suspense fallback={<PageLoader />}>
@@ -60,7 +61,8 @@ const App = () => {
               <Route path="/consent-preferences" element={<ConsentForm />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              
+              <Route path="/sitemap" element={<Sitemap />} />
+
               {/* Catch all undefined routes and show 404 page */}
               <Route path="*" element={<NotFound />} />
             </Routes>
