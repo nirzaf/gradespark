@@ -74,12 +74,12 @@ const BlogList = () => {
                         "imageUrl": "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
                     },
                     {
-                        "id": "engineering-design-projects-best-practices",
+                        "id": "engineering-design-projects",
                         "title": "How to Approach Engineering Design Projects: Best Practices",
-                        "description": "Explore best practices for tackling engineering design projects, from defining the problem to delivering the final solution. Learn key steps for success.",
-                        "date": "2025-04-16",
-                        "url": "/engineering-design-projects-best-practices.html",
-                        "imageUrl": "https://images.unsplash.com/photo-1517077304055-6e89abbf09f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                        "description": "Learn best practices for approaching engineering design projects, from defining the problem and requirements to prototyping, testing, and documentation for successful outcomes.",
+                        "date": "2025-04-17",
+                        "url": "/engineering-design-project-best-practices.html",
+                        "imageUrl": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
                     },
                     {
                         "id": "writing-psychology-papers",
