@@ -7,7 +7,7 @@ const AssuredQuality: FC = () => {
     {
       title: 'Assured Quality',
       icon: (
-        <div className="icon-container quality-check-icon" style={{ width: '80px', height: '80px', background: 'rgba(0, 255, 204, 0.1)', borderRadius: '50%', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="quality-check-icon" title="Assured Quality" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px rgba(0, 255, 204, 0.7))', display: 'block' }}>
             <circle cx="12" cy="12" r="10" stroke="#00ffcc" strokeWidth="2" fill="none" />
             <path d="M8 12l3 3 6-6" stroke="#00ffcc" strokeWidth="2" fill="none" />
@@ -19,7 +19,7 @@ const AssuredQuality: FC = () => {
     {
       title: 'Time Efficiency',
       icon: (
-        <div className="icon-container time-clock-icon" style={{ width: '80px', height: '80px', background: 'rgba(255, 204, 51, 0.1)', borderRadius: '50%', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="time-clock-icon" title="Time Efficiency" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px rgba(255, 204, 51, 0.7))', display: 'block' }}>
             <circle cx="12" cy="12" r="10" stroke="#ffcc33" strokeWidth="2" fill="none" />
             <line x1="12" y1="12" x2="12" y2="8" stroke="#ffcc33" strokeWidth="2" strokeLinecap="round" />
@@ -32,11 +32,22 @@ const AssuredQuality: FC = () => {
     {
       title: 'Uniqueness Guaranteed',
       icon: (
-        <div className="icon-container unique-fingerprint-icon" style={{ width: '80px', height: '80px', background: 'rgba(255, 0, 255, 0.1)', borderRadius: '50%', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px rgba(255, 0, 255, 0.7))', display: 'block' }}>
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="none" stroke="#ff00ff" strokeWidth="2" />
-            <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="none" stroke="#ff00ff" strokeWidth="2" />
-            <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="none" stroke="#ff00ff" strokeWidth="2" />
+        <div className="unique-fingerprint-icon" title="Uniqueness Guaranteed" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
+          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 8px #ff00ff)' }}>
+            <defs>
+              <linearGradient id="rainbowGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#ff0055" />
+                <stop offset="25%" stopColor="#ff9900" />
+                <stop offset="50%" stopColor="#ffee00" />
+                <stop offset="75%" stopColor="#00ff99" />
+                <stop offset="100%" stopColor="#0066ff" />
+              </linearGradient>
+            </defs>
+            <path d="M32 2c-6 0-11 5-11 11v6c0 6 5 11 11 11s11-5 11-11v-6c0-6-5-11-11-11z" stroke="#ff00ff" />
+            <path d="M32 20v10" stroke="#ff00ff" />
+            <path d="M21 32c0 6 5 11 11 11s11-5 11-11v-6c0-6-5-11-11-11" stroke="#ff00ff" />
+            <path d="M32 43v7" stroke="#ff00ff" />
+            <path d="M25 50c0 3 5 5 7 5s7-2 7-5" stroke="#ff00ff" />
           </svg>
         </div>
       ),
@@ -45,17 +56,20 @@ const AssuredQuality: FC = () => {
     {
       title: 'Enhanced Learning',
       icon: (
-        <div className="icon-container learning-brain-icon" style={{ width: '80px', height: '80px', background: 'rgba(187, 51, 255, 0.1)', borderRadius: '50%', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="64" height="64" style={{ filter: 'drop-shadow(0 0 8px rgba(187, 51, 255, 0.7))', display: 'block' }}>
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="#bb33ff" strokeWidth="2" />
-            <path d="M8 12C8 9.79 9.79 8 12 8" fill="none" stroke="#bb33ff" strokeWidth="2" strokeLinecap="round" />
-            <path d="M12 16C14.21 16 16 14.21 16 12" fill="none" stroke="#bb33ff" strokeWidth="2" strokeLinecap="round" />
-            <path d="M12 8C14.21 8 16 9.79 16 12" fill="none" stroke="#bb33ff" strokeWidth="2" strokeLinecap="round" />
-            <path d="M8 12C8 14.21 9.79 16 12 16" fill="none" stroke="#bb33ff" strokeWidth="2" strokeLinecap="round" />
-            <circle cx="8" cy="12" r="1.5" fill="#bb33ff" />
-            <circle cx="12" cy="8" r="1.5" fill="#bb33ff" />
-            <circle cx="16" cy="12" r="1.5" fill="#bb33ff" />
-            <circle cx="12" cy="16" r="1.5" fill="#bb33ff" />
+        <div className="learning-brain-icon" title="Enhanced Learning" style={{ width: '80px', height: '80px', margin: '0 auto 1.5rem' }}>
+          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#bb33ff" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 8px #bb33ff)' }}>
+            {/* Brain outline */}
+            <path d="M20 32c0-6 4-12 12-12s12 6 12 12-4 12-12 12-12-6-12-12z" />
+            {/* Neural connections */}
+            <path className="connection" d="M32 20l-6 6" />
+            <path className="connection" d="M32 20l6 6" />
+            <path className="connection" d="M26 38l-6 6" />
+            <path className="connection" d="M38 38l6 6" />
+            {/* Nodes */}
+            <circle className="node" cx="26" cy="26" r="3" fill="#bb33ff" />
+            <circle className="node" cx="38" cy="26" r="3" fill="#bb33ff" />
+            <circle className="node" cx="20" cy="44" r="3" fill="#bb33ff" />
+            <circle className="node" cx="44" cy="44" r="3" fill="#bb33ff" />
           </svg>
         </div>
       ),
@@ -118,26 +132,7 @@ const AssuredQuality: FC = () => {
               variants={itemVariants}
               className="card benefit-card bg-[#1e1e1e] rounded-xl p-6 shadow-lg hover:shadow-xl transition-all border border-celeste/20 flex flex-col items-center text-center"
             >
-              <motion.div
-                className="mb-6"
-                animate={index === 0 ? {
-                  scale: [1, 1.1, 1],
-                } : index === 1 ? {
-                  rotate: [0, 360],
-                } : index === 2 ? {
-                  y: [0, -5, 0],
-                } : {
-                  scale: [1, 1.05, 1, 0.95, 1],
-                }}
-                transition={{
-                  duration: index === 1 ? 10 : 3,
-                  repeat: Infinity,
-                  repeatType: index === 1 ? "loop" : "reverse",
-                  ease: "easeInOut"
-                }}
-              >
-                {benefit.icon}
-              </motion.div>
+              {benefit.icon}
 
               <h3 className="text-xl font-bold text-[#00fff7] mb-4">{benefit.title}</h3>
 
