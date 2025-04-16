@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Import AssuredQuality animations */
+@import './AssuredQuality.css';
+/* Import Academic Icons animations */
+@import './academic-icons.css';
+/* Import Animated Icons */
+@import './animated-icons.css';
 
 @tailwind base;
 @tailwind components;
@@ -141,11 +147,3 @@
   animation-delay: 0.4s;
 }
 
-/* Import AssuredQuality animations */
-@import './AssuredQuality.css';
-
-/* Import Academic Icons animations */
-@import './academic-icons.css';
-
-/* Import Animated Icons */
-@import './animated-icons.css';
