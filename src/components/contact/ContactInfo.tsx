@@ -32,7 +32,7 @@ const ContactInfo = () => {
           <MapPin className="w-6 h-6 text-celeste" />
         </div>
         <h3 className="text-lg font-semibold mb-2">Location</h3>
-        <p className="text-gray-600">Melbourne, Australia</p>
+        <p className="text-gray-600">6th Floor, Building Number 12, Street Number 817, Khor Shaqeeq Street, Zone No 38, Al Sadd, Doha.</p>
       </div>
     </div>
   );
