@@ -215,7 +215,7 @@ const Navbar = () => {
               >
                 <motion.img
                   className="h-[38px] w-auto sm:h-[44px] object-contain"
-                  src="/https://ik.imagekit.io/fazrinphcc/gradespark/gsa-logo-trasparent-bg.png?updatedAt=1744794868511"
+                  src="https://ik.imagekit.io/fazrinphcc/gradespark/gsa-logo-trasparent-bg.png"
                   alt="Grade Spark Academy"
                   whileHover={{ rotate: [0, -2, 2, -2, 0] }}
                   transition={{ duration: 0.5 }}
