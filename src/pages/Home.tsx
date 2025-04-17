@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Hero from '../components/home/Hero';
 import Subjects from '../components/home/Subjects';
 import WhyUs from '../components/home/WhyUs';
@@ -11,12 +10,10 @@ import HowItWorks from '../components/home/HowItWorks';
 import AssuredQuality from '../components/home/AssuredQuality';
 import ComputerScienceHelp from '../components/home/ComputerScienceHelp';
 
-import { trackVisitor } from '../lib/visitorTracking';
+// Removed unused trackVisitor import
 
 export default function Home() {
-  useEffect(() => {
-    trackVisitor();
-  }, []);
+  // Removed trackVisitor usage
 
   return (
     <>

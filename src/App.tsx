@@ -1,10 +1,9 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { initGTM } from './lib/gtm';
 import GTMNoScript from './components/GTMNoScript';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { trackPageView } from './lib/trackingEvents';
 
 // Lazy load page components
 const Home = lazy(() => import('./pages/Home'));
@@ -27,18 +26,6 @@ const PageLoader = () => (
   </div>
 );
 
-// Create a wrapper component to handle page view tracking
-const PageTracker = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    // Track page view whenever the location changes
-    trackPageView(location.pathname);
-  }, [location]);
-
-  return null;
-};
-
 const App = () => {
   useEffect(() => {
     initGTM();
@@ -47,7 +34,6 @@ const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <PageTracker />
         <Navbar />
         <main className="flex-grow mt-16">
           <Suspense fallback={<PageLoader />}>
