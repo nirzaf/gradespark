@@ -1,7 +1,6 @@
 import HeroSection from './About/components/HeroSection';
 import MissionVision from './About/components/MissionVision';
 import KeyFeatures from './About/components/KeyFeatures';
-import Statistics from './About/components/Statistics';
 import QualityAssurance from './About/components/QualityAssurance';
 
 export default function About() {
@@ -12,7 +11,6 @@ export default function About() {
         <MissionVision />
         <KeyFeatures />
         <QualityAssurance />
-        <Statistics />
       </div>
     </div>
   );
