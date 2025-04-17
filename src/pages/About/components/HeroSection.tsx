@@ -22,7 +22,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-4xl md:text-5xl font-bold mb-6 celeste-gradient-text"
+            className="text-4xl md:text-5xl font-bold mb-6 text-black"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

@@ -39,13 +39,13 @@ const ComputerScienceHelp: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-night mb-4">
-            We Can Help You With Computer Science Homework
+            Expert Computer Science Homework Solutions
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-4">
-            For aspiring computer engineers, CS homework help is readily available. Our top specialists provide affordable, comprehensive support for all your needs.
+            Struggling with complex CS assignments? Our specialists deliver precise, affordable solutions that boost your understanding and grades.
           </p>
           <p className="text-md text-gray-600 max-w-2xl mx-auto">
-            Explore the diverse computer science disciplines we cover:
+            Discover our expertise across these key disciplines:
           </p>
         </motion.div>
 
@@ -67,7 +67,7 @@ const ComputerScienceHelp: React.FC = () => {
               {/* Custom animated CS icons */}
               <div className="mb-6"> {/* Increased spacing below icon */}
                 <div className="cs-icon-wrapper">
-                  {discipline.title.includes("Scientific computing") && (
+                  {discipline.title.includes("Scientific Computing") && (
                     <div className="icon-scientific">
                       <div className="calculator">
                         <div className="display"></div>
@@ -80,7 +80,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Computer architecture") && (
+                  {discipline.title.includes("Computer Architecture") && (
                     <div className="icon-architecture">
                       <div className="chip">
                         {Array.from({ length: 9 }).map((_, i) => (
@@ -102,7 +102,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Operating systems") && (
+                  {discipline.title.includes("Operating Systems") && (
                     <div className="icon-os">
                       <div className="network">
                         <div className="node node-1"></div>
@@ -117,7 +117,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Database") && (
+                  {discipline.title.includes("Database Management") && (
                     <div className="icon-database">
                       <div className="db-connector"></div>
                       <div className="db db-top"></div>
@@ -126,7 +126,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Data mining") && (
+                  {discipline.title.includes("AI & Machine Learning") && (
                     <div className="icon-ml">
                       <div className="brain">
                         <div className="hemisphere left-brain"></div>
@@ -144,7 +144,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Model driven") && (
+                  {discipline.title.includes("Model-Driven") && (
                     <div className="icon-model">
                       <div className="blueprint">
                         <div className="grid-line grid-horizontal grid-h-1"></div>
@@ -159,7 +159,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Computer programming") && (
+                  {discipline.title.includes("Programming Languages") && (
                     <div className="icon-programming">
                       <div className="editor">
                         <div className="window-controls">
@@ -186,7 +186,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Graphics") && (
+                  {discipline.title.includes("Graphics & Visualization") && (
                     <div className="icon-graphics">
                       <div className="canvas">
                         <div className="shape circle"></div>
@@ -197,7 +197,7 @@ const ComputerScienceHelp: React.FC = () => {
                     </div>
                   )}
 
-                  {discipline.title.includes("Software methodology") && (
+                  {discipline.title.includes("Software Engineering") && (
                     <div className="icon-software">
                       <div className="gear gear-large"></div>
                       <div className="gear gear-small"></div>
@@ -207,10 +207,10 @@ const ComputerScienceHelp: React.FC = () => {
                 </div>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-night"> {/* Larger title with more spacing */}
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-night h-14 flex items-center justify-center"> {/* Fixed height title with centering */}
                 {discipline.title}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed h-24 overflow-hidden">
                 {discipline.description}
               </p>
             </motion.div>

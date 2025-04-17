@@ -16,48 +16,48 @@ export interface CsDiscipline {
 // Assign icons to each discipline
 export const csDisciplines: CsDiscipline[] = [
   {
-    title: "Scientific computing assignment help",
-    description: "This is a field that employs complex mathematics in conjunction with computer algorithms to solve problems. If doing this homework is a problem for you, contact us today and solve it in a flash!",
+    title: "Scientific Computing",
+    description: "Master complex algorithms and mathematical models with our expert guidance. Transform challenging computations into precise, elegant solutions.",
     icon: FaCalculator // Icon for calculation/math
   },
   {
-    title: "Computer architecture and engineering (ARC) assignment help",
-    description: "Do you want to design the very best computer system, like no one ever did? Impress your professors with what our experts will create and get that grade you've been eyeing!",
+    title: "Computer Architecture",
+    description: "Optimize system designs and hardware configurations with our specialized expertise. Elevate your architecture projects to professional standards.",
     icon: FaMicrochip // Icon for hardware/architecture
   },
   {
-    title: "Operating systems and networking (OSNT) assignment help",
-    description: "A computer network connects multiple systems to solve problems, just like how connecting with us will be the end of yours! Contact us today to get computer assignment help online from people who have practical experience in the field.",
+    title: "Operating Systems & Networks",
+    description: "Navigate OS concepts and network protocols with confidence. Our experts deliver solutions that demonstrate deep technical understanding.",
     icon: FaNetworkWired // Icon for networking
   },
   {
-    title: "Database management systems (DBMS) assignment help",
-    description: "Database management systems can be a bit difficult to manage but contacting an expert software developer in the field is as easy as pie. We have premier experts in the field who will solve your problem sets as soon as possible.",
+    title: "Database Management",
+    description: "Perfect your database designs and queries with industry-standard approaches. Turn complex data structures into efficient, optimized systems.",
     icon: FaDatabase // Icon for databases
   },
   {
-    title: "Data mining, machine learning, and natural computation assignment help",
-    description: "Digging for data and information can be a strenuous task, but it doesn't have to be because you won't have to dig much at all to find the best data science help you can afford.",
+    title: "AI & Machine Learning",
+    description: "Implement cutting-edge algorithms and models with precision. Our ML specialists help you achieve outstanding results in this competitive field.",
     icon: FaBrain // Icon for AI/ML/data science
   },
   {
-    title: "Model driven engineering assignment help",
-    description: "Creating models can be very fun unless you're super strapped on time. Our experts, on the other hand, have all the time in the world to lend you a hand with computer science homework solutions.",
+    title: "Model-Driven Engineering",
+    description: "Develop sophisticated models and frameworks with expert guidance. Transform abstract concepts into practical, implementable solutions.",
     icon: FaDraftingCompass // Icon for modeling/design
   },
   {
-    title: "Computer programming languages and implementation assignment help",
-    description: "Programmers make the world go around in today's highly digital world. Connect with the best experts in the field and get all the guidance you need to become the best programmer you can be!",
+    title: "Programming Languages",
+    description: "Master any programming paradigm with our specialized coding expertise. From syntax challenges to complex implementations, we deliver excellence.",
     icon: FaCode // Icon for programming
   },
   {
-    title: "Graphics and visualization assignment help",
-    description: "When you're in a tough place, it can be hard to visualize computer project homework help, but it's there if you need it. We are connected with thousands of experts in the field of computer graphics and data visualization, so these assignments can be completed in record time.",
+    title: "Graphics & Visualization",
+    description: "Create stunning visual representations and graphics applications with professional techniques. Elevate your projects with expert assistance.",
     icon: FaPaintBrush // Icon for graphics/visualization
   },
   {
-    title: "Software methodology and engineering assignment help",
-    description: "To become an engineer is learning how to solve problems, and you can solve the one about cs homework help by reaching out to us! In exchange, you will get the very best grade available.",
+    title: "Software Engineering",
+    description: "Apply industry best practices to your software development projects. Our experts help you create robust, maintainable, and efficient solutions.",
     icon: FaGears // Icon for engineering/methodology
   },
 ];
