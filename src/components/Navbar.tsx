@@ -19,6 +19,10 @@ const navItems = [
     path: "/services"
   },
   {
+    title: "Blogs",
+    path: "/blogs"
+  },
+  {
     title: "Contact",
     path: "/contact",
     dropdownItems: [
