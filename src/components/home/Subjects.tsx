@@ -374,7 +374,7 @@ const Subjects = () => {
 
           {/* Additional note */}
           <div className="text-center mt-12 text-gray-500 text-sm">
-            <p>Additional subjects available upon request. <a href="/contact" className="text-celeste hover:underline">Contact us</a> for more information.</p>
+            <p>Additional subjects available upon request. <a href="/contact" className="text-gray-700 hover:text-celeste"><strong>Contact us</strong></a> for more information.</p>
           </div>
         </div>
       </section>
