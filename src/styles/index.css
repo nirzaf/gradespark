@@ -1,3 +1,4 @@
+/* stylelint-disable at-rule-no-unknown property-no-unknown */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 /* Import AssuredQuality animations */
@@ -56,6 +57,12 @@
 /* Celeste gradient text without shadow - for navbar */
 .celeste-gradient-text-no-shadow {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-celeste to-celeste-dark;
+}
+
+/* Outline text for high contrast in WhyUs section */
+.outline-text {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.7);
+  text-stroke: 1px rgba(0, 0, 0, 0.7);
 }
 
 @keyframes border-slide {
@@ -155,4 +162,3 @@
   animation: float3 3s ease-in-out infinite;
   animation-delay: 0.4s;
 }
-

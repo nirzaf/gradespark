@@ -44,7 +44,7 @@ const WhyUsCard = ({ icon, title, shortDesc, longDesc }: CardProps) => {
                 {icon}
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-night mb-3 celeste-gradient-text">{title}</h3>
+            <h3 className="text-xl font-bold text-night mb-3">{title}</h3>
             <p className="text-gray-600">{shortDesc}</p>
             <span className="md:hidden text-xs text-gray-400 mt-4 italic">Tap to learn more</span>
           </div>
@@ -124,7 +124,7 @@ export default function WhyUs() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-center mb-4 celeste-gradient-text">Why Choose Us?</h2>
+          <h2 className="text-4xl font-bold text-center mb-4 text-night">Why Choose Us?</h2>
           <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto">Trust Grade Spark Academy to help you achieve academic excellence</p>
         </motion.div>
 
