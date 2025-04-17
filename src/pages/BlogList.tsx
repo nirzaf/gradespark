@@ -105,6 +105,14 @@ const BlogList = () => {
                         "date": "2025-04-17",
                         "url": "/when-how-seek-academic-assignment-help.html",
                         "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
+                    },
+                    {
+                        "id": "collaborate-academic-experts",
+                        "title": "How to Collaborate Effectively with Academic Experts",
+                        "description": "Learn key strategies for building productive partnerships with professors, mentors, and academic advisors to enhance your research and academic journey. Discover tips from Grade Spark Academy.",
+                        "date": "2025-04-17",
+                        "url": "/collaborate-academic-experts.html",
+                        "imageUrl": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
                     }
                 ];
 
