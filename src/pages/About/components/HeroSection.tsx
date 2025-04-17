@@ -27,7 +27,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Transform Your Learning Journey
+Your Trusted Partner in Academic Success
             <motion.div
               className="h-1 w-48 bg-gradient-to-r from-celeste to-celeste-dark rounded-full mx-auto mt-4"
               initial={{ scaleX: 0 }}
@@ -42,7 +42,7 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Transforming education through personalized online tutoring, connecting students with expert tutors worldwide.
+At Grade Spark Academy, we understand the challenges university students face with tight deadlines, complex assignments, and constant pressure to perform. Our team of highly qualified professionals is dedicated to helping you achieve your academic goals while reducing stress and saving time.
           </motion.p>
         </motion.div>
       </div>

@@ -4,15 +4,17 @@ export default function MissionVision() {
       <div className="bg-celeste/10 p-8 rounded-lg">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
         <p className="text-gray-600">
-          To provide accessible, high-quality education to students globally through personalized online tutoring, 
-          helping them achieve their academic goals and unlock their full potential.
+          To help university students manage academic stress by providing expert assistance with assignments and projects.
+          We are committed to delivering high-quality, original content that helps students save time, reduce stress,
+          and improve their grades while maintaining the highest standards of academic integrity.
         </p>
       </div>
       <div className="bg-celeste/10 p-8 rounded-lg">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
         <p className="text-gray-600">
-          To become the world's leading online tutoring platform, known for excellence in education, 
-          innovation in teaching methods, and commitment to student success.
+          To be recognized as the most trusted academic support service for university students worldwide,
+          known for our expert writers, ethical practices, and unwavering commitment to student success.
+          We aim to transform academic challenges into opportunities for growth and achievement.
         </p>
       </div>
     </div>
