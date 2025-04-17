@@ -316,7 +316,6 @@ export default function Testimonials() {
           transition={{ duration: 0.8 }}
         >
           <h5 className="text-celeste font-medium mb-2 uppercase tracking-wider">Student Success Stories</h5>
-          <h2 className="testimonial-heading text-4xl font-bold mb-4">What Our Students Say</h2>
           <p className="text-white/70 max-w-2xl mx-auto text-sm md:text-base">
             Join thousands of students who have achieved academic excellence with our expert assistance
           </p>
