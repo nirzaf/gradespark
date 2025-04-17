@@ -14,7 +14,8 @@ const BlogList = () => {
     const [blogs, setBlogs] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const blogsPerPage = 12;
+    const [searchTerm, setSearchTerm] = useState('');
+    const blogsPerPage = 9;
 
     useEffect(() => {
         // Function to fetch and parse blog HTML files
@@ -107,11 +108,17 @@ const BlogList = () => {
         fetchBlogs();
     }, []);
 
+    // Filter blogs by search term
+    const filteredBlogs = blogs.filter(blog =>
+        blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     // Get current blogs for pagination
     const indexOfLastBlog = currentPage * blogsPerPage;
     const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-    const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
-    const totalPages = Math.ceil(blogs.length / blogsPerPage);
+    const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog);
+    const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
 
     // Change page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
@@ -138,6 +145,15 @@ const BlogList = () => {
                     </div>
                 ) : (
                     <>
+                        <div className="mb-6 flex justify-center">
+                            <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
+                                placeholder="Search blogs..."
+                                className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-celeste"
+                            />
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {currentBlogs.map((blog) => (
                                 <div key={blog.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
