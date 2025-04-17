@@ -7,7 +7,7 @@
 - [How It Works](#how-it-works)
 - [Academic Coverage](#academic-coverage)
 - [Pricing](#pricing)
-- [Place Order / Get Quote](#place-order--get-quote)
+- [Place Order / Get Quote](#contact--get-quote)
 - [Career](#career)
 - [Contact](#contact)
 - [Terms](#terms)
