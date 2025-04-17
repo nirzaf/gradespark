@@ -14,7 +14,7 @@ const Contact = () => {
       <ContactHeader />
       <ContactForm />
       <p className="text-center text-gray-700 my-8 italic font-bold">
-        If you face any issues in form submission feel free to drop an Email contact@gradespark.org
+        If you face any issues in form submission feel free to drop an Email <span className="underline">contact@gradespark.org</span>
       </p>
       <ContactInfo />
     </motion.div>
