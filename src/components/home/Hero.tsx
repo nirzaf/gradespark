@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, Suspense, useMemo } from 'react';
-import { GraduationCap, Users, Globe2 } from 'lucide-react';
+import { GraduationCap, Users, Globe2, Sparkles, Shield, Clock } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton'; // Assuming this exists
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -375,8 +375,80 @@ function Scene() {
 
 // Main Hero Component
 export default function Hero() {
+    // Add custom animation styles to the document
+    useEffect(() => {
+        const styleEl = document.createElement('style');
+        styleEl.innerHTML = `
+            @keyframes glow {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 0.7; transform: scale(1.2); }
+            }
+            @keyframes spin-slow {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            .animate-glow {
+                animation: glow 3s infinite ease-in-out;
+            }
+            .animate-spin-slow {
+                animation: spin-slow 12s infinite linear;
+            }
+
+            /* Particle animations */
+            @keyframes float-particle {
+                0%, 100% { transform: translate(0, 0); opacity: 0; }
+                25% { opacity: 0.8; }
+                50% { transform: translate(var(--tx), var(--ty)); opacity: 0.5; }
+                75% { opacity: 0.3; }
+                90%, 100% { opacity: 0; }
+            }
+
+            .particle {
+                opacity: 0;
+                filter: blur(1px);
+                box-shadow: 0 0 4px rgba(160, 235, 235, 0.8);
+            }
+
+            .particle-1 {
+                --tx: 20px; --ty: -30px;
+                animation: float-particle 4s infinite ease-out;
+            }
+
+            .particle-2 {
+                --tx: -25px; --ty: -20px;
+                animation: float-particle 5s infinite ease-out 0.5s;
+            }
+
+            .particle-3 {
+                --tx: -20px; --ty: 25px;
+                animation: float-particle 4.5s infinite ease-out 1s;
+            }
+
+            .particle-4 {
+                --tx: 25px; --ty: 20px;
+                animation: float-particle 5.5s infinite ease-out 1.5s;
+            }
+
+            .particle-5 {
+                --tx: 10px; --ty: -35px;
+                animation: float-particle 6s infinite ease-out 2s;
+            }
+
+            /* Icon hover effects */
+            .hero-icon-container:hover .particle {
+                animation-play-state: paused;
+            }
+            .hero-icon-container:hover .animate-spin-slow {
+                animation-duration: 6s;
+            }
+        `;
+        document.head.appendChild(styleEl);
+        return () => {
+            document.head.removeChild(styleEl);
+        };
+    }, []);
+
     // Define feature card styles using theme colors
-    const featureIconColor = `text-[${themeColors.celeste}]`; // Keep icons celeste
     const featureBorderColor = `border-[${themeColors.celeste}]/20`;
     const featureHoverShadow = `0 10px 25px -5px ${themeColors.celeste}30, 0 8px 10px -6px ${themeColors.celeste}20`;
 
@@ -408,23 +480,58 @@ export default function Hero() {
                 <div className="container mx-auto px-4 mt-16 md:mt-20 w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                         {[
-                            { icon: GraduationCap, title: "Expert Writers", desc: "MA/PhD qualified professionals", delay: 0.5 },
-                            { icon: Users, title: "On-Time Delivery", desc: "Meet your deadlines every time", delay: 0.7 },
-                            { icon: Globe2, title: "100% Original", desc: "Plagiarism-free guarantee", delay: 0.9 }
+                            { icon: GraduationCap, title: "Expert Writers", desc: "MA/PhD qualified professionals", delay: 0.5, color: "from-blue-400/20 to-blue-500/10" },
+                            { icon: Clock, title: "On-Time Delivery", desc: "Meet your deadlines every time", delay: 0.7, color: "from-purple-400/20 to-purple-500/10" },
+                            { icon: Shield, title: "100% Original", desc: "Plagiarism-free guarantee", delay: 0.9, color: "from-green-400/20 to-green-500/10" }
                         ].map((feature, index) => (
                             <motion.div
                                 key={index}
-                                className={`text-center bg-white/85 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border ${featureBorderColor}`}
+                                className={`text-center bg-white/85 backdrop-blur-md rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border ${featureBorderColor} relative overflow-hidden group`}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0, transition: { delay: feature.delay, type: "spring", stiffness: 90, damping: 12 } }}
                                 whileHover={{ scale: 1.04, y: -5, boxShadow: featureHoverShadow }}
                                 whileTap={{ scale: 0.98 }}
                             >
-                                <div className="flex justify-center mb-4">
-                                    <feature.icon className={`h-12 w-12 ${featureIconColor}`} />
+                                <div className="hero-icon-container relative flex justify-center items-center mb-6">
+                                    {/* Animated background elements */}
+                                    <div className="absolute inset-0 w-24 h-24 rounded-full bg-gradient-to-br from-celeste/20 to-celeste/5 animate-pulse"></div>
+                                    <div className="absolute inset-[-5px] w-[calc(100%+10px)] h-[calc(100%+10px)] rounded-full bg-celeste/10 blur-md animate-glow"></div>
+                                    <div className="absolute inset-[-2px] w-[calc(100%+4px)] h-[calc(100%+4px)] rounded-full border-2 border-celeste/20 animate-spin-slow"></div>
+
+                                    {/* Particles */}
+                                    <div className="absolute inset-[-10px] w-[calc(100%+20px)] h-[calc(100%+20px)]">
+                                        {[...Array(5)].map((_, i) => (
+                                            <div
+                                                key={i}
+                                                className={`particle absolute w-1.5 h-1.5 rounded-full bg-celeste particle-${i+1}`}
+                                                style={{
+                                                    top: `${Math.random() * 100}%`,
+                                                    left: `${Math.random() * 100}%`,
+                                                }}
+                                            ></div>
+                                        ))}
+                                    </div>
+
+                                    {/* Icon container */}
+                                    <div className="relative z-10 bg-white/80 w-20 h-20 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm border border-celeste/30">
+                                        <feature.icon className="h-10 w-10 text-celeste drop-shadow-[0_0_3px_rgba(160,235,235,0.5)]" />
+                                        <Sparkles className="absolute top-0 right-0 h-6 w-6 text-yellow-400 animate-pulse" />
+                                    </div>
                                 </div>
-                                <h3 className={`text-lg font-semibold text-night`}>{feature.title}</h3>
+                                {/* Background gradient that changes on hover */}
+                                <div className={`absolute inset-0 opacity-0 bg-gradient-to-br ${feature.color} group-hover:opacity-20 transition-opacity duration-500`}></div>
+
+                                <h3 className="text-xl font-bold text-night mb-3">{feature.title}</h3>
                                 <p className="mt-2 text-base text-gray-700">{feature.desc}</p>
+
+                                {/* Bottom accent line */}
+                                <motion.div
+                                    className="absolute bottom-0 left-0 h-1 bg-celeste/70"
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: '100%' }}
+                                    transition={{ delay: feature.delay + 0.3, duration: 0.8 }}
+                                    viewport={{ once: true }}
+                                />
                             </motion.div>
                         ))}
                     </div>
