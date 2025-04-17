@@ -7,25 +7,22 @@ import { OrbitControls, Grid, Points, Box, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 import { Physics, usePlane, useBox, useSphere, Triplet } from '@react-three/cannon';
 
-// --- Asset Paths Check ---
-const LOGO_PATH = 'https://ik.imagekit.io/fazrinphcc/gradespark/gsa-logo-trasparent-bg.png'; // Verify path
-
 // Updated themeColors with palettes for subject categories
 const themeColors = {
-  celeste: '#A0EBEB',     // Light turquoise from primary palette
-  night: '#151616',       // Night - deep dark color
-  white: '#FEFEFE',       // Slightly off-white
+    celeste: '#A0EBEB',     // Light turquoise from primary palette
+    night: '#151616',       // Night - deep dark color
+    white: '#FEFEFE',       // Slightly off-white
 
-  // Tech/Programming Palette
-  techBlue: '#1D4ED8',    // Tailwind blue-700
-  techPurple: '#6D28D9',  // Tailwind violet-700
+    // Tech/Programming Palette
+    techBlue: '#1D4ED8',    // Tailwind blue-700
+    techPurple: '#6D28D9',  // Tailwind violet-700
 
-  // Science/Other Palette
-  scienceGreen: '#059669',  // Tailwind emerald-600
-  scienceOrange: '#06B6D4',   // Tailwind cyan-500 – vibrant and complementary
+    // Science/Other Palette
+    scienceGreen: '#059669',  // Tailwind emerald-600
+    scienceOrange: '#06B6D4',   // Tailwind cyan-500 – vibrant and complementary
 
-  // Accent for Hover/Click
-  accent: '#FACC15',      // Yellow (Tailwind yellow-400)
+    // Accent for Hover/Click
+    accent: '#FACC15',      // Yellow (Tailwind yellow-400)
 };
 
 
@@ -37,14 +34,13 @@ const categoryPalettes = {
 
 // --- Hero Text Content ---
 const heroTexts = [
-    { title: "Expert Support", subtitle: "Achieve Academic Success", emptyLine: "‎" },
-    { title: "Affordable Help", subtitle: "Stress-Free Assignment Aid", emptyLine: "‎" },
-    { title: "Original Work", subtitle: "Plagiarism-Free, Guaranteed", emptyLine: "‎" },
-    { title: "Private Service", subtitle: "Secure & Confidential Support", emptyLine: "‎" },
-    { title: "Timely Delivery", subtitle: "Never Miss Deadlines", emptyLine: "‎" },
-    { title: "Budget Excellence", subtitle: "Top Quality, Low Price", emptyLine: "‎" }
+    { title: "Skilled Support", subtitle: "Unlock Academic Excellence", emptyLine: "‎" },
+    { title: "Budget-Friendly", subtitle: "Hassle-Free Assignment Aid", emptyLine: "‎" },
+    { title: "Genuine Content", subtitle: "Guaranteed Plagiarism-Free", emptyLine: "‎" },
+    { title: "Secure Services", subtitle: "Confidential & Secure Help", emptyLine: "‎" },
+    { title: "OnTime Delivery", subtitle: "On-Time Deadline Assurance", emptyLine: "‎" },
+    { title: "Top Value Offer", subtitle: "Top Quality, Low-Cost Deal", emptyLine: "‎" }
 ];
-
 
 // --- Framer Motion Components (AnimatedText, LogoAnimation) ---
 // No major changes here, but ensure class strings using colors are correct
@@ -79,9 +75,9 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         return <div className="h-auto min-h-[180px] md:min-h-[160px]">Loading text...</div>;
     }
     const currentText = texts[currentIndex];
-     if (!currentText) {
-         return <div className="h-auto min-h-[180px] md:min-h-[160px]">Error loading text...</div>;
-     }
+    if (!currentText) {
+        return <div className="h-auto min-h-[180px] md:min-h-[160px]">Error loading text...</div>;
+    }
 
     // Ensure Tailwind can handle dynamic class names like border-[${themeColors.celeste}]/25
     // If not, define these utility classes explicitly in your CSS or Tailwind config.
@@ -174,14 +170,6 @@ const LogoAnimation = () => {
                     animate={{ background: [`radial-gradient(circle, ${themeColors.celeste}15 0%, ${themeColors.celeste}00 70%)`, `radial-gradient(circle, ${themeColors.celeste}20 0%, ${themeColors.celeste}00 70%)`, `radial-gradient(circle, ${themeColors.celeste}15 0%, ${themeColors.celeste}00 70%)`], scale: [1, 1.08, 1] }}
                     transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 />
-                {/* <motion.div className="relative transform-gpu" whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}>
-                    <motion.img
-                        src={LOGO_PATH} alt="Grade Spark Academy Logo"
-                        className="relative mx-auto w-[180px] md:w-[200px] mb-12 md:mb-16 drop-shadow-xl"
-                        style={{ filter: `drop-shadow(0 0 12px ${themeColors.celeste}50)` }}
-                        onError={(e) => (e.currentTarget.style.display = 'none')}
-                    />
-                </motion.div> */}
             </motion.div>
         </div>
     );
@@ -250,7 +238,7 @@ function BuildingSphere({ position, radius = 0.4, color }: { position: Triplet, 
                 opacity={0.95}
                 emissive={isHovered ? themeColors.accent : color}
                 emissiveIntensity={isHovered ? 0.6 : (isBlack ? 0.05 : 0.2)} // Adjust emissive
-             />
+            />
         </Sphere>
     );
 }
@@ -353,8 +341,8 @@ function Scene() {
                 shadow-bias={-0.0005}
             />
             {/* Use more neutral / thematic point lights */}
-            <pointLight position={[15, 5, -15]} intensity={0.6} color={themeColors.techBlue} distance={60} decay={1.5}/>
-            <pointLight position={[-15, 0, 15]} intensity={0.4} color={themeColors.celeste} distance={60} decay={1.5}/>
+            <pointLight position={[15, 5, -15]} intensity={0.6} color={themeColors.techBlue} distance={60} decay={1.5} />
+            <pointLight position={[-15, 0, 15]} intensity={0.4} color={themeColors.celeste} distance={60} decay={1.5} />
 
             <fog attach="fog" args={[themeColors.white, 25, 55]} />
 
@@ -409,13 +397,13 @@ export default function Hero() {
 
             {/* Foreground Content */}
             <div className="relative z-10 pt-6 pb-16 md:pt-8 md:pb-20 flex flex-col items-center">
-                 <div className="relative mb-[-2rem] md:mb-[-3rem] z-20">
+                <div className="relative mb-[-2rem] md:mb-[-3rem] z-20">
                     <LogoAnimation />
-                 </div>
-                 <div className="container mx-auto px-4 text-center relative z-10">
-                     <AnimatedText texts={heroTexts} />
-                     <HeroButton />
-                 </div>
+                </div>
+                <div className="container mx-auto px-4 text-center relative z-10">
+                    <AnimatedText texts={heroTexts} />
+                    <HeroButton />
+                </div>
                 {/* Features Grid */}
                 <div className="container mx-auto px-4 mt-16 md:mt-20 w-full">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -433,7 +421,7 @@ export default function Hero() {
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <div className="flex justify-center mb-4">
-                                     <feature.icon className={`h-12 w-12 ${featureIconColor}`} />
+                                    <feature.icon className={`h-12 w-12 ${featureIconColor}`} />
                                 </div>
                                 <h3 className={`text-lg font-semibold text-night`}>{feature.title}</h3>
                                 <p className="mt-2 text-base text-gray-700">{feature.desc}</p>
