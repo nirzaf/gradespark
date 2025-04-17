@@ -61,11 +61,11 @@ const ComputerScienceHelp: React.FC = () => {
             <motion.div
               key={index}
               // Added text-center to center icon, title, and description within the card
-              className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:border-celeste/30 transition-all duration-300 flex flex-col items-center text-center" // items-center for vertical centering if needed, text-center for horizontal
+              className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:border-celeste/30 transition-all duration-300 flex flex-col items-center text-center h-full" // items-center for vertical centering, text-center for horizontal, h-full for equal height
               variants={itemVariants}
             >
               {/* Custom animated CS icons */}
-              <div className="mb-4"> {/* Spacing below icon */}
+              <div className="mb-6"> {/* Increased spacing below icon */}
                 <div className="cs-icon-wrapper">
                   {discipline.title.includes("Scientific computing") && (
                     <div className="icon-scientific">
@@ -207,7 +207,7 @@ const ComputerScienceHelp: React.FC = () => {
                 </div>
               </div>
 
-              <h3 className="text-xl font-semibold mb-3 text-night"> {/* Title remains dark for contrast */}
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-night"> {/* Larger title with more spacing */}
                 {discipline.title}
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
