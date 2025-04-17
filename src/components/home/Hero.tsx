@@ -8,7 +8,7 @@ import * as THREE from 'three';
 import { Physics, usePlane, useBox, useSphere, Triplet } from '@react-three/cannon';
 
 // --- Asset Paths Check ---
-const LOGO_PATH = '/gsa-logo-trasparent-bg.png'; // Verify path
+const LOGO_PATH = '/https://ik.imagekit.io/fazrinphcc/gradespark/gsa-logo-trasparent-bg.png?updatedAt=1744794868511'; // Verify path
 
 // Updated themeColors with palettes for subject categories
 const themeColors = {
