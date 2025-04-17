@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import WhatsAppButton from './WhatsAppButton';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Instagram, Twitter, Facebook, Linkedin, ChevronRight, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Phone, ChevronRight, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -53,40 +53,6 @@ const Footer = () => {
             <p className="text-gray-300 mb-4">
               Helping university students achieve academic excellence through expert assistance and support.
             </p>
-            <div className="flex space-x-4 mt-6">
-              <motion.a
-                href="#"
-                className="text-white hover:text-celeste transition-colors"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Facebook size={20} />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="text-white hover:text-celeste transition-colors"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Twitter size={20} />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="text-white hover:text-celeste transition-colors"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Instagram size={20} />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="text-white hover:text-celeste transition-colors"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <Linkedin size={20} />
-              </motion.a>
-            </div>
           </motion.div>
 
           {/* Quick Links */}
@@ -183,7 +149,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            <p>© {currentYear} Grade Spark Academy. All rights reserved.</p>
+            <p> {currentYear} Grade Spark Academy. All rights reserved.</p>
           </motion.div>
 
           <motion.div
