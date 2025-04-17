@@ -112,9 +112,9 @@ const FAQSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }} // Animate when in view
             viewport={{ once: true }} // Animate only once
-            className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent" // Example gradient
+            className="text-3xl md:text-4xl font-bold mb-4 text-black"
           >
-            Frequently Asked Questions
+            <strong>Frequently Asked Questions</strong>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

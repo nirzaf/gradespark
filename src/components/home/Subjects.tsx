@@ -73,7 +73,7 @@ const Subjects = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-bold mb-4 gradient-text">Academic Expertise</h2>
+            <h2 className="text-4xl font-bold mb-4 text-black"><strong>Academic Expertise</strong></h2>
             <p className="text-gray-700 text-lg max-w-2xl mx-auto">
               Our team of qualified professionals offers assistance across a wide range of academic disciplines
             </p>
@@ -191,14 +191,14 @@ const Subjects = () => {
                         <div className="globe-container">
                           {/* Atmospheric Glow */}
                           <div className="atmosphere"></div>
-                          
+
                           {/* 3D Globe with Continents */}
                           <div className="globe-sphere">
                             {/* Continents with 3D Relief Effect */}
                             <div className="continent c1"></div>
                             <div className="continent c2"></div>
                             <div className="continent c3"></div>
-                            
+
                             {/* 3D Grid System */}
                             <div className="grid-line grid-line-lat1"></div>
                             <div className="grid-line grid-line-lat2"></div>
@@ -207,7 +207,7 @@ const Subjects = () => {
                             <div className="grid-line grid-line-lon2"></div>
                             <div className="grid-line grid-line-lon3"></div>
                           </div>
-                          
+
                           {/* Orbiting Satellites */}
                           <div className="orbit orbit1">
                             <div className="satellite"></div>
@@ -215,12 +215,12 @@ const Subjects = () => {
                           <div className="orbit orbit2">
                             <div className="satellite"></div>
                           </div>
-                          
+
                           {/* Cloud Effects */}
                           <div className="cloud cloud1"></div>
                           <div className="cloud cloud2"></div>
                           <div className="cloud cloud3"></div>
-                          
+
                           {/* Metallic Stand */}
                           <div className="globe-stand"></div>
                         </div>

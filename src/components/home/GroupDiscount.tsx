@@ -55,7 +55,7 @@ export default function GroupDiscount() {
       title: "Group Submissions",
       description: "Submit multiple assignments together with classmates and receive up to 25% discount on each project."
     },
-    { 
+    {
       icon: <GraduationCap className="w-8 h-8" />,
       title: "Academic Package",
       description: "Bundle multiple assignments from the same course for comprehensive support and save up to 20% on total cost."
@@ -76,8 +76,8 @@ export default function GroupDiscount() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-night mb-4 gradient-text">
-            Smart Solutions, Better Value
+          <h2 className="text-4xl font-bold text-black mb-4">
+            <strong>Smart Solutions, Better Value</strong>
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
             Maximize your academic success while minimizing costs with our special discount options for university students.
