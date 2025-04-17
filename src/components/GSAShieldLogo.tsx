@@ -7,9 +7,9 @@ const GSAShieldLogo: React.FC = () => {
     styleEl.innerHTML = `
       /* Logo container */
       .gsa-shield-logo {
-        width: 62px; /* Size for navbar */
+        width: 68px; /* Size for navbar - increased by 10% */
         margin: 0 auto;
-        animation: scaleBreath 4s ease-in-out infinite;
+        /* Removed breathing animation */
         filter: drop-shadow(0 0 8px rgba(0, 247, 255, 0.4));
       }
 
@@ -23,17 +23,14 @@ const GSAShieldLogo: React.FC = () => {
       .gsa-shield-logo .base {
         fill: #000;
         stroke: none;
-        animation: baseFadeIn 1.5s ease forwards;
       }
 
-      /* Shield Outline Animation – drawn with a cyan stroke */
+      /* Shield Outline – static cyan stroke */
       .gsa-shield-logo .shield-outline {
         stroke: #00f7ff;
         fill: none;
         stroke-width: 2;
-        stroke-dasharray: 600;
-        stroke-dashoffset: 600;
-        animation: drawOutline 2s ease-out forwards;
+        filter: drop-shadow(0 0 3px rgba(0, 247, 255, 0.6));
       }
 
       /* Apply subtle 3D shadow filter to all text elements */
@@ -43,61 +40,33 @@ const GSAShieldLogo: React.FC = () => {
         font-size: 48px;
         fill: white;
         opacity: 0;
-        animation: textFade 1.5s ease-out forwards;
       }
 
       /* Individual letter tweaks */
-      .gsa-shield-logo .letter.g { animation-delay: 0.5s; }
-      .gsa-shield-logo .letter.s { animation-delay: 0.7s; }
-      .gsa-shield-logo .letter.a { 
-        animation-delay: 0.9s; 
-        fill: #00f7ff; 
-        animation: textFade 1.5s ease-out forwards, glowPulse 2s infinite; 
+      .gsa-shield-logo .letter.g {
+        opacity: 1;
+        fill: white;
+      }
+      .gsa-shield-logo .letter.s {
+        opacity: 1;
+        fill: white;
+      }
+      .gsa-shield-logo .letter.a {
+        opacity: 1;
+        fill: #00f7ff;
+        filter: drop-shadow(0 0 6px rgba(0, 247, 255, 0.8));
       }
 
       /* Cyan accent for the bottom tip of the shield */
       .gsa-shield-logo .accent {
         fill: #00f7ff;
-        animation: glowPulse 2s infinite;
+        opacity: 1;
         filter: drop-shadow(0 0 6px rgba(0, 247, 255, 0.8));
       }
 
-      /* Hover effects */
-      .gsa-shield-logo:hover {
-        filter: drop-shadow(0 0 12px rgba(0, 247, 255, 0.6));
-        transform: scale(1.05) translateY(-2px);
-        transition: all 0.3s ease;
-      }
+      /* Hover effects removed */
 
-      .gsa-shield-logo:hover .letter.a,
-      .gsa-shield-logo:hover .accent {
-        filter: drop-shadow(0 0 8px rgba(0, 247, 255, 1));
-      }
-
-      /* Animations */
-      @keyframes drawOutline {
-        to { stroke-dashoffset: 0; }
-      }
-
-      @keyframes glowPulse {
-        0%, 100% { filter: drop-shadow(0 0 6px rgba(0, 247, 255, 0.8)); }
-        50% { filter: drop-shadow(0 0 14px rgba(0, 247, 255, 1)); }
-      }
-
-      @keyframes scaleBreath {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-      }
-
-      @keyframes baseFadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      @keyframes textFade {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
+      /* Animations removed */
     `;
     document.head.appendChild(styleEl);
 

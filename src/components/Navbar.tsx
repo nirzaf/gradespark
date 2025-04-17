@@ -202,15 +202,9 @@ const Navbar = () => {
           {/* Logo and Text */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <motion.div
-                className="flex items-center justify-center h-[55px] w-[55px] sm:h-[62px] sm:w-[62px] overflow-visible"
-                whileHover={{
-                  scale: 1.05
-                }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
+              <div className="flex items-center justify-center h-[60px] w-[60px] sm:h-[68px] sm:w-[68px] overflow-visible">
                 <GSAShieldLogo />
-              </motion.div>
+              </div>
             </Link>
             {/* Desktop Text */}
             <Link to="/" className="ml-3 hidden sm:block">
