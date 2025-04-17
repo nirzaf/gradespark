@@ -88,7 +88,15 @@ const BlogList = () => {
                         "description": "Master the art of writing psychology papers. Learn essential steps from choosing a topic and conducting research to structuring your analysis and citing sources according to APA style.",
                         "date": "2025-04-17",
                         "url": "/writing-psychology-papers-research-analysis.html",
-                        "imageUrl": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                        "imageUrl": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                    },
+                    {
+                        "id": "evidence-based-study-strategies",
+                        "title": "Study Strategies That Actually Work: Evidence-Based Approaches",
+                        "description": "Learn scientifically backed study techniques like active recall, spaced repetition, and interleaving to boost learning and retention. Stop wasting time on ineffective methods.",
+                        "date": "2025-04-17",
+                        "url": "/evidence-based-study-strategies.html",
+                        "imageUrl": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
                     }
                 ];
 
