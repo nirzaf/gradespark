@@ -7,6 +7,7 @@ interface ContactFormData {
   email: string;
   mobileNo: string;
   requirement: string;
+  attachments: File[];
 }
 
 const ContactForm = () => {
@@ -16,6 +17,7 @@ const ContactForm = () => {
     email: '',
     mobileNo: '',
     requirement: '',
+    attachments: [],
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -29,10 +31,50 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+    const fileArray = Array.from(files);
+    setFormData((prev) => ({ ...prev, attachments: fileArray }));
+  };
+
+  const uploadFile = async (file: File) => {
+    // Correct Baserow file upload endpoint
+    const url = 'https://api.baserow.io/api/user-files/upload-file/';
+    const fd = new FormData();
+    fd.append('file', file);
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Token ${import.meta.env.VITE_BASEROW_API_KEY}`,
+        Accept: 'application/json',
+      },
+      body: fd,
+    });
+    if (!res.ok) throw new Error(`File upload failed with status ${res.status}`);
+    return await res.json();
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setMessage('');
+    // Validate attachments (max 3 files, combined size <10MB)
+    if (formData.attachments.length > 3) {
+      setMessage('You can attach up to 3 files only.');
+      setLoading(false);
+      return;
+    }
+    const totalSize = formData.attachments.reduce((sum, f) => sum + f.size, 0);
+    if (totalSize > 10 * 1024 * 1024) {
+      setMessage('Combined file size must be less than 10 MB.');
+      setLoading(false);
+      return;
+    }
+    let fileObjs: any[] = [];
+    if (formData.attachments.length) {
+      fileObjs = await Promise.all(formData.attachments.map(uploadFile));
+    }
     try {
       // Map status and requirement to numeric IDs
       const statusId = 3098775; // Submitted
@@ -62,7 +104,7 @@ const ContactForm = () => {
           body: JSON.stringify({
             "Full Name": formData.fullName,
             "Additional Details": formData.additionalDetails,
-            "Your Project": [],
+            "Your Project": fileObjs,
             "Email": formData.email,
             "Mobile No": formData.mobileNo,
             "Status": statusId,
@@ -78,6 +120,7 @@ const ContactForm = () => {
         email: '',
         mobileNo: '',
         requirement: '',
+        attachments: [],
       });
     } catch (err) {
       console.error(err);
@@ -187,6 +230,21 @@ const ContactForm = () => {
             <option value="Academic Coaching">Academic Coaching</option>
             <option value="Other">Other</option>
           </select>
+        </div>
+        {/* Attachments */}
+        <div>
+          <label htmlFor="attachments" className="block text-sm font-medium text-gray-700">
+            Attachments
+          </label>
+          <input
+            type="file"
+            id="attachments"
+            name="attachments"
+            multiple
+            onChange={handleFileChange}
+            className="mt-1 block w-full text-sm text-gray-600"
+          />
+          <p className="text-xs text-gray-500">Up to 3 files, combined size &lt;10MB.</p>
         </div>
         <motion.button
           type="submit"
