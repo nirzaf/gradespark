@@ -1,71 +1,148 @@
 /**
  * Utility functions for handling blog posts
  */
+import { client, urlFor } from '../lib/sanity';
 
 export interface BlogPost {
     id: string;
     title: string;
     description: string;
     date: string;
-    url: string;
+    imageUrl?: string;
+    readTime?: string;
+    author?: string;
+    tableOfContents?: string[];
+    content?: BlogSection[];
+    conclusion?: string;
+    relatedPosts?: RelatedPost[];
+}
+
+export interface BlogSection {
+    title: string;
+    paragraphs: string[];
+    bullets?: string[];
+    image?: {
+        url: string;
+        alt?: string;
+        caption?: string;
+    };
+}
+
+export interface RelatedPost {
+    id: string;
+    title: string;
+    date: string;
     imageUrl?: string;
 }
 
 /**
- * Fetches blog posts from HTML files in the public directory
- * In a real application, this would be an API call or server-side function
- * For this static implementation, we're returning hardcoded data based on the HTML files
+ * Fetches all blog posts from Sanity
  */
 export const fetchBlogPosts = async (): Promise<BlogPost[]> => {
-    // This would typically be an API call, but for static HTML files
-    // we'll hardcode the blog data based on the files in the public directory
-    const blogData: BlogPost[] = [
-        {
-            id: 'how-to-write-a-dissertation',
-            title: 'How to Write a Dissertation: A Step-by-Step Guide for University Students',
-            description: 'Your complete guide to writing a university dissertation. Follow Grade Spark Academy\'s step-by-step process from topic selection to final submission.',
-            date: '2023-09-15',
-            url: '/how-to-write-a-dissertation.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'common-research-paper-mistakes',
-            title: '10 Common Research Paper Mistakes and How to Avoid Them',
-            description: 'Learn how to avoid the 10 most common research paper mistakes with expert tips from Grade Spark Academy. Improve your writing and boost your grades.',
-            date: '2023-10-02',
-            url: '/common-research-paper-mistakes.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'understanding-citation-styles',
-            title: 'Understanding Citation Styles: APA, MLA, Chicago, Harvard',
-            description: 'Learn the key differences between APA, MLA, Chicago, and Harvard citation styles and when to use each. A comprehensive guide from Grade Spark Academy.',
-            date: '2023-10-20',
-            url: '/understanding-citation-styles-apa-mla-chicago-harvard.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'writing-literature-review',
-            title: 'The Ultimate Guide to Writing a Literature Review',
-            description: 'Learn how to write a comprehensive literature review with Grade Spark Academy\'s ultimate guide. Understand its purpose, structure, and step-by-step process.',
-            date: '2023-11-05',
-            url: '/writing-literature-review-guide.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'academic-success-guide',
-            title: 'The Ultimate Guide to Academic Success',
-            description: 'Discover proven strategies, expert tips, and practical advice to excel in your academic journey with Grade Spark Academy\'s comprehensive guide to academic success.',
-            date: '2023-11-18',
-            url: '/blog.html',
-            imageUrl: '/assignment-infografic.png'
-        }
-    ];
+    try {
+        // Query to get all blog posts with essential fields
+        const query = `*[_type == "blog"] | order(publishedAt desc) {
+            "id": slug.current,
+            title,
+            description,
+            "date": publishedAt,
+            "imageUrl": mainImage,
+            readTime,
+            "author": author->name
+        }`;
 
-    // Sort blogs by date (newest first)
-    return blogData.sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+        const sanityPosts = await client.fetch(query);
+
+        // Transform Sanity data to match our BlogPost interface
+        const blogPosts: BlogPost[] = sanityPosts.map((post: any) => ({
+            id: post.id,
+            title: post.title,
+            description: post.description,
+            date: post.date,
+            imageUrl: urlFor(post.imageUrl),
+            readTime: post.readTime || `${Math.ceil(post.description.length / 1000)} min read`,
+            author: post.author || 'Grade Spark Academy'
+        }));
+
+        return blogPosts;
+    } catch (error) {
+        console.error('Error fetching blog posts from Sanity:', error);
+        return [];
+    }
+};
+
+/**
+ * Fetches a single blog post by ID from Sanity
+ */
+export const getBlogById = async (id: string): Promise<BlogPost | null> => {
+    try {
+        // Query to get a specific blog post with all its details
+        const query = `*[_type == "blog" && slug.current == $id][0]{
+            "id": slug.current,
+            title,
+            description,
+            "date": publishedAt,
+            "imageUrl": mainImage,
+            readTime,
+            "author": author->name,
+            tableOfContents,
+            content[] {
+                title,
+                paragraphs,
+                bullets,
+                image {
+                    "url": url,
+                    alt,
+                    caption
+                }
+            },
+            conclusion,
+            "relatedPosts": relatedPosts[]->{
+                "id": slug.current,
+                title,
+                "date": publishedAt,
+                "imageUrl": mainImage
+            }
+        }`;
+
+        const post = await client.fetch(query, { id });
+
+        if (!post) return null;
+
+        // Transform Sanity data to match our BlogPost interface
+        const blogPost: BlogPost = {
+            id: post.id,
+            title: post.title,
+            description: post.description,
+            date: post.date,
+            imageUrl: urlFor(post.imageUrl),
+            readTime: post.readTime || `${Math.ceil(post.description.length / 1000)} min read`,
+            author: post.author || 'Grade Spark Academy',
+            tableOfContents: post.tableOfContents || [],
+            content: post.content?.map((section: any) => ({
+                title: section.title,
+                paragraphs: section.paragraphs || [],
+                bullets: section.bullets || [],
+                image: section.image ? {
+                    url: urlFor(section.image.url),
+                    alt: section.image.alt || section.title,
+                    caption: section.image.caption
+                } : undefined
+            })) || [],
+            conclusion: post.conclusion,
+            relatedPosts: post.relatedPosts?.map((related: any) => ({
+                id: related.id,
+                title: related.title,
+                date: related.date,
+                imageUrl: urlFor(related.imageUrl)
+            })) || []
+        };
+
+        return blogPost;
+    } catch (error) {
+        console.error(`Error fetching blog post with ID ${id} from Sanity:`, error);
+        return null;
+    }
 };
 
 /**
