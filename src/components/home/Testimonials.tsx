@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Quote, ChevronLeft, ChevronRight, Star, Award, Trophy, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../../styles/testimonials.css';
+import TestimonialsBackground from '../common/TestimonialsBackground';
 
 interface Testimonial {
   id: number;
@@ -18,7 +19,7 @@ interface Testimonial {
   created_at: string;
   subject: string;
   is_active: boolean;
-  university?: string;
+  university?: string; // Keeping for data compatibility but not displaying it
   rating?: number;
   service_used?: string;
 }
@@ -76,7 +77,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
           <div className="mt-auto pt-4 border-t border-white/10">
             <h6 className="font-semibold text-celeste">{testimonial.name}</h6>
             <div className="flex flex-col">
-              <span className="text-xs text-white/80">{testimonial.university || `${testimonial.country} University`}</span>
+              <span className="text-xs text-white/80">{testimonial.syllabus} Student</span>
               <span className="text-xs text-celeste/80">{testimonial.subject}</span>
             </div>
           </div>
@@ -143,6 +144,12 @@ const TestimonialStats = () => {
 export default function Testimonials() {
   // Static testimonials data instead of fetching from Supabase
   const [isLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   const testimonials: Testimonial[] = [
     {
@@ -297,24 +304,12 @@ export default function Testimonials() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="py-20 bg-cover bg-center relative overflow-hidden"
-      style={{
-        backgroundImage: "url(https://ik.imagekit.io/studytomy/Studytomy_Testimonial_Background.jpg?updatedAt=1717449732211)"
-      }}
+      className="py-20 relative overflow-hidden"
     >
-      {/* Animated background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-night/95 via-night/85 to-night/75" />
+      {/* Animated background */}
+      {isMounted && <TestimonialsBackground />}
 
-      {/* Animated particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-celeste/5 rounded-full filter blur-3xl animate-float1"></div>
-        <div className="absolute top-3/4 left-2/3 w-40 h-40 bg-celeste/5 rounded-full filter blur-3xl animate-float2"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-celeste/5 rounded-full filter blur-3xl animate-float3"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-36 h-36 bg-celeste/5 rounded-full filter blur-3xl animate-float1"></div>
-        <div className="absolute top-1/3 right-1/3 w-28 h-28 bg-celeste/5 rounded-full filter blur-3xl animate-float2"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

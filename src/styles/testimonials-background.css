@@ -1,0 +1,220 @@
+/* Testimonials Animated Background Styles */
+
+.testimonials-animated-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Dark overlay layer */
+.testimonials-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65); /* Dark transparent overlay */
+  z-index: 10; /* Above all other background elements */
+  pointer-events: none;
+}
+
+/* Deep navy to twilight blue gradient background */
+.testimonials-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0a1128 0%, #1a2a52 30%, #1e3a73 60%, #0c1f4c 100%);
+  z-index: 0;
+}
+
+/* Subtle animated waves */
+.testimonials-wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.testimonials-wave-1 {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23A0EBEB' fill-opacity='0.2' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  animation: wave-animation-1 20s linear infinite alternate;
+}
+
+.testimonials-wave-2 {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23A0EBEB' fill-opacity='0.15' d='M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,106.7C672,117,768,171,864,197.3C960,224,1056,224,1152,197.3C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  animation: wave-animation-2 15s linear infinite alternate;
+}
+
+/* Glowing orbs */
+.testimonials-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0;
+  z-index: 2;
+  background: radial-gradient(circle, rgba(160, 235, 235, 0.8) 0%, rgba(160, 235, 235, 0) 70%);
+}
+
+.testimonials-orb-1 {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  left: 10%;
+  animation: orb-float 15s ease-in-out infinite, orb-glow 8s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.testimonials-orb-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 15%;
+  right: 15%;
+  animation: orb-float 18s ease-in-out infinite, orb-glow 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.testimonials-orb-3 {
+  width: 100px;
+  height: 100px;
+  top: 60%;
+  left: 30%;
+  animation: orb-float 12s ease-in-out infinite, orb-glow 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.testimonials-orb-4 {
+  width: 120px;
+  height: 120px;
+  top: 30%;
+  right: 25%;
+  animation: orb-float 20s ease-in-out infinite, orb-glow 9s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Floating particles */
+.testimonials-particles-container {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.testimonials-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: rgba(160, 235, 235, 0.7);
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 3;
+}
+
+/* Digital lines */
+.testimonials-digital-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(160, 235, 235, 0.5), transparent);
+  z-index: 2;
+  transform-origin: left center;
+  opacity: 0.5;
+}
+
+/* Bokeh effect */
+.testimonials-bokeh {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(160, 235, 235, 0.6) 0%, rgba(160, 235, 235, 0) 70%);
+  filter: blur(3px);
+  z-index: 2;
+  opacity: 0;
+  animation: bokeh-fade 8s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes wave-animation-1 {
+  0% {
+    transform: translateX(0) translateY(0) scale(1.05);
+  }
+  100% {
+    transform: translateX(-5%) translateY(2%) scale(1);
+  }
+}
+
+@keyframes wave-animation-2 {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  100% {
+    transform: translateX(5%) translateY(-2%) scale(1.05);
+  }
+}
+
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, -15px);
+  }
+  50% {
+    transform: translate(0, -30px);
+  }
+  75% {
+    transform: translate(-20px, -15px);
+  }
+}
+
+@keyframes orb-glow {
+  0%, 100% {
+    opacity: 0.2;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.4;
+    filter: blur(25px);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes digital-line-animation {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+@keyframes bokeh-fade {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}

@@ -12,6 +12,8 @@
 @import './animated-background.css';
 /* Import How It Works Icons Animation */
 @import './how-it-works-icons.css';
+/* Import Testimonials Background Animation */
+@import './testimonials-background.css';
 
 @tailwind base;
 @tailwind components;
