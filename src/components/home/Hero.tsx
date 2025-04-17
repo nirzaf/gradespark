@@ -37,10 +37,12 @@ const categoryPalettes = {
 
 // --- Hero Text Content ---
 const heroTexts = [
-    { title: "Expert Guidance Provided", subtitle: "Achieve Your Study Goals", emptyLine: "‎" },
-    { title: "Stress-Free Assignment Help", subtitle: "Confidently Meet Deadlines", emptyLine: "‎" },
-    { title: "Original Writing Guaranteed", subtitle: "100% Plagiarism-Free Work", emptyLine: "‎" },
-    { title: "Secure & Confidential Service", subtitle: "Your Privacy Is Protected", emptyLine: "‎" }
+    { title: "Expert Support", subtitle: "Achieve Academic Success", emptyLine: "‎" },
+    { title: "Affordable Help", subtitle: "Stress-Free Assignment Aid", emptyLine: "‎" },
+    { title: "Original Work", subtitle: "Plagiarism-Free, Guaranteed", emptyLine: "‎" },
+    { title: "Private Service", subtitle: "Secure & Confidential Support", emptyLine: "‎" },
+    { title: "Timely Delivery", subtitle: "Never Miss Deadlines", emptyLine: "‎" },
+    { title: "Budget Excellence", subtitle: "Top Quality, Low Price", emptyLine: "‎" }
 ];
 
 
@@ -172,14 +174,14 @@ const LogoAnimation = () => {
                     animate={{ background: [`radial-gradient(circle, ${themeColors.celeste}15 0%, ${themeColors.celeste}00 70%)`, `radial-gradient(circle, ${themeColors.celeste}20 0%, ${themeColors.celeste}00 70%)`, `radial-gradient(circle, ${themeColors.celeste}15 0%, ${themeColors.celeste}00 70%)`], scale: [1, 1.08, 1] }}
                     transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 />
-                <motion.div className="relative transform-gpu" whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}>
+                {/* <motion.div className="relative transform-gpu" whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}>
                     <motion.img
                         src={LOGO_PATH} alt="Grade Spark Academy Logo"
                         className="relative mx-auto w-[180px] md:w-[200px] mb-12 md:mb-16 drop-shadow-xl"
                         style={{ filter: `drop-shadow(0 0 12px ${themeColors.celeste}50)` }}
                         onError={(e) => (e.currentTarget.style.display = 'none')}
                     />
-                </motion.div>
+                </motion.div> */}
             </motion.div>
         </div>
     );
