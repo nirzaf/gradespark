@@ -141,7 +141,6 @@ export default function DoubtSection() {
             <div className="flex flex-wrap justify-center md:justify-start gap-5 mt-6">
               {[
                 { icon: Zap, text: "Instant Responses", desc: "Get answers in minutes" },
-                { icon: Users, text: "PhD Qualified Tutors", desc: "Subject matter experts" },
                 { icon: Shield, text: "Secure & Confidential", desc: "Your privacy protected" },
                 { icon: Award, text: "Premium Quality", desc: "Satisfaction guaranteed" }
               ].map((item, index) => (
