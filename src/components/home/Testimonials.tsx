@@ -22,7 +22,7 @@ interface Testimonial {
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
   <motion.div className="px-4 h-full" whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}>
-    <motion.div className="bg-white/20 backdrop-blur-lg p-6 rounded-lg flex flex-col h-full shadow-lg" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+    <motion.div className="bg-night/10 backdrop-blur-lg p-6 rounded-lg flex flex-col h-full shadow-lg" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
       <div className="flex items-center mb-4">
         <img
           src={testimonial.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`}
@@ -162,7 +162,7 @@ export default function Testimonials() {
         backgroundImage: "url(https://ik.imagekit.io/studytomy/Studytomy_Testimonial_Background.jpg?updatedAt=1717449732211)"
       }}
     >
-      <div className="absolute inset-0 bg-black/80" />
+      <div className="absolute inset-0 bg-night/80" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h5 className="text-celeste font-medium mb-2">Testimonial</h5>
