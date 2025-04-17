@@ -1,16 +1,20 @@
 /* Base carousel layout styles */
 .testimonial-carousel .slick-track {
   display: flex !important;
+  margin-left: 0 !important; /* Remove default margin */
+  margin-right: 0 !important; /* Remove default margin */
 }
 
 .testimonial-carousel .slick-slide {
   height: inherit !important;
   display: flex !important;
+  padding: 0 8px; /* Add consistent padding between slides */
 }
 
 .testimonial-carousel .slick-slide > div {
   display: flex;
   flex: 1;
+  width: 100%; /* Ensure full width */
 }
 
 /* Dots styling */
@@ -91,12 +95,12 @@
 }
 
 .testimonial-heading {
-  background: linear-gradient(90deg, #151616, #A0EBEB, #151616);
+  background: linear-gradient(90deg, #151616 40%, #A0EBEB 50%, #151616 60%);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 8s linear infinite;
+  animation: scanner 2s ease-in-out infinite;
 }
 
 .testimonial-quote {
@@ -164,6 +168,22 @@
   animation: rotate-slow 15s linear infinite;
 }
 
+/* Improve slider responsiveness */
+.testimonial-carousel .slick-list {
+  overflow: visible;
+  margin: 0 -8px; /* Match the padding in slick-slide */
+}
+
+/* Ensure smooth sliding animation */
+.testimonial-carousel .slick-track {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Remove center mode styling since we're not using centerMode anymore */
+.testimonial-carousel .slick-center {
+  transform: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .testimonial-carousel .slick-dots {
@@ -173,8 +193,21 @@
   .testimonial-carousel .slick-dots li button:before {
     font-size: 8px;
   }
+}
 
-  .testimonial-carousel .slick-center {
-    transform: scale(1.02);
+/* Improve mobile experience */
+@media (max-width: 640px) {
+  .testimonial-carousel .slick-slide {
+    padding: 0 4px;
   }
+
+  .testimonial-carousel .slick-list {
+    margin: 0 -4px;
+  }
+}
+
+/* Add Night Rider scanning keyframes */
+@keyframes scanner {
+  0%, 100% { background-position: 0% 0; }
+  50% { background-position: 100% 0; }
 }

@@ -38,12 +38,12 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 
   return (
     <motion.div
-      className="px-4 h-full"
-      whileHover={{ scale: 1.05, y: -5 }}
+      className="h-full w-full"
+      whileHover={{ scale: 1.02, y: -3 }}
       transition={{ duration: 0.3 }}
     >
       <motion.div
-        className="testimonial-card bg-gradient-to-br from-night/30 via-night/50 to-night/70 backdrop-blur-lg p-6 rounded-xl flex flex-col h-full shadow-[0_10px_25px_rgba(0,0,0,0.3)] border border-celeste/20"
+        className="testimonial-card bg-gradient-to-br from-night/30 via-night/50 to-night/70 backdrop-blur-lg p-4 sm:p-5 md:p-6 rounded-xl flex flex-col h-full shadow-[0_10px_25px_rgba(0,0,0,0.3)] border border-celeste/20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -90,23 +90,23 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 // Custom slider arrows
 const NextArrow = ({ onClick }: { onClick?: () => void }) => (
   <motion.div
-    className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-r from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30"
+    className="absolute right-0 sm:right-1 md:right-2 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-r from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30"
     onClick={onClick}
     whileHover={{ scale: 1.1, x: 3 }}
     whileTap={{ scale: 0.95 }}
   >
-    <ChevronRight className="w-6 h-6 text-white" />
+    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
   </motion.div>
 );
 
 const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
   <motion.div
-    className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-l from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30"
+    className="absolute left-0 sm:left-1 md:left-2 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-l from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30"
     onClick={onClick}
     whileHover={{ scale: 1.1, x: -3 }}
     whileTap={{ scale: 0.95 }}
   >
-    <ChevronLeft className="w-6 h-6 text-white" />
+    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
   </motion.div>
 );
 
@@ -116,7 +116,7 @@ const TestimonialStats = () => {
     { icon: Star, value: "4.9/5", label: "Student Rating" },
     { icon: Award, value: "1000+", label: "Assignments Completed" },
     { icon: Trophy, value: "98%", label: "Success Rate" },
-    { icon: Users, value: "50K+", label: "Happy Students" }
+    { icon: Users, value: "2000+", label: "Happy Students" }
   ];
 
   return (
@@ -255,41 +255,40 @@ export default function Testimonials() {
     infinite: true,
     speed: 800,
     slidesToShow: 3,
-    centerMode: true,
-    centerPadding: '60px',
+    centerMode: false,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
     pauseOnHover: true,
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     cssEase: 'cubic-bezier(0.25, 0.1, 0.25, 1.0)',
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    rtl: false, // Right to left disabled
+    swipeToSlide: true, // Allow users to drag or swipe directly to a slide
     responsive: [
       {
         breakpoint: 1280,
         settings: {
           slidesToShow: 2,
-          centerMode: true,
-          centerPadding: '60px',
+          slidesToScroll: 1,
         }
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          centerMode: true,
-          centerPadding: '40px',
+          slidesToScroll: 1,
           autoplaySpeed: 5000,
         }
       },
       {
-        breakpoint: 640,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          centerMode: false,
-          centerPadding: '0',
+          slidesToScroll: 1,
           autoplaySpeed: 4000,
+          arrows: false, // Hide arrows on very small screens
         }
       }
     ]
@@ -309,7 +308,7 @@ export default function Testimonials() {
       {/* Animated background */}
       {isMounted && <TestimonialsBackground />}
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+      <div className="relative max-w-[95%] lg:max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 z-20">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -357,12 +356,14 @@ export default function Testimonials() {
           </motion.div>
         </div>
 
-        <div className="relative testimonial-carousel">
-          <Slider {...sliderSettings}>
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </Slider>
+        <div className="relative testimonial-carousel overflow-hidden">
+          <div className="-mx-2 sm:-mx-3"> {/* Negative margin to counteract slide padding */}
+            <Slider {...sliderSettings}>
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+              ))}
+            </Slider>
+          </div>
         </div>
       </div>
     </motion.section>
