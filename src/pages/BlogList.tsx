@@ -97,6 +97,14 @@ const BlogList = () => {
                         "date": "2025-04-17",
                         "url": "/evidence-based-study-strategies.html",
                         "imageUrl": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                    },
+                    {
+                        "id": "blog-seek-assignment-help",
+                        "title": "When and How to Seek Academic Assignment Help",
+                        "description": "Learn the key signs indicating it's time to seek help with academic assignments and discover effective strategies for finding the right support with Grade Spark Academy.",
+                        "date": "2025-04-17",
+                        "url": "/when-how-seek-academic-assignment-help.html",
+                        "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80"
                     }
                 ];
 
