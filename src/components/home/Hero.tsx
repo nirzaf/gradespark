@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, Suspense, useMemo } from 'react';
+import React, { useEffect, useState, useRef, Suspense, useMemo, lazy } from 'react';
 import { GraduationCap, Users, Globe2, Sparkles, Shield, Clock } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton'; // Assuming this exists
@@ -6,6 +6,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Grid, Points, Box, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 import { Physics, usePlane, useBox, useSphere, Triplet } from '@react-three/cannon';
+
+// Lazy load the GSA Shield Logo for better performance
+const GSAShieldLogo = lazy(() => import('../common/GSAShieldLogo'));
 
 // Updated themeColors with palettes for subject categories
 const themeColors = {
@@ -165,11 +168,17 @@ const LogoAnimation = () => {
     return (
         <div className="relative inline-block perspective-1000" onMouseMove={handleMouseMove} onMouseLeave={() => { setMouseX(0); setMouseY(0); }}>
             <motion.div className="relative" animate={controls} initial={{ scale: 0.8, opacity: 0 }}>
+                {/* Background glow effect */}
                 <motion.div
-                    className="absolute -inset-4 rounded-full -z-10"
+                    className="absolute -inset-3 rounded-full -z-10"
                     animate={{ background: [`radial-gradient(circle, ${themeColors.celeste}15 0%, ${themeColors.celeste}00 70%)`, `radial-gradient(circle, ${themeColors.celeste}20 0%, ${themeColors.celeste}00 70%)`, `radial-gradient(circle, ${themeColors.celeste}15 0%, ${themeColors.celeste}00 70%)`], scale: [1, 1.08, 1] }}
                     transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 />
+
+                {/* Animated GSA Shield Logo */}
+                <Suspense fallback={<div className="w-24 h-28 bg-white/20 rounded-full animate-pulse"></div>}>
+                    <GSAShieldLogo size={140} />
+                </Suspense>
             </motion.div>
         </div>
     );
@@ -469,7 +478,7 @@ export default function Hero() {
 
             {/* Foreground Content */}
             <div className="relative z-10 pt-6 pb-16 md:pt-8 md:pb-20 flex flex-col items-center">
-                <div className="relative mb-[-2rem] md:mb-[-3rem] z-20">
+                <div className="relative mb-[-1.5rem] md:mb-[-2rem] z-20">
                     <LogoAnimation />
                 </div>
                 <div className="container mx-auto px-4 text-center relative z-10">
