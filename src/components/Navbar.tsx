@@ -42,15 +42,29 @@ const GetStartedButton = () => {
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium
+        className="inline-flex items-center justify-center p-2.5 rounded-lg text-sm font-medium
                    bg-gradient-to-r from-celeste to-celeste-dark
                    text-night shadow-md hover:shadow-lg
                    transition-all duration-300
                    backdrop-blur-sm backdrop-saturate-150
                    border border-celeste/20"
+        aria-label="Contact Us"
+        title="Contact Us"
       >
-        <Sparkles className="w-4 h-4 mr-2" />
-        Connect Now
+        <motion.div
+          animate={{ 
+            rotate: [0, 5, 0, -5, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "easeInOut"
+          }}
+        >
+          <MessageCircle className="w-5 h-5" />
+        </motion.div>
       </motion.button>
     </Link>
   );
