@@ -1,71 +1,84 @@
 /**
  * Utility functions for handling blog posts
  */
+import matter from 'gray-matter';
 
 export interface BlogPost {
-    id: string;
+    slug: string;
     title: string;
     description: string;
     date: string;
-    url: string;
+    author?: string;
     imageUrl?: string;
+    readingTime?: string;
+    content: string;
 }
 
 /**
- * Fetches blog posts from HTML files in the public directory
- * In a real application, this would be an API call or server-side function
- * For this static implementation, we're returning hardcoded data based on the HTML files
+ * Gets all blog posts from Markdown files in the src/blogs directory
+ * Uses Vite's import.meta.glob to load all .md files during build time
  */
-export const fetchBlogPosts = async (): Promise<BlogPost[]> => {
-    // This would typically be an API call, but for static HTML files
-    // we'll hardcode the blog data based on the files in the public directory
-    const blogData: BlogPost[] = [
-        {
-            id: 'how-to-write-a-dissertation',
-            title: 'How to Write a Dissertation: A Step-by-Step Guide for University Students',
-            description: 'Your complete guide to writing a university dissertation. Follow Grade Spark Academy\'s step-by-step process from topic selection to final submission.',
-            date: '2023-09-15',
-            url: '/how-to-write-a-dissertation.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'common-research-paper-mistakes',
-            title: '10 Common Research Paper Mistakes and How to Avoid Them',
-            description: 'Learn how to avoid the 10 most common research paper mistakes with expert tips from Grade Spark Academy. Improve your writing and boost your grades.',
-            date: '2023-10-02',
-            url: '/common-research-paper-mistakes.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'understanding-citation-styles',
-            title: 'Understanding Citation Styles: APA, MLA, Chicago, Harvard',
-            description: 'Learn the key differences between APA, MLA, Chicago, and Harvard citation styles and when to use each. A comprehensive guide from Grade Spark Academy.',
-            date: '2023-10-20',
-            url: '/understanding-citation-styles-apa-mla-chicago-harvard.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'writing-literature-review',
-            title: 'The Ultimate Guide to Writing a Literature Review',
-            description: 'Learn how to write a comprehensive literature review with Grade Spark Academy\'s ultimate guide. Understand its purpose, structure, and step-by-step process.',
-            date: '2023-11-05',
-            url: '/writing-literature-review-guide.html',
-            imageUrl: '/assignment-infografic.png'
-        },
-        {
-            id: 'academic-success-guide',
-            title: 'The Ultimate Guide to Academic Success',
-            description: 'Discover proven strategies, expert tips, and practical advice to excel in your academic journey with Grade Spark Academy\'s comprehensive guide to academic success.',
-            date: '2023-11-18',
-            url: '/blog.html',
-            imageUrl: '/assignment-infografic.png'
-        }
-    ];
+// Manually import all blog posts
+// This is a workaround for Vite's import.meta.glob which might not work as expected in some environments
+const blogPosts = [
+    { path: 'how-to-write-a-dissertation', import: () => import('../blogs/how-to-write-a-dissertation.md?raw') },
+    { path: 'common-research-paper-mistakes', import: () => import('../blogs/common-research-paper-mistakes.md?raw') },
+    { path: 'understanding-citation-styles', import: () => import('../blogs/understanding-citation-styles.md?raw') },
+    { path: 'writing-literature-review', import: () => import('../blogs/writing-literature-review.md?raw') },
+    { path: 'academic-success-guide', import: () => import('../blogs/academic-success-guide.md?raw') },
+    { path: 'engineering-design-project-best-practices', import: () => import('../blogs/engineering-design-project-best-practices.md?raw') },
+    { path: 'collaborate-academic-experts', import: () => import('../blogs/collaborate-academic-experts.md?raw') },
+    { path: 'evidence-based-study-strategies', import: () => import('../blogs/evidence-based-study-strategies.md?raw') },
+    { path: 'mastering-mathematical-proofs-guide', import: () => import('../blogs/mastering-mathematical-proofs-guide.md?raw') },
+    { path: 'when-how-seek-academic-assignment-help', import: () => import('../blogs/when-how-seek-academic-assignment-help.md?raw') },
+    { path: 'writing-compelling-thesis-statement-tips', import: () => import('../blogs/writing-compelling-thesis-statement-tips.md?raw') },
+    { path: 'writing-psychology-papers-research-analysis', import: () => import('../blogs/writing-psychology-papers-research-analysis.md?raw') },
+];
 
-    // Sort blogs by date (newest first)
-    return blogData.sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+export const getAllBlogPosts = async (): Promise<BlogPost[]> => {
+    try {
+        const posts: BlogPost[] = [];
+
+        // Process each blog file
+        for (const blog of blogPosts) {
+            try {
+                // Import the blog content
+                const rawContent = await blog.import();
+
+                // Parse frontmatter and content using gray-matter
+                const { data, content } = matter(rawContent.default);
+
+                posts.push({
+                    slug: data.slug || blog.path,
+                    title: data.title,
+                    description: data.description,
+                    date: data.date,
+                    author: data.author,
+                    imageUrl: data.imageUrl,
+                    readingTime: data.readingTime,
+                    content
+                });
+            } catch (err) {
+                console.error(`Error loading blog ${blog.path}:`, err);
+            }
+        }
+
+        // Sort posts by date (newest first)
+        return posts.sort((a, b) => {
+            return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
+    } catch (error) {
+        console.error('Error loading blog posts:', error);
+        return [];
+    }
+};
+
+/**
+ * Gets a single blog post by its slug
+ */
+export const getBlogPostBySlug = async (slug: string): Promise<BlogPost | undefined> => {
+    const posts = await getAllBlogPosts();
+    return posts.find(post => post.slug === slug);
 };
 
 /**
