@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import AgreementSection from './Terms/components/AgreementSection';
 import TableOfContents from './Terms/components/TableOfContents';
 import UserRepresentations from './Terms/components/UserRepresentations';
@@ -202,9 +202,7 @@ const additionalSections = [
 ];
 
 const Terms = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollToTop(); // Use the new hook for scrolling
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">

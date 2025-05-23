@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import TableOfContents from './PrivacyPolicy/components/TableOfContents';
 import PrivacySection from './PrivacyPolicy/components/PrivacySection';
 import IntroductionSection from './PrivacyPolicy/components/IntroductionSection';
@@ -300,9 +301,9 @@ Archived Versions:
 ];
 
 const PrivacyPolicy = () => {
+  useScrollToTop(); // Use the new hook for scrolling
+
   useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0);
     // Set page title
     document.title = 'Privacy Policy - Grade Spark Academy';
 

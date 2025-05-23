@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import {
   BookOpen, PenTool, GraduationCap, FileText, BookMarked, Ghost,
   Code, Calculator, Beaker, Brain, Briefcase, Microscope, FileEdit, Presentation
@@ -139,10 +140,9 @@ const itemVariants = {
 };
 
 const Services = () => {
-  useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0);
+  useScrollToTop(); // Use the new hook for scrolling
 
+  useEffect(() => {
     // Update page title
     document.title = "Our Services | Grade Spark Academy";
   }, []);

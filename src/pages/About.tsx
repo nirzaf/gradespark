@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import HeroSection from './About/components/HeroSection';
 import MissionVision from './About/components/MissionVision';
 import KeyFeatures from './About/components/KeyFeatures';
@@ -6,10 +7,9 @@ import QualityAssurance from './About/components/QualityAssurance';
 import AcademicCoverage from './About/components/AcademicCoverage';
 
 export default function About() {
-  useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0);
+  useScrollToTop(); // Use the new hook for scrolling
 
+  useEffect(() => {
     // Update page title
     document.title = "About Us | Grade Spark Academy";
   }, []);
