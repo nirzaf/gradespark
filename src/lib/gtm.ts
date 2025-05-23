@@ -4,8 +4,8 @@ declare global {
   }
 }
 
-export const GTM_ID = 'GTM-MLK5VRGH';
-export const GA_ID = 'G-EQC6PQ0E9Q';
+export const GTM_ID = 'GTM-PWTGRCTV';
+export const GA_ID = 'G-D2VFYV0XX0';
 
 export const initGTM = () => {
   if (typeof window !== 'undefined') {

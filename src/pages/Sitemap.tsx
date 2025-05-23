@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 
 // Define the site structure with categories and pages
 const siteStructure = [
@@ -53,11 +54,11 @@ const siteStructure = [
 ];
 
 const Sitemap = () => {
+  useScrollToTop(); // Use the new hook for scrolling
+
   useEffect(() => {
     // Set page title for SEO
     document.title = 'Sitemap - Grade Spark Academy';
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0);
   }, []);
 
   return (

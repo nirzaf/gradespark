@@ -1,11 +1,9 @@
-import { useEffect } from 'react';
+import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import HubSpotForm from './BookTrial/components/HubSpotForm';
 import PageTitle from './BookTrial/components/PageTitle';
 
 const BookTrial = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollToTop(); // Use the new hook for scrolling
 
   return (
     <section className="mt-24">
