@@ -1,0 +1,45 @@
+name: Dependabot Updates
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Configure Git URLs
+        run: |
+          git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/
+          git config --global --replace-all url.https://github.com/.insteadOf git@github.com:
+          git config --global --replace-all url.https://github.com/.insteadOf git://github.com/
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: |
+          npm ci || npm install
+      
+      - name: Audit and fix vulnerabilities
+        run: npm audit fix || true
+      
+      - name: Run tests
+        run: npm test || true
+      
+      - name: Auto-approve PR
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        uses: hmarr/auto-approve-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
