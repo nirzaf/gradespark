@@ -39,20 +39,24 @@ const ContactForm = () => {
   };
 
   const uploadFile = async (file: File) => {
-    // Correct Baserow file upload endpoint
-    const url = 'https://api.baserow.io/api/user-files/upload-file/';
+    // Use the new serverless function endpoint for file uploads
+    const url = '/api/contact?action=upload';
     const fd = new FormData();
-    fd.append('file', file);
+    fd.append('file', file); // The serverless function expects 'file'
     const res = await fetch(url, {
       method: 'POST',
-      headers: {
-        Authorization: `Token ${import.meta.env.VITE_BASEROW_API_KEY}`,
-        Accept: 'application/json',
-      },
+      // No Authorization header needed here, it's handled by the serverless function
+      // The Content-Type header will be set automatically by the browser with FormData
       body: fd,
     });
-    if (!res.ok) throw new Error(`File upload failed with status ${res.status}`);
-    return await res.json();
+    const result = await res.json();
+    if (!res.ok || !result.success) {
+      console.error('File upload error from proxy:', result);
+      throw new Error(result.error || `File upload failed with status ${res.status}`);
+    }
+    // The serverless function returns { success: true, data: baserowResponse }
+    // Baserow's actual response for a successful file upload is nested in 'data'
+    return result.data; 
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -73,7 +77,14 @@ const ContactForm = () => {
     }
     let fileObjs: any[] = [];
     if (formData.attachments.length) {
-      fileObjs = await Promise.all(formData.attachments.map(uploadFile));
+      try {
+        fileObjs = await Promise.all(formData.attachments.map(uploadFile));
+      } catch (uploadError: any) {
+        console.error(uploadError);
+        setMessage(uploadError.message || 'File upload failed. Please try again.');
+        setLoading(false);
+        return;
+      }
     }
     try {
       // Map status and requirement to numeric IDs
@@ -93,13 +104,14 @@ const ContactForm = () => {
         'Other': 3098798,
       };
       const requirementId = requirementMap[formData.requirement] || null;
+      // Use the new serverless function endpoint for form submission
       const res = await fetch(
-        'https://api.baserow.io/api/database/rows/table/507918/?user_field_names=true',
+        '/api/contact?action=submit',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Token ${import.meta.env.VITE_BASEROW_API_KEY}`,
+            // No Authorization header needed here, it's handled by the serverless function
           },
           body: JSON.stringify({
             "Full Name": formData.fullName,
@@ -112,7 +124,11 @@ const ContactForm = () => {
           }),
         }
       );
-      if (!res.ok) throw new Error('Submission error');
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        console.error('Form submission error from proxy:', result);
+        throw new Error(result.error || `Form submission failed with status ${res.status}`);
+      }
       setMessage('Submitted successfully!');
       setFormData({
         fullName: '',
@@ -122,13 +138,20 @@ const ContactForm = () => {
         requirement: '',
         attachments: [],
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setMessage('Submission failed. Please try again.');
+      // Check if err.message already contains a user-friendly message from the serverless function
+      const displayMessage = err.message && (err.message.includes('Failed to submit form') || err.message.includes('File upload failed'))
+        ? err.message
+        : 'Submission failed. Please try again.';
+      setMessage(displayMessage);
     } finally {
       setLoading(false);
     }
   };
+
+  // A comment to remind about the server-side environment variable:
+  // BASEROW_API_KEY needs to be set in the Vercel project environment variables.
 
   return (
     <motion.div

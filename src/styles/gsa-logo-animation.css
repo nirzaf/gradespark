@@ -43,19 +43,37 @@
 }
 
 /* Individual letter tweaks */
-.gsa-logo .letter.g { animation-delay: 0.5s; }
-.gsa-logo .letter.s { animation-delay: 0.7s; }
-.gsa-logo .letter.a { 
-  animation-delay: 0.9s; 
-  fill: #00f7ff; 
-  filter: url(#f3d); 
-  animation: textFade 1.5s ease-out forwards, glowPulse 2s infinite; 
+.gsa-logo .letter.g {
+  animation-delay: 0.5s;
+  animation-name: textFade;
+}
+.gsa-logo .letter.s {
+  animation-delay: 0.7s;
+  animation-name: textFade;
+}
+.gsa-logo .letter.a {
+  animation-delay: 0.9s;
+  fill: #00f7ff;
+  filter: url(#f3d);
+  animation-name: textFade, glowPulse;
+  animation-duration: 1.5s, 2s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-fill-mode: forwards, none;
+  animation-iteration-count: 1, infinite;
+  animation-direction: normal, alternate;
 }
 
 /* Cyan accent for the bottom tip of the shield */
 .gsa-logo .accent {
   fill: #00f7ff;
-  animation: glowPulse 2s infinite;
+  opacity: 0;
+  animation-name: baseFadeIn, glowPulse;
+  animation-duration: 1.5s, 2s;
+  animation-timing-function: ease, ease-in-out;
+  animation-delay: 1.1s, 2.6s;
+  animation-fill-mode: forwards, none;
+  animation-iteration-count: 1, infinite;
+  animation-direction: normal, alternate;
   filter: drop-shadow(0 0 6px rgba(0, 247, 255, 0.8));
 }
 

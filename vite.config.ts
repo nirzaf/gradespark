@@ -1,9 +1,12 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import * as path from "node:path";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+  ],
   base: '/',
   build: {
     outDir: 'dist',
@@ -36,5 +39,11 @@ export default defineConfig({
   server: {
     port: 3000,
     open: false // Disable automatic browser opening
-  }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: [], // Or './src/setupTests.ts' if you create one
+    include: ['src/**/*.test.{ts,tsx}'],
+  },
 })
