@@ -59,16 +59,17 @@
     "eslint-plugin-vitest": "^0.5.4",
     "gh-pages": "^6.2.0",
     "globals": "^15.9.0",
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^10.0.0",
-    "imagemin-svgo": "^11.0.1",
     "jsdom": "^26.1.0",
     "postcss": "^8.4.35",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1",
     "vite": "^6.3.5",
-    "vite-plugin-imagemin": "^0.6.1",
     "vitest": "^3.1.4"
+  },
+  "resolutions": {
+    "three": "^0.176.0",
+    "@react-three/fiber": "^9.1.2",
+    "@react-three/drei": "^10.0.8",
+    "three-mesh-bvh": "^0.9.0"
   }
 }

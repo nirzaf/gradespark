@@ -4,7 +4,22 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 10
     groups:
       three-js:
         patterns: ["three*", "@react-three/*"]
-    versioning-strategy: "increase"
+        update-types: ["minor", "patch"]
+      react:
+        patterns: ["react*", "@types/react*"]
+        update-types: ["minor", "patch"]
+    versioning-strategy: "auto"
+    ignore:
+      # Ignore updates to packages that may cause conflicts
+      - dependency-name: "three"
+        versions: [">=0.174.0"]
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "automerge"
