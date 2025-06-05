@@ -26,7 +26,7 @@
   }
 
   body {
-    @apply antialiased text-gray-900 bg-white;
+    @apply antialiased text-night bg-white;
   }
 }
 
