@@ -1,0 +1,8 @@
+# Run type checking
+npm run type-check
+
+# Run linting and formatting on staged files
+npx lint-staged
+
+# Run tests related to staged files
+npm run test -- --run --reporter=verbose

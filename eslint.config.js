@@ -8,7 +8,32 @@ import tailwindcssPlugin from 'eslint-plugin-tailwindcss';
 import vitestPlugin from 'eslint-plugin-vitest'; // Import vitest plugin
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  {
+    ignores: [
+      'dist',
+      'node_modules',
+      'build',
+      'public/sw.js',
+      '*.min.js',
+      '*.min.css',
+      'coverage',
+      '.cache',
+      '.parcel-cache',
+      '.next',
+      'out',
+      '.nuxt',
+      '.vuepress/dist',
+      '.serverless',
+      '.fusebox',
+      '.dynamodb',
+      '.tern-port',
+      '.vscode-test',
+      '*.generated.*',
+      'package-lock.json',
+      'yarn.lock',
+      'pnpm-lock.yaml'
+    ]
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
 
