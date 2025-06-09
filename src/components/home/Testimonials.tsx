@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Quote, ChevronLeft, ChevronRight, Star, Award, Trophy, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import '../../styles/testimonials.css';
 import TestimonialsBackground from '../common/TestimonialsBackground';
 
@@ -87,27 +89,24 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   );
 };
 
-// Custom slider arrows
-const NextArrow = ({ onClick }: { onClick?: () => void }) => (
-  <motion.div
-    className="absolute right-0 sm:right-1 md:right-2 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-r from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30"
-    onClick={onClick}
-    whileHover={{ scale: 1.1, x: 3 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-  </motion.div>
-);
-
-const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
-  <motion.div
-    className="absolute left-0 sm:left-1 md:left-2 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-l from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30"
-    onClick={onClick}
-    whileHover={{ scale: 1.1, x: -3 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-  </motion.div>
+// Custom navigation buttons for Swiper
+const CustomNavigation = () => (
+  <>
+    <motion.div
+      className="swiper-button-prev absolute left-0 sm:left-1 md:left-2 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-r from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30 flex items-center justify-center"
+      whileHover={{ scale: 1.1, x: -3 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+    </motion.div>
+    <motion.div
+      className="swiper-button-next absolute right-0 sm:right-1 md:right-2 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 bg-gradient-to-r from-celeste/20 to-celeste/30 hover:from-celeste/30 hover:to-celeste/40 p-1.5 sm:p-2 rounded-full backdrop-blur-sm transition-all duration-300 border border-celeste/30 flex items-center justify-center"
+      whileHover={{ scale: 1.1, x: 3 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+    </motion.div>
+  </>
 );
 
 // Stats component to display above testimonials
@@ -250,48 +249,24 @@ export default function Testimonials() {
     }
   ];
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 3,
-    centerMode: false,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 6000,
-    pauseOnHover: true,
-    adaptiveHeight: false,
-    cssEase: 'cubic-bezier(0.25, 0.1, 0.25, 1.0)',
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    rtl: false, // Right to left disabled
-    swipeToSlide: true, // Allow users to drag or swipe directly to a slide
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplaySpeed: 5000,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplaySpeed: 4000,
-          arrows: false, // Hide arrows on very small screens
-        }
-      }
-    ]
+  // Swiper configuration
+  const swiperBreakpoints = {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 16,
+    },
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 2,
+      spaceBetween: 24,
+    },
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 24,
+    },
   };
 
   if (isLoading) {
@@ -356,13 +331,36 @@ export default function Testimonials() {
         </div>
 
         <div className="relative testimonial-carousel overflow-hidden">
-          <div className="-mx-2 sm:-mx-3"> {/* Negative margin to counteract slide padding */}
-            <Slider {...sliderSettings}>
-              {testimonials.map((testimonial) => (
-                <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-              ))}
-            </Slider>
-          </div>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={3}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            autoplay={{
+              delay: 6000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={swiperBreakpoints}
+            loop={true}
+            className="testimonials-swiper"
+          >
+            {testimonials.map((testimonial) => (
+              <SwiperSlide key={testimonial.id}>
+                <TestimonialCard testimonial={testimonial} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation */}
+          <CustomNavigation />
         </div>
       </div>
     </motion.section>

@@ -37,7 +37,7 @@ export default defineConfig({
           'vendor-ui': ['lucide-react', 'react-icons'],
 
           // Carousel and sliders
-          'vendor-carousel': ['react-slick', 'swiper', 'slick-carousel'],
+          'vendor-carousel': ['swiper'],
 
           // Utilities and smaller libs
           'vendor-utils': ['typewriter-effect', 'react-hot-toast', 'gray-matter'],

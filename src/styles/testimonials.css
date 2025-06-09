@@ -1,55 +1,44 @@
-/* Base carousel layout styles */
-.testimonial-carousel .slick-track {
-  display: flex !important;
-  margin-left: 0 !important; /* Remove default margin */
-  margin-right: 0 !important; /* Remove default margin */
+/* Base carousel layout styles for Swiper */
+.testimonials-swiper {
+  padding-bottom: 50px !important; /* Space for pagination */
 }
 
-.testimonial-carousel .slick-slide {
-  height: inherit !important;
-  display: flex !important;
-  padding: 0 8px; /* Add consistent padding between slides */
+.testimonials-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  padding: 0 4px; /* Add consistent padding between slides */
 }
 
-.testimonial-carousel .slick-slide > div {
+.testimonials-swiper .swiper-slide > div {
   display: flex;
   flex: 1;
   width: 100%; /* Ensure full width */
 }
 
-/* Dots styling */
-.testimonial-carousel .slick-dots {
-  bottom: -40px;
+/* Custom pagination styling */
+.testimonials-swiper .swiper-pagination {
+  bottom: 10px !important;
 }
 
-.testimonial-carousel .slick-dots li {
-  margin: 0 4px;
-}
-
-.testimonial-carousel .slick-dots li button:before {
-  color: #A0EBEB;
+.testimonials-swiper .swiper-pagination-bullet {
+  background: #A0EBEB;
   opacity: 0.3;
-  font-size: 10px;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px !important;
   transition: all 0.3s ease;
 }
 
-.testimonial-carousel .slick-dots li.slick-active button:before {
-  color: #A0EBEB;
+.testimonials-swiper .swiper-pagination-bullet-active {
   opacity: 1;
   transform: scale(1.2);
+  background: #A0EBEB;
 }
 
-/* Hide default arrow styling */
-.testimonial-carousel .slick-prev:before,
-.testimonial-carousel .slick-next:before {
+/* Hide default Swiper navigation arrows (we use custom ones) */
+.testimonials-swiper .swiper-button-next,
+.testimonials-swiper .swiper-button-prev {
   display: none;
-}
-
-/* Active slide styling */
-.testimonial-carousel .slick-center {
-  transform: scale(1.05);
-  z-index: 10;
-  transition: all 0.4s ease;
 }
 
 /* Testimonial card animations */
@@ -89,7 +78,7 @@
   }
 }
 
-.testimonial-carousel .slick-center .testimonial-card {
+.testimonials-swiper .swiper-slide-active .testimonial-card {
   animation: pulse-glow 3s infinite;
   border-color: rgba(160, 235, 235, 0.4);
 }
@@ -168,41 +157,36 @@
   animation: rotate-slow 15s linear infinite;
 }
 
-/* Improve slider responsiveness */
-.testimonial-carousel .slick-list {
-  overflow: visible;
-  margin: 0 -8px; /* Match the padding in slick-slide */
+/* Improve Swiper responsiveness */
+.testimonials-swiper .swiper-wrapper {
+  transition-timing-function: ease-in-out;
 }
 
 /* Ensure smooth sliding animation */
-.testimonial-carousel .slick-track {
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Remove center mode styling since we're not using centerMode anymore */
-.testimonial-carousel .slick-center {
-  transform: none;
+.testimonials-swiper {
+  overflow: visible;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .testimonial-carousel .slick-dots {
-    bottom: -30px;
+  .testimonials-swiper .swiper-pagination {
+    bottom: 5px !important;
   }
 
-  .testimonial-carousel .slick-dots li button:before {
-    font-size: 8px;
+  .testimonials-swiper .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
   }
 }
 
 /* Improve mobile experience */
 @media (max-width: 640px) {
-  .testimonial-carousel .slick-slide {
-    padding: 0 4px;
+  .testimonials-swiper .swiper-slide {
+    padding: 0 2px;
   }
 
-  .testimonial-carousel .slick-list {
-    margin: 0 -4px;
+  .testimonials-swiper {
+    padding-bottom: 40px !important;
   }
 }
 
