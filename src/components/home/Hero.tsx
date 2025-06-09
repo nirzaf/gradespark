@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef, Suspense, useMemo, lazy } from 'react';
-import { GraduationCap, Users, Globe2, Sparkles, Shield, Clock } from 'lucide-react';
+import { usePlane, useBox, useSphere, Triplet } from '@react-three/cannon';
+import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+import { GraduationCap, Sparkles, Shield, Clock } from 'lucide-react'; // Removed unused imports
 import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton'; // Assuming this exists
 
@@ -11,9 +14,6 @@ const Points = lazy(() => import('@react-three/drei').then(module => ({ default:
 const Box = lazy(() => import('@react-three/drei').then(module => ({ default: module.Box })));
 const Sphere = lazy(() => import('@react-three/drei').then(module => ({ default: module.Sphere })));
 const Physics = lazy(() => import('@react-three/cannon').then(module => ({ default: module.Physics })));
-
-// Lazy load Three.js for better performance
-const THREE = lazy(() => import('three'));
 
 // Lazy load the GSA Shield Logo for better performance
 const GSAShieldLogo = lazy(() => import('../common/GSAShieldLogo'));
@@ -314,7 +314,13 @@ function AnimatedParticles({ count = 120, radius = 22 }: { count?: number, radiu
     return (
         <Points ref={pointsRef}>
             <bufferGeometry attach="geometry">
-                <bufferAttribute attach="attributes-position" count={count} array={initialData.positions} itemSize={3} />
+                <bufferAttribute
+                  attach="attributes-position"
+                  args={[initialData.positions, 3]}
+                  count={count}
+                  itemSize={3}
+                  usage={THREE.DynamicDrawUsage}
+                />
             </bufferGeometry>
             {/* Keep particles celeste or maybe white for neutrality? Let's try white */}
             <pointsMaterial attach="material" size={0.12} color={themeColors.white} transparent opacity={0.5} sizeAttenuation blending={THREE.AdditiveBlending} />
