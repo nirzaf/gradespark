@@ -210,14 +210,7 @@ const GSALogo: React.FC = () => {
     `;
     document.head.appendChild(styleEl);
 
-    // Add Orbitron font if not already present
-    if (!document.getElementById('orbitron-font')) {
-      const fontLink = document.createElement('link');
-      fontLink.id = 'orbitron-font';
-      fontLink.rel = 'stylesheet';
-      fontLink.href = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap';
-      document.head.appendChild(fontLink);
-    }
+    // Orbitron font is now preloaded in index.html for better performance
 
     // Cleanup function
     return () => {

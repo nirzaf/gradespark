@@ -32,7 +32,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-night text-white pt-16 pb-8 relative overflow-hidden">
+    <footer className="bg-night text-white pt-16 pb-8 relative overflow-hidden min-h-[500px]">
       {/* Animated background elements */}
       <div className="absolute inset-0 -z-10 opacity-10">
         <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-celeste blur-3xl"></div>

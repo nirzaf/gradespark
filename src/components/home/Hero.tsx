@@ -2,10 +2,18 @@ import React, { useEffect, useState, useRef, Suspense, useMemo, lazy } from 'rea
 import { GraduationCap, Users, Globe2, Sparkles, Shield, Clock } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton'; // Assuming this exists
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Grid, Points, Box, Sphere } from '@react-three/drei';
-import * as THREE from 'three';
-import { Physics, usePlane, useBox, useSphere, Triplet } from '@react-three/cannon';
+
+// Lazy load heavy 3D components for better performance
+const Canvas = lazy(() => import('@react-three/fiber').then(module => ({ default: module.Canvas })));
+const OrbitControls = lazy(() => import('@react-three/drei').then(module => ({ default: module.OrbitControls })));
+const Grid = lazy(() => import('@react-three/drei').then(module => ({ default: module.Grid })));
+const Points = lazy(() => import('@react-three/drei').then(module => ({ default: module.Points })));
+const Box = lazy(() => import('@react-three/drei').then(module => ({ default: module.Box })));
+const Sphere = lazy(() => import('@react-three/drei').then(module => ({ default: module.Sphere })));
+const Physics = lazy(() => import('@react-three/cannon').then(module => ({ default: module.Physics })));
+
+// Lazy load Three.js for better performance
+const THREE = lazy(() => import('three'));
 
 // Lazy load the GSA Shield Logo for better performance
 const GSAShieldLogo = lazy(() => import('../common/GSAShieldLogo'));

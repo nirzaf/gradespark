@@ -57,6 +57,9 @@ const FAQItem = ({ item }: { item: FAQItemProps }) => {
         className="w-full px-6 py-4 flex items-center justify-between text-left
                    transition-all duration-300"
         style={{ background: 'linear-gradient(90deg, var(--night) 95%, var(--night) 90%)' }}
+        aria-expanded={isOpen}
+        aria-controls={`faq-answer-${item.question.replace(/\s+/g, '-').toLowerCase()}`}
+        aria-label={`Toggle FAQ: ${item.question}`}
       >
         {/* Icon and Question */}
         <div className="flex items-center space-x-4">
@@ -83,7 +86,13 @@ const FAQItem = ({ item }: { item: FAQItemProps }) => {
             className="overflow-hidden" // Hide content when height is 0
           >
             {/* Answer text container */}
-            <div className="px-6 py-4" style={{ background: 'rgba(21,22,22,0.5)', color: 'var(--white)' }}>
+            <div
+              id={`faq-answer-${item.question.replace(/\s+/g, '-').toLowerCase()}`}
+              className="px-6 py-4"
+              style={{ background: 'rgba(21,22,22,0.5)', color: 'var(--white)' }}
+              role="region"
+              aria-labelledby={`faq-question-${item.question.replace(/\s+/g, '-').toLowerCase()}`}
+            >
               {item.answer}
             </div>
           </motion.div>
