@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://dotnetblogs.net/studytomy-react",
+  "homepage": "https://www.gradespark.org/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
