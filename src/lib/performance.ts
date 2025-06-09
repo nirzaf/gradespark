@@ -25,16 +25,37 @@ export const measurePerformance = (metricName: string) => {
   return { end: () => 0 };
 };
 
-// Track Core Web Vitals
+// Track Core Web Vitals using PerformanceObserver
 export const trackWebVitals = () => {
   try {
-    if ('web-vital' in window) {
-      // @ts-ignore
-      window.webVitals.getCLS(console.log);
-      // @ts-ignore
-      window.webVitals.getFID(console.log);
-      // @ts-ignore
-      window.webVitals.getLCP(console.log);
+    // Track Largest Contentful Paint (LCP)
+    if ('PerformanceObserver' in window) {
+      const lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        console.log('LCP:', lastEntry.startTime.toFixed(2) + 'ms');
+      });
+      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+      // Track First Input Delay (FID)
+      const fidObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          console.log('FID:', entry.processingStart - entry.startTime + 'ms');
+        }
+      });
+      fidObserver.observe({ entryTypes: ['first-input'] });
+
+      // Track Cumulative Layout Shift (CLS)
+      let clsValue = 0;
+      const clsObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsValue += entry.value;
+          }
+        }
+        console.log('CLS:', clsValue.toFixed(4));
+      });
+      clsObserver.observe({ entryTypes: ['layout-shift'] });
     }
   } catch (error) {
     console.error('Error tracking web vitals:', error);

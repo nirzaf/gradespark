@@ -215,7 +215,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo and Text */}
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0">
+            <Link to="/" className="flex-shrink-0" aria-label="Grade Spark Academy Home">
               <div className="flex items-center justify-center h-[60px] w-[60px] sm:h-[68px] sm:w-[68px] overflow-visible">
                 <GSAShieldLogo />
               </div>
@@ -252,11 +252,14 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-celeste hover:bg-night-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-celeste"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? (
-                <X className="block h-6 w-6" />
+                <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <Menu className="block h-6 w-6" />
+                <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -266,6 +269,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <motion.div
+          id="mobile-menu"
           className="md:hidden bg-night/95 border-t border-celeste/20"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}

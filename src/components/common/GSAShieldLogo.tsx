@@ -196,14 +196,7 @@ const GSAShieldLogo: React.FC<GSAShieldLogoProps> = ({
     `;
     document.head.appendChild(styleEl);
     
-    // Add Orbitron font if not already present
-    if (!document.getElementById('orbitron-font')) {
-      const fontLink = document.createElement('link');
-      fontLink.id = 'orbitron-font';
-      fontLink.href = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap';
-      fontLink.rel = 'stylesheet';
-      document.head.appendChild(fontLink);
-    }
+    // Orbitron font is now preloaded in index.html for better performance
     
     return () => {
       document.head.removeChild(styleEl);

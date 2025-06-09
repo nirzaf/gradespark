@@ -13,6 +13,7 @@
     <meta name="theme-color" content="#121212" />
     <link rel="canonical" href="https://gradespark.com/" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="manifest" href="/manifest.json" />
     <meta property="og:title" content="Grade Spark Academy - Expert Academic Assistance for University Students" />
     <meta property="og:description" content="Our experts help with essays, research papers, dissertations, and more. Confidential and on-time delivery." />
     <meta property="og:type" content="website" />
@@ -24,7 +25,16 @@
     <meta name="twitter:description" content="Our experts help with essays, research papers, dissertations, and more. Confidential & on-time delivery." />
     <meta name="twitter:image" content="https://gradespark.com/logo.ico" />
     <title>Grade Spark - Academic Writing Help for Students</title>
+    <!-- Preload critical fonts for better performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Fallback for browsers that don't support preload -->
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
 
     <!-- HubSpot Chat -->
     <!-- <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/139752450.js"></script> -->
