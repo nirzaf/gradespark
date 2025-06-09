@@ -1,0 +1,56 @@
+name: Create Backup Branch
+
+on:
+  # Trigger directly on push to main
+  push:
+    branches:
+      - main
+  
+  # Also trigger after successful build/deployment (existing trigger)
+  workflow_run:
+    workflows: ["Production – gradespark"] # Your actual build workflow name
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  create-backup-branch:
+    # Run on push events OR successful workflow_run events
+    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+          # Use PAT instead of GITHUB_TOKEN for branch creation permissions
+          token: ${{ secrets.PAT_TOKEN }} # You'll need to create this secret
+
+      - name: Set up Git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Extract version from package.json
+        id: package-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Generate timestamp
+        id: timestamp
+        run: |
+          TIMESTAMP=$(date +'%Y%m%d-%H%M%S')
+          echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+
+      - name: Create backup branch
+        run: |
+          BACKUP_BRANCH="backup/v${VERSION}-${TIMESTAMP}"
+          git checkout -b "$BACKUP_BRANCH"
+          # Use PAT token for authentication when pushing
+          git remote set-url origin https://x-access-token:${PAT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git push origin "$BACKUP_BRANCH"
+          echo "Created backup branch: $BACKUP_BRANCH"
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

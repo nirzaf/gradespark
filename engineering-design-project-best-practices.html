@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/logo.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/logo.ico" />
+    <title>How to Approach Engineering Design Projects: Best Practices - Grade Spark Academy Blog</title>
+    <meta name="description"
+        content="Learn best practices for approaching engineering design projects, from defining the problem and requirements to prototyping, testing, and documentation for successful outcomes.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        night: '#121212',
+                        'night-dark': '#0a0a0a',
+                        celeste: '#A0EBEB',
+                        'celeste-dark': '#7CDBDB'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine-slow': 'shine 8s infinite',
+                        'shine-fast': 'shine 4s infinite',
+                        'shimmer': 'shimmer 2s infinite'
+                    },
+                    keyframes: {
+                        shine: {
+                            '0%, 100%': { transform: 'translateX(-100%)' },
+                            '50%': { transform: 'translateX(100%)' }
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #A0EBEB, #7CDBDB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .celeste-gradient-text-no-shadow {
+            background: linear-gradient(to right, #A0EBEB, #7CDBDB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Blog specific styles */
+        .blog-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #121212;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #121212;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .blog-content ul,
+        .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-content ul {
+            list-style-type: disc;
+        }
+
+        .blog-content ol {
+            list-style-type: decimal;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid #A0EBEB;
+            padding-left: 1rem;
+            font-style: italic;
+            margin: 1.5rem 0;
+            color: #6b7280;
+        }
+
+        .blog-content a {
+            color: #0ea5e9;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .blog-content a:hover {
+            color: #0284c7;
+            text-decoration: underline;
+        }
+
+        .blog-content img {
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .blog-content .code-block {
+            background-color: #f1f5f9;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+         .blog-content .callout {
+            background-color: #eef2ff; /* Light Indigo background */
+            border-left: 4px solid #6366f1; /* Indigo border */
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.375rem;
+        }
+         .blog-content .callout p {
+            margin-bottom: 0;
+            color: #3730a3; /* Darker Indigo text */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="fixed w-full z-50">
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-night/95 via-night/90 to-night/95 backdrop-blur-xl border-b border-celeste/20 shadow-lg shadow-celeste/5">
+        </div>
+
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(160,235,235,0.3),transparent_70%)] opacity-70 animate-pulse-slow">
+        </div>
+
+        <div
+            class="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-celeste/70 to-transparent animate-pulse-slow">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/#/" class="flex-shrink-0">
+                        <div class="bg-white rounded-lg p-0.5 flex items-center justify-center h-[42px] w-[42px] sm:h-[48px] sm:w-[48px] overflow-hidden"
+                            style="box-shadow: inset 0 1px 2px rgba(255,255,255,0.9), 0 2px 4px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2)">
+                            <img class="h-[38px] w-auto sm:h-[44px] object-contain"
+                                src="/logo.ico"
+                                alt="Grade Spark Academy" />
+                        </div>
+                    </a>
+                    <a href="/#/" class="ml-3 hidden sm:block">
+                        <span class="relative z-20 text-xl font-bold celeste-gradient-text-no-shadow whitespace-nowrap">
+                            Grade Spark Academy
+                        </span>
+                    </a>
+                    <a href="/#/" class="ml-2 sm:hidden">
+                        <div class="flex flex-col">
+                            <span
+                                class="relative z-20 text-base font-bold celeste-gradient-text-no-shadow leading-tight">
+                                Grade Spark
+                            </span>
+                            <span
+                                class="relative z-20 text-base font-bold celeste-gradient-text-no-shadow leading-tight">
+                                Academy
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="/#/"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Home</span>
+                    </a>
+                    <a href="/#/about"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">About</span>
+                    </a>
+                    <a href="/#/services"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Services</span>
+                    </a>
+                    <a href="/#/blogs"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Blogs</span>
+                    </a>
+                    <a href="/#/contact"
+                        class="group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 text-white hover:text-celeste inline-flex items-center">
+                        <span class="relative z-10">Contact</span>
+                    </a>
+
+                    <a href="/#/contact">
+                        <button class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium
+                                    bg-gradient-to-r from-celeste to-celeste-dark
+                                    text-night shadow-md hover:shadow-lg
+                                    transition-all duration-300
+                                    backdrop-blur-sm backdrop-saturate-150
+                                    border border-celeste/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-4 h-4 mr-2">
+                                <path d="M12 3v3m0 4.5v3m0 4.5v3M3 12h3m4.5 0h3m4.5 0h3"></path>
+                            </svg>
+                            Connect Now
+                        </button>
+                    </a>
+                </div>
+
+                <div class="flex items-center md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-celeste hover:bg-night-dark focus:outline-none focus:ring-2 focus:ring-inset focus:ring-celeste">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="block h-6 w-6">
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <line x1="4" x2="20" y1="6" y2="6"></line>
+                            <line x1="4" x2="20" y1="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <header class="mb-8">
+                <h1 class="text-4xl font-bold mb-4 text-night">How to Approach Engineering Design Projects: Best Practices</h1>
+
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 rounded-full bg-celeste/30 flex items-center justify-center mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="text-night">
+                             <path d="M14.5 17.5 L20 12 L14.5 6.5 M9.5 17.5 L4 12 L9.5 6.5"></path> </svg>
+                    </div>
+                    <div>
+                        <p class="font-medium text-night">Eng. Fatima Al-Kuwari</p>
+                        <p class="text-sm text-gray-500">Published on April 17, 2025 • 11 min read</p>
+                    </div>
+                </div>
+            </header>
+
+            <article class="blog-content prose prose-lg max-w-none">
+                <p>
+                   Engineering design projects are the cornerstone of innovation, turning abstract ideas into tangible solutions. Whether you're a student tackling a capstone project or a professional engineer developing a new product, a structured approach is essential for success. Without a clear process, projects can easily derail due to scope creep, unforeseen challenges, or poor communication. This guide outlines best practices based on the systematic engineering design process to help you navigate complexity and achieve your project goals effectively.
+                </p>
+
+                <div class="rounded-xl overflow-hidden shadow-lg mb-8">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                        alt="Team of engineers collaborating on a design project with blueprints and components" class="w-full h-auto object-cover">
+                </div>
+
+                <h2>1. Define the Problem and Requirements Clearly</h2>
+                <p>
+                    The most critical step is deeply understanding the problem you're trying to solve. A poorly defined problem leads to ineffective solutions. Ask questions like:
+                </p>
+                <ul>
+                    <li>What is the core need or challenge?</li>
+                    <li>Who are the stakeholders (users, clients, etc.)?</li>
+                    <li>What are the constraints (budget, time, materials, regulations, technical limitations)?</li>
+                    <li>What are the desired functions and performance criteria (objectives)?</li>
+                </ul>
+                 <p>Translate these insights into a formal set of requirements and specifications. These should be SMART: Specific, Measurable, Achievable, Relevant, and Time-bound. This document serves as the project's foundation and guidepost.</p>
+
+                <div class="callout">
+                   <p><strong>Best Practice:</strong> Engage stakeholders early and often. Their input is invaluable for defining realistic requirements and ensuring the final solution meets their needs.</p>
+                </div>
+
+                <h2>2. Conduct Thorough Background Research</h2>
+                <p>
+                    Avoid reinventing the wheel. Investigate existing solutions, relevant technologies, scientific principles, and potential pitfalls. This involves:
+                </p>
+                <ul>
+                    <li><strong>Literature Review:</strong> Explore patents, academic papers, industry reports, and technical documentation.</li>
+                    <li><strong>Market Research:</strong> Analyze competitor products and user feedback on existing solutions.</li>
+                    <li><strong>Feasibility Study:</strong> Assess the technical and economic viability of potential approaches based on available resources and technology.</li>
+                </ul>
+                 <p>Solid research informs design decisions, identifies potential challenges early, and can spark innovative ideas.</p>
+
+                <h2>3. Generate and Evaluate Multiple Concepts (Ideation)</h2>
+                <p>
+                    Don't settle for the first idea that comes to mind. Brainstorm a wide range of potential solutions. Encourage creativity and defer judgment during this phase. Techniques include:
+                </p>
+                <ul>
+                    <li>Brainstorming sessions</li>
+                    <li>Sketching and mind mapping</li>
+                    <li>Using structured methods like SCAMPER (Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse)</li>
+                </ul>
+                <p>
+                    Once you have several concepts, evaluate them systematically against the defined requirements and constraints. Use tools like decision matrices (Pugh charts) to objectively compare concepts based on weighted criteria (e.g., cost, performance, manufacturability, safety). Select the most promising concept(s) for further development.
+                </p>
+
+                <blockquote>
+                    "Design is not just what it looks like and feels like. Design is how it works." – Steve Jobs
+                </blockquote>
+
+                <h2>4. Develop the Design and Create Prototypes</h2>
+                <p>
+                    This is where the chosen concept takes shape. Develop detailed designs, including calculations, simulations (e.g., Finite Element Analysis - FEA, Computational Fluid Dynamics - CFD), material selection, and component specifications. Create drawings (CAD models) and schematics.
+                </p>
+                <h3>Prototyping: Making Ideas Tangible</h3>
+                <p>
+                    Prototyping is crucial for testing assumptions, identifying flaws, and refining the design before committing to final production. Prototypes can range from simple mock-ups (e.g., cardboard models) to functional prototypes that test specific mechanisms or circuits, to high-fidelity prototypes that closely resemble the final product.
+                </p>
+                <ol>
+                     <li><strong>Proof-of-Concept:</strong> Validates the core idea or technology.</li>
+                     <li><strong>Functional Prototype:</strong> Tests how the design works.</li>
+                     <li><strong>Visual Prototype:</strong> Focuses on aesthetics and user interface.</li>
+                     <li><strong>Pre-production Prototype:</strong> A near-final version for extensive testing and manufacturing validation.</li>
+                </ol>
+
+                <h2>5. Rigorous Testing and Iteration</h2>
+                <p>
+                    Testing is not just a final step; it's an iterative process integrated throughout development. Test prototypes against the defined requirements and performance criteria.
+                </p>
+                 <ul>
+                     <li><strong>Component Testing:</strong> Verify individual parts meet specifications.</li>
+                     <li><strong>System Integration Testing:</strong> Ensure components work together correctly.</li>
+                     <li><strong>Performance Testing:</strong> Measure against key metrics (speed, strength, efficiency, etc.).</li>
+                     <li><strong>Usability Testing:</strong> Gather feedback from end-users.</li>
+                     <li><strong>Failure Testing:</strong> Understand limits and potential failure modes (often crucial for safety).</li>
+                </ul>
+                <p>
+                   Analyze test results critically. Identify shortcomings and areas for improvement. Use this feedback to refine the design – this is the core of the iterative design cycle. Be prepared to revisit earlier stages if testing reveals fundamental problems.
+                </p>
+
+                 <div class="my-8 p-6 bg-celeste/10 border border-celeste/50 rounded-xl">
+                    <h3 class="text-xl font-bold mb-2 text-night">Embrace Iteration</h3>
+                    <p class="text-night mb-0">
+                        Failure during testing is not a setback; it's a learning opportunity. Successful engineering often involves multiple cycles of prototyping, testing, and refinement. Documenting both successes and failures is key to progress.
+                    </p>
+                </div>
+
+                <h2>6. Comprehensive Documentation</h2>
+                 <p>
+                    Thorough documentation is often overlooked but is vital for communication, replication, maintenance, and future development. Maintain records throughout the project, including:
+                </p>
+                 <ul>
+                    <li>Problem statement and requirements</li>
+                    <li>Research findings and literature review</li>
+                    <li>Concept sketches and evaluation matrices</li>
+                    <li>Detailed design calculations, simulations, and CAD models</li>
+                    <li>Material specifications and component lists (Bill of Materials - BOM)</li>
+                    <li>Prototype build logs</li>
+                    <li>Testing plans, procedures, raw data, and analysis reports</li>
+                    <li>User manuals and maintenance guides (if applicable)</li>
+                    <li>Final design specifications and drawings</li>
+                </ul>
+                <p>Good documentation ensures clarity within the team, facilitates handoffs, and provides a valuable resource for troubleshooting and future iterations.</p>
+
+                <h2>Conclusion: The Path to Successful Engineering Design</h2>
+                <p>
+                   Approaching engineering design projects systematically increases the likelihood of success. By diligently defining the problem, conducting thorough research, exploring multiple concepts, prototyping early and often, testing rigorously, iterating based on feedback, and maintaining comprehensive documentation, engineers can transform complex challenges into effective, reliable solutions. While the process is iterative and rarely linear, adhering to these best practices provides a robust framework for innovation and problem-solving in any engineering discipline.
+                </p>
+
+                 <div class="mt-10 pt-6 border-t border-gray-200">
+                     <h3 class="text-lg font-semibold mb-3 text-gray-700">Tags:</h3>
+                     <div class="flex flex-wrap gap-2">
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Engineering Design</span>
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Design Process</span>
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Prototyping</span>
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Problem Solving</span>
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Project Management</span>
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Requirements Engineering</span>
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Testing</span>
+                         <span class="bg-celeste/20 text-night text-sm font-medium px-3 py-1 rounded-full">Documentation</span>
+                     </div>
+                 </div>
+
+            </article>
+
+
+        </div>
+    </main>
+
+    <footer class="bg-night text-white pt-16 pb-8 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 opacity-10">
+            <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-celeste blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-celeste blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Grade Spark Academy</h3>
+                    <p class="text-gray-300 mb-4">
+                        Helping university students achieve academic excellence through expert assistance and support.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-white hover:text-celeste transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="/#/" class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/about"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/exam-boards"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Exam Boards
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/services"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#/contact"
+                                class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Essay Writing
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Research Papers
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Dissertation Support
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Technical Assignments
+                        </li>
+                        <li class="text-gray-300 hover:text-celeste transition-colors flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Editing & Proofreading
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="text-celeste mr-3 mt-1 flex-shrink-0">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span class="text-gray-300">6th Floor, Building Number 12, Street Number 817, Khor Shaqeeq
+                                Street, Zone No 38, Al Sadd, Doha.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="text-celeste mr-3 flex-shrink-0">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            <a href="mailto:contact@gradespark.org"
+                                class="text-gray-300 hover:text-celeste transition-colors">
+                                contact@gradespark.org
+                            </a>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="text-celeste mr-3 flex-shrink-0">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            <a href="tel:+97433170042" class="text-gray-300 hover:text-celeste transition-colors">
+                                +974-33170042
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-celeste/50 to-transparent my-8"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+                <div>
+                    <p>© 2025 Grade Spark Academy. All rights reserved.</p>
+                </div>
+
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="/#/privacy-policy" class="hover:text-celeste transition-colors">
+                        Privacy Policy
+                    </a>
+                    <a href="/#/terms" class="hover:text-celeste transition-colors">
+                        Terms of Service
+                    </a>
+                    <a href="/#/consent-preferences" class="hover:text-celeste transition-colors">
+                        Cookie Preferences
+                    </a>
+                    <a href="/#/sitemap" class="hover:text-celeste transition-colors">
+                        Sitemap
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center text-xs text-gray-500 mt-8 flex items-center justify-center">
+                <span>Powered by</span>
+                <a href="https://quadrate.lk" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center ml-1 hover:text-celeste transition-colors group">
+                    Quadrate TechSolutions
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" x2="21" y1="14" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="fixed bottom-6 right-6 z-50">
+            <a href="https://wa.me/97433170042?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20services."
+                class="flex items-center justify-center w-14 h-14 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+

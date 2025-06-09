@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      three-js:
+        patterns: ["three*", "@react-three/*"]
+    versioning-strategy: "increase"
