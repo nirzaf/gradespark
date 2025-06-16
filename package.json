@@ -18,7 +18,7 @@
     "@microsoft/clarity": "^1.0.0",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "^10.1.2",
+    "@react-three/drei": "^10.3.0",
     "@react-three/fiber": "^9.1.2",
     "@supabase/supabase-js": "^2.39.7",
     "@types/three": "^0.176.0",
