@@ -16,9 +16,37 @@
 /* Import Testimonials Background Animation */
 @import './testimonials-background.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-night: #151616;
+  --color-night-dark: #0F0F0F;
+  --color-white: #FEFEFE;
+  --color-white-pure: #FFFFFF;
+  --color-celeste: #A0EBEB;
+  --color-celeste-light: #C5F4F4;
+  --color-celeste-dark: #7CDEDE;
+  
+  --animation-bounce-right: bounce-right 1s infinite;
+  --animation-spin-slow: spin 8s linear infinite;
+  --animation-bounce-subtle: bounce-subtle 2s ease-in-out infinite;
+  --animation-sparkle-1: sparkle 1.5s ease-in-out infinite;
+  --animation-sparkle-2: sparkle 1.5s ease-in-out 0.2s infinite;
+  --animation-sparkle-3: sparkle 1.5s ease-in-out 0.4s infinite;
+  --animation-gradient: gradient 8s linear infinite;
+  --animation-float1: float1 4s ease-in-out infinite;
+  --animation-float2: float2 6s ease-in-out infinite;
+  --animation-float3: float3 5s ease-in-out infinite;
+  --animation-fade-in-up: fade-in-up 0.8s ease-out;
+  --animation-float: float 3s ease-in-out infinite;
+  
+  --perspective-1000: 1000px;
+  
+  --breakpoint-xs: 475px;
+  
+  --z-index-50: 50;
+  --z-index-100: 100;
+}
 
 @layer base {
   html {
