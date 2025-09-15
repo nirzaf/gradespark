@@ -3,10 +3,12 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import * as path from "node:path";
 import compression from 'vite-plugin-compression';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [
     react(),
+    tailwindcss(),
     // Add compression for production builds
     compression({
       algorithm: 'gzip',
