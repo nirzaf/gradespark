@@ -57,7 +57,7 @@
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^10.0.0",
     "imagemin-svgo": "^11.0.1",
-    "jsdom": "^26.1.0",
+    "jsdom": "^27.0.0",
     "postcss": "^8.4.35",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.1",
