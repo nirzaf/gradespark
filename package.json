@@ -22,7 +22,7 @@
     "@react-three/fiber": "^9.1.2",
     "@supabase/supabase-js": "^2.57.4",
     "@types/three": "^0.176.0",
-    "framer-motion": "^12.12.2",
+    "framer-motion": "^12.23.16",
     "gray-matter": "^4.0.3",
     "gsap": "^3.12.7",
     "lucide-react": "^0.513.0",
