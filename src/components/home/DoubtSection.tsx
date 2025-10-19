@@ -66,7 +66,7 @@ export default function DoubtSection() {
         />
 
         {/* Digital circuit pattern overlay */}
-        <div className="absolute inset-0 opacity-10 bg-[url('/circuit-pattern.png')] bg-repeat"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/icons/circuit-pattern.png')] bg-repeat"></div>
       </motion.div>
 
       {/* Enhanced floating sparkles */}
