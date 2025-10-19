@@ -57,7 +57,7 @@
     "postcss": "^8.4.35",
     "sharp": "^0.34.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.45.0",
+    "typescript-eslint": "^8.46.1",
     "vite": "^7.1.9",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^1.1.8",
