@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLazyLoad } from '../hooks/useLazyLoad';
 
 // Above-the-fold components (load immediately)
@@ -59,7 +60,55 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative overflow-x-hidden">
+      <Helmet>
+        <title>GradeSpark Academy | Expert Academic Help & Tutoring Services</title>
+        <meta 
+          name="description" 
+          content="Get expert academic help from qualified tutors at GradeSpark Academy. We provide assignment assistance, tutoring, and academic support across all subjects for university students." 
+        />
+        <meta name="keywords" content="academic help, tutoring, assignment assistance, university support, expert tutors, academic writing, homework help" />
+        <link rel="canonical" href="https://www.gradespark.com/" />
+        
+        {/* Open Graph tags for social media */}
+        <meta property="og:title" content="GradeSpark Academy | Expert Academic Help & Tutoring Services" />
+        <meta property="og:description" content="Get expert academic help from qualified tutors at GradeSpark Academy. We provide assignment assistance, tutoring, and academic support across all subjects for university students." />
+        <meta property="og:url" content="https://www.gradespark.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.gradespark.com/images/og-home.jpg" />
+        
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GradeSpark Academy | Expert Academic Help & Tutoring Services" />
+        <meta name="twitter:description" content="Get expert academic help from qualified tutors at GradeSpark Academy. We provide assignment assistance, tutoring, and academic support across all subjects for university students." />
+        <meta name="twitter:image" content="https://www.gradespark.com/images/og-home.jpg" />
+        
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "GradeSpark Academy",
+            "url": "https://www.gradespark.com",
+            "logo": "https://www.gradespark.com/logo.png",
+            "description": "Expert academic help and tutoring services for university students across all subjects",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "Customer Service",
+              "availableLanguage": "English"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "QA"
+            },
+            "sameAs": [
+              "https://www.facebook.com/gradespark",
+              "https://www.twitter.com/gradespark",
+              "https://www.linkedin.com/company/gradespark"
+            ]
+          })}
+        </script>
+      </Helmet>
+      <main className="relative overflow-x-hidden">
         {/* Above-the-fold content loads immediately */}
         <Hero />
         <CoreServices />
@@ -129,7 +178,7 @@ export default function Home() {
             </Suspense>
           )}
         </div>
-      </div>
+      </main>
     </>
   );
 }

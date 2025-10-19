@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 
@@ -62,7 +63,39 @@ const Sitemap = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <>
+      <Helmet>
+        <title>Sitemap | GradeSpark Academy - Navigate Our Academic Services</title>
+        <meta 
+          name="description" 
+          content="Explore GradeSpark Academy's complete sitemap. Find all our academic services, subject areas, and resources for university students in one organized view." 
+        />
+        <meta 
+          name="keywords" 
+          content="sitemap, navigation, academic services, university help, essay writing, dissertation support, tutoring, GradeSpark Academy" 
+        />
+        <link rel="canonical" href="https://gradespark.com/sitemap" />
+        
+        {/* Open Graph tags */}
+        <meta property="og:title" content="Sitemap | GradeSpark Academy - Navigate Our Academic Services" />
+        <meta 
+          property="og:description" 
+          content="Explore GradeSpark Academy's complete sitemap. Find all our academic services, subject areas, and resources for university students in one organized view." 
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://gradespark.com/sitemap" />
+        <meta property="og:image" content="https://gradespark.com/images/og-sitemap.jpg" />
+        
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sitemap | GradeSpark Academy - Navigate Our Academic Services" />
+        <meta 
+          name="twitter:description" 
+          content="Explore GradeSpark Academy's complete sitemap. Find all our academic services, subject areas, and resources for university students in one organized view." 
+        />
+        <meta name="twitter:image" content="https://gradespark.com/images/twitter-sitemap.jpg" />
+      </Helmet>
+      <main className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-8 text-center">Sitemap</h1>
       <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
         Welcome to the Grade Spark Academy sitemap. This page provides a comprehensive overview of our website structure to help you navigate to the information you need.
@@ -99,7 +132,8 @@ const Sitemap = () => {
           For more information about our services or to get started, please visit our <Link to="/" className="text-blue-600 hover:underline">homepage</Link> or <Link to="/contact" className="text-blue-600 hover:underline">contact us</Link> directly.
         </p>
       </div>
-    </div>
+    </main>
+    </>
   );
 };
 

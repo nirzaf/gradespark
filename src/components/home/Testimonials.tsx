@@ -77,7 +77,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
         <div className="text-white flex-grow flex flex-col">
           <p className="testimonial-quote mb-4 text-sm leading-relaxed flex-grow italic">"{testimonial.comments}"</p>
           <div className="mt-auto pt-4 border-t border-white/10">
-            <h6 className="font-semibold text-celeste">{testimonial.name}</h6>
+            <span className="font-semibold text-celeste block">{testimonial.name}</span>
             <div className="flex flex-col">
               <span className="text-xs text-white/80">{testimonial.syllabus} Student</span>
               <span className="text-xs text-celeste/80">{testimonial.subject}</span>
@@ -132,7 +132,7 @@ const TestimonialStats = () => {
           <div className="bg-gradient-to-br from-celeste/20 to-celeste/10 p-2 md:p-3 rounded-full mb-2 md:mb-3 shadow-inner">
             <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-celeste" strokeWidth={1.5} />
           </div>
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-0.5 md:mb-1">{stat.value}</h3>
+          <span className="text-xl md:text-2xl font-bold text-white mb-0.5 md:mb-1 block">{stat.value}</span>
           <p className="text-xs text-celeste/80 uppercase tracking-wider">{stat.label}</p>
         </motion.div>
       ))}
@@ -290,7 +290,7 @@ export default function Testimonials() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h5 className="text-celeste font-medium mb-2 uppercase tracking-wider">Student Success Stories</h5>
+          <h2 className="text-celeste font-medium mb-2 uppercase tracking-wider">Student Success Stories</h2>
           <p className="text-white/70 max-w-2xl mx-auto text-sm md:text-base">
             Join thousands of students who have achieved academic excellence with our expert assistance
           </p>

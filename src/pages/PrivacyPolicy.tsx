@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import TableOfContents from './PrivacyPolicy/components/TableOfContents';
 import PrivacySection from './PrivacyPolicy/components/PrivacySection';
@@ -336,7 +337,28 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <>
+      <Helmet>
+        <title>Privacy Policy | GradeSpark Academy - Data Protection & Privacy</title>
+        <meta 
+          name="description" 
+          content="Read GradeSpark Academy's privacy policy to understand how we collect, use, and protect your personal information. Learn about your data rights and our GDPR compliance." 
+        />
+        <meta name="keywords" content="privacy policy, data protection, GDPR compliance, personal information, gradespark privacy" />
+        <link rel="canonical" href="https://www.gradespark.com/privacy" />
+        
+        {/* Open Graph tags */}
+        <meta property="og:title" content="Privacy Policy | GradeSpark Academy - Data Protection & Privacy" />
+        <meta property="og:description" content="Read GradeSpark Academy's privacy policy to understand how we collect, use, and protect your personal information. Learn about your data rights and our GDPR compliance." />
+        <meta property="og:url" content="https://www.gradespark.com/privacy" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Privacy Policy | GradeSpark Academy - Data Protection & Privacy" />
+        <meta name="twitter:description" content="Read GradeSpark Academy's privacy policy to understand how we collect, use, and protect your personal information. Learn about your data rights and our GDPR compliance." />
+      </Helmet>
+      <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-8 text-center">Privacy Policy</h1>
       <p className="text-gray-600 text-center mb-12">
         Last updated: June 1, 2023
@@ -359,6 +381,7 @@ const PrivacyPolicy = () => {
         <ContactSection />
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import AgreementSection from './Terms/components/AgreementSection';
 import TableOfContents from './Terms/components/TableOfContents';
@@ -205,7 +206,28 @@ const Terms = () => {
   useScrollToTop(); // Use the new hook for scrolling
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <>
+      <Helmet>
+        <title>Terms of Use | GradeSpark Academy - Service Terms & Conditions</title>
+        <meta 
+          name="description" 
+          content="Read GradeSpark Academy's terms of use and service conditions. Understand our policies, user responsibilities, and guidelines for academic assistance services." 
+        />
+        <meta name="keywords" content="terms of use, service terms, academic help terms, gradespark policies, user agreement" />
+        <link rel="canonical" href="https://www.gradespark.com/terms" />
+        
+        {/* Open Graph tags */}
+        <meta property="og:title" content="Terms of Use | GradeSpark Academy - Service Terms & Conditions" />
+        <meta property="og:description" content="Read GradeSpark Academy's terms of use and service conditions. Understand our policies, user responsibilities, and guidelines for academic assistance services." />
+        <meta property="og:url" content="https://www.gradespark.com/terms" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Terms of Use | GradeSpark Academy - Service Terms & Conditions" />
+        <meta name="twitter:description" content="Read GradeSpark Academy's terms of use and service conditions. Understand our policies, user responsibilities, and guidelines for academic assistance services." />
+      </Helmet>
+      <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 mt-16">Grade Spark Academy Terms of Use</h1>
       <p className="text-gray-600 mb-8">Last updated: 15 June 2024</p>
 
@@ -226,6 +248,7 @@ const Terms = () => {
 
       <ContactSection />
     </div>
+    </>
   );
 };
 

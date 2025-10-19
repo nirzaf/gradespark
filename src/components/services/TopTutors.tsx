@@ -56,7 +56,7 @@ const TopTutors = () => {
               <div className={`w-16 h-16 ${stat.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
                 <stat.icon className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-bold mb-2">{stat.value}</h3>
+              <span className="text-3xl font-bold mb-2 block">{stat.value}</span>
               <p className="text-gray-600">{stat.label}</p>
             </motion.div>
           ))}

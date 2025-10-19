@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Shield, Lock, CheckCircle, Award, BookOpen } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 // Define the structure for each FAQ item
 interface FAQItemProps {
@@ -105,7 +106,25 @@ const FAQItem = ({ item }: { item: FAQItemProps }) => {
 // Main FAQ Section Component
 const FAQSection = () => {
   return (
-    <section className="py-16 relative overflow-hidden" style={{ background: 'var(--white)' }}>
+    <>
+      <Helmet>
+        {/* FAQ Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqItemsData.map(item => ({
+              "@type": "Question",
+              "name": item.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+              }
+            }))
+          })}
+        </script>
+      </Helmet>
+      <section className="py-16 relative overflow-hidden" style={{ background: 'var(--white)' }}>
       {/* Background decorative effects */}
       <div className="absolute inset-0 -z-10">
         {/* Animated background blobs */}
@@ -153,7 +172,8 @@ const FAQSection = () => {
           animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
       `}</style>
-    </section>
+      </section>
+    </>
   );
 };
 

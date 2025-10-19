@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import useScrollToTop from '@/hooks/useScrollToTop'; // Import the new hook
 import {
@@ -142,13 +142,31 @@ const itemVariants = {
 const Services = () => {
   useScrollToTop(); // Use the new hook for scrolling
 
-  useEffect(() => {
-    // Update page title
-    document.title = "Our Services | Grade Spark Academy";
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Helmet>
+        <title>Our Academic Services | GradeSpark Academy - Assignment Help & Tutoring</title>
+        <meta 
+          name="description" 
+          content="Explore GradeSpark Academy's comprehensive academic services including assignment writing, essay help, thesis support, tutoring, and specialized assistance across all subjects." 
+        />
+        <meta name="keywords" content="academic services, assignment help, essay writing, thesis support, tutoring, homework assistance, research papers, academic writing" />
+        <link rel="canonical" href="https://www.gradespark.com/services" />
+        
+        {/* Open Graph tags */}
+        <meta property="og:title" content="Our Academic Services | GradeSpark Academy - Assignment Help & Tutoring" />
+        <meta property="og:description" content="Explore GradeSpark Academy's comprehensive academic services including assignment writing, essay help, thesis support, tutoring, and specialized assistance across all subjects." />
+        <meta property="og:url" content="https://www.gradespark.com/services" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.gradespark.com/images/og-services.jpg" />
+        
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Academic Services | GradeSpark Academy - Assignment Help & Tutoring" />
+        <meta name="twitter:description" content="Explore GradeSpark Academy's comprehensive academic services including assignment writing, essay help, thesis support, tutoring, and specialized assistance across all subjects." />
+        <meta name="twitter:image" content="https://www.gradespark.com/images/og-services.jpg" />
+      </Helmet>
+    <main className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-[#FEFEFE] to-[#A0EBEB]/10">
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -391,7 +409,8 @@ const Services = () => {
           animation: gradient 8s ease infinite;
         }
       `}</style>
-    </div>
+    </main>
+    </>
   );
 };
 

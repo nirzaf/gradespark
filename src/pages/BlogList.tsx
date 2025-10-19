@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { getBlogImagePath, getFallbackBlogImage } from '../utils/imageUtils';
 
 interface BlogPost {
@@ -154,7 +155,30 @@ const BlogList = () => {
     };
 
     return (
-        <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen">
+        <>
+            <Helmet>
+                <title>Academic Blog | GradeSpark Academy - Expert Study Tips & Guides</title>
+                <meta 
+                    name="description" 
+                    content="Discover expert academic insights, study tips, and comprehensive guides at GradeSpark Academy's blog. Get practical advice for academic success and assignment help." 
+                />
+                <meta name="keywords" content="academic blog, study tips, assignment help guides, academic success, educational resources, gradespark blog" />
+                <link rel="canonical" href="https://www.gradespark.com/blog" />
+                
+                {/* Open Graph tags */}
+                <meta property="og:title" content="Academic Blog | GradeSpark Academy - Expert Study Tips & Guides" />
+                <meta property="og:description" content="Discover expert academic insights, study tips, and comprehensive guides at GradeSpark Academy's blog. Get practical advice for academic success and assignment help." />
+                <meta property="og:url" content="https://www.gradespark.com/blog" />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://www.gradespark.com/images/og-blog.jpg" />
+                
+                {/* Twitter Card tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Academic Blog | GradeSpark Academy - Expert Study Tips & Guides" />
+                <meta name="twitter:description" content="Discover expert academic insights, study tips, and comprehensive guides at GradeSpark Academy's blog. Get practical advice for academic success and assignment help." />
+                <meta name="twitter:image" content="https://www.gradespark.com/images/og-blog.jpg" />
+            </Helmet>
+            <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">Grade Spark Academy Blog</h1>
@@ -254,6 +278,7 @@ const BlogList = () => {
                 )}
             </div>
         </div>
+        </>
     );
 };
 
