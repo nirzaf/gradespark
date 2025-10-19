@@ -4,11 +4,18 @@ import react from '@vitejs/plugin-react';
 import * as path from "node:path";
 import compression from 'vite-plugin-compression';
 import tailwindcss from '@tailwindcss/vite';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    ViteImageOptimizer({
+      png: { quality: 80 },
+      jpeg: { quality: 80 },
+      jpg: { quality: 80 },
+      webp: { quality: 80 },
+    }),
     // Add compression for production builds
     compression({
       algorithm: 'gzip',
