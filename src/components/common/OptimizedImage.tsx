@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  src: string; // Base path without extension (e.g., '/images/hero-image') or full path for backward compatibility
+  src: string;
   alt: string;
+  width: number;
+  height: number;
   className?: string;
   lowQualitySrc?: string;
-  formats?: ('avif' | 'webp' | 'jpg' | 'png')[]; // Supported formats in priority order
-  fallbackFormat?: 'jpg' | 'png'; // Default fallback format
+  formats?: ('avif' | 'webp' | 'jpg' | 'png')[];
+  fallbackFormat?: 'jpg' | 'png';
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
