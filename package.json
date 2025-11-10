@@ -56,7 +56,7 @@
     "globals": "^16.2.0",
     "jsdom": "^27.1.0",
     "postcss": "^8.4.35",
-    "sharp": "^0.34.4",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
     "vite": "^7.1.12",
