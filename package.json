@@ -19,7 +19,7 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.4.2",
+    "@react-three/fiber": "^9.5.0",
     "@supabase/supabase-js": "^2.89.0",
     "@types/three": "^0.182.0",
     "framer-motion": "^12.23.26",
