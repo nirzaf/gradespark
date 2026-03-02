@@ -31,7 +31,7 @@
     "react-helmet-async": "^2.0.5",
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
-    "react-router-dom": "^7.13.0",
+    "react-router-dom": "^7.13.1",
     "swiper": "^12.1.2",
     "three": "^0.183.2",
     "three-mesh-bvh": "^0.9.8",
