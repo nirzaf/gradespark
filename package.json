@@ -33,7 +33,7 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.13.0",
     "swiper": "^12.1.2",
-    "three": "^0.183.1",
+    "three": "^0.183.2",
     "three-mesh-bvh": "^0.9.8",
     "typewriter-effect": "^2.21.0"
   },
