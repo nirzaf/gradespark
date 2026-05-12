@@ -64,29 +64,42 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Core React libraries
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-router': ['react-router-dom'],
-
-          // Heavy 3D libraries - separate chunk for lazy loading
-          'vendor-three': ['three', '@react-three/fiber', '@react-three/drei', '@react-three/cannon'],
-
-          // Animation libraries
-          'vendor-animation': ['framer-motion', 'gsap'],
-
-          // UI components and icons
-          'vendor-ui': ['lucide-react', 'react-icons'],
-
-          // Carousel and sliders
-          'vendor-carousel': ['swiper'],
-
-          // Utilities and smaller libs
-          'vendor-utils': ['typewriter-effect', 'react-hot-toast', 'gray-matter'],
-
-          // Analytics and tracking
-          'vendor-analytics': ['@microsoft/clarity', '@supabase/supabase-js']
-        }
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            // Check for specific vendors first to avoid overlap (e.g., react-router-dom contains 'react')
+            if (id.includes('react-router-dom')) {
+              return 'vendor-router';
+            }
+            if (id.includes('react-icons') || id.includes('lucide-react')) {
+              return 'vendor-ui';
+            }
+            if (id.includes('three') || id.includes('@react-three')) {
+              return 'vendor-three';
+            }
+            if (id.includes('framer-motion') || id.includes('gsap')) {
+              return 'vendor-animation';
+            }
+            if (id.includes('swiper')) {
+              return 'vendor-carousel';
+            }
+            if (
+              id.includes('typewriter-effect') ||
+              id.includes('react-hot-toast') ||
+              id.includes('gray-matter')
+            ) {
+              return 'vendor-utils';
+            }
+            if (
+              id.includes('@microsoft/clarity') ||
+              id.includes('@supabase/supabase-js')
+            ) {
+              return 'vendor-analytics';
+            }
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor-react';
+            }
+          }
+        },
       }
     },
     chunkSizeWarningLimit: 1000,
